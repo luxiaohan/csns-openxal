@@ -276,7 +276,7 @@ class InpFileFilter extends javax.swing.filechooser.FileFilter {
         }
         
         return false;
-    }mode
+    }
     
     //The description of this filter
     public String getDescription() {
