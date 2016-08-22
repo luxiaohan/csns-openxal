@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE timing SYSTEM "xdxf.dtd">
+<timing>
+	<channelsuite name="timingsuite">
+        <!-- beam trigger PV: 0=Trigger, 1=Counting -->
+		<!-- readback of overall rep rate -->
+		<channel handle="repRate" signal="Physics:Linac:repRate"/>
+	</channelsuite>
+</timing>

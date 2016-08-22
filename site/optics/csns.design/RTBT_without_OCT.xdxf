@@ -1,0 +1,1933 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE xdxf SYSTEM "xdxf.dtd">
+<xdxf date="2014年12月19日 星期五 上午10时48分45秒 GMT+08:00" system="csns" ver="0.1">
+    <comboseq id="RTBT">
+        <sequence id="RTBT1" />
+        <sequence id="RTBT_FODO" />
+        <sequence id="RTBT_Match" />
+    </comboseq>
+    <comboseq id="RDBT">
+        <sequence id="RTBT1" />
+        <sequence id="RTBT_RDump" />
+    </comboseq>
+    <sequence id="RTBT1" len="40.91">
+        <attributes>
+            <sequence predecessors="" />
+        </attributes>
+        <node id="Begin_Of_RTBT1" len="0" pos="0" type="MARKER" />
+        <node id="RTBT_Mag:EXLSM" len="1.9" pid="EXLSM" pos="3" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-13.063438" dfltMagFld="-0.944049" dipoleEntrRotAngle="0" dipoleExitRotAngle="-13.063438" len="1.9" pathLength="1.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_EXLSM" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:EXLSM:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTBV01" len="0.4" pid="RTBV01" pos="5.09" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="-0.714879" dfltMagFld="-0.245394" dipoleEntrRotAngle="-0.35744" dipoleExitRotAngle="-0.35744" len="0.4" pathLength="0.4" polarity="-1" />
+                <aperture shape="1" x="128" y="200" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTBV01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTBV01:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTBV02" len="0.4" pid="RTBV02" pos="6.35" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="-0.438313" dfltMagFld="-0.150458" dipoleEntrRotAngle="-0.219156" dipoleExitRotAngle="-0.219156" len="0.4" pathLength="0.4" polarity="-1" />
+                <aperture shape="1" x="148" y="200" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTBV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTBV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC01" len="0.3" pid="RTBPMC01" pos="7.51" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF01" len="0.5" pid="RTQF01" pos="8.06" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="5.34081" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD02" len="0.8" pid="RTQD02" pos="9.01" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-5.771527" len="0.8" polarity="-1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC02" len="0.3" pid="RTBPMC02" pos="9.66" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF03" len="0.6" pid="RTQF03" pos="10.21" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.804781" len="0.6" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH01" len="0.2" pid="RTDH01" pos="10.86" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH01:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV01" len="0.2" pid="RTDV01" pos="11.26" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV01:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTCT01" len="0.2" pos="11.89" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="2.25" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTCT01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTCT01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD04" len="0.5" pid="RTQD04" pos="12.39" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-2.633967" len="0.5" polarity="-1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD04:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC03" len="0.3" pid="RTBPMC03" pos="12.94" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC03:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC03:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC03:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC03:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS01" len="0.2" pid="RTWS01" pos="13.19" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS01:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS01:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC04" len="0.3" pid="RTBPMC04" pos="17.2" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF05" len="0.5" pid="RTQF05" pos="17.75" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.056554" len="0.5" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF05:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH02" len="0.2" pid="RTDH02" pos="18.35" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH02:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS02" len="0.2" pid="RTWS02" pos="22.35" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS02:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS02:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV05" len="0.3" pid="RTBPMV05" pos="23.6" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD06" len="0.5" pid="RTQD06" pos="24.15" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-3.913753" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD06:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV02" len="0.2" pid="RTDV02" pos="24.75" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS03" len="0.2" pid="RTWS03" pos="26.35" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS03:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS03:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH06" len="0.3" pid="RTBPMH06" pos="27.6" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH06:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH06:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH06:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH06:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF07" len="0.5" pid="RTQF07" pos="28.15" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="6.084827" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF07" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF07:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV07" len="0.3" pid="RTBPMV07" pos="31.6" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV07:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV07:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV07:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV07:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD08" len="0.5" pid="RTQD08" pos="32.15" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.57411" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD08:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS04" len="0.2" pid="RTWS04" pos="34.35" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS04:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS04:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH08" len="0.3" pid="RTBPMH08" pos="35.6" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF09" len="0.5" pid="RTQF09" pos="36.15" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="5.909668" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF09:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV03" len="0.2" pid="RTDV03" pos="39.55" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV03:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD10" len="0.5" pid="RTQD10" pos="40.15" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.24747" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD10" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD10:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV09" len="0.3" pid="RTBPMV09" pos="40.7" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RTBT1" len="0" pos="40.91" type="MARKER" />
+    </sequence>
+    <sequence id="RTBT_FODO" len="55.377">
+        <attributes>
+            <sequence predecessors="RTBT1" />
+        </attributes>
+        <node id="Begin_Of_RTBT_FODO" len="0" pos="0" type="MARKER" />
+        <node id="RTBT_Mag:RTB01" len="1.9" pid="RTB01" pos="1.1" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="13.063438" dfltMagFld="0.944049" dipoleEntrRotAngle="6.531719" dipoleExitRotAngle="6.531719" len="1.9" pathLength="1.9" polarity="+1" />
+                <aperture shape="1" x="130" y="128" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTB01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF11" len="0.5" pid="RTQF11" pos="3.317" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.321714" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF11" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF11:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH10" len="0.3" pid="RTBPMH10" pos="3.867" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH10:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH10:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH10:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH10:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV11" len="0.3" pid="RTBPMV11" pos="7.667" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD12" len="0.5" pid="RTQD12" pos="8.217" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.593668" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD12" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD12:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV04" len="0.2" pid="RTDV04" pos="8.817" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV04:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH12" len="0.3" pid="RTBPMH12" pos="12.267" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF13" len="0.5" pid="RTQF13" pos="12.817" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.279167" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF13C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF13:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH03" len="0.2" pid="RTDH03" pos="13.417" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH03:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV13" len="0.3" pid="RTBPMV13" pos="17.637" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV13:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV13:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV13:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV13:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD14" len="0.5" pid="RTQD14" pos="18.187" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.581997" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF14C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD14:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV05" len="0.2" pid="RTDV05" pos="18.787" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV05:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH14" len="0.3" pid="RTBPMH14" pos="23.007" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH14:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH14:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH14:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH14:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF15" len="0.5" pid="RTQF15" pos="23.557" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.279167" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF13C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF15:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH04" len="0.2" pid="RTDH04" pos="24.157" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH04:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS05" len="0.2" pid="RTWS05" pos="26.057" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS05:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS05:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV15" len="0.3" pid="RTBPMV15" pos="28.377" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV15:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV15:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV15:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV15:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD16" len="0.5" pid="RTQD16" pos="28.927" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.581997" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF14C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD16:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH16" len="0.3" pid="RTBPMH16" pos="33.747" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH16:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH16:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH16:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH16:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF17" len="0.5" pid="RTQF17" pos="34.297" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.279167" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF13C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF17:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS06" len="0.2" pid="RTWS06" pos="37.297" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS06:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS06:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV17" len="0.3" pid="RTBPMV17" pos="39.117" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV17:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV17:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV17:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV17:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD18" len="0.5" pid="RTQD18" pos="39.667" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.581997" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF14C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD18:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS07" len="0.2" pid="RTWS07" pos="42.067" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS07:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS07:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH18" len="0.3" pid="RTBPMH18" pos="44.487" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH18:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH18:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH18:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH18:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF19" len="0.5" pid="RTQF19" pos="45.037" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="4.279167" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF13C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF19:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV19" len="0.3" pid="RTBPMV19" pos="49.857" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV19:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV19:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV19:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV19:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD20" len="0.5" pid="RTQD20" pos="50.407" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.581997" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF14C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD20:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV06" len="0.2" pid="RTDV06" pos="51.007" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV06:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTWS08" len="0.2" pid="RTWS08" pos="52.907" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTWS08:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTWS08:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTCT02" len="0.2" pos="54.977" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="2.25" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTCT02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTCT02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH20" len="0.3" pid="RTBPMH20" pos="55.227" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH20:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH20:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH20:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH20:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RTBT_FODO" len="0" pos="55.377" type="MARKER" />
+    </sequence>
+    <sequence id="RTBT_Match" len="47.91">
+        <attributes>
+            <sequence predecessors="RTBT_FODO" />
+        </attributes>
+        <node id="Begin_Of_RTBT_Match" len="0" pos="0" type="MARKER" />
+        <node id="RTBT_Mag:RTQF21" len="0.5" pid="RTQF21" pos="0.4" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.906962" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF21" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF21:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH05" len="0.2" pid="RTDH05" pos="1" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH05:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV21" len="0.3" pid="RTBPMV21" pos="5.22" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV21:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV21:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV21:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV21:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD22" len="0.5" pid="RTQD22" pos="5.77" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-3.766763" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD22" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD22:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH22" len="0.3" pid="RTBPMH22" pos="10.59" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH22:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH22:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH22:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH22:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF23" len="0.5" pid="RTQF23" pos="11.14" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.442698" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF23" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF23:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV23" len="0.3" pid="RTBPMV23" pos="13.89" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV23:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV23:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV23:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV23:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD24" len="0.5" pid="RTQD24" pos="14.44" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-1.720852" len="0.5" polarity="-1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD24" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD24:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH24" len="0.3" pid="RTBPMH24" pos="17.19" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH24:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH24:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH24:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH24:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF25" len="0.5" pid="RTQF25" pos="17.74" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.786707" len="0.5" polarity="+1" />
+                <aperture shape="1" x="168" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF25" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF25:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH06" len="0.2" pid="RTDH06" pos="18.34" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH06:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV25" len="0.3" pid="RTBPMV25" pos="20.96" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV25:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV25:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV25:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV25:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD26" len="0.5" pid="RTQD26" pos="21.51" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-4.405561" len="0.5" polarity="-1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD26" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD26:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV07" len="0.2" pid="RTDV07" pos="22.11" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV07" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV07:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH26" len="0.3" pid="RTBPMH26" pos="24.81" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH26:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH26:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH26:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH26:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF27" len="0.4" pid="RTQF27" pos="25.26" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="2.953575" len="0.4" polarity="+1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF27" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF27:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF28" len="0.4" pid="RTQF28" pos="26.86" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.207588" len="0.4" polarity="+1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF28" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF28:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTB02" len="2.1" pid="RTB02" pos="28.46" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-14.742204" dfltMagFld="-0.963904" dipoleEntrRotAngle="-7.371102" dipoleExitRotAngle="-7.371102" len="2.1" pathLength="2.1" polarity="-1" />
+                <aperture shape="1" x="260" y="168" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTB02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTB02:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV08" len="0.2" pid="RTDV08" pos="30.11" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV08:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMV27" len="0.3" pid="RTBPMV27" pos="30.46" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMV27:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMV27:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMV27:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMV27:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD29" len="0.4" pid="RTQD29" pos="32.11" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-3.146829" len="0.4" polarity="-1" />
+                <aperture shape="1" x="260" y="260" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD29" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD29:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD30" len="0.4" pid="RTQD30" pos="33.91" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-3.755752" len="0.4" polarity="-1" />
+                <aperture shape="1" x="258" y="310" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD30" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD30:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMH28" len="0.3" pid="RTBPMH28" pos="34.61" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMH28:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMH28:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMH28:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMH28:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQF31" len="0.9" pid="RTQF31" pos="36.21" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.142837" len="0.9" polarity="+1" />
+                <aperture shape="1" x="310" y="258" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQF31" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQF31:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC29" len="0.3" pid="RTBPMC29" pos="37" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC29:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC29:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC29:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC29:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH07" len="0.2" pid="RTDH07" pos="37.38" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH07" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH07:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTQD32" len="0.9" pid="RTQD32" pos="39.01" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-2.309657" len="0.9" polarity="-1" />
+                <aperture shape="1" x="258" y="310" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTQD32" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTQD32:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDV09" len="0.2" pid="RTDV09" pos="39.81" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDV09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDV09:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Mag:RTDH08" len="0.2" pid="RTDH08" pos="40.21" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTDH08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTDH08:B" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTCT03" len="0.2" pos="40.51" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="2.25" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTCT03:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTCT03:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTBPMC30" len="0.3" pid="RTBPMC30" pos="40.76" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="291" y="291" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RTBT_Diag:RTBPMC30:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RTBT_Diag:RTBPMC30:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RTBT_Diag:RTBPMC30:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RTBT_Diag:RTBPMC30:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RTBT_Diag:RTMWS01" len="0.1" pid="RTMWS01" pos="45.915" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RTBT_Diag:RTMWS01:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTMWS01:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RTBT_Match" len="0" pos="47.91" type="MARKER" />
+    </sequence>
+    <sequence id="RTBT_RDump" len="43.3">
+        <attributes>
+            <sequence predecessors="RTBT1" />
+        </attributes>
+        <node id="Begin_Of_RTBT_RDump" len="0" pos="0" type="MARKER" />
+        <node id="RTBT_Mag:RTB01" len="1.9" pid="RTB01" pos="1.1" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="1.9" pathLength="1.9" polarity="+1" />
+                <aperture shape="1" x="130" y="128" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RTBT_Mag:PS_RTB01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RTB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDQF01" len="0.5" pid="RDQF01" pos="4.45" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="2.910587" len="0.5" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDQF01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDQF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDDH01" len="0.2" pid="RDDH01" pos="5.05" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDDH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDDH01:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Diag:" len="0.3" pid="RDBPM01" pos="6.5" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RDBT_Diag::xAvg" />
+                <channel handle="yAvg" settable="false" signal="RDBT_Diag::yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RDBT_Diag::phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RDBT_Diag::amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDQD02" len="0.5" pid="RDQD02" pos="9.05" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-3.614245" len="0.5" polarity="-1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDQD02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDQD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDDV01" len="0.2" pid="RDDV01" pos="9.65" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDDV01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDDV01:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDQF03" len="0.5" pid="RDQF03" pos="13.65" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="2.118158" len="0.5" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDQF03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDQF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Diag:" len="0.3" pid="RDBPM02" pos="15.9" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RDBT_Diag::xAvg" />
+                <channel handle="yAvg" settable="false" signal="RDBT_Diag::yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RDBT_Diag::phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RDBT_Diag::amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDQD04" len="0.5" pid="RDQD04" pos="18.25" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-1.792261" len="0.5" polarity="-1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDQD04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDQD04:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDQF05" len="0.5" pid="RDQF05" pos="22.85" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="3.933536" len="0.5" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDQF05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDQF05:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDDH02" len="0.2" pid="RDDH02" pos="23.45" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDDH02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDDH02:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Mag:RDDV02" len="0.2" pid="RDDV02" pos="23.85" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RDBT_Mag:PS_RDDV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RTBT_Mag:RDDV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Diag:RDCT01" len="0.2" pos="28.7" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="2.25" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="RDBT_Diag:RDCT01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RDBT_Diag:RDCT01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Diag:" len="0.3" pid="RDBPM03" pos="28.95" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="194" y="194" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RDBT_Diag::xAvg" />
+                <channel handle="yAvg" settable="false" signal="RDBT_Diag::yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RDBT_Diag::phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RDBT_Diag::amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RDBT_Diag:RDMWS01" len="0.2" pid="RDMWS01" pos="29.2" softType="Version 2.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="SigHorGaussStd" settable="false" signal="RDBT_Diag:RDMWS01:Hor_Sigma_gs" />
+                <channel handle="SigVerGaussStd" settable="false" signal="RDBT_Diag:RDMWS01:Ver_Sigma_gs" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RTBT_RDump" len="0" pos="43.3" type="MARKER" />
+    </sequence>
+    <powersupplies>
+        <ps id="RTBT_Mag:PS_EXLSM" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_EXLSM:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_EXLSM:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_EXLSM:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_EXLSM:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_EXLSM:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_EXLSM:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_EXLSM:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTBV01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTBV01:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTBV01:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTBV01:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTBV01:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTBV01:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTBV01:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTBV01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTBV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTBV02:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTBV02:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTBV02:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTBV02:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTBV02:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTBV02:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTBV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF01:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF01:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF01:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF01:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF01:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF01:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD02:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD02:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD02:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD02:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD02:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD02:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF03:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF03:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF03:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF03:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF03:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF03:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH01:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH01:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH01:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH01:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH01:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH01:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV01:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV01:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV01:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV01:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV01:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV01:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD04:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD04:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD04:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD04:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD04:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD04:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF05:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF05:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF05:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF05:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF05:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF05:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH02:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH02:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH02:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH02:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH02:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH02:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD06:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD06:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD06:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD06:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD06:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD06:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV02:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV02:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV02:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV02:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV02:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV02:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF07" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF07:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF07:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF07:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF07:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF07:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF07:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF07:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD08:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD08:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD08:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD08:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD08:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD08:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF09:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF09:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF09:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF09:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF09:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF09:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV03:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV03:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV03:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV03:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV03:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV03:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD10" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD10:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD10:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD10:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD10:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD10:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD10:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD10:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTB01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTB01:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTB01:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTB01:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTB01:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTB01:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTB01:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTB01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF11" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF11:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF11:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF11:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF11:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF11:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF11:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF11:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD12" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD12:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD12:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD12:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD12:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD12:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD12:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD12:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV04:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV04:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV04:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV04:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV04:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV04:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF13C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF13C:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF13C:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF13C:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF13C:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF13C:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF13C:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF13C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH03:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH03:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH03:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH03:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH03:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH03:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF14C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF14C:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF14C:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF14C:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF14C:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF14C:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF14C:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF14C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV05:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV05:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV05:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV05:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV05:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV05:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH04:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH04:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH04:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH04:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH04:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH04:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV06:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV06:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV06:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV06:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV06:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV06:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF21" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF21:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF21:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF21:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF21:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF21:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF21:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF21:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH05:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH05:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH05:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH05:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH05:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH05:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD22" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD22:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD22:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD22:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD22:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD22:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD22:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD22:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF23" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF23:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF23:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF23:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF23:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF23:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF23:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF23:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD24" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD24:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD24:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD24:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD24:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD24:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD24:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD24:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF25" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF25:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF25:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF25:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF25:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF25:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF25:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF25:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH06:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH06:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH06:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH06:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH06:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH06:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD26" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD26:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD26:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD26:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD26:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD26:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD26:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD26:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV07" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV07:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV07:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV07:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV07:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV07:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV07:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV07:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF27" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF27:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF27:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF27:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF27:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF27:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF27:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF27:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF28" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF28:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF28:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF28:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF28:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF28:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF28:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF28:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTB02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTB02:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTB02:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTB02:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTB02:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTB02:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTB02:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTB02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV08:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV08:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV08:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV08:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV08:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV08:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD29" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD29:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD29:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD29:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD29:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD29:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD29:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD29:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD30" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD30:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD30:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD30:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD30:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD30:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD30:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD30:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQF31" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQF31:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQF31:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQF31:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQF31:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQF31:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQF31:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQF31:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH07" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH07:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH07:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH07:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH07:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH07:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH07:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH07:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTQD32" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTQD32:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTQD32:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTQD32:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTQD32:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTQD32:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTQD32:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTQD32:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDV09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDV09:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDV09:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDV09:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDV09:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDV09:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDV09:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDV09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RTBT_Mag:PS_RTDH08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RTBT_Mag:PS_RTDH08:I" />
+                <channel handle="I_Set" signal="RTBT_Mag:PS_RTDH08:I_Set" />
+                <channel handle="fieldSet" signal="RTBT_Mag:PS_RTDH08:B_Set" />
+                <channel handle="psFieldRB" signal="RTBT_Mag:PS_RTDH08:B" />
+                <channel handle="cycleState" signal="RTBT_Mag:PS_RTDH08:cycleState" />
+                <channel handle="cycleEnable" signal="RTBT_Mag:PS_RTDH08:cycleEnable" />
+                <channel handle="B_Book" signal="RTBT_Mag:PS_RTDH08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDQF01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDQF01:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDQF01:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDQF01:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDQF01:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDQF01:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDQF01:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDQF01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDDH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDDH01:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDDH01:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDDH01:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDDH01:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDDH01:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDDH01:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDDH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDQD02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDQD02:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDQD02:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDQD02:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDQD02:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDQD02:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDQD02:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDQD02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDDV01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDDV01:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDDV01:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDDV01:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDDV01:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDDV01:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDDV01:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDDV01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDQF03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDQF03:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDQF03:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDQF03:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDQF03:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDQF03:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDQF03:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDQF03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDQD04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDQD04:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDQD04:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDQD04:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDQD04:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDQD04:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDQD04:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDQD04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDQF05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDQF05:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDQF05:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDQF05:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDQF05:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDQF05:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDQF05:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDQF05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDDH02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDDH02:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDDH02:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDDH02:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDDH02:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDDH02:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDDH02:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDDH02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RDBT_Mag:PS_RDDV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RDBT_Mag:PS_RDDV02:I" />
+                <channel handle="I_Set" signal="RDBT_Mag:PS_RDDV02:I_Set" />
+                <channel handle="fieldSet" signal="RDBT_Mag:PS_RDDV02:B_Set" />
+                <channel handle="psFieldRB" signal="RDBT_Mag:PS_RDDV02:B" />
+                <channel handle="cycleState" signal="RDBT_Mag:PS_RDDV02:cycleState" />
+                <channel handle="cycleEnable" signal="RDBT_Mag:PS_RDDV02:cycleEnable" />
+                <channel handle="B_Book" signal="RDBT_Mag:PS_RDDV02:B_Book" />
+            </channelsuite>
+        </ps>
+    </powersupplies>
+</xdxf>

@@ -1,0 +1,1863 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE xdxf SYSTEM "xdxf.dtd">
+<xdxf date="2015年3月30日 星期一 下午05时08分51秒 GMT+08:00" system="csns" ver="0.1">
+    <comboseq id="LRBT">
+        <sequence id="LRBT_PreMatch" />
+        <sequence id="LRBT_TripCels" />
+        <sequence id="LRBT_Doublets" />
+        <sequence id="LRBT_SW2injFoil" />
+        <sequence id="LRBT_injFoil2injdump" />
+    </comboseq>
+    <comboseq id="LDBT">
+        <sequence id="LRBT_PreMatch" />
+        <sequence id="LRBT_TripCels" />
+        <sequence id="LRBT_Doublets" />
+        <sequence id="LRBT_LDump" />
+    </comboseq>
+    <sequence id="LRBT_PreMatch" len="24.66589">
+        <attributes>
+            <sequence predecessors="" />
+        </attributes>
+        <node id="Begin_Of_LRBT_PreMatch" len="0" pos="0" type="MARKER" />
+        <node id="LRBT_Diag:LRCT01" len="0.2" pos="1.3" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="324" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRCT01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRCT01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS00" len="0.2" pid="LRWS00" pos="2.7" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS00:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS00:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS00:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS00:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS00:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS00:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF01" len="0.2" pid="LRQF01" pos="4.26589" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-1.767793" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF01:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM01" len="0.3" pid="LRBPM01" pos="4.61589" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD02" len="0.2" pid="LRQD02" pos="5.26589" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="3.402325" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD02:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV01" len="0.2" pid="LRDV01" pos="5.66589" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV01:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF03" len="0.2" pid="LRQF03" pos="6.26589" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-1.767793" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF03:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH01" len="0.2" pid="LRDH01" pos="6.66589" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH01:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV02" len="0.2" pid="LRDV02" pos="10.06589" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV02:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS01" len="0.2" pid="LRWS01" pos="10.36589" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS01:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS01:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS01:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS01:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS01:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS01:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD04" len="0.2" pid="LRQD04" pos="10.66589" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.497119" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD04:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM02" len="0.3" pid="LRBPM02" pos="11.01589" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF05" len="0.2" pid="LRQF05" pos="11.66589" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.869048" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF05:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH02" len="0.2" pid="LRDH02" pos="12.06589" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH02:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD06" len="0.2" pid="LRQD06" pos="12.66589" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.497119" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD06:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS02" len="0.2" pid="LRWS02" pos="24.56589" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS02:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS02:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS02:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS02:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS02:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS02:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_LRBT_PreMatch" len="0" pos="24.66589" type="MARKER" />
+    </sequence>
+    <sequence id="LRBT_TripCels" len="121.9">
+        <attributes>
+            <sequence predecessors="LRBT_PreMatch" />
+        </attributes>
+        <node id="Begin_Of_LRBT_TripCels" len="0" pos="0" type="MARKER" />
+        <node id="LRBT_Mag:LRQD07" len="0.2" pid="LRQD07" pos="0.2" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD07:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM03" len="0.3" pid="LRBPM03" pos="0.55" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM03:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM03:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM03:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM03:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF08" len="0.2" pid="LRQF08" pos="1.2" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF08:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH03" len="0.2" pid="LRDH03" pos="1.6" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH03:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD09" len="0.2" pid="LRQD09" pos="2.2" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD09:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV03" len="0.2" pid="LRDV03" pos="2.6" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV03:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS03" len="0.2" pid="LRWS03" pos="14.1" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS03:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS03:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS03:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS03:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS03:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS03:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD10" len="0.2" pid="LRQD10" pos="14.4" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD10:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF11" len="0.2" pid="LRQF11" pos="15.4" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF11:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM04" len="0.3" pid="LRBPM04" pos="15.75" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD12" len="0.2" pid="LRQD12" pos="16.4" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD12:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH04" len="0.2" pid="LRDH04" pos="16.8" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH04:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS04" len="0.2" pid="LRWS04" pos="28.3" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS04:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS04:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS04:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS04:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS04:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS04:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD13" len="0.2" pid="LRQD13" pos="28.6" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD13:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM05" len="0.3" pid="LRBPM05" pos="28.95" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF14" len="0.2" pid="LRQF14" pos="29.6" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF14:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD15" len="0.2" pid="LRQD15" pos="30.6" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD15:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV04" len="0.2" pid="LRDV04" pos="31" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV04:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD16" len="0.2" pid="LRQD16" pos="42.8" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD16:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF17" len="0.2" pid="LRQF17" pos="43.8" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF17:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM06" len="0.3" pid="LRBPM06" pos="44.15" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM06:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM06:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM06:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM06:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD18" len="0.2" pid="LRQD18" pos="44.8" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD18:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH05" len="0.2" pid="LRDH05" pos="45.2" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH05:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD19" len="0.2" pid="LRQD19" pos="57" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD19:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM07" len="0.3" pid="LRBPM07" pos="57.35" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM07:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM07:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM07:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM07:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF20" len="0.2" pid="LRQF20" pos="58" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF20:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD21" len="0.2" pid="LRQD21" pos="59" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD21:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV05" len="0.2" pid="LRDV05" pos="59.4" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV05:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD22" len="0.2" pid="LRQD22" pos="71.2" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD22:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF23" len="0.2" pid="LRQF23" pos="72.2" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF23:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM08" len="0.3" pid="LRBPM08" pos="72.55" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD24" len="0.2" pid="LRQD24" pos="73.2" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD24:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH06" len="0.2" pid="LRDH06" pos="73.6" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH06:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD25" len="0.2" pid="LRQD25" pos="85.4" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD25:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM09" len="0.3" pid="LRBPM09" pos="85.75" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF26" len="0.2" pid="LRQF26" pos="86.4" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF26:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD27" len="0.2" pid="LRQD27" pos="87.4" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD27:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV06" len="0.2" pid="LRDV06" pos="87.8" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV06" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV06:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD28" len="0.2" pid="LRQD28" pos="99.6" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD28:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF29" len="0.2" pid="LRQF29" pos="100.6" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF29:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM10" len="0.3" pid="LRBPM10" pos="100.95" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM10:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM10:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM10:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM10:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD30" len="0.2" pid="LRQD30" pos="101.6" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD30:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH07" len="0.2" pid="LRDH07" pos="102" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH07" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH07:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD31" len="0.2" pid="LRQD31" pos="113.8" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD31:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM11" len="0.3" pid="LRBPM11" pos="114.15" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF32" len="0.2" pid="LRQF32" pos="114.8" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.671275" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF08C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF32:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD33" len="0.2" pid="LRQD33" pos="115.8" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.390784" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD07C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD33:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV07" len="0.2" pid="LRDV07" pos="121.5" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV07" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV07:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRCT02" len="0.2" pos="121.8" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="324" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRCT02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRCT02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_LRBT_TripCels" len="0" pos="121.9" type="MARKER" />
+    </sequence>
+    <sequence id="LRBT_Doublets" len="8.15">
+        <attributes>
+            <sequence predecessors="LRBT_TripCels" />
+        </attributes>
+        <node id="Begin_Of_LRBT_Doublets" len="0" pos="0" type="MARKER" />
+        <node id="LRBT_Mag:LRQD34" len="0.2" pid="LRQD34" pos="0.3" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.628651" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD34" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD34:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM12" len="0.3" pid="LRBPM12" pos="0.65" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF35" len="0.2" pid="LRQF35" pos="1.3" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-3.071985" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF35" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF35:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH08" len="0.2" pid="LRDH08" pos="1.7" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH08:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD36" len="0.2" pid="LRQD36" pos="3.5" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="3.079857" len="0.2" polarity="+1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD36" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD36:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM13" len="0.3" pid="LRBPM13" pos="3.85" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM13:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM13:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM13:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM13:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF37" len="0.2" pid="LRQF37" pos="4.5" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-1.061802" len="0.2" polarity="-1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF37" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF37:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM14" len="0.3" pid="LRBPM14" pos="4.85" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="68" y="68" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM14:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM14:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM14:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM14:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS05" len="0.2" pid="LRWS05" pos="7.05" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS05:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS05:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS05:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS05:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS05:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS05:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_LRBT_Doublets" len="0" pos="8.15" type="MARKER" />
+    </sequence>
+    <sequence id="LRBT_SW2injFoil" len="41.76827">
+        <attributes>
+            <sequence predecessors="LRBT_Doublets" />
+        </attributes>
+        <node id="Begin_Of_LRBT_SW2injFoil" len="0" pos="0" type="MARKER" />
+        <node id="LRBT_Mag:LRSW" len="1.2" pid="LRSW" pos="0.85" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="20.000009" dfltMagFld="-0.384317" dipoleEntrRotAngle="0" dipoleExitRotAngle="20.000009" len="1.2" pathLength="1.2" polarity="+1" />
+                <aperture shape="1" x="440" y="48" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRSW" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRSW:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRB1" len="1.5" pid="LRB1" pos="3.2" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="24.999409" dfltMagFld="-0.384308" dipoleEntrRotAngle="12.499705" dipoleExitRotAngle="12.499705" len="1.5" pathLength="1.5" polarity="+1" />
+                <aperture shape="0" x="60" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRB1C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRB1:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRCT03" len="0.2" pos="5.65" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="324" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRCT03:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRCT03:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:LRWS06" len="0.2" pid="LRWS06" pos="7.25" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:LRWS06:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:LRWS06:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:LRWS06:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:LRWS06:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:LRWS06:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:LRWS06:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF38" len="0.2" pid="LRQF38" pos="8.95" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.911603" len="0.2" polarity="-1" />
+                <aperture shape="1" x="138" y="90" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF38" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF38:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM15" len="0.3" pid="LRBPM15" pos="9.3" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM15:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM15:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM15:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM15:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD39" len="0.2" pid="LRQD39" pos="10.35" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="2.458386" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD39" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD39:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV08" len="0.2" pid="LRDV08" pos="10.75" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV08:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM16" len="0.3" pid="LRBPM16" pos="19.7" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM16:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM16:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM16:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM16:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF40" len="0.2" pid="LRQF40" pos="20.05" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.084582" len="0.2" polarity="-1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF40" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF40:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDH10" len="0.2" pid="LRDH10" pos="20.45" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDH10" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDH10:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRDV09" len="0.2" pid="LRDV09" pos="29.35" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRDV09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRDV09:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQD41" len="0.2" pid="LRQD41" pos="29.75" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="2.428623" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQD41" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQD41:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM17" len="0.3" pid="LRBPM17" pos="30.1" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM17:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM17:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM17:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM17:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRQF42" len="0.2" pid="LRQF42" pos="31.15" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.877241" len="0.2" polarity="-1" />
+                <aperture shape="1" x="138" y="90" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRQF42" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRQF42:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:LRB2" len="1.5" pid="LRB2" pos="37.14711" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-24.999409" dfltMagFld="0.384308" dipoleEntrRotAngle="-12.499705" dipoleExitRotAngle="-12.499705" len="1.5" pathLength="1.5" polarity="-1" />
+                <aperture shape="0" x="60" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRB1C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRB2:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:INSPT01" len="1.2" pid="INSPT01" pos="39.04055" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-16.381207" dfltMagFld="0.314779" dipoleEntrRotAngle="-8.190604" dipoleExitRotAngle="-8.190604" len="1.2" pathLength="1.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_INSPT01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:INSPT01:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LRBT_Diag:LRBPM18" len="0.3" pid="LRBPM18" pos="40.26099" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LRBT_Diag:LRBPM18:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LRBT_Diag:LRBPM18:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LRBT_Diag:LRBPM18:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LRBT_Diag:LRBPM18:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:INMWS01" len="0.2" pid="INMWS01" pos="40.63599" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:INMWS01:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:INMWS01:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:INMWS01:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:INMWS01:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:INMWS01:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:INMWS01:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBC2" len="0.35" pid="INBC2" pos="41.29327" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-3.618801" dfltMagFld="0.238417" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC2:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:INMWS02" len="0.2" pid="INMWS02" pos="41.66827" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:INMWS02:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:INMWS02:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:INMWS02:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:INMWS02:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:INMWS02:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:INMWS02:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="Ring_Inj:FOIL" len="0" pid="FOIL" pos="41.76827" status="true" type="Foil">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+        </node>
+        <node id="End_Of_LRBT_SW2injFoil" len="0" pos="41.76827" type="MARKER" />
+    </sequence>
+    <sequence id="LRBT_injFoil2injdump" len="19.203">
+        <attributes>
+            <sequence predecessors="LRBT_SW2injFoil" />
+        </attributes>
+        <node id="Begin_Of_LRBT_injFoil2injdump" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:INBC3" len="0.35" pid="INBC3" pos="0.475" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-0" dfltMagFld="0" dipoleEntrRotAngle="-0" dipoleExitRotAngle="-0" len="0.35" pathLength="0.35" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC3:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Diag:INMWS03" len="0.2" pid="INMWS03" pos="1.05" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LRBT_Diag:INMWS03:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LRBT_Diag:INMWS03:vSigmaM" />
+                <channel handle="hSigmaF" signal="LRBT_Diag:INMWS03:hSigmaF" />
+                <channel handle="vSigmaF" signal="LRBT_Diag:INMWS03:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LRBT_Diag:INMWS03:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LRBT_Diag:INMWS03:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBC4" len="0.35" pid="INBC4" pos="1.425" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-3.618801" dfltMagFld="0.238417" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC4:B" />
+            </channelsuite>
+        </node>
+        <node id="LRBT_Mag:INSPT02" len="1.2" pid="INSPT02" pos="3.603" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-16.381207" dfltMagFld="0.314779" dipoleEntrRotAngle="-8.190604" dipoleExitRotAngle="-8.190604" len="1.2" pathLength="1.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_INSPT02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:INSPT02:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_LRBT_injFoil2injdump" len="0" pos="19.203" type="MARKER" />
+    </sequence>
+    <sequence id="LRBT_LDump" len="24.85">
+        <attributes>
+            <sequence predecessors="LRBT_Doublets" />
+        </attributes>
+        <node id="Begin_Of_LRBT_LDump" len="0" pos="0" type="MARKER" />
+        <node id="LRBT_Mag:LRSW" len="1.2" pid="LRSW" pos="0.85" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-20.000009" dfltMagFld="0.384317" dipoleEntrRotAngle="0" dipoleExitRotAngle="-20.000009" len="1.2" pathLength="1.2" polarity="+1" />
+                <aperture shape="1" x="440" y="48" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LRBT_Mag:PS_LRSW" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LRBT_Mag:LRSW:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDQD01" len="0.2" pid="LDQD01" pos="4.05" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="1.511353" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDQD01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDQD01:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDQF02" len="0.2" pid="LDQF02" pos="5.85" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-2.929079" len="0.2" polarity="-1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDQF02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDQF02:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LDBT_Diag:LDBPM01" len="0.3" pid="LDBPM01" pos="6.2" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LDBT_Diag:LDBPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LDBT_Diag:LDBPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LDBT_Diag:LDBPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LDBT_Diag:LDBPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDQD03" len="0.2" pid="LDQD03" pos="7.65" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="0.000009" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDQD03" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDQD03:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Diag:LDWS01" len="0.2" pid="LDWS01" pos="8.95" softType="Version 1.0.0" status="true" type="WS">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="wssuite">
+                <channel handle="hSigmaM" settable="true" signal="LDBT_Diag:LDWS01:hSigmaM" />
+                <channel handle="vSigmaM" settable="true" signal="LDBT_Diag:LDWS01:vSigmaM" />
+                <channel handle="hSigmaF" signal="LDBT_Diag:LDWS01:hSigmaF" />
+                <channel handle="vSigmaF" signal="LDBT_Diag:LDWS01:vSigmaF" />
+                <channel handle="beginScan" settable="true" signal="LDBT_Diag:LDWS01:beginScan" />
+                <channel handle="scanLength" settable="false" signal="LDBT_Diag:LDWS01:scanLen" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDSW" len="1.2" pid="LDSW" pos="10.85" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-30.000013" dfltMagFld="0.576475" dipoleEntrRotAngle="-15.000006" dipoleExitRotAngle="-15.000006" len="1.2" pathLength="1.2" polarity="-1" />
+                <aperture shape="0" x="70" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDSW" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDSW:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDQF04" len="0.2" pid="LDQF04" pos="12.55" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="-1.088546" len="0.2" polarity="-1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDQF04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDQF04:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDQD05" len="0.2" pid="LDQD05" pos="14.75" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="4.624143" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDQD05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDQD05:B" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Diag:LDCT01" len="0.2" pos="15.05" status="true" type="FCT">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+                <fct frequency="324" length="0.2" orientation="-1" />
+            </attributes>
+            <channelsuite name="fctsuite">
+                <channel handle="phaseAvg" settable="false" signal="LDBT_Diag:LDCT01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LDBT_Diag:LDCT01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LDBT_Mag:LDDV01" len="0.2" pid="LDDV01" pos="15.35" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.2" polarity="+1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="LDBT_Mag:PS_LDDV01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="LDBT_Mag:LDDV01:B" />
+            </channelsuite>
+        </node>
+        <node type="BPM" id="LDBT_Diag:LDBPM02" len="0.3" pid="LDBPM02" pos="19.5" status="true">
+            <attributes>
+                <bpm frequency="324" length="0.3" orientation="1" />
+                <aperture shape="1" x="108" y="108" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="LDBT_Diag:LDBPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="LDBT_Diag:LDBPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="LDBT_Diag:LDBPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="LDBT_Diag:LDBPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="LDWIN" len="0" pos="21.6" type="MARKER" />
+        <node id="End_Of_LRBT_LDump" len="0" pos="24.85" type="MARKER" />
+    </sequence>
+    <powersupplies>
+        <ps id="LRBT_Mag:PS_LRQF01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF01:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF01:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF01:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF01:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF01:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF01:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD02:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD02:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD02:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD02:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD02:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD02:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV01:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV01:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV01:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV01:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV01:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV01:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF03:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF03:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF03:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF03:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF03:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF03:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH01:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH01:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH01:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH01:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH01:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH01:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV02:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV02:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV02:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV02:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV02:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV02:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD04:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD04:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD04:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD04:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD04:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD04:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF05:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF05:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF05:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF05:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF05:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF05:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH02:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH02:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH02:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH02:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH02:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH02:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD06:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD06:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD06:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD06:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD06:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD06:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD07C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD07C:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD07C:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD07C:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD07C:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD07C:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD07C:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD07C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF08C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF08C:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF08C:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF08C:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF08C:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF08C:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF08C:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF08C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH03:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH03:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH03:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH03:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH03:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH03:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV03:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV03:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV03:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV03:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV03:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV03:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH04:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH04:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH04:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH04:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH04:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH04:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV04:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV04:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV04:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV04:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV04:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV04:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH05:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH05:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH05:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH05:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH05:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH05:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV05:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV05:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV05:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV05:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV05:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV05:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH06:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH06:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH06:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH06:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH06:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH06:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV06" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV06:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV06:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV06:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV06:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV06:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV06:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV06:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH07" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH07:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH07:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH07:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH07:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH07:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH07:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH07:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV07" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV07:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV07:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV07:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV07:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV07:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV07:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV07:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD34" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD34:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD34:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD34:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD34:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD34:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD34:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD34:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF35" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF35:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF35:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF35:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF35:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF35:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF35:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF35:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH08:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH08:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH08:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH08:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH08:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH08:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD36" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD36:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD36:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD36:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD36:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD36:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD36:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD36:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF37" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF37:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF37:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF37:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF37:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF37:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF37:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF37:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRSW" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRSW:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRSW:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRSW:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRSW:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRSW:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRSW:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRSW:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRB1C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRB1C:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRB1C:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRB1C:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRB1C:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRB1C:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRB1C:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRB1C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF38" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF38:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF38:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF38:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF38:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF38:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF38:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF38:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD39" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD39:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD39:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD39:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD39:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD39:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD39:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD39:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV08:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV08:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV08:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV08:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV08:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV08:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF40" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF40:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF40:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF40:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF40:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF40:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF40:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF40:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDH10" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDH10:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDH10:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDH10:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDH10:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDH10:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDH10:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDH10:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRDV09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRDV09:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRDV09:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRDV09:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRDV09:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRDV09:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRDV09:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRDV09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQD41" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQD41:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQD41:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQD41:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQD41:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQD41:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQD41:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQD41:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_LRQF42" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_LRQF42:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_LRQF42:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_LRQF42:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_LRQF42:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_LRQF42:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_LRQF42:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_LRQF42:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_INSPT01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_INSPT01:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_INSPT01:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_INSPT01:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_INSPT01:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_INSPT01:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_INSPT01:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_INSPT01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_INBC" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_INBC:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_INBC:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_INBC:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_INBC:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_INBC:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_INBC:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_INBC:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LRBT_Mag:PS_INSPT02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LRBT_Mag:PS_INSPT02:I" />
+                <channel handle="I_Set" signal="LRBT_Mag:PS_INSPT02:I_Set" />
+                <channel handle="fieldSet" signal="LRBT_Mag:PS_INSPT02:B_Set" />
+                <channel handle="psFieldRB" signal="LRBT_Mag:PS_INSPT02:B" />
+                <channel handle="cycleState" signal="LRBT_Mag:PS_INSPT02:cycleState" />
+                <channel handle="cycleEnable" signal="LRBT_Mag:PS_INSPT02:cycleEnable" />
+                <channel handle="B_Book" signal="LRBT_Mag:PS_INSPT02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDQD01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDQD01:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDQD01:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDQD01:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDQD01:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDQD01:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDQD01:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDQD01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDQF02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDQF02:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDQF02:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDQF02:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDQF02:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDQF02:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDQF02:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDQF02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDQD03" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDQD03:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDQD03:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDQD03:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDQD03:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDQD03:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDQD03:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDQD03:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDSW" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDSW:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDSW:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDSW:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDSW:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDSW:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDSW:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDSW:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDQF04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDQF04:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDQF04:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDQF04:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDQF04:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDQF04:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDQF04:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDQF04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDQD05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDQD05:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDQD05:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDQD05:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDQD05:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDQD05:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDQD05:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDQD05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="LDBT_Mag:PS_LDDV01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="LDBT_Mag:PS_LDDV01:I" />
+                <channel handle="I_Set" signal="LDBT_Mag:PS_LDDV01:I_Set" />
+                <channel handle="fieldSet" signal="LDBT_Mag:PS_LDDV01:B_Set" />
+                <channel handle="psFieldRB" signal="LDBT_Mag:PS_LDDV01:B" />
+                <channel handle="cycleState" signal="LDBT_Mag:PS_LDDV01:cycleState" />
+                <channel handle="cycleEnable" signal="LDBT_Mag:PS_LDDV01:cycleEnable" />
+                <channel handle="B_Book" signal="LDBT_Mag:PS_LDDV01:B_Book" />
+            </channelsuite>
+        </ps>
+    </powersupplies>
+</xdxf>

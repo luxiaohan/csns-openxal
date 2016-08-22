@@ -2,6 +2,7 @@
 build/**/*
 /bin
 /build
+/.settings
 /.classpath
 /.project
 /doc

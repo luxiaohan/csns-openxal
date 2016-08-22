@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<dbconfig date="Thu Jul 23 10:46:03 DST 2009" version="1.0.0">
+	<adaptors default="mysql">
+		<adaptor name="oracle" class="xal.plugin.oracle.OracleDatabaseAdaptor" />
+        <adaptor name="mysql" class="xal.plugin.mysql.MySQLDatabaseAdaptor" />
+	</adaptors>
+
+	<servers default="production">
+		<server name="PHYSICS" adaptor="mysql" url="jdbc:mysql://10.1.46.59:3306" />
+		<server name="production" adaptor="mysql" url="jdbc:mysql://10.1.46.59:3306" />
+		<server name="Custom" adaptor="mysql" url="jdbc:mysql://10.1.46.59:3306" />
+	</servers>
+
+	<accounts default="reports">
+		<account name="reports" user="apgroup" password="csnsapgroup" />
+		<account name="monitor" user="monitor" />
+		<account name="pvlogger" user="apgroup" password="csnsapgroup" />
+		<account name="elog" user="monitor" />
+		<account name="firstfault" user="reports" password="abcxyz" />
+		<account name="tripmonitor" user="monitor" />
+		<account name="score" user="apgroup" password="csnsapgroup" />
+		<account name="personal" user="myUserID" />
+	</accounts>
+</dbconfig>

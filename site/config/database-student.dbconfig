@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<dbconfig date="Thu Jul 23 10:46:03 DST 2009" version="1.0.0">
+	<adaptors default="oracle">
+		<adaptor name="oracle" class="xal.plugin.oracle.OracleDatabaseAdaptor" />
+	</adaptors>
+	<servers default="production">
+		<server name="production" adaptor="oracle" url="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=OFF)(FAILOVER=ON)
+		(ADDRESS=(PROTOCOL=TCP)(HOST=snsappa.sns.ornl.gov)(PORT=1610))
+		(ADDRESS=(PROTOCOL=TCP)(HOST=snsappb.sns.ornl.gov)(PORT=1610))
+		(CONNECT_DATA=(SERVICE_NAME=prod_controls)))" />
+	</servers>
+	<accounts default="reports">
+		<account name="reports" user="sns_reports" password="sns" />
+		<account name="pvlogger" user="sns_reports" password="sns" />
+		<account name="pvlogger-reports" user="sns_reports" password="sns" />
+		<account name="personal" user="YourID" />
+	</accounts>
+</dbconfig>

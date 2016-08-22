@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+
+<!-- Optics Extra File for Testing the Quadrupole Fringe Field Mechanism -->
+
+<xdxf date="06.22.2016" system="csns" ver="2.0.0">
+
+  <sequence id="RCS_R1">
+    <node type="QFH" id="RCS_Mag:R1QF04">
+       <attributes>
+          <magnet frFldIntK0="0.01" />
+       </attributes>
+    </node>
+    <node type="QFH" id="RCS_Mag:R1QF09">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+  </sequence>
+  
+   <sequence id="RCS_R2">
+    <node type="QFH" id="RCS_Mag:R2QF09">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+    <node type="QFH" id="RCS_Mag:R2QF04">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+  </sequence>
+  
+  <sequence id="RCS_R3">
+    <node type="QFH" id="RCS_Mag:R3QF04">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+    <node type="QFH" id="RCS_Mag:R3QF09">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+  </sequence>
+  
+   <sequence id="RCS_R4">
+    <node type="QFH" id="RCS_Mag:R4QF09">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+    <node type="QFH" id="RCS_Mag:R4QF04">
+       <attributes>
+          <magnet frFldIntK0="0" />
+       </attributes>
+    </node>
+  </sequence>
+
+</xdxf>

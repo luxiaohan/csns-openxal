@@ -26,6 +26,7 @@ import xal.smf.impl.Bend;
 import xal.smf.impl.CurrentMonitor;
 import xal.smf.impl.Electromagnet;
 import xal.smf.impl.ExtractionKicker;
+import xal.smf.impl.FCT;
 import xal.smf.impl.HDipoleCorr;
 import xal.smf.impl.MagnetMainSupply;
 import xal.smf.impl.MagnetTrimSupply;
@@ -89,6 +90,7 @@ public class VAServer {
 		registerNodeChannels( RfCavity.s_strType );
 		registerNodeChannels( CurrentMonitor.s_strType );
 		registerNodeChannels( BPM.s_strType );
+		registerNodeChannels( FCT.s_strType );
 		registerNodeChannels( BLM.s_strType );
 		registerNodeChannels( Solenoid.s_strType );
         
@@ -210,6 +212,7 @@ class NodeSignalProcessor extends SignalProcessor {
 		if ( type == Quadrupole.s_strType || type == Bend.s_strType || type == Solenoid.s_strType )  return new UnipolarEMProcessor();
 		else if ( type == TrimmedQuadrupole.s_strType )  return new TrimmedQuadrupoleProcessor();
 		else if ( type == BPM.s_strType )  return new BPMProcessor();
+		else if ( type == FCT.s_strType )  return new FCTProcessor();
 		else if ( type == VDipoleCorr.s_strType || type == HDipoleCorr.s_strType )  return new DipoleCorrectorProcessor();
 		else if ( type == Sextupole.s_strType )  return new SextupoleProcessor();
 		else if ( type == ProfileMonitor.s_strType && softType == ProfileMonitor.SOFTWARE_TYPE )  return new ProfileMonitorProcessor();
@@ -400,7 +403,18 @@ class BPMProcessor extends NodeSignalProcessor {
 	}	
 }
 
-
+/** Signal processor appropriate for processing FCTs */
+class FCTProcessor extends NodeSignalProcessor {
+	protected void appendLimits( final SignalEntry entry, final IServerChannel pv ) {
+		final String handle = entry.getHandle();
+		if ( FCT.AMP_AVG_HANDLE.equals( handle ) ) {
+			setLimits( pv, 0.0, 50.0 );
+		}
+		else {
+			setLimits( pv, -1000.0, 1000.0 );
+		}
+	}	
+}
 
 /** Signal processor appropriate for processing bends */
 class BendProcessor extends NodeSignalProcessor {

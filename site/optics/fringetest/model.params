@@ -1,0 +1,243 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE tablegroup [
+    <!ELEMENT tablegroup (table*) >
+
+    <!ELEMENT table (schema, record*) >
+    <!ATTLIST table name NMTOKEN #REQUIRED >
+    <!ATTLIST table recordClass CDATA #IMPLIED >
+
+    <!ELEMENT schema (attribute*) >
+
+    <!ELEMENT attribute EMPTY >
+    <!ATTLIST attribute isPrimaryKey (true|false) #IMPLIED>
+    <!ATTLIST attribute name NMTOKEN #REQUIRED >
+    <!ATTLIST attribute type CDATA #REQUIRED >
+    <!ATTLIST attribute defaultValue CDATA #IMPLIED>
+
+    <!ELEMENT record EMPTY >
+    <!ATTLIST record name NMTOKEN #REQUIRED >
+    <!ATTLIST record mass CDATA #IMPLIED >
+    <!ATTLIST record charge CDATA #IMPLIED >
+    <!ATTLIST record species CDATA #IMPLIED >
+    <!ATTLIST record KE CDATA #IMPLIED >
+]>
+
+<tablegroup>
+    <table name="species">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="mass" type="java.lang.Double"/>
+            <attribute isPrimaryKey="false" name="charge" type="java.lang.Double"/>
+        </schema>
+        <record name="HMINUS" mass="9.39294E8" charge="-1"/>
+        <record name="PROTON" mass="9.38272E8" charge="1"/>
+    </table>
+
+    <table name="beam">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="current" type="java.lang.Double"/>
+            <attribute isPrimaryKey="false" name="bunchFreq" type="java.lang.Double"/><!--rename I and Q to current and bunchFreq respectively -->
+            <attribute isPrimaryKey="false" name="phase" type="java.lang.String" /> <!-- add for the openxal -->
+            <attribute isPrimaryKey="false" name="charge" type="java.lang.Double" /> <!--add for the openxal -->
+        </schema>
+        <record name="default" current="0.00" bunchFreq="0" phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="MEBT" current="0.0148376" bunchFreq="8.07168E-15" phase="(0,0,0)" charge="9.440994E-11" />
+<!--        <record name="LRBT_PreMatch" current="0.020" bunchFreq="4.96894E-11"/> -->
+        <record name="LRBT_PreMatch" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="LRBT_injFoil2injdump" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_Inj1" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_R1" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_R2" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_Ext1" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_Ext2" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_R3" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_R4" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RCS_Inj2" current="0.0" bunchFreq="0." phase="(0,0,0)" charge="9.440994E-11" />
+        <record name="RTBT1" current="0.00" bunchFreq="0" phase="(0,0,0)" charge="9.440994E-11" /> <!-- all records add phase and charge attributes . openxal-->
+    </table>
+
+<!--    <table name="adaptivetracker">
+        <schema>
+        <attribute isPrimaryKey="true" name="name" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="errortol" type="java.lang.Double" defaultValue="1.0E-5"/>
+            <attribute isPrimaryKey="false" name="initstep" type="java.lang.Double" defaultValue="0.01"/>
+            <attribute isPrimaryKey="false" name="maxstep" type="java.lang.Double" defaultValue="0.0"/>
+            <attribute isPrimaryKey="false" name="norm" type="java.lang.Integer" defaultValue="0"/>
+            <attribute isPrimaryKey="false" name="order" type="java.lang.Integer" defaultValue="2"/>
+            <attribute isPrimaryKey="false" name="slack" type="java.lang.Double" defaultValue="0.05"/>
+            <attribute isPrimaryKey="false" name="maxiter" type="java.lang.Integer" defaultValue="50"/>
+        </schema>
+        <record name="default"/>
+        <record name="MEBT"/>
+        <record name="DTL1"/>
+        <record name="DTL2"/>
+        <record name="DTL3"/>
+        <record name="DTL4"/>
+        <record name="LRBT_PreMatch"/>
+        <record name="LRBT_injFoil2injdump"/>
+        <record name="RCS_Inj1"/>
+        <record name="RCS_R1"/>
+        <record name="RCS_R2"/>
+        <record name="RCS_Ext1"/>
+        <record name="RCS_Ext2"/>
+        <record name="RCS_R3"/>
+        <record name="RCS_R4"/>
+        <record name="RCS_Inj2"/>
+        <record name="RTBT1"/>
+    </table>                                    adaptivetracker have been replaced in openxal-->
+
+<!-- the next Trackers are new in openxal-->
+    <table name="Algorithm">
+        <!-- This table is going to be deprecated.  We should not support a "default algorithm" for every probe -->
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"           type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="type"           type="java.lang.String" defaultValue="xal.model.alg.EnvTrackerAdapt" />
+            <attribute isPrimaryKey="false" name="update" 		  type="java.lang.Integer" defaultValue="2" />
+            <attribute isPrimaryKey="false" name="debug"          type="java.lang.Boolean" defaultValue="false" />
+            <attribute isPrimaryKey="false" name="calcRfGapPhase" type="java.lang.Boolean" defaultValue="true" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="SynchronousTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="ParticleTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="TransferMapTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="TwissTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="emitgrowth"   type="java.lang.Boolean" defaultValue="false" />
+            <attribute isPrimaryKey="false" name="scheff"       type="java.lang.Boolean" defaultValue="true" />
+            <attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="Trace3dTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="EnvelopeBaseTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="emitgrowth"   type="java.lang.Boolean" defaultValue="false" />
+            <attribute isPrimaryKey="false" name="scheff"       type="java.lang.Boolean" defaultValue="true" />
+            <attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+        </schema>
+        <record name="default" />
+    </table>
+
+    <table name="EnvTrackerAdapt">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="errortol" type="java.lang.Double" defaultValue="1.0E-5" />
+            <attribute isPrimaryKey="false" name="initstep" type="java.lang.Double" defaultValue="0.01" />
+            <attribute isPrimaryKey="false" name="maxstep" type="java.lang.Double" defaultValue="0.0" />
+            <attribute isPrimaryKey="false" name="norm" type="java.lang.Integer" defaultValue="0" />
+            <attribute isPrimaryKey="false" name="order" type="java.lang.Integer" defaultValue="2" />
+            <attribute isPrimaryKey="false" name="slack" type="java.lang.Double" defaultValue="0.05" />
+            <attribute isPrimaryKey="false" name="maxiter" type="java.lang.Integer" defaultValue="50" />
+            <attribute isPrimaryKey="false" name="maxstepdriftpmq" type="java.lang.Double" defaultValue="0.0" />
+        </schema>
+        <record name="default" />
+<!--        <record name="HEBT1" errortol="1.0e-8" initstep="0.1" maxiter="1000" /> -->
+<!--        <record name="HEBT2" errortol="1.0e-8" initstep="0.1" maxiter="1000" /> -->
+        <record name="RTBT1" errortol="1.0e-8" initstep="0.1" maxiter="1000" />
+<!--        <record name="RTBT2" errortol="1.0e-8" initstep="0.1" maxiter="1000" />  csns don't have this sequence-->
+    </table>
+
+<!--changed until here.openxal-->
+
+    <table name="twiss">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String"/>
+            <attribute isPrimaryKey="true" name="coordinate" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="alpha" type="java.lang.Double"/>
+            <attribute isPrimaryKey="false" name="beta" type="java.lang.Double"/>
+            <attribute isPrimaryKey="false" name="emittance" type="java.lang.Double"/>
+        </schema>
+        <record name="MEBT" coordinate="x" alpha="-1.77262" beta=" 0.23310" emittance="+2.671101376e-006"/>
+		<record name="MEBT" coordinate="y" alpha=" 0.63921" beta=" 0.07337" emittance="+2.629758337e-006"/>
+		<record name="MEBT" coordinate="z" alpha=" -0.36631" beta=" 0.52198" emittance="+4.511688e-006"/>
+		<record name="DTL1" coordinate="x" alpha="-0.27863" beta=" 0.4940" emittance="+2.972815e-006"/>
+		<record name="DTL1" coordinate="y" alpha="-0.12576" beta="0.1714" emittance="+2.992733e-006"/>
+		<record name="DTL1" coordinate="z" alpha="-0.19196" beta="0.27333962" emittance="+5.298983e-006"/>
+		<record name="DTL2" coordinate="x" alpha=" 1.34774" beta=" 0.727" emittance="+1.052626e-006"/>
+		<record name="DTL2" coordinate="y" alpha="-1.72002" beta=" 1.026" emittance="+1.206307e-006"/>
+		<record name="DTL2" coordinate="z" alpha="0.12698" beta="1.6596" emittance="+1.903073e-006"/>
+		<record name="DTL3" coordinate="x" alpha="-3.2022" beta=" 2.7343" emittance="+0.776763e-006"/>
+		<record name="DTL3" coordinate="y" alpha="1.64552" beta=" 1.4816" emittance="+0.883956e-006"/>
+		<record name="DTL3" coordinate="z" alpha="0.26832" beta="1.9069165" emittance="+1.347295e-006"/>
+		<record name="DTL4" coordinate="x" alpha=" 0.26987" beta="2.1006" emittance="+0.688637e-006"/>
+		<record name="DTL4" coordinate="y" alpha="0.04997" beta="3.8727" emittance="+0.696961e-006"/>
+		<record name="DTL4" coordinate="z" alpha="0.36248" beta=" 3.9896893" emittance="+1.076643e-006"/>
+        <record name="LRBT_PreMatch" coordinate="x" alpha=" 0.1622" beta=" 4.2562" emittance="+0.649778e-006"/>
+        <record name="LRBT_PreMatch" coordinate="y" alpha=" 0.0664" beta=" 3.1749" emittance="+0.60472e-006"/>
+        <record name="LRBT_PreMatch" coordinate="z" alpha=" 0.3368" beta=" 0.0045" emittance="+0.201343e-006"/>
+        <record name="LRBT_injFoil2injdump" coordinate="x" alpha=" 0.028" beta=" 1.7" emittance="+0.649778e-006"/>
+		<record name="LRBT_injFoil2injdump" coordinate="y" alpha=" -0.014" beta=" 1.7" emittance="+0.60472e-006"/>
+		<record name="LRBT_injFoil2injdump" coordinate="z" alpha=" 0.3368" beta=" 0.0045" emittance="+0.201343e-006"/>
+        <record name="RTBT1" coordinate="x" alpha="-0.003" beta="6.256" emittance="1.60E-4"/>
+        <record name="RTBT1" coordinate="y" alpha="-0.003" beta="5.881" emittance="1.60E-4"/>
+        <record name="RTBT1" coordinate="z" alpha="-0.01" beta="9589." emittance="11.4E-3"/>
+        <record name="RTBT_FODO" coordinate="x" alpha="-0.9987" beta="5.0777" emittance="1.60E-4"/>
+        <record name="RTBT_FODO" coordinate="y" alpha="1.5297" beta="11.3953" emittance="1.60E-4"/>
+        <record name="RTBT_FODO" coordinate="z" alpha="0.0107" beta="0.2504" emittance="11.4E-3"/>
+	    <record name="RTBT_Match" coordinate="x" alpha="-2.3657" beta="17.2774" emittance="1.60E-4"/>
+        <record name="RTBT_Match" coordinate="y" alpha="0.5006"  beta="2.8517" emittance="1.60E-4"/>
+        <record name="RTBT_Match" coordinate="z" alpha="0.0116"  beta="0.2504" emittance="11.4E-3"/>      
+    </table>
+
+    <table name="location">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="species" type="java.lang.String"/>
+            <attribute isPrimaryKey="false" name="W" type="java.lang.Double"/>
+            <attribute isPrimaryKey="false" name="elem" type="java.lang.String" defaultValue=""/>
+            <attribute isPrimaryKey="false" name="s" type="java.lang.Double" defaultValue="0"/>
+            <attribute isPrimaryKey="false" name="t" type="java.lang.Double" defaultValue="0"/>
+        </schema>
+        <record name="MEBT" species="HMINUS" W="3.0258E6"/>
+        <record name="DTL1" species="HMINUS" W="3.0258E6"/>
+        <record name="DTL2" species="HMINUS" W="21.6686E6"/>
+        <record name="DTL3" species="HMINUS" W="41.4146E6"/>
+        <record name="DTL4" species="HMINUS" W="61.0715E6"/>
+        <record name="LRBT_PreMatch" species="HMINUS" W="80.0947E6"/>
+        <record name="LRBT_injFoil2injdump" species="PROTON" W="80.0E6"/>
+        <record name="RCS_Inj1" species="PROTON" W="80.0E6"/>
+        <record name="RCS_R1" species="PROTON" W="80.0E6"/>
+        <record name="RCS_R2" species="PROTON" W="80.0E6"/>
+        <record name="RCS_Ext1" species="PROTON" W="80.0E6"/>
+        <record name="RCS_Ext2" species="PROTON" W="80.0E6"/>
+        <record name="RCS_R3" species="PROTON" W="80.0E6"/>
+        <record name="RCS_R4" species="PROTON" W="80.0E6"/>
+        <record name="RCS_Inj2" species="PROTON" W="80.0E6"/>
+        <record name="RTBT1" species="PROTON" W="1600.000E6"/>
+        <record name="RTBT_FODO" species="PROTON" W="1600.0E6"/>
+		<record name="RTBT_Match" species="PROTON" W="1600.0E6"/>
+		<record name="RTBT_RDump" species="PROTON" W="1600.0E6"/>       
+    </table>
+</tablegroup>
+

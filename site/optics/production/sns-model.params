@@ -1,0 +1,613 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE tablegroup [
+    <!ELEMENT tablegroup (table*) >
+	
+    <!ELEMENT table (schema, record*) >
+	<!ATTLIST table name NMTOKEN #REQUIRED >
+	<!ATTLIST table recordClass CDATA #IMPLIED >
+	
+	<!ELEMENT schema (attribute*) >
+	
+	<!ELEMENT attribute EMPTY >
+	<!ATTLIST attribute isPrimaryKey (true|false) #IMPLIED>
+	<!ATTLIST attribute name NMTOKEN #REQUIRED >
+	<!ATTLIST attribute type CDATA #REQUIRED >
+	<!ATTLIST attribute defaultValue CDATA #IMPLIED>
+	
+	<!ELEMENT record EMPTY >
+	<!ATTLIST record name NMTOKEN #REQUIRED >
+	<!ATTLIST record mass CDATA #IMPLIED >
+	<!ATTLIST record charge CDATA #IMPLIED >
+	<!ATTLIST record species CDATA #IMPLIED >
+	<!ATTLIST record KE CDATA #IMPLIED >
+]>
+
+<tablegroup>
+    <table name="species">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="mass" type="java.lang.Double" />
+            <attribute isPrimaryKey="false" name="charge" type="java.lang.Double" />
+        </schema>
+        <record name="HMINUS" mass="9.39294E8" charge="-1" />
+        <record name="PROTON" mass="9.38272E8" charge="1" />
+    </table>
+	
+    
+	<table name="beam">
+		<schema>
+			<attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="current" type="java.lang.Double" />
+            <attribute isPrimaryKey="false" name="bunchFreq" type="java.lang.Double" />
+            <attribute isPrimaryKey="false" name="phase" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="charge" type="java.lang.Double" />
+		</schema>
+		<record name="default" current="0.038" bunchFreq="402.5e6" phase="(0,0,0)" charge="9.440994E-11" />
+		<record name="IDmp+" current="0.0" bunchFreq="1.0" phase="(0,0,0)" charge="9.440994E-11" />
+	</table>
+    
+    
+    <table name="Algorithm">
+        <!-- This table is going to be deprecated.  We should not support a "default algorithm" for every probe -->
+	    <schema>
+			<attribute isPrimaryKey="true"  name="name"           type="java.lang.String" />
+			<attribute isPrimaryKey="false" name="type"           type="java.lang.String" defaultValue="xal.model.alg.EnvTrackerAdapt" />
+			<attribute isPrimaryKey="false" name="update" 		  type="java.lang.Integer" defaultValue="2" />
+			<attribute isPrimaryKey="false" name="debug"          type="java.lang.Boolean" defaultValue="false" />
+			<attribute isPrimaryKey="false" name="calcRfGapPhase" type="java.lang.Boolean" defaultValue="true" />
+		</schema>
+		<record name="default" />
+    </table>
+    
+    <table name="SynchronousTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+    
+    <table name="ParticleTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+    
+    <table name="TransferMapTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+        </schema>
+        <record name="default" />
+    </table>
+    
+    <table name="TwissTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="emitgrowth"   type="java.lang.Boolean" defaultValue="false" />
+            <attribute isPrimaryKey="false" name="scheff"       type="java.lang.Boolean" defaultValue="true" />
+            <attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+        </schema>
+        <record name="default" />
+    </table>
+    
+    <table name="Trace3dTracker">
+        <schema>
+            <attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+        </schema>
+        <record name="default" />
+    </table>
+    
+    <table name="EnvelopeBaseTracker">
+	    <schema>
+			<attribute isPrimaryKey="true"  name="name"         type="java.lang.String" />
+			<attribute isPrimaryKey="false" name="emitgrowth"   type="java.lang.Boolean" defaultValue="false" />
+			<attribute isPrimaryKey="false" name="scheff"       type="java.lang.Boolean" defaultValue="true" />
+			<attribute isPrimaryKey="false" name="stepsize"     type="java.lang.Double" defaultValue="0.004" />
+		</schema>
+		<record name="default" />
+    </table>
+    
+	<table name="EnvTrackerAdapt">
+		<schema>
+			<attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="errortol" type="java.lang.Double" defaultValue="1.0E-5" />
+            <attribute isPrimaryKey="false" name="initstep" type="java.lang.Double" defaultValue="0.01" />
+            <attribute isPrimaryKey="false" name="maxstep" type="java.lang.Double" defaultValue="0.0" />
+            <attribute isPrimaryKey="false" name="norm" type="java.lang.Integer" defaultValue="0" />
+            <attribute isPrimaryKey="false" name="order" type="java.lang.Integer" defaultValue="2" />
+            <attribute isPrimaryKey="false" name="slack" type="java.lang.Double" defaultValue="0.05" />
+            <attribute isPrimaryKey="false" name="maxiter" type="java.lang.Integer" defaultValue="50" />
+            <attribute isPrimaryKey="false" name="maxstepdriftpmq" type="java.lang.Double" defaultValue="0.0" />
+		</schema>
+		<record name="default" />
+		<record name="HEBT1" errortol="1.0e-8" initstep="0.1" maxiter="1000" />
+		<record name="HEBT2" errortol="1.0e-8" initstep="0.1" maxiter="1000" />
+		<record name="RTBT1" errortol="1.0e-8" initstep="0.1" maxiter="1000" />
+		<record name="RTBT2" errortol="1.0e-8" initstep="0.1" maxiter="1000" />
+	</table>
+    
+    
+	<table name="twiss">
+		<schema>
+			<attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+		    <attribute isPrimaryKey="true" name="coordinate" type="java.lang.String" />
+			<attribute isPrimaryKey="false" name="alpha" type="java.lang.Double" />
+			<attribute isPrimaryKey="false" name="beta" type="java.lang.Double" />
+			<attribute isPrimaryKey="false" name="emittance" type="java.lang.Double" />
+		</schema>
+
+                <record name="MEBT" coordinate="x" alpha="-1.620000" beta=" 0.155000" emittance="+3.02000e-006"/>
+                <record name="MEBT" coordinate="y" alpha=" 3.230000" beta=" 0.381000" emittance="+3.46000e-006"/>
+                <record name="MEBT" coordinate="z" alpha=" 0.019600" beta=" 0.584400" emittance="+3.86380e-006"/>
+                <record name="DTL1" coordinate="x" alpha="-0.374691" beta=" 0.586174" emittance="+3.01915e-006"/>
+                <record name="DTL1" coordinate="y" alpha="-0.231111" beta=" 0.137198" emittance="+3.45946e-006"/>
+                <record name="DTL1" coordinate="z" alpha=" 0.299183" beta=" 0.471763" emittance="+3.86355e-006"/>
+                <record name="DTL2" coordinate="x" alpha=" 2.701320" beta=" 0.700338" emittance="+1.73777e-006"/>
+                <record name="DTL2" coordinate="y" alpha="-2.603076" beta=" 0.794770" emittance="+1.99123e-006"/>
+                <record name="DTL2" coordinate="z" alpha="-0.397774" beta=" 0.403277" emittance="+2.20041e-006"/>
+                <record name="DTL3" coordinate="x" alpha=" 1.297644" beta=" 0.549192" emittance="+9.92285e-007"/>
+                <record name="DTL3" coordinate="y" alpha="-3.214553" beta=" 1.824498" emittance="+1.13702e-006"/>
+                <record name="DTL3" coordinate="z" alpha=" 0.196423" beta=" 1.817600" emittance="+1.21681e-006"/>
+                <record name="DTL4" coordinate="x" alpha=" 2.014815" beta=" 1.248958" emittance="+7.49028e-007"/>
+                <record name="DTL4" coordinate="y" alpha="-2.002180" beta=" 1.295824" emittance="+8.58283e-007"/>
+                <record name="DTL4" coordinate="z" alpha="-0.383242" beta=" 1.495460" emittance="+8.87229e-007"/>
+                <record name="DTL5" coordinate="x" alpha="-0.080589" beta=" 2.648011" emittance="+6.25412e-007"/>
+                <record name="DTL5" coordinate="y" alpha="-0.165355" beta=" 0.735660" emittance="+7.16623e-007"/>
+                <record name="DTL5" coordinate="z" alpha="-0.565187" beta=" 2.410661" emittance="+7.16145e-007"/>
+                <record name="DTL6" coordinate="x" alpha=" 2.126661" beta=" 1.792066" emittance="+5.49904e-007"/>
+                <record name="DTL6" coordinate="y" alpha="-1.977689" beta=" 1.719692" emittance="+6.30142e-007"/>
+                <record name="DTL6" coordinate="z" alpha="-0.068538" beta=" 2.218784" emittance="+6.10027e-007"/>
+                <record name="CCL1" coordinate="x" alpha="-3.279096" beta=" 3.879661" emittance="+5.00893e-007"/>
+                <record name="CCL1" coordinate="y" alpha=" 0.810056" beta=" 0.766892" emittance="+5.73962e-007"/>
+                <record name="CCL1" coordinate="z" alpha=" 0.653812" beta=" 3.145347" emittance="+5.40359e-007"/>
+                <record name="CCL2" coordinate="x" alpha=" 2.473646" beta=" 3.594577" emittance="+4.48495e-007"/>
+                <record name="CCL2" coordinate="y" alpha="-0.946671" beta=" 1.394213" emittance="+5.13934e-007"/>
+                <record name="CCL2" coordinate="z" alpha="-0.773927" beta=" 4.520875" emittance="+4.65244e-007"/>
+                <record name="CCL3" coordinate="x" alpha=" 2.283667" beta=" 4.582043" emittance="+4.02964e-007"/>
+                <record name="CCL3" coordinate="y" alpha="-1.293711" beta=" 2.236370" emittance="+4.61762e-007"/>
+                <record name="CCL3" coordinate="z" alpha=" 0.538514" beta=" 3.153244" emittance="+3.99505e-007"/>
+                <record name="CCL4" coordinate="x" alpha=" 2.787507" beta=" 7.072388" emittance="+3.65633e-007"/>
+                <record name="CCL4" coordinate="y" alpha="-1.313166" beta=" 3.617282" emittance="+4.18994e-007"/>
+                <record name="CCL4" coordinate="z" alpha="-0.634955" beta=" 4.202553" emittance="+3.45471e-007"/>
+				<record alpha="-0.5369101062118463" beta="32.42637691429619" coordinate="x" emittance="1.4816971729647846E-7" name="SCL_RF:Cav19c"/>
+				<record alpha="4.9423043749937365" beta="55.08837143335748" coordinate="y" emittance="2.1659697670393984E-7" name="SCL_RF:Cav14a"/>
+				<record alpha="-0.915523276605179" beta="4.537030580430329" coordinate="x" emittance="3.2737971625316506E-7" name="SCL_RF:Cav01b"/>
+				<record alpha="-0.539603366272933" beta="19.4601940362597" coordinate="x" emittance="2.435709622981754E-7" name="SCL_RF:Cav07b"/>
+				<record alpha="3.7351184954132126" beta="38.384389754093384" coordinate="y" emittance="1.880485929428262E-7" name="SCL_RF:Cav17a"/>
+				<record alpha="-2.264756541208597" beta="24.227127040827817" coordinate="x" emittance="2.130549957525906E-7" name="SCL_RF:Cav11a"/>
+				<record alpha="1.1004015714091588" beta="7.544824934991775" coordinate="y" emittance="3.324620625337823E-7" name="SCL_RF:Cav03c"/>
+				<record alpha="3.571475887695776" beta="42.457310897630514" coordinate="y" emittance="2.2674050910454427E-7" name="SCL_RF:Cav13a"/>
+				<record alpha="-2.8756418953577554" beta="42.996165322963776" coordinate="x" emittance="1.5902499394345186E-7" name="SCL_RF:Cav17d"/>
+				<record alpha="-1.49706233423456" beta="20.599204200080194" coordinate="x" emittance="1.7432487973314866E-7" name="SCL_RF:Cav15d"/>
+				<record alpha="3.1148753292885814" beta="45.758192985298855" coordinate="y" emittance="2.1386533732224473E-7" name="SCL_RF:Cav14b"/>
+				<record alpha="0.684698" beta="8.634510999999998" coordinate="y" emittance="3.829270000000001E-7" name="SCLMed"/>
+				<record alpha="1.2643572922695243" beta="19.44530587513589" coordinate="y" emittance="2.7432411750525504E-7" name="SCL_RF:Cav07c"/>
+				<record alpha="1.032841124902469" beta="15.185405468965376" coordinate="y" emittance="1.7292991193306378E-7" name="SCL_RF:Cav19a"/>
+				<record alpha="0.5406382023771821" beta="8.765676487678189" coordinate="y" emittance="2.483481006608367E-7" name="SCL_RF:Cav10b"/>
+				<record alpha="-0.17301053508480913" beta="8.408089414654128" coordinate="z" emittance="1.3040499367883045E-7" name="SCL_RF:Cav11c"/>
+				<record alpha="0.327096204969967" beta="10.039548595984925" coordinate="z" emittance="1.057961587082704E-7" name="SCL_RF:Cav13d"/>
+				<record alpha="0.6012396811615274" beta="13.017112934463615" coordinate="z" emittance="5.203587122490037E-8" name="SCL_RF:Cav20d"/>
+				<record alpha="2.491435478652697" beta="10.891255091809036" coordinate="y" emittance="3.3930468935574197E-7" name="SCL_RF:Cav03b"/>
+				<record alpha="0.10015491810097017" beta="8.379655939455866" coordinate="x" emittance="2.2772866447431035E-7" name="SCL_RF:Cav09a"/>
+				<record alpha="5.490970927263761" beta="94.77651148917616" coordinate="y" emittance="1.487249778162445E-7" name="SCL_RF:Cav23a"/>
+				<record alpha="0.09725007468374923" beta="22.594450101959957" coordinate="y" emittance="2.2935888815311428E-7" name="SCL_RF:Cav12d"/>
+				<record alpha="-0.02037400821096325" beta="11.475768327021905" coordinate="z" emittance="1.146203543694925E-7" name="SCL_Diag:LW12"/>
+				<record alpha="0.6359108440549582" beta="12.431828823807937" coordinate="z" emittance="1.3841536852863636E-7" name="SCL_RF:Cav10b"/>
+				<record alpha="0.32550702201807385" beta="47.21509497008198" coordinate="y" emittance="1.5642025312757715E-7" name="SCL_RF:Cav21c"/>
+				<record alpha="0.3070379675322909" beta="16.42124457655751" coordinate="z" emittance="5.6467185876173714E-8" name="SCL_RF:Cav20a"/>
+				<record alpha="0.5908728885114656" beta="10.938367162433567" coordinate="z" emittance="1.90155189372593E-7" name="SCL_RF:Cav06b"/>
+				<record alpha="0.22827960907901765" beta="26.829574932096946" coordinate="x" emittance="2.086214866343336E-7" name="SCL_RF:Cav12a"/>
+				<record alpha="-0.6141573993301868" beta="10.847033788136589" coordinate="z" emittance="1.2755990146172848E-7" name="SCL_RF:Cav12a"/>
+				<record alpha="-0.6533448794950653" beta="28.000243532702775" coordinate="x" emittance="1.299417393518779E-7" name="SCL_RF:Cav23a"/>
+				<record alpha="0.004191269473492127" beta="11.68169513752076" coordinate="z" emittance="1.1137584123822028E-7" name="SCL_RF:Cav13b"/>
+				<record alpha="-0.18561992416095976" beta="7.109312749588289" coordinate="x" emittance="3.1597469248403313E-7" name="SCL_RF:Cav02a"/>
+				<record alpha="-0.36341100886504535" beta="12.969966459302944" coordinate="z" emittance="8.179041299743219E-8" name="SCL_RF:Cav16b"/>
+				<record alpha="-20.88807293717515" beta="57.32361710522606" coordinate="y" emittance="2.0623983030355595E-7" name="SCL_Diag:LW14"/>
+				<record alpha="-0.3792889694384123" beta="8.196563372166603" coordinate="z" emittance="9.319637139197526E-8" name="SCL_RF:Cav15a"/>
+				<record alpha="1.95773262614311" beta="17.781042552902893" coordinate="y" emittance="2.968584150293109E-7" name="SCL_RF:Cav06a"/>
+				<record alpha="2.6063274322758514" beta="29.778928512098744" coordinate="y" emittance="2.38593562315045E-7" name="SCLHigh"/>
+				<record alpha="-10.46393847334957" beta="17.67036578929166" coordinate="y" emittance="3.4620457348474354E-7" name="SCL_Diag:LW02"/>
+				<record alpha="-0.2221164027035052" beta="10.907736377668499" coordinate="z" emittance="8.411729684463602E-8" name="SCL_Diag:LW15"/>
+				<record alpha="0.018031164759811546" beta="8.251025057673985" coordinate="z" emittance="9.859928957157156E-8" name="SCL_RF:Cav14c"/>
+				<record alpha="1.9715304031041174" beta="32.95566771396476" coordinate="y" emittance="1.902187602614358E-7" name="SCL_RF:Cav16d"/>
+				<record alpha="-1.1721471935249017" beta="27.087380292443164" coordinate="x" emittance="1.4030539434695445E-7" name="SCL_RF:Cav20d"/>
+				<record alpha="2.7502646041392254" beta="21.714261945784738" coordinate="y" emittance="2.6761958395159597E-7" name="SCL_RF:Cav08b"/>
+				<record alpha="5.536704993602312" beta="58.91836991444473" coordinate="y" emittance="1.9706048812876205E-7" name="SCL_RF:Cav16a"/>
+				<record alpha="-0.48332226817084356" beta="11.825296314229588" coordinate="z" emittance="1.2414951571944355E-7" name="SCL_RF:Cav12b"/>
+				<record alpha="-1.6453701278876471" beta="32.49999643703527" coordinate="x" emittance="1.9107113545108823E-7" name="SCL_RF:Cav13d"/>
+				<record alpha="-0.25817667391780486" beta="23.569513007614535" coordinate="y" emittance="1.6232284613922108E-7" name="SCL_RF:Cav20c"/>
+				<record alpha="-1.2322306556113374" beta="22.4643063181362" coordinate="x" emittance="1.8261638641373565E-7" name="SCL_RF:Cav14d"/>
+				<record alpha="1.0329923565823453" beta="66.98854725486405" coordinate="y" emittance="1.5002979004608995E-7" name="SCL_RF:Cav22d"/>
+				<record alpha="4.352110767771338" beta="29.860553801138757" coordinate="y" emittance="2.7064698768579025E-7" name="SCL_RF:Cav08a"/>
+				<record alpha="0.1719245218040314" beta="3.9448452258730655" coordinate="z" emittance="2.550970072159402E-7" name="SCL_Diag:LW02"/>
+				<record alpha="0.015473107591137927" beta="9.036819641954441" coordinate="z" emittance="4.797733947894383E-8" name="SCL_RF:Cav21d"/>
+				<record alpha="0.05912420947957591" beta="11.55051095769467" coordinate="z" emittance="2.0827765954078582E-7" name="SCL_Diag:LW04"/>
+				<record alpha="-0.4682513539851143" beta="19.23096358653738" coordinate="x" emittance="1.8496714344513006E-7" name="SCL_RF:Cav14c"/>
+				<record alpha="-0.24727278466414418" beta="11.837101229152543" coordinate="z" emittance="1.1462034774173725E-7" name="SCL_RF:Cav13a"/>
+				<record alpha="-2.612411809589555" beta="40.60551001240244" coordinate="x" emittance="2.0059707604338846E-7" name="SCL_RF:Cav12d"/>
+				<record alpha="15.295952362494692" beta="40.05652234890789" coordinate="x" emittance="1.9834956486936368E-7" name="SCL_Diag:LW12"/>
+				<record alpha="-0.2652214584516605" beta="3.544217008401728" coordinate="z" emittance="1.682601831774908E-7" name="SCL_RF:Cav07c"/>
+				<record alpha="0.7972520929177499" beta="22.72980921796456" coordinate="y" emittance="2.3239898108805278E-7" name="SCL_RF:Cav12c"/>
+				<record alpha="-0.6000835389898995" beta="24.1078272299074" coordinate="x" emittance="1.4184429484792865E-7" name="SCL_RF:Cav20c"/>
+				<record alpha="1.4243070651754435" beta="10.762230512590843" coordinate="y" emittance="2.542502896676716E-7" name="SCL_RF:Cav09c"/>
+				<record alpha="1.553728791096028" beta="24.587325363440094" coordinate="y" emittance="2.355180493345815E-7" name="SCL_RF:Cav12b"/>
+				<record alpha="11.014777717154583" beta="16.97940316018899" coordinate="x" emittance="3.0216851587732E-7" name="SCL_Diag:LW02"/>
+				<record alpha="-0.14281569482758372" beta="8.673977434763493" coordinate="z" emittance="2.829453717084332E-7" name="SCL_RF:Cav01c"/>
+				<record alpha="0.9869373584168105" beta="12.96771904192056" coordinate="y" emittance="1.7645919105159514E-7" name="SCL_RF:Cav18c"/>
+				<record alpha="-0.5538078827249381" beta="14.605759706557983" coordinate="z" emittance="4.403055857829218E-8" name="SCL_RF:Cav22d"/>
+				<record alpha="0.1346944074692681" beta="18.19119901442348" coordinate="x" emittance="1.8699467176955946E-7" name="SCL_RF:Cav14b"/>
+				<record alpha="-0.405057945809153" beta="4.792078314308411" coordinate="z" emittance="2.4635317153113253E-7" name="SCL_RF:Cav03b"/>
+				<record alpha="-0.030892002986133867" beta="3.1419443202715573" coordinate="z" emittance="1.731966110803695E-7" name="SCL_RF:Cav07b"/>
+				<record alpha="-0.08132714617223263" beta="21.202434247019244" coordinate="z" emittance="6.519407349058382E-8" name="SCL_RF:Cav18c"/>
+				<record alpha="2.7588116235697258" beta="29.768887038593995" coordinate="y" emittance="1.8606507470758803E-7" name="SCL_RF:Cav17b"/>
+				<record alpha="0.2652943897886795" beta="14.343076920744677" coordinate="x" emittance="1.8028239704108008E-7" name="SCL_RF:Cav15a"/>
+				<record alpha="2.0590108933710733" beta="20.5454218198519" coordinate="y" emittance="1.8017894209808445E-7" name="SCL_RF:Cav18a"/>
+				<record alpha="-0.6242389669413655" beta="8.947366312759865" coordinate="z" emittance="2.9082268995300383E-7" name="SCL_RF:Cav01b"/>
+				<record alpha="-0.21049752035958472" beta="10.372981350453259" coordinate="z" emittance="8.649106749500684E-8" name="SCL_RF:Cav15d"/>
+				<record alpha="-0.1915257034956602" beta="6.703013053577571" coordinate="x" emittance="2.960425637580752E-7" name="SCL_RF:Cav03b"/>
+				<record alpha="-4.076863387261659" beta="39.69671407869663" coordinate="x" emittance="2.108332110279432E-7" name="SCL_RF:Cav11c"/>
+				<record alpha="-0.45861892308468943" beta="11.831217008892581" coordinate="z" emittance="8.41172966872864E-8" name="SCL_RF:Cav16a"/>
+				<record alpha="-17.131880444970054" beta="47.45281518765985" coordinate="y" emittance="2.165975590536984E-7" name="SCL_Diag:LW13"/>
+				<record alpha="0.11072917763340571" beta="4.570721691079858" coordinate="x" emittance="2.840069362826005E-7" name="SCL_RF:Cav04a"/>
+				<record alpha="-0.38543631539328244" beta="4.218251718159394" coordinate="z" emittance="2.5509627865338496E-7" name="SCL_RF:Cav03a"/>
+				<record alpha="-0.2969270262473127" beta="12.833875833642105" coordinate="x" emittance="2.3403123929171244E-7" name="SCL_RF:Cav08b"/>
+				<record alpha="3.9146267214986232" beta="17.67772763540902" coordinate="y" emittance="3.619169581836925E-7" name="SCL_RF:Cav02a"/>
+				<record alpha="-13.436924663548977" beta="35.85308932943288" coordinate="y" emittance="2.2674087188140754E-7" name="SCL_Diag:LW12"/>
+				<record alpha="-2.4727918146352437" beta="47.73888834243923" coordinate="x" emittance="1.523278281896247E-7" name="SCL_RF:Cav18d"/>
+				<record alpha="-0.5995833018156997" beta="6.469203840313181" coordinate="z" emittance="2.292758022076128E-7" name="SCL_Diag:LW03"/>
+				<record alpha="0.03679228886159181" beta="7.2052557591226085" coordinate="y" emittance="3.022352519589342E-7" name="SCL_RF:Cav05c"/>
+				<record alpha="-0.47451141146632814" beta="33.956496845172616" coordinate="x" emittance="1.573944201351974E-7" name="SCL_RF:Cav18a"/>
+				<record alpha="0.6132338146704793" beta="13.021837621708977" coordinate="y" emittance="1.7148885283574263E-7" name="SCL_RF:Cav19b"/>
+				<record alpha="1.621715914436014" beta="40.76300674728541" coordinate="y" emittance="1.995037889255655E-7" name="SCL_RF:Cav15d"/>
+				<record alpha="-1.0738227032913896" beta="36.89192979072882" coordinate="x" emittance="1.5553344478100378E-7" name="SCL_RF:Cav18b"/>
+				<record alpha="-0.07577773414667431" beta="4.791291557496872" coordinate="y" emittance="3.6851644789822634E-7" name="SCL_RF:Cav01c"/>
+				<record alpha="3.3777561195895607" beta="81.56617996947557" coordinate="y" emittance="1.539758415198753E-7" name="SCL_RF:Cav22a"/>
+				<record alpha="-1.3741798296815322" beta="8.518799616632556" coordinate="z" emittance="1.6392843255162363E-7" name="SCL_RF:Cav08a"/>
+				<record alpha="1.5586388781035927" beta="7.09027024106892" coordinate="y" emittance="3.1987507853466537E-7" name="SCL_RF:Cav04b"/>
+				<record alpha="-2.588852586722078" beta="14.227113231704465" coordinate="x" emittance="3.0657777964393464E-7" name="SCL_RF:Cav02c"/>
+				<record alpha="0.07049093058579656" beta="8.09588909321596" coordinate="y" emittance="2.4572170189852353E-7" name="SCL_RF:Cav10c"/>
+				<record alpha="0.5396398335752121" beta="31.61469546738763" coordinate="x" emittance="1.510965975700489E-7" name="SCL_RF:Cav19a"/>
+				<record alpha="1.5187034575745715" beta="70.2006564532763" coordinate="y" emittance="1.5083759787882576E-7" name="SCL_RF:Cav22c"/>
+				<record alpha="5.092544466686883" beta="12.272674116498711" coordinate="x" emittance="2.6863930561840427E-7" name="SCL_Diag:LW04"/>
+				<record alpha="0.013199122546649218" beta="20.99436235449169" coordinate="z" emittance="6.094729552514547E-8" name="SCL_RF:Cav19b"/>
+				<record alpha="-1.4204912128853133" beta="25.504762366609544" coordinate="x" emittance="1.3571957538727492E-7" name="SCL_RF:Cav21d"/>
+				<record alpha="-1.4638918174973234" beta="32.988194197649875" coordinate="x" emittance="2.0322210160662145E-7" name="SCL_RF:Cav12c"/>
+				<record alpha="0.7731389884404242" beta="9.41885202369253" coordinate="y" emittance="3.513150184281956E-7" name="SCL_RF:Cav02c"/>
+				<record alpha="0.213766" beta="6.071008" coordinate="z" emittance="2.99985E-7" name="SCLMed"/>
+				<record alpha="0.09587368740178692" beta="9.134768686173127" coordinate="z" emittance="4.881821890324993E-8" name="SCL_RF:Cav21c"/>
+				<record alpha="3.095381467742829" beta="12.105787948362607" coordinate="y" emittance="3.2553263069799675E-7" name="SCL_RF:Cav04a"/>
+				<record alpha="-0.8629539182402859" beta="19.655490728206402" coordinate="z" emittance="4.308155187409306E-8" name="SCL_RF:Cav23a"/>
+				<record alpha="-3.3435765945942393" beta="31.113335291464413" coordinate="x" emittance="2.1083353941689883E-7" name="SCL_RF:Cav11b"/>
+				<record alpha="11.658518965224449" beta="30.069468309427624" coordinate="x" emittance="1.894246718873063E-7" name="SCL_Diag:LW13"/>
+				<record alpha="-0.45015677607089194" beta="8.899350320197215" coordinate="x" emittance="2.2466207984073303E-7" name="SCL_RF:Cav09b"/>
+				<record alpha="2.2645657672272264" beta="14.906026174122745" coordinate="y" emittance="2.570053931782504E-7" name="SCL_RF:Cav09b"/>
+				<record alpha="0.8206495046877452" beta="18.76888809857508" coordinate="x" emittance="1.8942450080501556E-7" name="SCL_RF:Cav14a"/>
+				<record alpha="-1.1980616475293842" beta="35.53113191536179" coordinate="x" emittance="1.465711426023947E-7" name="SCL_RF:Cav19d"/>
+				<record alpha="0.07401545814128097" beta="14.022215591405587" coordinate="y" emittance="2.874688291420173E-7" name="SCL_RF:Cav06c"/>
+				<record alpha="0.5623244963261584" beta="14.511393980389942" coordinate="z" emittance="5.34315001901473E-8" name="SCL_RF:Cav20c"/>
+				<record alpha="-0.92218402481828" beta="18.99258651062031" coordinate="x" emittance="2.593434474607873E-7" name="SCL_RF:Cav06a"/>
+				<record alpha="1.083935027724742" beta="9.041327755709023" coordinate="z" emittance="1.8399722079824227E-7" name="SCL_RF:Cav06c"/>
+				<record alpha="-1.0641121220433174" beta="24.31048168058133" coordinate="x" emittance="1.3315579552441861E-7" name="SCL_RF:Cav22b"/>
+				<record alpha="4.9069860396832725" beta="18.406643333644247" coordinate="y" emittance="3.461816882712679E-7" name="SCL_RF:Cav03a"/>
+				<record alpha="-0.10930802457199029" beta="18.419919145569168" coordinate="z" emittance="7.012293886816618E-8" name="SCL_RF:Cav17d"/>
+				<record alpha="-0.8191402495219926" beta="16.74901772870724" coordinate="x" emittance="1.7621792666826518E-7" name="SCL_RF:Cav15c"/>
+				<record alpha="-1.7816664273515344" beta="38.897830729338416" coordinate="x" emittance="1.2679410636930584E-7" name="SCL_RF:Cav23d"/>
+				<record alpha="-0.28487831229531524" beta="14.875426190092215" coordinate="x" emittance="1.7813776189600692E-7" name="SCL_RF:Cav15b"/>
+				<record alpha="0.04759830299375137" beta="15.029041207743107" coordinate="y" emittance="2.4116694731412315E-7" name="SCL_RF:Cav11c"/>
+				<record alpha="0.2347858645676324" beta="12.134440528488257" coordinate="y" emittance="1.6957154620080057E-7" name="SCL_RF:Cav19c"/>
+				<record alpha="-1.5676362878632761" beta="23.237048271929623" coordinate="x" emittance="1.6815299867615213E-7" name="SCL_RF:Cav16c"/>
+				<record alpha="1.0234312216479584" beta="48.42524655034552" coordinate="y" emittance="1.575558232909923E-7" name="SCL_RF:Cav21b"/>
+				<record alpha="0.2341029636250763" beta="23.141846042209288" coordinate="y" emittance="1.6418370284161799E-7" name="SCL_RF:Cav20b"/>
+				<record alpha="-2.1327941333524394" beta="15.490694630548468" coordinate="x" emittance="2.1708826513614773E-7" name="SCL_RF:Cav10b"/>
+				<record alpha="2.1029663005827244" beta="7.643255135068698" coordinate="y" emittance="3.8261141029571544E-7" name="SCL_RF:Cav01a"/>
+				<record alpha="2.867307617035285" beta="38.96799080275909" coordinate="y" emittance="1.9250514034271617E-7" name="SCL_RF:Cav16c"/>
+				<record alpha="-1.3755211616601797" beta="10.221415993435636" coordinate="x" emittance="2.686385051167374E-7" name="SCL_RF:Cav05a"/>
+				<record alpha="0.433708976402639" beta="6.264196592143936" coordinate="z" emittance="2.6149263431877436E-7" name="SCL_RF:Cav02c"/>
+				<record alpha="-0.4619966664275536" beta="16.815898380204906" coordinate="x" emittance="1.721779679472711E-7" name="SCL_RF:Cav16a"/>
+				<record alpha="0.06431526152816472" beta="7.9143149355039135" coordinate="z" emittance="9.5875715637672E-8" name="SCL_RF:Cav14d"/>
+				<record alpha="0.6842818984067877" beta="7.742222320771459" coordinate="y" emittance="3.079650828623545E-7" name="SCL_RF:Cav05b"/>
+				<record alpha="4.404706509827316" beta="30.894683779350768" coordinate="y" emittance="2.8287564612116196E-7" name="SCL_RF:Cav07a"/>
+				<record alpha="4.172498574172511" beta="53.40313953084851" coordinate="y" emittance="2.0382846500153094E-7" name="SCL_RF:Cav15b"/>
+				<record alpha="3.7200084418447283" beta="71.4760279945421" coordinate="y" emittance="1.4637955436387444E-7" name="SCL_RF:Cav23c"/>
+				<record alpha="-0.4247192300630723" beta="7.6710295145876115" coordinate="z" emittance="2.74924790377147E-7" name="SCL_RF:Cav02a"/>
+				<record alpha="-1.03356997741312" beta="30.746642407146357" coordinate="x" emittance="1.2882113921549414E-7" name="SCL_RF:Cav23b"/>
+				<record alpha="-0.3492474792780554" beta="47.83490156867646" coordinate="y" emittance="1.553176754602354E-7" name="SCL_RF:Cav21d"/>
+				<record alpha="-2.2859364385733882" beta="4.642257632986613" coordinate="y" emittance="1.4475037727421624E-7" name="SCL_Diag:LW32"/>
+				<record alpha="1.279526729857309" beta="32.90590294714717" coordinate="y" emittance="2.211986615002371E-7" name="SCL_RF:Cav13c"/>
+				<record alpha="-1.6658618819479694" beta="8.399376939020383" coordinate="x" emittance="2.733865703695401E-7" name="SCL_RF:Cav04c"/>
+				<record alpha="-1.4606793276024974" beta="29.950028684568473" coordinate="x" emittance="1.6251542570428143E-7" name="SCL_RF:Cav17b"/>
+				<record alpha="0.08714194804632311" beta="8.30724399159174" coordinate="z" emittance="1.3040500107698125E-7" name="SCL_RF:Cav11b"/>
+				<record alpha="-1.6307097736626612" beta="40.96519895669411" coordinate="x" emittance="1.541582688282422E-7" name="SCL_RF:Cav18c"/>
+				<record alpha="1.5998154592799199" beta="17.04256552607409" coordinate="y" emittance="2.641230716609012E-7" name="SCL_RF:Cav08c"/>
+				<record alpha="-0.2427066707072206" beta="12.229124034746294" coordinate="z" emittance="2.147246756671909E-7" name="SCL_RF:Cav04c"/>
+				<record alpha="0.42992135886515187" beta="15.573165007863153" coordinate="z" emittance="5.4923901662440084E-8" name="SCL_RF:Cav20b"/>
+				<record alpha="-0.340133550569589" beta="9.074898646171992" coordinate="z" emittance="9.076219722763954E-8" name="SCL_RF:Cav15b"/>
+				<record alpha="-4.252857815258469" beta="8.049234025248568" coordinate="y" emittance="3.079661593423705E-7" name="SCL_Diag:LW04"/>
+				<record alpha="-2.0621471980439527" beta="35.13040338284092" coordinate="x" emittance="1.6082137050957534E-7" name="SCL_RF:Cav17c"/>
+				<record alpha="1.1607963089612974" beta="10.754265453281173" coordinate="y" emittance="2.513020096606345E-7" name="SCL_RF:Cav10a"/>
+				<record alpha="0.35339995891765236" beta="31.95167833397313" coordinate="y" emittance="2.1848160251875185E-7" name="SCL_RF:Cav13d"/>
+				<record alpha="0.05415977600436" beta="3.116506579579679" coordinate="x" emittance="3.3407090159169186E-7" name="SCL_RF:Cav01a"/>
+				<record alpha="-0.401163745727564" beta="15.781453183523782" coordinate="z" emittance="7.55705279657035E-8" name="SCL_RF:Cav17a"/>
+				<record alpha="7.041599797763712" beta="22.040925567695314" coordinate="x" emittance="1.7217797748066763E-7" name="SCL_Diag:LW15"/>
+				<record alpha="-0.049364710082122655" beta="7.477344684167479" coordinate="z" emittance="2.68530417559633E-7" name="SCL_RF:Cav02b"/>
+				<record alpha="-0.31734753794130216" beta="16.89959752166298" coordinate="z" emittance="7.374475667417612E-8" name="SCL_RF:Cav17b"/>
+				<record alpha="0.1436280980169975" beta="9.36620607591946" coordinate="z" emittance="4.969140575169624E-8" name="SCL_RF:Cav21b"/>
+				<record alpha="2.3760038717553233" beta="74.3767415249069" coordinate="y" emittance="1.5239234920245776E-7" name="SCL_RF:Cav22b"/>
+				<record alpha="3.592151440794982" beta="21.766421308803274" coordinate="y" emittance="2.6045442029952835E-7" name="SCL_RF:Cav09a"/>
+				<record alpha="0.16544309921506095" beta="11.134370368657477" coordinate="z" emittance="1.0866029586865162E-7" name="SCL_RF:Cav13c"/>
+				<record alpha="-0.5791764298628725" beta="10.658032851157467" coordinate="z" emittance="1.275599014624284E-7" name="SCLHigh"/>
+				<record alpha="2.9389383036278756" beta="62.5659281034117" coordinate="y" emittance="1.4514299940656175E-7" name="SCL_RF:Cav23d"/>
+				<record alpha="-0.9940048753206736" beta="19.40926360690609" coordinate="x" emittance="1.7004952652603707E-7" name="SCL_RF:Cav16b"/>
+				<record alpha="-1.539576576822078" beta="28.04477691316875" coordinate="x" emittance="1.3179177716879276E-7" name="SCL_RF:Cav22c"/>
+				<record alpha="2.5129983791041877" beta="23.308713116230773" coordinate="y" emittance="2.784753154008071E-7" name="SCL_RF:Cav07b"/>
+				<record alpha="-0.7854175888866093" beta="14.616534827258938" coordinate="z" emittance="1.5624746052284515E-7" name="SCL_RF:Cav08c"/>
+				<record alpha="-0.8111551839560112" beta="24.935935631134118" coordinate="z" emittance="4.139429117498953E-8" name="SCL_RF:Cav23c"/>
+				<record alpha="0.4180210768710913" beta="22.871037127864145" coordinate="x" emittance="1.4513165170402696E-7" name="SCL_RF:Cav20a"/>
+				<record alpha="0.7254603655173966" beta="11.289448287810478" coordinate="z" emittance="1.354781295806521E-7" name="SCL_RF:Cav10c"/>
+				<record alpha="2.5408963418489656" beta="28.96367519652765" coordinate="y" emittance="2.3859356218196324E-7" name="SCL_RF:Cav12a"/>
+				<record alpha="-1.2549859829469914" beta="11.309300239809275" coordinate="x" emittance="2.1966830477286846E-7" name="SCL_RF:Cav10a"/>
+				<record alpha="-1.321688322888428" beta="34.05954272007124" coordinate="x" emittance="1.2787894925993607E-7" name="SCL_RF:Cav23c"/>
+				<record alpha="-0.3299313666552875" beta="5.309062648089529" coordinate="z" emittance="2.3782194652905356E-7" name="SCL_RF:Cav03c"/>
+				<record alpha="0.7878865367903627" beta="25.79205886619886" coordinate="x" emittance="1.983494291145103E-7" name="SCL_RF:Cav13a"/>
+				<record alpha="-1.5731259999999976" beta="8.131377999999986" coordinate="x" emittance="3.3415900000000047E-7" name="SCLMed"/>
+				<record alpha="-0.9173950713842302" beta="11.175700817412178" coordinate="z" emittance="2.2236858965777348E-7" name="SCL_RF:Cav04b"/>
+				<record alpha="2.0630380401964943" beta="23.95900365279247" coordinate="y" emittance="1.8412376513349444E-7" name="SCL_RF:Cav17c"/>
+				<record alpha="-0.7244032944685787" beta="13.239657499752129" coordinate="z" emittance="2.0827751890421644E-7" name="SCL_RF:Cav05b"/>
+				<record alpha="0.36474057963719203" beta="12.706569920617271" coordinate="x" emittance="2.3672418440889295E-7" name="SCL_RF:Cav08a"/>
+				<record alpha="-0.01219577318027628" beta="25.93746078820764" coordinate="x" emittance="1.9569491708910786E-7" name="SCL_RF:Cav13b"/>
+				<record alpha="0.9563913881786582" beta="14.758031405844982" coordinate="y" emittance="2.9259417509572855E-7" name="SCL_RF:Cav06b"/>
+				<record alpha="-0.9006023399899388" beta="25.996282399424608" coordinate="x" emittance="1.6425227898580255E-7" name="SCL_RF:Cav17a"/>
+				<record alpha="-0.34455014738953504" beta="11.93670561874358" coordinate="z" emittance="2.0827765385245512E-7" name="SCL_RF:Cav05a"/>
+				<record alpha="-0.2553997103345737" beta="13.802858057441938" coordinate="z" emittance="7.973708329725567E-8" name="SCL_RF:Cav16c"/>
+				<record alpha="-2.08702141029627" beta="23.20875455229108" coordinate="x" emittance="2.556454521120986E-7" name="SCL_RF:Cav06b"/>
+				<record alpha="0.5421231463927255" beta="18.959840485929142" coordinate="x" emittance="2.4745173534232323E-7" name="SCL_RF:Cav07a"/>
+				<record alpha="7.938555577258574" beta="13.226893640168079" coordinate="x" emittance="3.1597575990119273E-7" name="SCL_Diag:LW01"/>
+				<record alpha="-0.348836572632728" beta="19.642477056585474" coordinate="z" emittance="6.845148014453846E-8" name="SCL_RF:Cav18a"/>
+				<record alpha="-0.44357371272225454" beta="19.91579198857367" coordinate="x" emittance="1.3767734567998686E-7" name="SCL_RF:Cav21b"/>
+				<record alpha="0.41955957147291006" beta="13.284425570666015" coordinate="z" emittance="1.417331805557239E-7" name="SCL_RF:Cav10a"/>
+				<record alpha="4.361113199499748" beta="81.54585731039082" coordinate="y" emittance="1.4745262309367218E-7" name="SCL_RF:Cav23b"/>
+				<record alpha="8.269886867346461" beta="21.818916973064958" coordinate="x" emittance="1.802824617711334E-7" name="SCL_Diag:LW14"/>
+				<record alpha="6.268755540595943" beta="9.93122239795867" coordinate="x" emittance="2.8400862144433976E-7" name="SCL_Diag:LW03"/>
+				<record alpha="-6.682171850439996" beta="11.642323822215914" coordinate="y" emittance="3.255445642955563E-7" name="SCL_Diag:LW03"/>
+				<record alpha="-0.18088313205633788" beta="20.63045373688085" coordinate="z" emittance="6.657019637953794E-8" name="SCL_RF:Cav18b"/>
+				<record alpha="0.260148771585558" beta="26.90693872742599" coordinate="x" emittance="2.0862148664760843E-7" name="SCLHigh"/>
+				<record alpha="-0.45850957998862035" beta="11.5583997152977" coordinate="z" emittance="4.57747538440987E-8" name="SCL_RF:Cav22b"/>
+				<record alpha="-1.2204121508291959" beta="8.805892056060525" coordinate="x" emittance="2.9004753372916824E-7" name="SCL_RF:Cav03c"/>
+				<record alpha="0.697327489088432" beta="38.61160364925915" coordinate="y" emittance="2.0889653032803655E-7" name="SCL_RF:Cav14d"/>
+				<record alpha="-2.2436037937542057" beta="8.623814415726557" coordinate="x" emittance="3.216857065031158E-7" name="SCL_RF:Cav01c"/>
+				<record alpha="0.2586929045821717" beta="20.940963482835524" coordinate="z" emittance="5.934137414221777E-8" name="SCL_RF:Cav19c"/>
+				<record alpha="-3.6015344608971334" beta="21.473858548041918" coordinate="x" emittance="2.6376744568593886E-7" name="SCL_RF:Cav05c"/>
+				<record alpha="6.260782278946961" beta="66.20553102268373" coordinate="y" emittance="2.0623926427772149E-7" name="SCL_RF:Cav15a"/>
+				<record alpha="0.019078264375767175" beta="7.131025751132805" coordinate="z" emittance="2.749250494751641E-7" name="SCL_Diag:LW01"/>
+				<record alpha="-0.2803005140628855" beta="9.795455677778257" coordinate="z" emittance="8.860263472813901E-8" name="SCL_RF:Cav15c"/>
+				<record alpha="-0.7130194669740723" beta="27.876890378787635" coordinate="x" emittance="1.9345240147821818E-7" name="SCL_RF:Cav13c"/>
+				<record alpha="-0.08659777221536352" beta="22.815290459351697" coordinate="x" emittance="1.434704017092287E-7" name="SCL_RF:Cav20b"/>
+				<record alpha="-0.5803351767082794" beta="28.810831930920916" coordinate="x" emittance="2.0593189348100609E-7" name="SCL_RF:Cav12b"/>
+				<record alpha="0.006140019024317546" beta="19.007285203393057" coordinate="x" emittance="1.3881700319575292E-7" name="SCL_RF:Cav21a"/>
+				<record alpha="-0.2713829855658079" beta="12.264957505261576" coordinate="z" emittance="1.2073290541372641E-7" name="SCL_RF:Cav12c"/>
+				<record alpha="0.6062692117093886" beta="18.057533423444397" coordinate="z" emittance="1.4502090934604096E-7" name="SCL_RF:Cav09c"/>
+				<record alpha="-0.04535506810408516" beta="12.141198418694097" coordinate="z" emittance="1.1743572334983936E-7" name="SCL_RF:Cav12d"/>
+				<record alpha="-1.2886770693722198" beta="11.913484043018732" coordinate="z" emittance="1.6033175318560621E-7" name="SCL_RF:Cav08b"/>
+				<record alpha="2.0452772826303134" beta="11.73122551136711" coordinate="y" emittance="3.569241652751635E-7" name="SCL_RF:Cav02b"/>
+				<record alpha="-2.329439561432596" beta="29.47702397444601" coordinate="x" emittance="1.6614800888697523E-7" name="SCL_RF:Cav16d"/>
+				<record alpha="0.7458946184235351" beta="24.11201886600253" coordinate="y" emittance="1.6608459168302568E-7" name="SCL_RF:Cav20a"/>
+				<record alpha="-0.40174811735277627" beta="10.113857931777012" coordinate="z" emittance="4.6963257983584394E-8" name="SCL_RF:Cav22a"/>
+				<record alpha="2.206977089598839" beta="36.144211340779414" coordinate="y" emittance="2.2374814508088863E-7" name="SCL_RF:Cav13b"/>
+				<record alpha="-1.1083961401421831" beta="9.218016375014765" coordinate="x" emittance="3.114810353874642E-7" name="SCL_RF:Cav02b"/>
+				<record alpha="-1.0142149440317212" beta="10.637419685536287" coordinate="x" emittance="2.2224358431651074E-7" name="SCL_RF:Cav09c"/>
+				<record alpha="-0.7747157998380981" beta="25.47158606269467" coordinate="y" emittance="1.6056166769917126E-7" name="SCL_RF:Cav20d"/>
+				<record alpha="0.7326730195698242" beta="6.808507968581709" coordinate="x" emittance="3.021619593726344E-7" name="SCL_RF:Cav03a"/>
+				<record alpha="0.09930851602729" beta="8.227646687177371" coordinate="z" emittance="1.3324699750897383E-7" name="SCL_RF:Cav11a"/>
+				<record alpha="-1.0467725747658778" beta="14.57448398901939" coordinate="x" emittance="2.3094199870653937E-7" name="SCL_RF:Cav08c"/>
+				<record alpha="-0.13827758329107337" beta="14.380259854543171" coordinate="z" emittance="7.758610401971666E-8" name="SCL_RF:Cav16d"/>
+				<record alpha="2.7724144018769894" beta="45.76325488913674" coordinate="y" emittance="2.0165444231907583E-7" name="SCL_RF:Cav15c"/>
+				<record alpha="1.428385147568611" beta="15.919962350784349" coordinate="y" emittance="1.7804005797201895E-7" name="SCL_RF:Cav18b"/>
+				<record alpha="-0.7821874850855994" beta="22.394126971165015" coordinate="z" emittance="4.216095207050753E-8" name="SCL_RF:Cav23b"/>
+				<record alpha="-0.6360177744695821" beta="21.55006172107736" coordinate="x" emittance="1.3454606928535143E-7" name="SCL_RF:Cav22a"/>
+				<record alpha="0.01782828476152557" beta="14.013484994376212" coordinate="z" emittance="2.015834232677425E-7" name="SCL_RF:Cav05c"/>
+				<record alpha="-2.0661939357621093" beta="14.405616218412444" coordinate="x" emittance="2.6863743265759705E-7" name="SCL_RF:Cav05b"/>
+				<record alpha="-16.96062008712678" beta="52.730320939110385" coordinate="y" emittance="1.9706080496025272E-7" name="SCL_Diag:LW15"/>
+				<record alpha="-20.99495283679116" beta="1204.050552580914" coordinate="z" emittance="4.039925945614183E-8" name="SCL_Diag:LW32"/>
+				<record alpha="0.14875121240973563" beta="18.398335539943265" coordinate="z" emittance="1.4811634381590862E-7" name="SCL_RF:Cav09b"/>
+				<record alpha="1.4508637721597761" beta="19.360615877625843" coordinate="y" emittance="1.8205878163475532E-7" name="SCL_RF:Cav17d"/>
+				<record alpha="0.14989234327167553" beta="21.354823802837785" coordinate="z" emittance="6.337672932707494E-8" name="SCL_RF:Cav18d"/>
+				<record alpha="0.1849738482358208" beta="9.772236183085605" coordinate="z" emittance="5.070185064720027E-8" name="SCL_RF:Cav21a"/>
+				<record alpha="1.8680167335995974" beta="51.84800176514317" coordinate="y" emittance="1.588579031043245E-7" name="SCL_RF:Cav21a"/>
+				<record alpha="-0.14889446555804803" beta="12.23371695106234" coordinate="y" emittance="1.6773667096469997E-7" name="SCL_RF:Cav19d"/>
+				<record alpha="1.8664537249303395" beta="40.700591541254404" coordinate="y" emittance="2.1156668395824672E-7" name="SCL_RF:Cav14c"/>
+				<record alpha="1.1792438808292547" beta="10.001417271233146" coordinate="y" emittance="3.0796512988255993E-7" name="SCL_RF:Cav05a"/>
+				<record alpha="-1.0906631950148868" beta="8.350055083638956" coordinate="z" emittance="2.9996943816365426E-7" name="SCL_RF:Cav01a"/>
+				<record alpha="-10.049470770783504" beta="15.01001181576091" coordinate="y" emittance="3.6192854688628073E-7" name="SCL_Diag:LW01"/>
+				<record alpha="-1.9845948365143617" beta="33.333460683562556" coordinate="x" emittance="1.310846213997642E-7" name="SCL_RF:Cav22d"/>
+				<record alpha="-0.5494853865195647" beta="17.387739388390408" coordinate="z" emittance="1.5204353391345453E-7" name="SCL_RF:Cav09a"/>
+				<record alpha="-0.11744618451231058" beta="8.471225411101724" coordinate="z" emittance="1.0383209294844421E-7" name="SCL_RF:Cav14a"/>
+				<record alpha="0.6054030205744143" beta="4.9747035347949655" coordinate="y" emittance="3.134247044517849E-7" name="SCL_RF:Cav04c"/>
+				<record alpha="-0.45086182798555163" beta="13.008489580665515" coordinate="z" emittance="4.462244641022841E-8" name="SCL_RF:Cav22c"/>
+				<record alpha="-1.6762627336179063" beta="22.40987495940536" coordinate="x" emittance="2.3993461079445586E-7" name="SCL_RF:Cav07c"/>
+				<record alpha="0.5531617853136741" beta="11.006443748337364" coordinate="y" emittance="1.7434818546993266E-7" name="SCL_RF:Cav18d"/>
+				<record alpha="0.037067180370066115" beta="31.226305687064144" coordinate="x" emittance="1.498401486200406E-7" name="SCL_RF:Cav19b"/>
+				<record alpha="0.7681490496577369" beta="5.089200713266338" coordinate="y" emittance="3.750443242403088E-7" name="SCL_RF:Cav01b"/>
+				<record alpha="-0.8894259216016878" beta="21.896894322216944" coordinate="x" emittance="1.3668394344771246E-7" name="SCL_RF:Cav21c"/>
+				<record alpha="-0.2295820706646047" beta="17.779527094281097" coordinate="z" emittance="7.197942319666345E-8" name="SCL_RF:Cav17c"/>
+				<record alpha="-0.09594170542413345" beta="20.702736723298713" coordinate="z" emittance="6.21669805517102E-8" name="SCL_RF:Cav19a"/>
+				<record alpha="-3.212703104264377" beta="21.690949934447925" coordinate="x" emittance="2.1480117335614857E-7" name="SCL_RF:Cav10c"/>
+				<record alpha="0.2128558849474701" beta="3.3442644052855113" coordinate="z" emittance="1.7849848691544703E-7" name="SCL_RF:Cav07a"/>
+				<record alpha="-0.030188820377001935" beta="8.408622500970878" coordinate="z" emittance="1.009679177021433E-7" name="SCL_RF:Cav14b"/>
+				<record alpha="0.4825117844516703" beta="20.094636065887723" coordinate="z" emittance="5.782147653646843E-8" name="SCL_RF:Cav19d"/>
+				<record alpha="0.29324388640988974" beta="15.42027476410717" coordinate="y" emittance="2.4116696071099185E-7" name="SCL_RF:Cav11b"/>
+				<record alpha="-3.8618562659753137" beta="30.75565795036715" coordinate="x" emittance="2.5129798736689463E-7" name="SCL_RF:Cav06c"/>
+				<record alpha="0.14201347615883372" beta="8.506699079503642" coordinate="z" emittance="1.0383210510340633E-7" name="SCL_Diag:LW13"/>
+				<record alpha="-0.671099435018197" beta="27.551802084415755" coordinate="z" emittance="4.051982883864697E-8" name="SCL_RF:Cav23d"/>
+				<record alpha="-0.6550448559648139" beta="5.460845206857793" coordinate="x" emittance="2.7901815343793593E-7" name="SCL_RF:Cav04b"/>
+				<record alpha="3.951996419848197" beta="46.85602011597452" coordinate="y" emittance="1.9465997467440174E-7" name="SCL_RF:Cav16b"/>
+				<record alpha="-0.09911211789034993" beta="7.54915135652194" coordinate="z" emittance="9.319637307465908E-8" name="SCL_Diag:LW14"/>
+				<record alpha="4.872008810958796" beta="26.966809571329133" coordinate="x" emittance="1.269773447331136E-7" name="SCL_Diag:LW32"/>
+				<record alpha="-1.2195123880335992" beta="8.908507166223277" coordinate="z" emittance="2.2927579065034343E-7" name="SCL_RF:Cav04a"/>
+				<record alpha="0.08145309750062756" beta="11.81289861162436" coordinate="z" emittance="1.953169797367918E-7" name="SCL_RF:Cav06a"/>
+				<record alpha="0.8384721960056436" beta="16.74736632909588" coordinate="y" emittance="2.437192020682944E-7" name="SCL_RF:Cav11a"/>
+				<record name="HEBT1" coordinate="x" alpha=" 1.014436" beta=" 3.569722" emittance="+1.21644e-007"/>
+				<record name="HEBT1" coordinate="y" alpha="-1.748688" beta=" 9.444302" emittance="+1.39475e-007"/>
+				<record name="HEBT1" coordinate="z" alpha="-103.218446" beta="7096.290320" emittance="+3.67111e-008"/>
+				<record name="HEBT2" coordinate="x" alpha="-0.641247" beta=" 4.717389" emittance="+1.21644e-007"/>
+				<record name="HEBT2" coordinate="y" alpha=" 1.777757" beta="19.469339" emittance="+1.39475e-007"/>
+				<record name="HEBT2" coordinate="z" alpha="-170.8246" beta="18586.384" emittance="+3.67111e-008"/>
+				<record name="MDmp" coordinate="x" alpha="4.3451" beta=" 43.4969" emittance="+1.21644e-007"/>
+				<record name="MDmp" coordinate="y" alpha=" -1.1860" beta="8.8003" emittance="+1.39475e-007"/>
+				<record name="MDmp" coordinate="z" alpha="48.6355" beta="0.6282" emittance="+3.67111e-008"/>
+				<record name="IDmp-" coordinate="x" alpha=" 0.073049" beta="12.568964" emittance="+1.21644e-007"/>
+				<record name="IDmp-" coordinate="y" alpha="-0.271860" beta="11.454688" emittance="+1.39475e-007"/>
+				<record name="IDmp-" coordinate="z" alpha="-314.2278" beta="58746.924" emittance="+3.67111e-008"/>
+				<record name="IDmp+" coordinate="x" alpha="-0.057543" beta="12.588942" emittance="+1.21644e-007"/>
+				<record name="IDmp+" coordinate="y" alpha="-0.560435" beta="13.467029" emittance="+1.39475e-007"/>
+				<record name="IDmp+" coordinate="z" alpha="-316.8352" beta="59691.567" emittance="+3.67111e-008"/>
+				<record name="Ring1" coordinate="x" alpha="0.1213" beta="8.0146" emittance="0.40e-4"/>
+				<record name="Ring1" coordinate="y" alpha=" 0.0317" beta="10.9546" emittance="0.40e-4"/>
+				<record name="Ring1" coordinate="z" alpha="0.0002" beta="259565.07" emittance="11.4e-3"/>
+				<record name="Ring2" coordinate="x" alpha="0.6636" beta="3.5802" emittance="0.40e-4"/>
+				<record name="Ring2" coordinate="y" alpha="-0.8905" beta="11.0691" emittance="0.40e-4"/>
+				<record name="Ring2" coordinate="z" alpha="0.0002" beta="259563.5" emittance="11.4e-3"/>
+				<record name="RTBT1" coordinate="x" alpha="-1.3168" beta="5.8471" emittance="0.40e-4"/>
+				<record name="RTBT1" coordinate="y" alpha=" 0.6831" beta="9.2607" emittance="0.40e-4"/>
+				<record name="RTBT1" coordinate="z" alpha="-0.0036" beta="9589.2334" emittance="11.4e-3"/>
+				<record name="RTBT_POST_SEPTUM" coordinate="x" alpha="-0.7415" beta="14.6180" emittance="0.40e-4"/>
+				<record name="RTBT_POST_SEPTUM" coordinate="y" alpha="-0.1686" beta="14.6481" emittance="0.40e-4"/>
+				<record name="RTBT_POST_SEPTUM" coordinate="z" alpha="-0.0036" beta="9589.2334" emittance="11.4e-3"/>
+				<record name="EDmp" coordinate="x" alpha="-1.6" beta="7.6" emittance="0.40e-4"/>
+				<record name="EDmp" coordinate="y" alpha=" 2.2" beta="20.5" emittance="0.40e-4"/>
+				<record name="EDmp" coordinate="z" alpha="-0.01" beta="9589." emittance="11.4e-3"/>
+				<record name="RTBT2" coordinate="x" alpha="-1.6" beta="7.6" emittance="0.40e-4"/>
+				<record name="RTBT2" coordinate="y" alpha=" 2.2" beta="20.5" emittance="0.40e-4"/>
+				<record name="RTBT2" coordinate="z" alpha="-0.01" beta="9589." emittance="11.4e-3"/>
+</table>
+
+    <table name="location">
+        <schema>
+            <attribute isPrimaryKey="true" name="name" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="species" type="java.lang.String" />
+            <attribute isPrimaryKey="false" name="W" type="java.lang.Double" />
+            <attribute isPrimaryKey="false" name="elem" type="java.lang.String" defaultValue="" />
+            <attribute isPrimaryKey="false" name="s" type="java.lang.Double" defaultValue="0" />
+            <attribute isPrimaryKey="false" name="t" type="java.lang.Double" defaultValue="0" />
+            <attribute isPrimaryKey="false" name="phase" type="java.lang.Double" defaultValue="0" />
+        </schema>
+        <record name="MEBT" species="HMINUS" W="2.5E6"/>
+        <record name="DTL1" species="HMINUS" W="2.5E6"/>
+        <record name="DTL2" species="HMINUS" W="7.525E6"/>
+        <record name="DTL3" species="HMINUS" W="2.2885E7"/>
+        <record name="DTL4" species="HMINUS" W="3.9765E7"/>
+        <record name="DTL5" species="HMINUS" W="5.6536E7"/>
+        <record name="DTL6" species="HMINUS" W="7.2521E7"/>
+        <record name="CCL1" species="HMINUS" W="86.828E6"/>
+        <record name="CCL2" species="HMINUS" W="107.161E6"/>
+        <record name="CCL3" species="HMINUS" W="131.142E6"/>
+        <record name="CCL4" species="HMINUS" W="157.214E6"/>
+		<record W="8.528743955262038E8" name="SCL_RF:Cav21c" species="HMINUS"/>
+		<record W="3.709040031249448E8" name="SCL_RF:Cav09a" species="HMINUS"/>
+		<record W="9.208154729614966E8" name="SCL_RF:Cav23a" species="HMINUS"/>
+		<record W="3.387352699685204E8" name="SCL_RF:Cav07c" species="HMINUS"/>
+		<record W="3.1194826609698576E8" name="SCL_RF:Cav06c" species="HMINUS"/>
+		<record W="9.013840833661954E8" name="SCL_RF:Cav22c" species="HMINUS"/>
+		<record W="6.280487185085496E8" name="SCL_RF:Cav16d" species="HMINUS"/>
+		<record W="6.736097392302705E8" name="SCL_RF:Cav17d" species="HMINUS"/>
+		<record W="8.735782295862194E8" name="SCL_RF:Cav22a" species="HMINUS"/>
+		<record W="3.8677252187393415E8" name="SCL_RF:Cav09c" species="HMINUS"/>
+		<record W="7.659481443136587E8" name="SCL_RF:Cav19d" species="HMINUS"/>
+		<record W="2.945232021785648E8" name="SCL_RF:Cav06a" species="HMINUS"/>
+		<record W="4.8987619421146506E8" name="SCL_RF:Cav13c" species="HMINUS"/>
+		<record W="9.432355596686867E8" name="SCL_RF:Cav23c" species="HMINUS"/>
+		<record W="2.758950798260531E8" name="SCL_RF:Cav05b" species="HMINUS"/>
+		<record W="6.506784981519914E8" name="SCL_RF:Cav17b" species="HMINUS"/>
+		<record W="4.506633295176339E8" name="SCL_RF:Cav12c" species="HMINUS"/>
+		<record W="2.758950798260531E8" name="SCL_Diag:LW04" species="HMINUS"/>
+		<record W="8.329381145722915E8" name="SCL_RF:Cav21a" species="HMINUS"/>
+		<record W="7.917576420299327E8" name="SCL_RF:Cav20b" species="HMINUS"/>
+		<record W="7.531102460038947E8" name="SCL_RF:Cav19c" species="HMINUS"/>
+		<record W="8.621221186051991E8" name="SCL_RF:Cav21d" species="HMINUS"/>
+		<record W="5.073561570959659E8" name="SCL_RF:Cav14a" species="HMINUS"/>
+		<record W="5.38864507482663E8" name="SCL_RF:Cav14d" species="HMINUS"/>
+		<record W="2.3174014091190916E8" name="SCL_RF:Cav03b" species="HMINUS"/>
+		<record W="3.7965684211863667E8" name="SCL_RF:Cav09b" species="HMINUS"/>
+		<record W="3.022816998523005E8" name="SCL_RF:Cav06b" species="HMINUS"/>
+		<record W="5.2766707182055247E8" name="SCL_RF:Cav14c" species="HMINUS"/>
+		<record W="6.977977930155627E8" name="SCL_RF:Cav18b" species="HMINUS"/>
+		<record W="4.099629013481746E8" name="SCL_RF:Cav10c" species="HMINUS"/>
+		<record W="5.812419166947863E8" name="SCL_RF:Cav15d" species="HMINUS"/>
+		<record W="8.874498133180805E8" name="SCL_RF:Cav22b" species="HMINUS"/>
+		<record W="2.6739888147524482E8" name="SCL_RF:Cav04c" species="HMINUS"/>
+		<record W="4.6079404887426436E8" name="SCL_RF:Cav12d" species="HMINUS"/>
+		<record W="4.3092940590496486E8" name="SCLHigh" species="HMINUS"/>
+		<record W="4.3092940590496486E8" name="SCL_RF:Cav12a" species="HMINUS"/>
+		<record W="2.0566720436750272E8" name="SCL_RF:Cav02a" species="HMINUS"/>
+		<record W="4.156886399689755E8" name="SCL_RF:Cav11a" species="HMINUS"/>
+		<record W="9.553631512108979E8" name="SCL_RF:Cav23d" species="HMINUS"/>
+		<record W="4.4058425318890554E8" name="SCL_RF:Cav12b" species="HMINUS"/>
+		<record W="1.9899191720140094E8" name="SCL_RF:Cav01c" species="HMINUS"/>
+		<record W="6.616500692981815E8" name="SCL_RF:Cav17c" species="HMINUS"/>
+		<record W="4.697706088630847E8" name="SCL_RF:Cav13a" species="HMINUS"/>
+		<record W="5.503348907088515E8" name="SCL_Diag:LW14" species="HMINUS"/>
+		<record W="5.930206794237998E8" name="SCL_Diag:LW15" species="HMINUS"/>
+		<record W="9.087361150146451E8" name="SCL_RF:Cav22d" species="HMINUS"/>
+		<record W="5.073561570959659E8" name="SCL_Diag:LW13" species="HMINUS"/>
+		<record W="7.076582095826412E8" name="SCL_RF:Cav18c" species="HMINUS"/>
+		<record W="1.856266E8" name="SCLMed" species="HMINUS"/>
+		<record W="4.2318136899327624E8" name="SCL_RF:Cav11b" species="HMINUS"/>
+		<record W="6.160607991123674E8" name="SCL_RF:Cav16c" species="HMINUS"/>
+		<record W="5.503348907088515E8" name="SCL_RF:Cav15a" species="HMINUS"/>
+		<record W="5.1828584123194015E8" name="SCL_RF:Cav14b" species="HMINUS"/>
+		<record W="2.5780979096727514E8" name="SCL_RF:Cav04b" species="HMINUS"/>
+		<record W="5.711476058069113E8" name="SCL_RF:Cav15c" species="HMINUS"/>
+		<record W="2.404697190659448E8" name="SCL_RF:Cav03c" species="HMINUS"/>
+		<record W="1.856266E8" name="SCL_RF:Cav01a" species="HMINUS"/>
+		<record W="9.524227364305885E8" name="SCL_Diag:LW32" species="HMINUS"/>
+		<record W="8.194279557665231E8" name="SCL_RF:Cav20d" species="HMINUS"/>
+		<record W="8.057977548708379E8" name="SCL_RF:Cav20c" species="HMINUS"/>
+		<record W="5.61174863566873E8" name="SCL_RF:Cav15b" species="HMINUS"/>
+		<record W="3.299487003618684E8" name="SCL_RF:Cav07b" species="HMINUS"/>
+		<record W="2.111441689498662E8" name="SCL_RF:Cav02b" species="HMINUS"/>
+		<record W="4.8052554098110217E8" name="SCL_RF:Cav13b" species="HMINUS"/>
+		<record W="3.209306297116392E8" name="SCL_RF:Cav07a" species="HMINUS"/>
+		<record W="6.847646009338177E8" name="SCL_RF:Cav18a" species="HMINUS"/>
+		<record W="4.2318136899327624E8" name="SCL_RF:Cav11c" species="HMINUS"/>
+		<record W="4.026171580234542E8" name="SCL_RF:Cav10b" species="HMINUS"/>
+		<record W="1.9266585458081487E8" name="SCL_RF:Cav01b" species="HMINUS"/>
+		<record W="6.397178693996553E8" name="SCL_RF:Cav17a" species="HMINUS"/>
+		<record W="7.211489015769275E8" name="SCL_RF:Cav18d" species="HMINUS"/>
+		<record W="2.174128485345396E8" name="SCL_RF:Cav02c" species="HMINUS"/>
+		<record W="6.050409231634887E8" name="SCL_RF:Cav16b" species="HMINUS"/>
+		<record W="2.497512084175153E8" name="SCL_RF:Cav04a" species="HMINUS"/>
+		<record W="2.497512084175153E8" name="SCL_Diag:LW03" species="HMINUS"/>
+		<record W="4.697706088630847E8" name="SCL_Diag:LW12" species="HMINUS"/>
+		<record W="3.5373267388745844E8" name="SCL_RF:Cav08b" species="HMINUS"/>
+		<record W="3.619866871987023E8" name="SCL_RF:Cav08c" species="HMINUS"/>
+		<record W="9.328941759876472E8" name="SCL_RF:Cav23b" species="HMINUS"/>
+		<record W="2.233049319869443E8" name="SCL_Diag:LW02" species="HMINUS"/>
+		<record W="7.30423503563666E8" name="SCL_RF:Cav19a" species="HMINUS"/>
+		<record W="5.930206794237998E8" name="SCL_RF:Cav16a" species="HMINUS"/>
+		<record W="5.0011022222649753E8" name="SCL_RF:Cav13d" species="HMINUS"/>
+		<record W="2.758950798260531E8" name="SCL_RF:Cav05a" species="HMINUS"/>
+		<record W="2.0566720436750272E8" name="SCL_Diag:LW01" species="HMINUS"/>
+		<record W="2.852923748043386E8" name="SCL_RF:Cav05c" species="HMINUS"/>
+		<record W="7.777846553549068E8" name="SCL_RF:Cav20a" species="HMINUS"/>
+		<record W="2.233049319869443E8" name="SCL_RF:Cav03a" species="HMINUS"/>
+		<record W="3.945732426327616E8" name="SCL_RF:Cav10a" species="HMINUS"/>
+		<record W="3.4677718139140546E8" name="SCL_RF:Cav08a" species="HMINUS"/>
+		<record W="7.400324347398225E8" name="SCL_RF:Cav19b" species="HMINUS"/>
+		<record W="8.435023160289363E8" name="SCL_RF:Cav21b" species="HMINUS"/>
+        <record name="HEBT1" species="HMINUS" W="955.0E6"/>
+        <record name="HEBT2" species="HMINUS" W="955.0E6"/>
+        <record name="MDmp" species="HMINUS" W="955.0E6"/>
+	<record name="IDmp-" species="HMINUS" W="955.0E6"/>
+	<record name="Ring1" species="PROTON" W="955.0E6"/>
+	<record name="Ring2" species="PROTON" W="955.0E6"/>
+ 	<record name="Ring3" species="PROTON" W="955.0E6"/>
+ 	<record name="Ring4" species="PROTON" W="955.0E6"/>
+	<record name="Ring5" species="PROTON" W="955.0E6"/>
+	<record name="IDmp+" species="PROTON" W="955.0E6"/>
+	<record name="RTBT1" species="PROTON" W="955.0E6"/>
+	<record name="RTBT_POST_SEPTUM" species="PROTON" W="955.0E6"/>
+	<record name="EDmp" species="PROTON" W="955.0E6"/>
+	<record name="RTBT2" species="PROTON" W="955.0E6"/>
+   </table>
+</tablegroup>
+

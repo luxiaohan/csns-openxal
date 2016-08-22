@@ -76,7 +76,9 @@ import xal.smf.NoSuchChannelException;
 import xal.smf.Ring;
 import xal.smf.TimingCenter;
 import xal.smf.attr.BPMBucket;
+import xal.smf.attr.FCTBucket;
 import xal.smf.impl.BPM;
+import xal.smf.impl.FCT;
 import xal.smf.impl.Bend;
 import xal.smf.impl.Electromagnet;
 import xal.smf.impl.HDipoleCorr;
@@ -191,6 +193,8 @@ public class VADocument extends AcceleratorDocument implements ActionListener, P
 	private java.util.List<Electromagnet> mags;
     
 	private java.util.List<BPM> bpms;
+	
+	private java.util.List<FCT> fcts;
     
 	private java.util.List<ProfileMonitor> wss;
     
@@ -1133,9 +1137,9 @@ public class VADocument extends AcceleratorDocument implements ActionListener, P
 		// for BPMs
         for ( final BPM bpm : bpms ) {
 			final Channel bpmXAvgChannel = bpm.getChannel( BPM.X_AVG_HANDLE );
-			final Channel bpmXTBTChannel = bpm.getChannel( BPM.X_TBT_HANDLE );   // TODO: CKA - NEVER USED
+			//final Channel bpmXTBTChannel = bpm.getChannel( BPM.X_TBT_HANDLE );   // TODO: CKA - NEVER USED
 			final Channel bpmYAvgChannel = bpm.getChannel( BPM.Y_AVG_HANDLE );
-            final Channel bpmYTBTChannel = bpm.getChannel( BPM.Y_TBT_HANDLE );  // TODO: CKA - NEVER USED
+            //final Channel bpmYTBTChannel = bpm.getChannel( BPM.Y_TBT_HANDLE );  // TODO: CKA - NEVER USED
 			final Channel bpmAmpAvgChannel = bpm.getChannel( BPM.AMP_AVG_HANDLE );
             
 			try {
@@ -1205,7 +1209,21 @@ public class VADocument extends AcceleratorDocument implements ActionListener, P
 			e1.printStackTrace();
 		}
 
-        
+		//for FCTs
+		for(final FCT fct : fcts){
+			final Channel fctAmpAvgChannel =fct.getChannel(FCT.AMP_AVG_HANDLE);
+			final Channel fctPhaseAvgChannel =fct.getChannel(FCT.PHASE_AVG_HANDLE);
+			ProbeState<?> probeState = modelScenario.getTrajectory().stateForElement( fct.getId() );			
+			double phaseval=probeState.getTime()*360.*((FCTBucket)fct.getBucket("fct")).getFrequency()*1.e6 % 360.0;
+			try {
+				fctAmpAvgChannel.putVal( NoiseGenerator.setValForPV( 20., 5., 0.1 ) );			
+				fctPhaseAvgChannel.putRawValCallback(phaseval,this);
+			} catch (ConnectionException | PutException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+			}
+		}
+				
 		// for WSs
         for ( final ProfileMonitor ws : wss ) {
 			Channel wsX = ws.getChannel(ProfileMonitor.H_SIGMA_M_HANDLE);
@@ -1437,6 +1455,9 @@ public class VADocument extends AcceleratorDocument implements ActionListener, P
 			
 			// get all the BPMs
 			bpms = getSelectedSequence().<BPM>getAllNodesWithQualifier( QualifierFactory.qualifierWithStatusAndType( true, "BPM" ) );
+			
+			// get all the FCTs
+			fcts = getSelectedSequence().<FCT>getAllNodesWithQualifier( QualifierFactory.qualifierWithStatusAndType( true, "FCT" ) );
 			
 			// get all the wire scanners
 			wss = getSelectedSequence().getAllNodesWithQualifier( QualifierFactory.qualifierWithStatusAndType( true, ProfileMonitor.PROFILE_MONITOR_TYPE ) );

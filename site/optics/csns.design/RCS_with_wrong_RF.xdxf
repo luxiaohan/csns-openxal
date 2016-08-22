@@ -1,0 +1,2486 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE xdxf SYSTEM "xdxf.dtd">
+<xdxf date="2015年1月23日 星期五 下午02时02分16秒 GMT+08:00" system="csns" ver="0.1">
+    <comboseq id="Ring">
+        <sequence id="RCS_Inj1" />
+        <sequence id="RCS_R1" />
+        <sequence id="RCS_R2" />
+        <sequence id="RCS_Ext1" />
+        <sequence id="RCS_Ext2" />
+        <sequence id="RCS_R3" />
+        <sequence id="RCS_R4" />
+        <sequence id="RCS_Inj2" />
+    </comboseq>
+    <sequence id="RCS_Inj1" len="5.5">
+        <attributes>
+            <sequence predecessors="RCS_Inj2" />
+        </attributes>
+        <node id="Begin_Of_RCS_Inj1" len="0" pos="0" type="MARKER" />
+        <node id="Ring_Inj:FOIL" len="0" pid="FOIL" pos="0.2" status="true" type="Foil">
+            <attributes>
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+        </node>
+        <node id="RCS_Mag:INBC3" len="0.35" pid="INBC3" pos="0.475" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC3:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBC4" len="0.35" pid="INBC4" pos="1.425" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC4:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBH3" len="0.3" pid="INBH3" pos="2.15" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBH" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBH3:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBV3" len="0.3" pid="INBV3" pos="2.75" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBV" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBV3:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM01" len="0" pid="R1BPM01" pos="3" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DH01" len="0" pid="R1DH01" pos="3" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DH01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBH4" len="0.3" pid="INBH4" pos="4.35" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBH" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBH4:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBV4" len="0.3" pid="INBV4" pos="4.95" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBV" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBV4:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_Inj1" len="0" pos="5.5" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_R1" len="51.48">
+        <attributes>
+            <sequence predecessors="RCS_Inj1" />
+        </attributes>
+        <node id="Begin_Of_RCS_R1" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R1QF01" len="0.41" pid="R1QF01" pos="0.205" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QD02" len="0.9" pid="R1QD02" pos="1.66" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM02" len="0" pid="R1BPM02" pos="2.26" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DV02" len="0" pid="R1DV02" pos="2.26" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF03" len="0.41" pid="R1QF03" pos="3.465" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB01" len="2.1" pid="R1MB01" pos="8.52" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB02" len="2.1" pid="R1MB02" pos="11.82" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM04" len="0" pid="R1BPM04" pos="13.82" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DH04" len="0" pid="R1DH04" pos="13.82" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DH04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1SF01" len="0.2" pid="R1SF01" pos="13.92" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1SF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF04" len="0.45" pid="R1QF04" pos="14.395" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1SD02" len="0.2" pid="R1SD02" pos="15.67" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1SD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM05" len="0" pid="R1BPM05" pos="15.77" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DV05" len="0" pid="R1DV05" pos="15.77" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DV05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QD05" len="0.9" pid="R1QD05" pos="16.37" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QD05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF06" len="0.62" pid="R1QF06" pos="17.93" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB03" len="2.1" pid="R1MB03" pos="20.19" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB04" len="2.1" pid="R1MB04" pos="25.79" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF07" len="0.62" pid="R1QF07" pos="28.05" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF07:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QD08" len="0.9" pid="R1QD08" pos="29.61" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QD08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DV08" len="0" pid="R1DV08" pos="30.21" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DV08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM08" len="0" pid="R1BPM08" pos="30.21" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1SD03" len="0.2" pid="R1SD03" pos="30.31" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1SD03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF09" len="0.45" pid="R1QF09" pos="31.585" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1SF04" len="0.2" pid="R1SF04" pos="32.06" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1SF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DH09" len="0" pid="R1DH09" pos="32.16" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DH09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DH09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM09" len="0" pid="R1BPM09" pos="32.16" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB05" len="2.1" pid="R1MB05" pos="34.16" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1MB06" len="2.1" pid="R1MB06" pos="37.46" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1MB06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF10" len="0.41" pid="R1QF10" pos="42.515" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF10:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DV11" len="0" pid="R1DV11" pos="43.72" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DV11" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DV11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM11" len="0" pid="R1BPM11" pos="43.72" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QD11" len="0.9" pid="R1QD11" pos="44.32" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QD11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1QF12" len="0.41" pid="R1QF12" pos="45.775" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1QF12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R1BPM12" len="0" pid="R1BPM12" pos="46.13" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R1BPM12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R1BPM12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R1BPM12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R1BPM12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R1DH12" len="0" pid="R1DH12" pos="46.13" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R1DH12" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R1DH12:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_R1" len="0" pos="51.48" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_R2" len="46.78">
+        <attributes>
+            <sequence predecessors="RCS_R1" />
+        </attributes>
+        <node id="Begin_Of_RCS_R2" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R2DH12" len="0" pid="R2DH12" pos="5.35" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DH12" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DH12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM12" len="0" pid="R2BPM12" pos="5.35" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF12" len="0.41" pid="R2QF12" pos="5.705" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QD11" len="0.9" pid="R2QD11" pos="7.16" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QD11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM11" len="0" pid="R2BPM11" pos="7.76" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DV11" len="0" pid="R2DV11" pos="7.76" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DV11" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DV11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF10" len="0.41" pid="R2QF10" pos="8.965" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF10:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB06" len="2.1" pid="R2MB06" pos="14.02" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB05" len="2.1" pid="R2MB05" pos="17.32" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM09" len="0" pid="R2BPM09" pos="19.32" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DH09" len="0" pid="R2DH09" pos="19.32" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DH09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DH09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2SF04" len="0.2" pid="R2SF04" pos="19.42" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2SF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF09" len="0.45" pid="R2QF09" pos="19.895" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2SD03" len="0.2" pid="R2SD03" pos="21.17" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2SD03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM08" len="0" pid="R2BPM08" pos="21.27" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DV08" len="0" pid="R2DV08" pos="21.27" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DV08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QD08" len="0.9" pid="R2QD08" pos="21.87" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QD08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF07" len="0.62" pid="R2QF07" pos="23.43" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF07:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB04" len="2.1" pid="R2MB04" pos="25.69" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB03" len="2.1" pid="R2MB03" pos="31.29" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF06" len="0.62" pid="R2QF06" pos="33.55" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QD05" len="0.9" pid="R2QD05" pos="35.11" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QD05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DV05" len="0" pid="R2DV05" pos="35.71" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DV05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM05" len="0" pid="R2BPM05" pos="35.71" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2SD02" len="0.2" pid="R2SD02" pos="35.81" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2SD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF04" len="0.45" pid="R2QF04" pos="37.085" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2SF01" len="0.2" pid="R2SF01" pos="37.56" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2SF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DH04" len="0" pid="R2DH04" pos="37.66" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DH04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM04" len="0" pid="R2BPM04" pos="37.66" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB02" len="2.1" pid="R2MB02" pos="39.66" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2MB01" len="2.1" pid="R2MB01" pos="42.96" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2MB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DV02" len="0" pid="R2DV02" pos="46.66" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM02" len="0" pid="R2BPM02" pos="46.66" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_R2" len="0" pos="46.78" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_Ext1" len="10.2">
+        <attributes>
+            <sequence predecessors="RCS_R2" />
+        </attributes>
+        <node id="Begin_Of_RCS_Ext1" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R2QF03" len="0.41" pid="R2QF03" pos="1.235" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QD02" len="0.9" pid="R2QD02" pos="3.04" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2QF01" len="0.41" pid="R2QF01" pos="4.495" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2QF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R2DH01" len="0" pid="R2DH01" pos="8.17" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R2DH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R2DH01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R2BPM01" len="0" pid="R2BPM01" pos="8.17" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R2BPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R2BPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R2BPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R2BPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_Ext1" len="0" pos="10.2" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_Ext2" len="5.5">
+        <attributes>
+            <sequence predecessors="RCS_Ext1" />
+        </attributes>
+        <node id="Begin_Of_RCS_Ext2" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R3LMTDV" len="0" pid="R3LMTDV" pos="1.72" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3LMTDV" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3LMTDV:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3LMTDH" len="0" pid="R3LMTDH" pos="4.12" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3LMTDH" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3LMTDH:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM01" len="0" pid="R3BPM01" pos="5.35" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DH01" len="0" pid="R3DH01" pos="5.35" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DH01:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_Ext2" len="0" pos="5.5" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_R3" len="51.48">
+        <attributes>
+            <sequence predecessors="RCS_Ext2" />
+        </attributes>
+        <node id="Begin_Of_RCS_R3" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R3QF01" len="0.41" pid="R3QF01" pos="0.205" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QD02" len="0.9" pid="R3QD02" pos="1.66" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM02" len="0" pid="R3BPM02" pos="2.26" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DV02" len="0" pid="R3DV02" pos="2.26" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF03" len="0.41" pid="R3QF03" pos="3.465" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB01" len="2.1" pid="R3MB01" pos="8.52" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB02" len="2.1" pid="R3MB02" pos="11.82" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM04" len="0" pid="R3BPM04" pos="13.82" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DH04" len="0" pid="R3DH04" pos="13.82" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DH04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3SF01" len="0.2" pid="R3SF01" pos="13.92" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3SF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF04" len="0.45" pid="R3QF04" pos="14.395" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3SD02" len="0.2" pid="R3SD02" pos="15.67" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3SD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM05" len="0" pid="R3BPM05" pos="15.77" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DV05" len="0" pid="R3DV05" pos="15.77" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DV05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QD05" len="0.9" pid="R3QD05" pos="16.37" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QD05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF06" len="0.62" pid="R3QF06" pos="17.93" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB03" len="2.1" pid="R3MB03" pos="20.19" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB04" len="2.1" pid="R3MB04" pos="25.79" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF07" len="0.62" pid="R3QF07" pos="28.05" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF07:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QD08" len="0.9" pid="R3QD08" pos="29.61" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QD08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DV08" len="0" pid="R3DV08" pos="30.21" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DV08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM08" len="0" pid="R3BPM08" pos="30.21" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3SD03" len="0.2" pid="R3SD03" pos="30.31" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3SD03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF09" len="0.45" pid="R3QF09" pos="31.585" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3SF04" len="0.2" pid="R3SF04" pos="32.06" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3SF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DH09" len="0" pid="R3DH09" pos="32.16" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DH09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DH09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM09" len="0" pid="R3BPM09" pos="32.16" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB05" len="2.1" pid="R3MB05" pos="34.16" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3MB06" len="2.1" pid="R3MB06" pos="37.46" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3MB06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF10" len="0.41" pid="R3QF10" pos="42.515" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF10:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DV11" len="0" pid="R3DV11" pos="43.72" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DV11" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DV11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM11" len="0" pid="R3BPM11" pos="43.72" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QD11" len="0.9" pid="R3QD11" pos="44.32" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QD11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3QF12" len="0.41" pid="R3QF12" pos="45.775" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3QF12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R3BPM12" len="0" pid="R3BPM12" pos="46.13" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R3BPM12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R3BPM12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R3BPM12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R3BPM12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R3DH12" len="0" pid="R3DH12" pos="46.13" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R3DH12" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R3DH12:B" />
+            </channelsuite>
+        </node>
+        <sequence id="RCS_RF:CAV04" len="2.705" pid="CAV04" pos="47.8425" status="true" type="Bnch">
+            <attributes>
+                <rfcavity STFCoefs="0,0,0" STFPrimeCoefs="0,0,0" STFPrime_endCoefs="0,0,0" STF_endCoefs="0,0,0" TTFCoefs="1,0,0" TTFPrimeCoefs="0,0,0" TTFPrime_EndCoefs="0,0,0" TTF_endCoefs="1,0,0" amp="-0.0004" freq="2.444" phase="90" structureMode="0" />
+                <align pitch="180" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="rfsuite">
+                <channel handle="cavAmpSet" settable="true" signal="RCS_RF:CAV04:CtlAmpSet" />
+                <channel handle="cavPhaseSet" settable="true" signal="RCS_RF:CAV04:CtlPhaseSet" />
+                <channel handle="cavAmpAvg" settable="false" signal="RCS_RF:CAV04:cavV" />
+                <channel handle="peakErr" settable="false" signal="RCS_RF:CAV04:PeakErr" />
+                <channel handle="regErr" settable="true" signal="RCS_RF:CAV04:regErr" />
+                <channel handle="resErrAvg" settable="true" signal="RCS_RF:CAV04:ResErr_Avg" />
+                <channel handle="cavPhaseAvg" settable="false" signal="RCS_RF:CAV04:cavPhaseAvg" />
+                <channel handle="deltaTRFStart" settable="true" signal="RCS_RF:CAV04:deltaTRFStart" />
+                <channel handle="deltaTRFEnd" settable="true" signal="RCS_RF:CAV04:deltaTRFEnd" />
+                <channel handle="tDelay" settable="true" signal="RCS_RF:CAV04:tDelay" />
+                <channel handle="rffeq" settable="true" signal="RCS_RF:CAV04:fre" />
+            </channelsuite>
+            <node id="RCS_RF:CAV04:Rg01" pos="0" type="RG">
+                <attributes>
+                    <rfgap TTF="1" ampFactor="1" endCell="0" gapOffset="0" length="0.1" phaseFactor="0" />
+                </attributes>
+            </node>
+        </sequence>
+        <node id="End_Of_RCS_R3" len="0" pos="51.48" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_R4" len="51.48">
+        <attributes>
+            <sequence predecessors="RCS_R3" />
+        </attributes>
+        <node id="Begin_Of_RCS_R4" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:R4DH12" len="0" pid="R4DH12" pos="5.35" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DH12" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DH12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM12" len="0" pid="R4BPM12" pos="5.35" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM12:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM12:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM12:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM12:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF12" len="0.41" pid="R4QF12" pos="5.705" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF12:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QD11" len="0.9" pid="R4QD11" pos="7.16" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QD11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM11" len="0" pid="R4BPM11" pos="7.76" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM11:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM11:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM11:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM11:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DV11" len="0" pid="R4DV11" pos="7.76" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DV11" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DV11:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF10" len="0.41" pid="R4QF10" pos="8.965" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF10:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB06" len="2.1" pid="R4MB06" pos="14.02" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB05" len="2.1" pid="R4MB05" pos="17.32" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM09" len="0" pid="R4BPM09" pos="19.32" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM09:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM09:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM09:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM09:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DH09" len="0" pid="R4DH09" pos="19.32" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DH09" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DH09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4SF04" len="0.2" pid="R4SF04" pos="19.42" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4SF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF09" len="0.45" pid="R4QF09" pos="19.895" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF09:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4SD03" len="0.2" pid="R4SD03" pos="21.17" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4SD03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM08" len="0" pid="R4BPM08" pos="21.27" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM08:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM08:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM08:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM08:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DV08" len="0" pid="R4DV08" pos="21.27" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DV08" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DV08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QD08" len="0.9" pid="R4QD08" pos="21.87" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QD08:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF07" len="0.62" pid="R4QF07" pos="23.43" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF07:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB04" len="2.1" pid="R4MB04" pos="25.69" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB03" len="2.1" pid="R4MB03" pos="31.29" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF06" len="0.62" pid="R4QF06" pos="33.55" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.802971" len="0.62" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF06C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF06:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QD05" len="0.9" pid="R4QD05" pos="35.11" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QD05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DV05" len="0" pid="R4DV05" pos="35.71" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DV05" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DV05:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM05" len="0" pid="R4BPM05" pos="35.71" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM05:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM05:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM05:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM05:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4SD02" len="0.2" pid="R4SD02" pos="35.81" status="true" type="SV">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4SD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF04" len="0.45" pid="R4QF04" pos="37.085" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.752955" len="0.45" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF04C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4SF01" len="0.2" pid="R4SF01" pos="37.56" status="true" type="SH">
+            <attributes>
+                <magnet dfltMagFld="20" len="0.2" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1SF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4SF01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DH04" len="0" pid="R4DH04" pos="37.66" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DH04" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DH04:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM04" len="0" pid="R4BPM04" pos="37.66" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM04:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM04:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM04:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM04:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB02" len="2.1" pid="R4MB02" pos="39.66" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4MB01" len="2.1" pid="R4MB01" pos="42.96" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="15.000035" dfltMagFld="0.16452" dipoleEntrRotAngle="7.500018" dipoleExitRotAngle="7.500018" len="2.1" pathLength="2.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_MBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4MB01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF03" len="0.41" pid="R4QF03" pos="48.015" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.876528" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF03C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF03:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DV02" len="0" pid="R4DV02" pos="49.22" status="true" type="DCV">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DV02" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DV02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM02" len="0" pid="R4BPM02" pos="49.22" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM02:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM02:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM02:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM02:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QD02" len="0.9" pid="R4QD02" pos="49.82" status="true" type="QV">
+            <attributes>
+                <magnet dfltMagFld="-0.764576" len="0.9" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QD02C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QD02:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4QF01" len="0.41" pid="R4QF01" pos="51.275" status="true" type="QH">
+            <attributes>
+                <magnet dfltMagFld="0.977431" len="0.41" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_R1QF01C" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4QF01:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_R4" len="0" pos="51.48" type="MARKER" />
+    </sequence>
+    <sequence id="RCS_Inj2" len="5.5">
+        <attributes>
+            <sequence predecessors="RCS_R4" />
+        </attributes>
+        <node id="Begin_Of_RCS_Inj2" len="0" pos="0" type="MARKER" />
+        <node id="RCS_Mag:INBV1" len="0.3" pid="INBV1" pos="0.55" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBV" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBV1:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBH1" len="0.3" pid="INBH1" pos="1.15" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBH" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBH1:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:R4DH01" len="0" pid="R4DH01" pos="1.4" status="true" type="DCH">
+            <attributes>
+                <magnet dfltMagFld="0" len="0.1" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="RCS_Mag:PS_R4DH01" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:R4DH01:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Diag:R4BPM01" len="0" pid="R4BPM01" pos="1.4" status="true" type="BPM">
+            <attributes>
+                <bpm frequency="324" length="0" orientation="1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <channelsuite name="bpmsuite">
+                <channel handle="xAvg" settable="false" signal="RCS_Diag:R4BPM01:xAvg" />
+                <channel handle="yAvg" settable="false" signal="RCS_Diag:R4BPM01:yAvg" />
+                <channel handle="phaseAvg" settable="false" signal="RCS_Diag:R4BPM01:phaseAvg" />
+                <channel handle="amplitudeAvg" settable="false" signal="RCS_Diag:R4BPM01:amplitudeAvg" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBV2" len="0.3" pid="INBV2" pos="2.75" status="true" type="YBEND">
+            <attributes>
+                <magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBV" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBV2:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBH2" len="0.3" pid="INBH2" pos="3.35" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBH" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBH2:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBC1" len="0.35" pid="INBC1" pos="4.075" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC1:B" />
+            </channelsuite>
+        </node>
+        <node id="RCS_Mag:INBC2" len="0.35" pid="INBC2" pos="5.025" status="true" type="XBEND">
+            <attributes>
+                <magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" />
+                <aperture shape="0" x="0" y="0" />
+                <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
+            </attributes>
+            <ps main="Ring_Mag:PS_INBC" />
+            <channelsuite name="magnetsuite">
+                <channel handle="fieldRB" settable="false" signal="RCS_Mag:INBC2:B" />
+            </channelsuite>
+        </node>
+        <node id="End_Of_RCS_Inj2" len="0" pos="5.5" type="MARKER" />
+    </sequence>
+    <powersupplies>
+        <ps id="Ring_Mag:PS_INBC" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_INBC:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_INBC:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_INBC:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_INBC:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_INBC:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_INBC:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_INBC:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_INBH" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_INBH:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_INBH:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_INBH:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_INBH:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_INBH:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_INBH:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_INBH:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_INBV" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_INBV:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_INBV:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_INBV:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_INBV:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_INBV:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_INBV:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_INBV:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DH01:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DH01:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DH01:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DH01:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DH01:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DH01:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1QF01C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1QF01C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1QF01C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1QF01C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1QF01C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1QF01C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1QF01C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1QF01C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1QD02C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1QD02C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1QD02C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1QD02C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1QD02C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1QD02C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1QD02C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1QD02C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DV02:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DV02:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DV02:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DV02:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DV02:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DV02:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1QF03C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1QF03C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1QF03C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1QF03C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1QF03C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1QF03C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1QF03C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1QF03C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_MBC" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_MBC:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_MBC:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_MBC:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_MBC:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_MBC:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_MBC:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_MBC:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DH04:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DH04:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DH04:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DH04:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DH04:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DH04:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1SF01C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1SF01C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1SF01C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1SF01C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1SF01C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1SF01C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1SF01C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1SF01C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1QF04C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1QF04C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1QF04C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1QF04C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1QF04C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1QF04C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1QF04C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1QF04C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1SD02C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1SD02C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1SD02C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1SD02C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1SD02C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1SD02C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1SD02C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1SD02C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DV05:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DV05:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DV05:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DV05:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DV05:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DV05:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="Ring_Mag:PS_R1QF06C" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="Ring_Mag:PS_R1QF06C:I" />
+                <channel handle="I_Set" signal="Ring_Mag:PS_R1QF06C:I_Set" />
+                <channel handle="fieldSet" signal="Ring_Mag:PS_R1QF06C:B_Set" />
+                <channel handle="psFieldRB" signal="Ring_Mag:PS_R1QF06C:B" />
+                <channel handle="cycleState" signal="Ring_Mag:PS_R1QF06C:cycleState" />
+                <channel handle="cycleEnable" signal="Ring_Mag:PS_R1QF06C:cycleEnable" />
+                <channel handle="B_Book" signal="Ring_Mag:PS_R1QF06C:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DV08:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DV08:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DV08:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DV08:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DV08:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DV08:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DH09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DH09:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DH09:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DH09:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DH09:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DH09:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DH09:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DH09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DV11" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DV11:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DV11:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DV11:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DV11:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DV11:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DV11:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DV11:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R1DH12" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R1DH12:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R1DH12:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R1DH12:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R1DH12:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R1DH12:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R1DH12:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R1DH12:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DH12" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DH12:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DH12:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DH12:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DH12:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DH12:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DH12:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DH12:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DV11" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DV11:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DV11:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DV11:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DV11:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DV11:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DV11:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DV11:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DH09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DH09:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DH09:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DH09:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DH09:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DH09:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DH09:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DH09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DV08:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DV08:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DV08:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DV08:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DV08:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DV08:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DV05:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DV05:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DV05:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DV05:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DV05:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DV05:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DH04:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DH04:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DH04:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DH04:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DH04:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DH04:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DV02:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DV02:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DV02:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DV02:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DV02:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DV02:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R2DH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R2DH01:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R2DH01:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R2DH01:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R2DH01:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R2DH01:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R2DH01:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R2DH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3LMTDV" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3LMTDV:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3LMTDV:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3LMTDV:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3LMTDV:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3LMTDV:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3LMTDV:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3LMTDV:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3LMTDH" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3LMTDH:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3LMTDH:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3LMTDH:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3LMTDH:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3LMTDH:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3LMTDH:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3LMTDH:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DH01:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DH01:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DH01:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DH01:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DH01:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DH01:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DH01:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DV02:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DV02:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DV02:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DV02:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DV02:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DV02:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DH04:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DH04:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DH04:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DH04:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DH04:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DH04:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DV05:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DV05:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DV05:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DV05:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DV05:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DV05:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DV08:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DV08:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DV08:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DV08:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DV08:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DV08:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DH09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DH09:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DH09:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DH09:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DH09:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DH09:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DH09:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DH09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DV11" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DV11:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DV11:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DV11:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DV11:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DV11:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DV11:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DV11:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R3DH12" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R3DH12:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R3DH12:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R3DH12:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R3DH12:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R3DH12:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R3DH12:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R3DH12:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DH12" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DH12:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DH12:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DH12:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DH12:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DH12:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DH12:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DH12:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DV11" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DV11:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DV11:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DV11:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DV11:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DV11:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DV11:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DV11:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DH09" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DH09:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DH09:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DH09:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DH09:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DH09:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DH09:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DH09:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DV08" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DV08:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DV08:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DV08:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DV08:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DV08:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DV08:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DV08:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DV05" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DV05:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DV05:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DV05:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DV05:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DV05:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DV05:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DV05:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DH04" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DH04:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DH04:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DH04:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DH04:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DH04:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DH04:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DH04:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DV02" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DV02:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DV02:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DV02:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DV02:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DV02:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DV02:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DV02:B_Book" />
+            </channelsuite>
+        </ps>
+        <ps id="RCS_Mag:PS_R4DH01" type="main">
+            <channelsuite name="pssuite">
+                <channel handle="I" signal="RCS_Mag:PS_R4DH01:I" />
+                <channel handle="I_Set" signal="RCS_Mag:PS_R4DH01:I_Set" />
+                <channel handle="fieldSet" signal="RCS_Mag:PS_R4DH01:B_Set" />
+                <channel handle="psFieldRB" signal="RCS_Mag:PS_R4DH01:B" />
+                <channel handle="cycleState" signal="RCS_Mag:PS_R4DH01:cycleState" />
+                <channel handle="cycleEnable" signal="RCS_Mag:PS_R4DH01:cycleEnable" />
+                <channel handle="B_Book" signal="RCS_Mag:PS_R4DH01:B_Book" />
+            </channelsuite>
+        </ps>
+    </powersupplies>
+</xdxf>
