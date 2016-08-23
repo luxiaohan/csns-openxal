@@ -1007,13 +1007,16 @@ public class TunePanel extends JPanel implements ConnectionListener,
 	*/	
 			 double[][] datax = new double[32][1024];
 			 double[][] datay = new double[32][1024];
-				
+
 			 try{
-			  FileReader fr = new FileReader("./src/csns/apps/ringmeasurement/tbtdatax.txt");
+				 
+			  //FileReader fr = new FileReader("./src/csns/apps/ringmeasurement/tbtdatax.txt");		
+			  FileReader fr = new FileReader("./apps/ringmeasurement/src/xal/app/ringmeasurement/tbtdatax.txt");
 			  BufferedReader br = new BufferedReader(fr);
 			  Scanner sc = new Scanner(br).useDelimiter("[ ]*,+[ ]*|\\s*;+\\s*|\\s+");
 			
-			 FileReader fs = new FileReader("./src/csns/apps/ringmeasurement/tbtdatay.txt");
+			 //FileReader fs = new FileReader("./src/csns/apps/ringmeasurement/tbtdatay.txt");
+			 FileReader fs = new FileReader("./apps/ringmeasurement/src/xal/app/ringmeasurement/tbtdatay.txt");
 			 BufferedReader bs = new BufferedReader(fs);
 			 Scanner sd = new Scanner(bs).useDelimiter("[ ]*,+[ ]*|\\s*;+\\s*|\\s+");
 				  for (int i = 0; i < 1024; i++) {
