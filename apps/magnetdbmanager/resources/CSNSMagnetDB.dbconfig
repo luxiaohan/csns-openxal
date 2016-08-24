@@ -1,0 +1,17 @@
+<dbconfig>
+    <adaptors default="MySQL" >
+        <adaptor name="MariaDB" class="gov.sns.tools.database.MariaDBDatabaseAdaptor" />
+        <adaptor name="MySQL" class="gov.sns.tools.database.MySQLDatabaseAdaptor" />
+        <adaptor name="Oracle" class="gov.sns.tools.database.OracleDatabaseAdaptor" />
+    </adaptors>
+
+    <servers default="liuwb.apgroup.csns" >
+        <server name="liuwb.ap.acc.ihep" url="jdbc:mysql://192.168.36.20/" adaptor="MariaDB" />
+        <server name="liuwb.apgroup.csns" url="jdbc:mysql://10.1.46.94/" adaptor="MySQL" />
+    </servers>
+
+    <accounts default="CSNSMagnetUser" >
+        <account name="CSNSMagnetUserTest" user="root" password="csnsapgroup" />
+        <account name="CSNSMagnetUser" user="apgroup" password="csnsapgroup" />
+    </accounts>
+</dbconfig>

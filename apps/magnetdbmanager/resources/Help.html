@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+<HEAD>
+<style type="text/css">
+P.warning {font-size: large; font-weight: bold;}        
+</style>
+<TITLE>Demo Application Help</TITLE>
+</HEAD>
+<BODY>
+
+<center><u>Demo Application Help</u></center>
+
+<p align=center>
+<a href="#intro_ref" TARGET="_self">Introduction</a> - 
+<a href="#features" TARGET="_self">Features</a> - 
+<a href="#startup_ref" TARGET="_self">Startup</a> - 
+<a href="#acknowledgements_ref" TARGET="_self">Acknowledgements</a>
+</p>
+
+<hr><br>
+<a name="intro_ref" <b>Introduction:</b></a>
+<p>
+This application manage the Magnet database of CSNS. Uploading and modifying actions are provided. 
+When uploading magnet to the database success, backup will be done at the same time.
+</p>
+
+<hr><br>
+<a name="features" <b>Features and Tips:</b></a>
+<p>
+When using the application, magnet database connection is needed. The database is defined by other 
+database application. A database connection configure file is provided at the resources directory. 
+Backup directory is also needed. If there isn't a backup, uploading will be discarded. The application 
+can also load magnet backup files in xml format which is defined by the Magnet class.
+</p>
+
+<hr><br>
+<a name="startup_ref" <b>Start the Application:</b></a>
+<p>
+The basic steps for starting the application:
+<ol>
+<li> Launch the application.
+<li> Connect the CSNS magnet database by select the connection item in the sub item of "Settings" menu.
+<li> Fetch magnets from database or from local files. You can slect the magnet type before fetching. 
+If you fetching from local files, multi-selection is allowed.
+<li> You can also create a new empty magnet file by click the "New" item in the context menu of the table.
+<li> You can edit a magnet data by click the "Edit" item in the context menu of the table. When the magnet 
+is in editing model, magnetic excitation curve can be added or removed through context menu.
+<li> Before uploading your magnet, default backup directory must be set by selecting the sub item of "Setting" menu.
+<li> Select "Uploading" context menu item to upload the editing result or new magnet.
+</ol>
+</p>
+
+<hr><br>
+<a name="acknowledgements_ref" <b>Acknowledgements:</b></a>
+<p>
+Apache XML DOM parsers are used for parsing XML files.
+</p>
+<p>
+Other third party libraries may have been used either directly or indirectly in 
+development of this application or the XAL framework upon which it relies.
+</p>
+<p>
+
+</p>
+
+</BODY>
+</HTML>
