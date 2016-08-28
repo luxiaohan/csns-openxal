@@ -38,6 +38,9 @@ class PersistentStore {
 	/** map of channel groups keyed by group ID */
 	final protected Map<String,ChannelGroup> CHANNEL_GROUPS;
 	
+	/**connection dictionary*/
+	protected ConnectionDictionary dictionary;
+	
 	
 	/** Constructor */
 	public PersistentStore( final DataAdaptor storeAdaptor ) {
@@ -45,7 +48,7 @@ class PersistentStore {
 		SNAPSHOT_GROUP_CHANNEL_TABLE = new SnapshotGroupChannelTable( tableConfigurations.get( "SnapshotGroupChannel" ) );
 		SNAPSHOT_GROUP_TABLE = new SnapshotGroupTable( tableConfigurations.get( "SnapshotGroup" ), SNAPSHOT_GROUP_CHANNEL_TABLE );
 		MACHINE_SNAPSHOT_TABLE = new MachineSnapshotTable( tableConfigurations.get( "MachineSnapshot" ) );
-		
+
 		CHANNEL_SNAPSHOT_TABLES = loadChannelSnapshotTables( storeAdaptor );
 		
 		CHANNEL_GROUPS = new HashMap<String,ChannelGroup>();
@@ -84,9 +87,14 @@ class PersistentStore {
 	static public Connection connectionInstance( final ConnectionDictionary dictionary ) throws SQLException {
 		final DatabaseAdaptor databaseAdaptor = dictionary.getDatabaseAdaptor();
 		final Connection connection = databaseAdaptor.getConnection( dictionary );
-		connection.setAutoCommit( false );
 		
 		return connection;
+	}
+	
+	/**set connection dictionary*/
+	public void setConnectionDictionary( final ConnectionDictionary dictionary ) {
+		this.dictionary = dictionary;
+		MACHINE_SNAPSHOT_TABLE.setDatabaseAdaptor( dictionary.getDatabaseAdaptor() );
 	}
 	
 	
@@ -214,12 +222,12 @@ class PersistentStore {
 	 * @param machineSnapshots machine snapshots to publish to the database
 	 * @return machine snapshots successfully published to the database
 	 */
-	public List<MachineSnapshot> publish( final Connection connection, final DatabaseAdaptor databaseAdaptor, final List<MachineSnapshot> machineSnapshots ) {
+	public List<MachineSnapshot> publish( final Connection connection, final List<MachineSnapshot> machineSnapshots ) {
 		if ( machineSnapshots.size() == 0 )  return null;
 		
 		final List<MachineSnapshot> successfulSnapshots = new ArrayList<MachineSnapshot>( machineSnapshots.size() );
 		for ( final MachineSnapshot machineSnapshot : machineSnapshots ) {
-			if ( publish( connection, databaseAdaptor, machineSnapshot ) ) {
+			if ( publish( connection, machineSnapshot ) ) {
 				successfulSnapshots.add( machineSnapshot );
 			}
 		}
@@ -233,10 +241,10 @@ class PersistentStore {
 	 * @param connection database connection
 	 * @param machineSnapshot machine snapshot to publish
 	 */
-	protected boolean publish( final Connection connection, final DatabaseAdaptor databaseAdaptor, final MachineSnapshot machineSnapshot ) {
+	protected boolean publish( final Connection connection, final MachineSnapshot machineSnapshot ) {
 		try {
 			final ChannelSnapshotTable channelSnapshotTable = getChannelSnapshotTable( connection, machineSnapshot );
-			MACHINE_SNAPSHOT_TABLE.insert( connection, databaseAdaptor, channelSnapshotTable, machineSnapshot );
+			MACHINE_SNAPSHOT_TABLE.insert( connection, channelSnapshotTable, machineSnapshot );
 			
 			return true;
 		}

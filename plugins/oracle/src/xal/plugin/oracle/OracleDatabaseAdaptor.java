@@ -15,6 +15,7 @@ import xal.tools.database.*;
 import java.util.*;
 import java.util.logging.*;
 import java.lang.reflect.*;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.sql.Array;	// default to SQL Array instead of java.lang.reflect.Array
 
@@ -41,6 +42,16 @@ public class OracleDatabaseAdaptor extends DatabaseAdaptor {
 	 */
 	public OracleDatabaseAdaptor() {
 		ARRAY_DESCRIPTOR_TABLE = new HashMap<String,Object>();
+	}
+	
+	static {
+		try {
+			Class.forName( "oracle.jdbc.OracleDriver" );
+		}
+		catch ( ClassNotFoundException exception ) {
+			Logger.getLogger( "global" ).log( Level.SEVERE, "Error loading", exception );
+			exception.printStackTrace();
+		}
 	}
 	
 	
@@ -153,6 +164,67 @@ public class OracleDatabaseAdaptor extends DatabaseAdaptor {
 			ARRAY_DESCRIPTOR_TABLE.put( type, descriptor );
 			return descriptor;
 		}		
+	}
+
+
+	@Override
+	public long insert( final Connection connection, final String tableName, final Map<String, Object> items, final String queryForNextPrimKey ) throws SQLException {
+		List<Object> valuesList = new ArrayList<>( items.size() );
+		StringBuilder sqlBuilder = new StringBuilder( "INSERT INTO ");
+		sqlBuilder.append( tableName );
+		sqlBuilder.append( "(" );
+		sqlBuilder.append( "primaryKey" );
+		StringBuilder valuesBuilder = new StringBuilder( " VALUES " );
+		valuesBuilder.append( "(?" );
+		Set<Map.Entry<String, Object>> entrySet = items.entrySet();
+		for ( Map.Entry<String, Object> entry : entrySet ) {
+			sqlBuilder.append( "," );
+			sqlBuilder.append( entry.getKey() );
+			valuesBuilder.append( ",?" );
+			valuesList.add( entry.getValue() );
+		}
+		sqlBuilder.append( ")" );
+		valuesBuilder.append( ")" );
+		sqlBuilder.append( valuesBuilder.toString() );
+		String sql = sqlBuilder.toString();
+		PreparedStatement nextPrimaryKeyStatement = connection.prepareStatement( queryForNextPrimKey );
+		ResultSet record = nextPrimaryKeyStatement.executeQuery();
+		record.next();
+		long nextPrimaryKey = record.getLong( 1 );
+		PreparedStatement insertStatement = connection.prepareStatement( sql );
+		int paramIndex = 1;
+		insertStatement.setLong( paramIndex, nextPrimaryKey );
+		for ( Object value : valuesList ) {
+			paramIndex ++;
+			insertStatement.setObject( paramIndex, value );
+		}
+		insertStatement.executeUpdate();
+		
+		if ( nextPrimaryKeyStatement != null ) nextPrimaryKeyStatement.close();
+		record.close();
+		if ( insertStatement != null ) insertStatement.close();
+		
+		return nextPrimaryKey;
+	}
+
+
+	@Override
+	public void setArray( final PreparedStatement insertStatement, final int pramIndex, final String type, final Connection connection,
+			final Object array) throws SQLException {
+		final Array valueArray = getArray( type, connection, array );
+		insertStatement.setArray( pramIndex, valueArray );
+	}
+
+
+	@Override
+	public Object getArrayValues(ResultSet record, String valueType) throws SQLException {
+		BigDecimal[] bigValue = (BigDecimal[])record.getArray( valueType ).getArray();
+		
+		final double[] array = new double[bigValue.length];
+		for ( int index = 0; index < bigValue.length; index++ ) {
+			array[index] = bigValue[index].doubleValue();
+		}
+		return array;
 	}
 }
 

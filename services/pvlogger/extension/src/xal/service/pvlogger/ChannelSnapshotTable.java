@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import java.math.BigDecimal;
 
+import xal.tools.coding.json.JSONCoder;
 import xal.tools.database.DatabaseAdaptor;
 
 
@@ -82,12 +83,11 @@ class ChannelSnapshotTable {
 			if ( channelSnapshot != null ) {
 				final Timestamp timeStamp = channelSnapshot.getTimestamp().getSQLTimestamp();
 				try {
-					final Array valueArray = databaseAdaptor.getArray( VALUE_ARRAY_TYPE, connection, channelSnapshot.getValue() );
 					insertStatement.setLong( 1, machineSnapshotID );
 					insertStatement.setString( 2, channelSnapshot.getPV() );
 					insertStatement.setTimestamp( 3, timeStamp );
-
-					insertStatement.setArray( 4, valueArray );
+					
+					databaseAdaptor.setArray( insertStatement, 4, VALUE_ARRAY_TYPE, connection, channelSnapshot.getValue() );
 
 					insertStatement.setInt( 5, channelSnapshot.getStatus() );
 					insertStatement.setInt( 6, channelSnapshot.getSeverity() );
@@ -118,7 +118,7 @@ class ChannelSnapshotTable {
 	 * @param machineSnapshotID machine snapshot primary key
 	 * @return The channel snapshots associated with the machine snapshop
 	 */
-	public ChannelSnapshot[] fetchChannelSnapshotsForMachineSnapshotID( final Connection connection, final long machineSnapshotID ) throws SQLException {
+	public ChannelSnapshot[] fetchChannelSnapshotsForMachineSnapshotID( final Connection connection, final DatabaseAdaptor databaseAdaptor, final long machineSnapshotID ) throws SQLException {
 		final List<ChannelSnapshot> snapshots = new ArrayList<ChannelSnapshot>();
 
 		final PreparedStatement snapshotQuery = getQueryByMachineSnapshotStatement( connection );
@@ -128,8 +128,9 @@ class ChannelSnapshotTable {
 		while ( resultSet.next() ) {
 			final String pv = resultSet.getString( PV_COLUMN );
 			final Timestamp timestamp = resultSet.getTimestamp( TIMESTAMP_COLUMN );
-			final BigDecimal[] bigValue = (BigDecimal[])resultSet.getArray( VALUE_COLUMN ).getArray();
-			final double[] value = toDoubleArray( bigValue );
+
+			final double[] value = (double[]) databaseAdaptor.getArrayValues(resultSet, VALUE_COLUMN );
+			
 			final short status = resultSet.getShort( STATUS_COLUMN );
 			final short severity = resultSet.getShort( SEVERITY_COLUMN );
 			snapshots.add( new ChannelSnapshot( pv, value, status, severity, new xal.ca.Timestamp( timestamp ) ) );

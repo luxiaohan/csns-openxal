@@ -211,6 +211,14 @@ public class ConfigurationDocument extends AcceleratorDocument {
 		final ConnectionDictionary dictionary = ConnectionDictionary.getPreferredInstance( "personal" );
 		final ConnectionDialog dialog = ConnectionDialog.getInstance( mainWindow, dictionary );
 		final Connection connection = dialog.showConnectionDialog( dictionary.getDatabaseAdaptor() );
+		if (connection != null ) {
+			try {
+				connection.setAutoCommit( false );
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		LOGGER_CONFIGURATION.setConnection( connection );
 			
 		if ( connection != null ) {
