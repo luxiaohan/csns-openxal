@@ -1124,6 +1124,16 @@
                 <channel handle="SigVerGaussStd" settable="false" signal="RTBT_Diag:RTMWS01:Ver_Sigma_gs" />
             </channelsuite>
         </node>
+        <node type="VIW" id="RTBT_Vac:VIW" pos="45.965" len="0.0" status="true">
+        	<attributes>
+            	<align x="0.0" y="0.0" z="0.0" pitch="0" yaw="0" roll="0"/>
+       		</attributes>
+    	</node>
+    	<node type="Tgt" id="RTBT:Tgt" pos="47.91" len="0.0" status="true">
+      		 <attributes>
+          		<align x="0.0" y="0.0" z="0.0" pitch="-56.399769" yaw="0" roll="0"/>
+      		 </attributes>
+        </node>       
         <node id="End_Of_RTBT_Match" len="0" pos="47.91" type="MARKER" />
     </sequence>
     <sequence id="RTBT_RDump" len="43.3">
