@@ -19,7 +19,11 @@ import xal.extension.widgets.swing.*;
 import xal.tools.apputils.files.RecentFileTracker;
 import Jama.Matrix;
 
-public class EmAnalysisPanel extends JPanel {
+public class EmAnalysisPanel extends JPanel {	
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
+    
 	protected GenDocument doc;
 	protected JLabel jlfilename, jldirection, jlpercentage;
 	protected JLabel jlalpha = new JLabel(" Alpha:");

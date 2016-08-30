@@ -40,7 +40,7 @@ public class GenDocument extends AcceleratorDocument implements DataListener {
 
 	protected Lattice lattice = null;
 
-	public HashMap allagentsmap = new HashMap();
+	//public HashMap allagentsmap = new HashMap();
 
 	public Accelerator accl;
 //	public AcceleratorSeq LEBT;
@@ -205,25 +205,25 @@ public class GenDocument extends AcceleratorDocument implements DataListener {
 	// Begin declarations and methods specific to the application
 	public DataTable masterdatatable;
 	public DataTable resultsdatatable;
-	public HashMap masterpvloggermap;
+    public HashMap<String, Integer> masterpvloggermap;
 	public Integer currentpvloggerid;
 
-	public void makeallAgentsMap(ArrayList blmagentlist, String section,
+	/*public void makeallAgentsMap(ArrayList blmagentlist, String section,
 			String label) {
 		if (blmagentlist.size() > 0) {
 			String name = new String(section + label);
 			allagentsmap.put(new String(name), blmagentlist);
 		}
-	}
+	}*/
 
 	public void init() {
 
-		ArrayList attributes = new ArrayList();
+		ArrayList<DataAttribute> attributes = new ArrayList<DataAttribute>();
 		// attributes.add(new DataAttribute("file", String.class, true) );
 		attributes.add(new DataAttribute("file", String.class, true));
 		masterdatatable = new DataTable("DataTable", attributes);
 		resultsdatatable = new DataTable("ResultsTable", attributes);
-		masterpvloggermap = new HashMap();
+		masterpvloggermap = new HashMap<String, Integer>();
 	}
 
 }

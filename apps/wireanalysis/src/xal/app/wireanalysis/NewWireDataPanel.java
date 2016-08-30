@@ -19,6 +19,9 @@ import java.util.*;
 
 
 public class NewWireDataPanel extends JPanel {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
 	public JPanel mainPanel;
 
@@ -87,7 +90,7 @@ public class NewWireDataPanel extends JPanel {
 		});
 	}
 
-	public void plotData(ArrayList wires) {
+	public void plotData() {
 
 		hdatapanel.removeAllGraphData();
 

@@ -66,14 +66,17 @@ import gov.sns.xal.smf.proxy.*;*/
  * @author v1j
  */
 public class ControlFace extends JPanel {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
-	ArrayList variables;
+	ArrayList<Variable> variables;
 	Problem problem;
 
 	RecentFileTracker ft;
 	private JFileChooser fc;
 
-	private HashMap pvloggermap;
+	private HashMap<String, Integer> pvloggermap;
 	private DataTable edmresultsdatatable;
 	private DataTable fitresultsdatatable;
 	private JTable resultsdatatable;
@@ -91,7 +94,7 @@ public class ControlFace extends JPanel {
 	public JPanel mainPanel;
 	private JButton loadtable;
 	private String[] initstate = { "No PV Logger Files" };
-	private JComboBox machinestatechooser = new JComboBox(initstate);
+	private JComboBox<String> machinestatechooser = new JComboBox<String>(initstate);
 	// private JLabel targetlabel;
 	private JLabel magnetlabel;
 	private JButton targetsequencebutton;
@@ -101,7 +104,7 @@ public class ControlFace extends JPanel {
 	private JButton backward;
 	private JButton clearbutton;
 	private JButton clearallbutton;
-	private JComboBox targetlist;
+	private JComboBox<String> targetlist;
 	private JButton solvebutton;
 	private JButton singlepassbutton;
 	//
@@ -115,13 +118,13 @@ public class ControlFace extends JPanel {
 	private JButton scantwiss;
 	private JButton probeeditbutton;
 	private String[] graphs = { "Plot Betas", "Plot Alphas", "Plot RMS Size" };
-	private JComboBox graphChooser = new JComboBox(graphs);
+	private JComboBox<String> graphChooser = new JComboBox<String>(graphs);
 	private String[] solverchoice = { "Load From Quads P.S.",
 			"Load from Last Solution" };
-	private JComboBox solverChooser = new JComboBox(solverchoice);
+	private JComboBox<String> solverChooser = new JComboBox<String>(solverchoice);
 	private String[] resultchoice = { "Display Beta", "Display Alpha",
 			"Display RMS" };
-	private JComboBox resultChooser = new JComboBox(resultchoice);
+	private JComboBox<String> resultChooser = new JComboBox<String>(resultchoice);
 	private boolean probeedited = false;
 	ScrollPaneLayout controllayout;
 	TableColumnModel alldatacolumns;
@@ -152,12 +155,12 @@ public class ControlFace extends JPanel {
 
 	private Accelerator accl;
 	private AcceleratorSeqCombo seq;
-	private ArrayList allsolutions;
+	private ArrayList<Trial> allsolutions;
 	private ArrayList<AcceleratorSeq> magnetseqlist = new ArrayList<AcceleratorSeq>();
-	private ArrayList magnetseqlistnames = new ArrayList();
+	private ArrayList<Object> magnetseqlistnames = new ArrayList<Object>();
 	private ArrayList<AcceleratorNode> magnetnodes = new ArrayList<AcceleratorNode>();
 	private ArrayList<AcceleratorSeq> targetseqlist = new ArrayList<AcceleratorSeq>();
-	private ArrayList targetseqlistnames = new ArrayList();
+	private ArrayList<Object> targetseqlistnames = new ArrayList<Object>();
 	private ArrayList<AcceleratorNode> targetnodes = new ArrayList<AcceleratorNode>();
 
 	double alphax0, betax0, emitx0, alphay0, betay0, emity0, alphaz0, betaz0,
@@ -220,7 +223,7 @@ public class ControlFace extends JPanel {
 		magnetsequencebutton = new JButton("Select Sequence");
 		targetsequencebutton = new JButton("Select Sequence");
 
-		targetlist = new JComboBox();
+		targetlist = new JComboBox<String>();
 		targetlist.addItem("Select Element");
 
 		probeeditbutton = new JButton("Edit Probe");
@@ -318,12 +321,12 @@ public class ControlFace extends JPanel {
 				} else {
 					clearAllData();
 				}
-				ArrayList tabledata = new ArrayList();
+				ArrayList<Object> tabledata = new ArrayList<Object>();
 				for (int i = 0; i < modelface.storedtable.getRowCount(); i++) {
 					for (int j = 0; j < modelface.storedtable.getColumnCount(); j++) {
 						tabledata.add(modelface.storedtable.getValueAt(i, j));
 					}
-					datamodel.addTableData(new ArrayList(tabledata));
+					datamodel.addTableData(new ArrayList<Object>(tabledata));
 					tabledata.clear();
 				}
 				datamodel.fireTableDataChanged();
@@ -349,18 +352,18 @@ public class ControlFace extends JPanel {
 				magnetseqlistnames = selector.getSeqList();
 				System.out.println("magnetseqlistnames is "
 						+ magnetseqlistnames);
-				Iterator itr = magnetseqlistnames.iterator();
-				magnetseqlistnames = (ArrayList) selector.getSeqList();
+				Iterator<Object> itr = magnetseqlistnames.iterator();
+				magnetseqlistnames = selector.getSeqList();
 				magnetseqlist.clear();
 				magnetnodes.clear();
 				magnetmodel.clearAllData();
 				while (itr.hasNext()) {
 					AcceleratorSeq seq = accl.getSequence((String) itr.next());
-					magnetseqlist.add((AcceleratorSeq) seq);
+					magnetseqlist.add(seq);
 				}
-
-				ArrayList tabledata = new ArrayList();
-				ArrayList psadded = new ArrayList();
+               
+                ArrayList<Object> tabledata = new ArrayList<Object>();
+                ArrayList<String> psadded = new ArrayList<String>();
 				tabledata.clear();
 				AcceleratorSeqCombo accseq = new AcceleratorSeqCombo("Seq",
 						magnetseqlist);
@@ -376,12 +379,12 @@ public class ControlFace extends JPanel {
 					MagnetMainSupply ps = ((Electromagnet) accseq
 							.getNodeWithId(name)).getMainSupply();
 					if (!psadded.contains(ps.getId())) {
-						psadded.add((String) ps.getId());
-						tabledata.add((String) ps.getId());
+						psadded.add(ps.getId());
+						tabledata.add(ps.getId());
 						tabledata.add((new Double(0.0)));
 						tabledata.add(new Boolean(false));
 						tabledata.add(new Double(10.0));
-						magnetmodel.addTableData(new ArrayList(tabledata));
+						magnetmodel.addTableData(new ArrayList<Object>(tabledata));
 					}
 				}
 				updateMagnetTable();
@@ -394,13 +397,13 @@ public class ControlFace extends JPanel {
 				TransLineSeqSelector selector = new TransLineSeqSelector();
 				selector.selectSequence();
 				targetseqlistnames = selector.getSeqList();
-				Iterator itr = targetseqlistnames.iterator();
-				targetseqlistnames = (ArrayList) selector.getSeqList();
+				Iterator<Object> itr = targetseqlistnames.iterator();
+				targetseqlistnames = selector.getSeqList();
 				targetseqlist.clear();
 				targetnodes.clear();
 				while (itr.hasNext()) {
-					AcceleratorSeq seq = accl.getSequence((String) itr.next());
-					targetseqlist.add((AcceleratorSeq) seq);
+					AcceleratorSeq seq = accl.getSequence( itr.next().toString());
+					targetseqlist.add(seq);
 					targetnodes.addAll(seq.getAllNodes());
 				}
 				for (int i = 0; i < targetnodes.size(); i++) {
@@ -519,7 +522,7 @@ public class ControlFace extends JPanel {
 			if ((Boolean) datatable.getValueAt(i, 8))
 				s = i;
 		String init = (String) datatable.getValueAt(s, 1);
-		int id = (Integer) doc.masterpvloggermap.get((String) datatable
+		int id =doc.masterpvloggermap.get((String) datatable
 				.getValueAt(s, 0));
 		/*
 		 * Integer pvloggerid; if(id != 0){ pvloggerid = new Integer(id);
@@ -533,16 +536,16 @@ public class ControlFace extends JPanel {
 
 		// Intelligently construct a sequence from initial condition to control
 		// point;
-		AcceleratorNode initnode = (AcceleratorNode) accl.getNode(init);
-		AcceleratorSeq initseq = (AcceleratorSeq) initnode.getParent();
-		AcceleratorSeq finalseq = (AcceleratorSeq) targetseqlist
+		AcceleratorNode initnode =accl.getNode(init);
+		AcceleratorSeq initseq =initnode.getParent();
+		AcceleratorSeq finalseq = targetseqlist
 				.get(targetseqlist.size() - 1);
 		System.out.println("Begin and end sequences are " + initseq + " and "
 				+ finalseq);
-		ArrayList allseqcombos;
-		allseqcombos = (ArrayList) AcceleratorSeqCombo.getInstancesForRange(
-				"Seq", initseq, finalseq);
-		seq = (AcceleratorSeqCombo) allseqcombos.get(0);
+		ArrayList<AcceleratorSeqCombo> allseqcombos;
+		allseqcombos=(ArrayList<AcceleratorSeqCombo>
+                )AcceleratorSeqCombo.getInstancesForRange("Seq", initseq, finalseq);
+		seq = allseqcombos.get(0);
 		
 		EnvelopeProbe tempprobe = null;
         try {
@@ -568,7 +571,7 @@ public class ControlFace extends JPanel {
 		}
 
 		Trajectory<EnvelopeProbeState> traj = tempprobe.getTrajectory();
-		EnvelopeProbeState newstate = (EnvelopeProbeState) traj
+		EnvelopeProbeState newstate = traj
 				.stateForElement(init);
 		initprobe.setKineticEnergy(newstate.getKineticEnergy());
 		System.out.println("Current Energy in update probe is "
@@ -621,14 +624,14 @@ public class ControlFace extends JPanel {
 
 		Twiss[] twiss = getTwiss(Id);
 
-		ArrayList tabledata = new ArrayList();
+		ArrayList<Object> tabledata = new ArrayList<Object>();
 		tabledata.add(" X Beta");
 		tabledata.add(numfor.format(twiss[0].getBeta()));
 		tabledata.add("0.0");
 		tabledata.add("1.0");
 		tabledata.add(new Boolean(false));
 		tabledata.add("");
-		tablemodel.addTableData(new ArrayList(tabledata));
+		tablemodel.addTableData(new ArrayList<Object>(tabledata));
 		tabledata.clear();
 		tabledata.add(" X Alpha");
 		tabledata.add(numfor.format(twiss[0].getAlpha()));
@@ -636,7 +639,7 @@ public class ControlFace extends JPanel {
 		tabledata.add("1.0");
 		tabledata.add(new Boolean(false));
 		tabledata.add("");
-		tablemodel.addTableData(new ArrayList(tabledata));
+		tablemodel.addTableData(new ArrayList<Object>(tabledata));
 		tabledata.clear();
 		tabledata.add(" Y Beta");
 		tabledata.add(numfor.format(twiss[1].getBeta()));
@@ -644,7 +647,7 @@ public class ControlFace extends JPanel {
 		tabledata.add("1.0");
 		tabledata.add(new Boolean(false));
 		tabledata.add("");
-		tablemodel.addTableData(new ArrayList(tabledata));
+		tablemodel.addTableData(new ArrayList<Object>(tabledata));
 		tabledata.clear();
 		tabledata.add(" Y Alpha");
 		tabledata.add(numfor.format(twiss[1].getAlpha()));
@@ -652,7 +655,7 @@ public class ControlFace extends JPanel {
 		tabledata.add("1.0");
 		tabledata.add(new Boolean(false));
 		tabledata.add("");
-		tablemodel.addTableData(new ArrayList(tabledata));
+		tablemodel.addTableData(new ArrayList<Object>(tabledata));
 
 		tablemodel.fireTableDataChanged();
 		table.validate();
@@ -702,9 +705,9 @@ public class ControlFace extends JPanel {
 		return twiss;
 	}
 
-	public ArrayList parseFile(File newfile) {
+	public ArrayList<Object>  parseFile(File newfile) {
 		ParseWireFile parsefile = new ParseWireFile();
-		ArrayList newdata = new ArrayList();
+		ArrayList<Object>  newdata = new ArrayList<Object> ();
 		try {
 			newdata = parsefile.parseFile(newfile);
 		} catch (IOException e) {
@@ -722,7 +725,7 @@ public class ControlFace extends JPanel {
 				selected = i;
 			}
 		}
-		int id = (Integer) doc.masterpvloggermap.get((String) datatable
+		int id =doc.masterpvloggermap.get((String) datatable
 				.getValueAt(selected, 0));
 
 		// zp delete
@@ -747,7 +750,7 @@ public class ControlFace extends JPanel {
 		 */
 
 		if (!startfromlast) { // Initialize from PVlogger
-			List quads = seq.getAllNodesWithQualifier(new AndTypeQualifier()
+			List<Quadrupole> quads = seq.getAllNodesWithQualifier(new AndTypeQualifier()
 					.and(Quadrupole.s_strType).and(
 							QualifierFactory.getStatusQualifier(true)));
 			List<Quadrupole> AVAILABLE_Quads = new ArrayList<Quadrupole>();
@@ -928,8 +931,8 @@ public class ControlFace extends JPanel {
 		} catch (Exception e) {
 		}
 
-		ArrayList variables = assignMagnets();
-		ArrayList objectives = new ArrayList();
+		ArrayList<Variable> variables = assignMagnets();
+		ArrayList<Objective> objectives = new ArrayList<Objective>();
 		objectives.add(new TargetObjective("diff", 0.));
 		Evaluator1 evaluator = new Evaluator1(objectives, variables);
 		Problem problem = new Problem(objectives, variables, evaluator);
@@ -946,14 +949,14 @@ public class ControlFace extends JPanel {
 		System.out.println("Solving...");
 		solver.solve(problem);
 		System.out.println(solver.getScoreBoard());
-		allsolutions = (ArrayList) solver.getScoreBoard().getSolutionJudge()
+		allsolutions = (ArrayList<Trial>) solver.getScoreBoard().getSolutionJudge()
 				.getOptimalSolutions();
 		best = solver.getScoreBoard().getBestSolution();
 
 		// Post final solutions.
 		calcError(variables, best);
 		showTargetVals();
-		ArrayList resultdata = new ArrayList();
+		ArrayList<Object> resultdata = new ArrayList<Object>();
 		if (!startfromlast)
 			resultmodel.clearAllData();
 		solutionsposition = 0;
@@ -961,18 +964,18 @@ public class ControlFace extends JPanel {
 			resultdata.clear();
 			boolean already = false;
 			for (int j = 0; j < resulttable.getRowCount(); j++) {
-				if (((Variable) variables.get(i)).getName() == (String) resulttable
+				if ((variables.get(i)).getName() == resulttable
 						.getValueAt(j, 0)) {
-					resulttable.setValueAt(((TrialPoint) best.getTrialPoint())
-							.getValue((Variable) variables.get(i)), j, 1);
+					resulttable.setValueAt((best.getTrialPoint())
+							.getValue(variables.get(i)), j, 1);
 					already = true;
 				}
 			}
 			if (!already) {
-				resultdata.add(((Variable) variables.get(i)).getName());
-				resultdata.add(((TrialPoint) best.getTrialPoint())
-						.getValue((Variable) variables.get(i)));
-				resultmodel.addTableData(new ArrayList(resultdata));
+				resultdata.add((variables.get(i)).getName());
+				resultdata.add((best.getTrialPoint())
+						.getValue(variables.get(i)));
+				resultmodel.addTableData(new ArrayList<Object>(resultdata));
 			}
 		}
 		numfor.setMinimumFractionDigits(3);
@@ -986,9 +989,9 @@ public class ControlFace extends JPanel {
 			updateMagnetTable();
 	}
 
-	private ArrayList assignMagnets() { // Assigns initial magnet values and
+	private ArrayList<Variable> assignMagnets() { // Assigns initial magnet values and
 										// solver variable list
-		variables = new ArrayList();
+		variables = new ArrayList<Variable>();
 
 		for (int i = 0; i < magnettable.getRowCount(); i++) {
 			MagnetMainSupply ps = accl.getMagnetMainSupply((String) magnettable
@@ -1102,22 +1105,22 @@ public class ControlFace extends JPanel {
 	public void updateVariables(Trial trial) {
 
 		Problem prob = trial.getProblem();
-		ArrayList vars = new ArrayList();
-		vars = (ArrayList) prob.getVariables();
+		ArrayList<Variable> vars = new ArrayList<Variable>();
+		vars =(ArrayList<Variable>) prob.getVariables();
 		variables.clear();
 
 		for (int i = 0; i < vars.size(); i++) {
-			double value = ((TrialPoint) trial.getTrialPoint())
-					.getValue((Variable) vars.get(i));
-			String name = (String) ((Variable) vars.get(i)).getName();
-			double lower = (double) ((Variable) vars.get(i)).getLowerLimit();
-			double upper = (double) ((Variable) vars.get(i)).getUpperLimit();
+			double value = (trial.getTrialPoint())
+					.getValue(vars.get(i));
+			String name = (vars.get(i)).getName();
+			double lower = (vars.get(i)).getLowerLimit();
+			double upper = (vars.get(i)).getUpperLimit();
 			variables.add(new Variable(name, value, lower, upper));
 		}
 		problem.setVariables(variables);
 	}
 
-	public double calcError(ArrayList vars, Trial trial) {
+	public double calcError(ArrayList<Variable> vars, Trial trial) {
 
 		updateMags(vars, trial);
 
@@ -1132,16 +1135,16 @@ public class ControlFace extends JPanel {
 		return err;
 	}
 
-	public void updateMags(ArrayList vars, Trial trial) {
+	public void updateMags(ArrayList<Variable> vars, Trial trial) {
 
 		for (int i = 0; i < vars.size(); i++) {
-			String name = (String) ((Variable) vars.get(i)).getName();
+			String name = (vars.get(i)).getName();
 			MagnetMainSupply ps = accl.getMagnetMainSupply(name);
 			Object[] psnodes = ps.getNodes().toArray();
 			for (int j = 0; j < psnodes.length; j++) {
 				Electromagnet magnet = (Electromagnet) psnodes[j];
-				double magvalue = ((TrialPoint) trial.getTrialPoint())
-						.getValue((Variable) vars.get(i));
+				double magvalue = (trial.getTrialPoint())
+						.getValue(vars.get(i));
 				double value = ((Electromagnet) seq.getNodeWithId(magnet
 						.getId())).toFieldFromCA(magvalue);
 				solvermodel.setModelInput(seq.getNodeWithId(magnet.getId()),
@@ -1166,7 +1169,7 @@ public class ControlFace extends JPanel {
 	}
 
 	public void showTargetVals() {
-		Probe probe = solvermodel.getProbe();	
+		EnvelopeProbe probe = (EnvelopeProbe) solvermodel.getProbe();	
 		Trajectory<EnvelopeProbeState> traj = probe.getTrajectory();
 		EnvelopeProbeState target = traj.statesForElement((String)targetlist.getSelectedItem()).get(0);
 		CovarianceMatrix covarianceMatrix = target.getCovarianceMatrix();
@@ -1193,28 +1196,28 @@ public class ControlFace extends JPanel {
 	public void resetPlot() {
 
 		modelplot.removeAllGraphData();
-		ArrayList sdata = new ArrayList();
-		ArrayList hdata = new ArrayList();
-		ArrayList vdata = new ArrayList();
+		ArrayList<Double> sdata = new ArrayList<Double>();
+		ArrayList<Double> hdata = new ArrayList<Double>();
+		ArrayList<Double> vdata = new ArrayList<Double>();
 		BasicGraphData hgraphdata = new BasicGraphData();
 		BasicGraphData vgraphdata = new BasicGraphData();
 		BasicGraphData xgraphdata = new BasicGraphData();
 		BasicGraphData ygraphdata = new BasicGraphData();
 
 		Trajectory<EnvelopeProbeState> traj = solverprobe.getTrajectory();
-		Iterator iterState = traj.stateIterator();
+		Iterator<EnvelopeProbeState> iterState = traj.stateIterator();
 		boolean firstpos = true;
 		double offset = 0.0;
 
 		while (iterState.hasNext()) {
 			if (firstpos) {
-				EnvelopeProbeState firststate = (EnvelopeProbeState) iterState
+				EnvelopeProbeState firststate = iterState
 						.next();
 				offset = firststate.getPosition();
 				firstpos = false;
 			}
 			if (betaplot) {
-				EnvelopeProbeState state = (EnvelopeProbeState) iterState
+				EnvelopeProbeState state = iterState
 						.next();
 				sdata.add(state.getPosition() - offset);
                 CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
@@ -1227,7 +1230,7 @@ public class ControlFace extends JPanel {
 			}
 			// Plot Alphas
 			if (alphaplot) {
-				EnvelopeProbeState state = (EnvelopeProbeState) iterState
+				EnvelopeProbeState state =  iterState
 						.next();
 				sdata.add(state.getPosition() - offset);
                 CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
@@ -1238,7 +1241,7 @@ public class ControlFace extends JPanel {
 				vdata.add(ry);
 			}
 			if (sizeplot) {
-				EnvelopeProbeState state = (EnvelopeProbeState) iterState
+				EnvelopeProbeState state = iterState
 						.next();
 				sdata.add(state.getPosition() - offset);
                 CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
@@ -1257,9 +1260,9 @@ public class ControlFace extends JPanel {
 		double[] y = new double[size];
 
 		for (int i = 0; i < size; i++) {
-			s[i] = ((Double) sdata.get(i)).doubleValue();
-			x[i] = ((Double) hdata.get(i)).doubleValue();
-			y[i] = ((Double) vdata.get(i)).doubleValue();
+			s[i] = ( sdata.get(i)).doubleValue();
+			x[i] = (hdata.get(i)).doubleValue();
+			y[i] = (vdata.get(i)).doubleValue();
 		}
 		hgraphdata.addPoint(s, x);
 		hgraphdata.setDrawPointsOn(false);
@@ -1391,9 +1394,9 @@ public class ControlFace extends JPanel {
 				beginrecord = true;
 			}
 			if (beginrecord) {
-				ArrayList tabledata = new ArrayList();
+				ArrayList<Object> tabledata = new ArrayList<Object>();
 				System.out.println("name is " + name);
-				EnvelopeProbeState state = (EnvelopeProbeState) traj
+				EnvelopeProbeState state =  traj
 						.stateForElement(name);
                 CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
                 Twiss[] twiss = covarianceMatrix.computeTwiss();
@@ -1412,7 +1415,7 @@ public class ControlFace extends JPanel {
 				tabledata.add(new String(name));
 				tabledata.add(numfor.format(valuex));
 				tabledata.add(numfor.format(valuey));
-				resultsdatatablemodel.addTableData(new ArrayList(tabledata));
+				resultsdatatablemodel.addTableData(new ArrayList<Object>(tabledata));
 			}
 		}
 		resultsdatatablemodel.fireTableDataChanged();
@@ -1541,7 +1544,7 @@ public class ControlFace extends JPanel {
 		resultsdatatable.setColumnSelectionAllowed(false);
 		resultsdatatable.setCellSelectionEnabled(false);
 
-		resultsdatatable.setAutoResizeMode(resultsdatatable.AUTO_RESIZE_OFF);
+		resultsdatatable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		resultsdatascrollpane = new JScrollPane(resultsdatatable);
 		resultsdatascrollpane.setColumnHeaderView(resultsdatatable
 				.getTableHeader());
@@ -1552,17 +1555,17 @@ public class ControlFace extends JPanel {
 	}
 
 	class Evaluator1 implements Evaluator {
-		protected ArrayList _objectives;
-		protected ArrayList _variables;
+		protected ArrayList<Objective> _objectives;
+		protected ArrayList<Variable> _variables;
 
-		public Evaluator1(final ArrayList objectives, final ArrayList variables) {
+	    public Evaluator1( final ArrayList<Objective> objectives, final ArrayList<Variable> variables ) {
 			_objectives = objectives;
 			_variables = variables;
 		}
 
 		public void evaluate(final Trial trial) {
 			double error = 0.0;
-			Iterator itr = _objectives.iterator();
+			Iterator<Objective> itr = _objectives.iterator();
 			while (itr.hasNext()) {
 				TargetObjective objective = (TargetObjective) itr.next();
 				error = calcError(_variables, trial);

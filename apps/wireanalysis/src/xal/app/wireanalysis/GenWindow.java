@@ -24,6 +24,9 @@ import xal.extension.application.*;
  */
 
 public class GenWindow extends XalWindow {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
     private JPanel mainPanel;
  
@@ -48,11 +51,36 @@ public class GenWindow extends XalWindow {
 	
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
-		JPanel wirescanpanel = new JPanel(){};
-		JPanel datapanel = new JPanel(){};
-		JPanel analysispanel = new JPanel(){};
-		JPanel modelpanel = new JPanel(){};
-		JPanel controlpanel = new JPanel(){};
+		JPanel wirescanpanel = new JPanel(){
+            
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+            
+        };
+        JPanel datapanel = new JPanel(){
+            
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+            
+        };
+        JPanel analysispanel = new JPanel(){
+            
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+            
+        };
+        JPanel modelpanel = new JPanel(){
+            
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+            
+        };
+        JPanel controlpanel = new JPanel(){
+            
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+            
+        };
 		
 		ScanFace scanface = new ScanFace((GenDocument)document);
 		DataFace dataface = new DataFace((GenDocument)document);

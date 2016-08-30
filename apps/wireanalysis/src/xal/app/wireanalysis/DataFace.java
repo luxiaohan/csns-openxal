@@ -21,20 +21,23 @@ import java.io.*;
 
 
 public class DataFace extends JPanel{
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
     
     public JPanel mainPanel;
     public JTable datatable;
     
     private JFileChooser fc;
     private DataTable masterdatatable;
-    private ArrayList attributes;
-    private ArrayList filesopened;
-    private HashMap pvloggermap;
+    private ArrayList<DataAttribute> attributes;
+    private ArrayList<String> filesopened;
+    private HashMap<String, Integer> pvloggermap;
     
     GenDocument doc;
     private boolean linearplot = true;
     private String[] plottypes = {"Plot Linear Values", "Plot Log Values"}; 
-    private JComboBox scalechooser = new JComboBox(plottypes);
+    private JComboBox<String> scalechooser = new JComboBox<String>(plottypes);
     private JButton openbutton;
     private JButton clearbutton;
     private JButton plotbutton;
@@ -87,14 +90,14 @@ public class DataFace extends JPanel{
 	ft = new RecentFileTracker(1, this.getClass(), "wsfile");
 	ft.applyRecentFolder(fc);
 	
-	attributes = new ArrayList();
+	attributes = new ArrayList<DataAttribute>();
 	attributes.add(new DataAttribute("file", new String("").getClass(), true) );
 	attributes.add(new DataAttribute("wire", new String("").getClass(), true) );
-	attributes.add(new DataAttribute("data", new ArrayList().getClass(), false) );
+	attributes.add(new DataAttribute("data", new ArrayList<DataAttribute>().getClass(), false) );
 	masterdatatable = new DataTable("DataTable", attributes);
-	pvloggermap = new HashMap();
+	pvloggermap = new HashMap<String, Integer>();
 	
-	filesopened = new ArrayList();
+	filesopened = new ArrayList<String>();
 	
 	xrawdatapanel = new FunctionGraphsJPanel();
 	xrawdatapanel.setPreferredSize(new Dimension(300, 270));
@@ -122,25 +125,25 @@ public class DataFace extends JPanel{
   	openbutton.addActionListener(new ActionListener(){
 	    public void actionPerformed(ActionEvent e) {
 		int returnValue = fc.showOpenDialog(DataFace.this);
-		if(returnValue == fc.APPROVE_OPTION){
+		if(returnValue == JFileChooser.APPROVE_OPTION){
 		    File file = fc.getSelectedFile();
 		    ft.cacheURL(file);
 		    
-		    ArrayList newdata = new ArrayList(parseFile(file));
+		    ArrayList<Object> newdata = new ArrayList<Object>(parseFile(file));
 		    
 		    String name = new String(file.toString());
 		    String[] tokens;
 		    tokens=name.split("/");
 		    String filename = new String(tokens[tokens.length-1]);
 		    Integer pvloggerid = (Integer)newdata.get(newdata.size()-1);
-		    pvloggermap.put((String)filename, (Integer)pvloggerid);
+		    pvloggermap.put(filename, pvloggerid);
 		    doc.masterpvloggermap = pvloggermap;
 		    
 		    newdata.remove(newdata.size()-1);
 		    
 		    if(!filesopened.contains(filename)){
 			System.out.println("Opening file: " + filename);
-			filesopened.add((String)filename);
+			filesopened.add(filename);
 			toTable(filename, newdata);
 			toMasterDataTable(filename, newdata);
 		    }
@@ -157,7 +160,7 @@ public class DataFace extends JPanel{
 	plotbutton.addActionListener(new ActionListener(){
 	    public void actionPerformed(ActionEvent e) {
 		int nrows = datatablemodel.getRowCount();
-		ArrayList wires = new ArrayList();
+		ArrayList<Integer> wires = new ArrayList<Integer>();
 		for(int i=0; i<nrows; i++){
 		    if(((Boolean)datatable.getValueAt(i, 5)).booleanValue() == true){         
 			wires.add(new Integer(i));
@@ -190,9 +193,9 @@ public class DataFace extends JPanel{
 		
     }
    
-    public ArrayList parseFile(File newfile){
+    public ArrayList<Object> parseFile(File newfile){
 	ParseWireFile parsefile = new ParseWireFile();
-	ArrayList newdata = new ArrayList();
+	ArrayList<Object> newdata = new ArrayList<Object>();
 	try{
 	    newdata = parsefile.parseFile(newfile);
 	}
@@ -202,14 +205,15 @@ public class DataFace extends JPanel{
 	return newdata;
     }
     
-    public void toTable(String filename, ArrayList data){
+    @SuppressWarnings ("unchecked") //had to suppress warnings because data held multiple types.
+    public void toTable(String filename, ArrayList<Object> data){
 	
-	Iterator itr = data.iterator();	
+    	Iterator<Object> itr = data.iterator();
 
 	while(itr.hasNext()){
-	    HashMap map = new HashMap();
-	    ArrayList tabledata = new ArrayList();
-	    map = (HashMap)itr.next();
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        ArrayList<Object> tabledata = new ArrayList<Object>();
+        map = (HashMap<String, Object>)itr.next();
 	    tabledata.add(filename);
 	    tabledata.add((String)map.get("name"));
 	    tabledata.add(((ArrayList)map.get("fitparams")).get(0));
@@ -217,30 +221,30 @@ public class DataFace extends JPanel{
 	    tabledata.add(((ArrayList)map.get("fitparams")).get(2));
 	    tabledata.add(new Boolean(false));
 	    
-	    datatablemodel.addTableData(new ArrayList(tabledata));
+	    datatablemodel.addTableData(new ArrayList<Object>(tabledata));
 	}
 	datatablemodel.fireTableDataChanged();
     }
     
-    
-    public void toMasterDataTable(String filename, ArrayList data){
-	Iterator itr = data.iterator();	
+    @SuppressWarnings ("unchecked")//had to suppress warnings because HashMap contains multiple types and would not allow for specific casting.
+    public void toMasterDataTable(String filename, ArrayList<Object> data){
+    	Iterator<Object> itr = data.iterator();
 	while(itr.hasNext()){
-	    HashMap map = new HashMap();
-	    //HashMap datamap = new HashMap();
-	    ArrayList rawdata = new ArrayList();
-	    ArrayList paramdata = new ArrayList();
-	    
-	    map = (HashMap)itr.next();
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        //HashMap datamap = new HashMap();
+        ArrayList<ArrayList<Double>> rawdata = new ArrayList<ArrayList<Double>>();
+        ArrayList<ArrayList<Double>> paramdata = new ArrayList<ArrayList<Double>>();
+        
+        map = (HashMap<String, Object>)itr.next();
 	    String name = new String((String)map.get("name"));
-	    rawdata.add(new ArrayList((ArrayList)map.get("sdata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("sxdata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("sydata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("szdata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("xdata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("ydata")));
-	    rawdata.add(new ArrayList((ArrayList)map.get("zdata")));
-	    paramdata.addAll(new ArrayList((ArrayList)map.get("fitparams")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("sdata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("sxdata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("sydata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("szdata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("xdata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("ydata")));
+        rawdata.add(new ArrayList<Double>((ArrayList<Double>)map.get("zdata")));
+        paramdata.addAll(new ArrayList<ArrayList<Double>>((ArrayList<ArrayList<Double>>)map.get("fitparams")));
 	 
 	    //datamap.put(name, rawdata);
 	    //datamap.put("rms", paramdata);
@@ -261,11 +265,11 @@ public class DataFace extends JPanel{
 	if(masterdatatable.records().size() == 0){
 	    System.out.println("No files to remove!");
 	}
-	else{
-	    Collection records = masterdatatable.records();
-	    Iterator itr = records.iterator();	
+	else{	
+        Collection<GenericRecord> records = masterdatatable.records();
+        Iterator<GenericRecord> itr = records.iterator();
 	    while(itr.hasNext()){
-	      GenericRecord record = (GenericRecord)itr.next();
+	      GenericRecord record = itr.next();
 	      masterdatatable.remove(record);
 	    }
 	    doc.masterdatatable = masterdatatable;
@@ -274,7 +278,8 @@ public class DataFace extends JPanel{
 	
     }
 	
-    public void plotData(ArrayList wires){
+   @SuppressWarnings ("unchecked") //Had to suppress warning because valueforkey returns object and would not allow for specific casting
+    public void plotData(ArrayList<Integer> wires){
 	int xcolorindex = 1;
 	int ycolorindex = 1;
 	int zcolorindex = 1;
@@ -283,35 +288,35 @@ public class DataFace extends JPanel{
 	yrawdatapanel.removeAllGraphData();
 	zrawdatapanel.removeAllGraphData();
 	
-	ArrayList xgrapharray = new ArrayList();	
-	ArrayList ygrapharray = new ArrayList();
-	ArrayList zgrapharray = new ArrayList();
+    ArrayList<BasicGraphData> xgrapharray = new ArrayList<BasicGraphData>();
+    ArrayList<BasicGraphData> ygrapharray = new ArrayList<BasicGraphData>();
+    ArrayList<BasicGraphData> zgrapharray = new ArrayList<BasicGraphData>();
 	
-	Iterator itr = wires.iterator();	
+    Iterator<Integer> itr = wires.iterator();	
 	while(itr.hasNext()){
 	  
-	    ArrayList wiredata = new ArrayList();
+		ArrayList<ArrayList<Double>> wiredata = new ArrayList<ArrayList<Double>>();
 	    BasicGraphData xgraphdata = new BasicGraphData();
 	    BasicGraphData ygraphdata = new BasicGraphData();
 	    BasicGraphData zgraphdata = new BasicGraphData();
 	    
-	    int rownumber = ((Integer)itr.next()).intValue();
+	    int rownumber = (itr.next()).intValue();
 	    String filename = (String)datatable.getValueAt(rownumber, 0);
 	    String name = (String)datatable.getValueAt(rownumber, 1);
 	    
-	    Map bindings = new HashMap();
+	    Map<String, String> bindings = new HashMap<String, String>();
 	    bindings.put("file", filename);
 	    bindings.put("wire", name);
 	    GenericRecord record = masterdatatable.record(bindings);
-	    wiredata=(ArrayList)record.valueForKey("data");
+	    wiredata=(ArrayList<ArrayList<Double>>)record.valueForKey("data");
 	    
 	    //ArrayList slist = (ArrayList)wiredata.get(0);
-	    ArrayList sxlist = (ArrayList)wiredata.get(1);
-	    ArrayList sylist = (ArrayList)wiredata.get(2);
-	    ArrayList szlist = (ArrayList)wiredata.get(3);
-	    ArrayList xlist = (ArrayList)wiredata.get(4);
-	    ArrayList ylist = (ArrayList)wiredata.get(5);
-	    ArrayList zlist = (ArrayList)wiredata.get(6);
+        ArrayList<Double> sxlist = wiredata.get(1);
+        ArrayList<Double> sylist = wiredata.get(2);
+        ArrayList<Double> szlist = wiredata.get(3);
+        ArrayList<Double> xlist =  wiredata.get(4);
+        ArrayList<Double> ylist =  wiredata.get(5);
+        ArrayList<Double> zlist =  wiredata.get(6);
 	    
 	    int size = sxlist.size();
 	    
@@ -325,12 +330,12 @@ public class DataFace extends JPanel{
 	    
 	    for(int i=0; i<size; i++){
 		//sdata[i]=((Double)slist.get(i)).doubleValue();
-		sxdata[i] = ((Double)sxlist.get(i)).doubleValue();
-		sydata[i] = ((Double)sylist.get(i)).doubleValue();
-		szdata[i] = ((Double)szlist.get(i)).doubleValue();
-		xdata[i]=((Double)xlist.get(i)).doubleValue();
-		ydata[i]=((Double)ylist.get(i)).doubleValue();
-		zdata[i]=((Double)zlist.get(i)).doubleValue();
+		sxdata[i] = (sxlist.get(i)).doubleValue();
+		sydata[i] = (sylist.get(i)).doubleValue();
+		szdata[i] = (szlist.get(i)).doubleValue();
+		xdata[i]=(xlist.get(i)).doubleValue();
+		ydata[i]=(ylist.get(i)).doubleValue();
+		zdata[i]=(zlist.get(i)).doubleValue();
 	    }
 	    
 	    double xmax=0; double ymax=0; double zmax=0;
@@ -406,18 +411,18 @@ public class DataFace extends JPanel{
 	    zgrapharray.add(zgraphdata);
 	}
 	 
-	Iterator xitr = xgrapharray.iterator();
-	Iterator yitr = ygrapharray.iterator();
-	Iterator zitr = zgrapharray.iterator();
+    Iterator<BasicGraphData> xitr = xgrapharray.iterator();
+    Iterator<BasicGraphData> yitr = ygrapharray.iterator();
+    Iterator<BasicGraphData> zitr = zgrapharray.iterator();
 	
 	while(xitr.hasNext()){
-	    xrawdatapanel.addGraphData((BasicGraphData)xitr.next());
+	    xrawdatapanel.addGraphData(xitr.next());
 	}
 	while(yitr.hasNext()){
-	    yrawdatapanel.addGraphData((BasicGraphData)yitr.next());
+	    yrawdatapanel.addGraphData(yitr.next());
 	}
 	while(zitr.hasNext()){
-	    zrawdatapanel.addGraphData((BasicGraphData)zitr.next());
+	    zrawdatapanel.addGraphData(zitr.next());
 	}
 	
 	xrawdatapanel.setName("   Horizontal");

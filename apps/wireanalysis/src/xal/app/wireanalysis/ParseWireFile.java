@@ -18,14 +18,14 @@ import java.util.*;
  
 public class ParseWireFile{
     
-    public ArrayList wiredata = new ArrayList();
+    public ArrayList<Object>  wiredata = new ArrayList<Object> ();
     
     /** Creates new ParseWireFile */
     public ParseWireFile() {
 	
     }
     
-    public ArrayList parseFile(File newfile) throws IOException  {
+    public ArrayList<Object>  parseFile(File newfile) throws IOException  {
 	String s;
 	String firstName;
 	String header;
@@ -48,14 +48,14 @@ public class ParseWireFile{
 	boolean elsdata = false;
 	boolean elsx = false;
 	boolean elsy = false;
-	ArrayList fitparams = new ArrayList();
-	ArrayList xraw = new ArrayList();
-	ArrayList yraw = new ArrayList();
-	ArrayList zraw = new ArrayList();
-	ArrayList sraw = new ArrayList();
-	ArrayList sxraw = new ArrayList();
-	ArrayList syraw = new ArrayList();
-	ArrayList szraw = new ArrayList();
+    ArrayList<Double> fitparams = new ArrayList<Double>();
+    ArrayList<Double> xraw = new ArrayList<Double>();
+    ArrayList<Double> yraw = new ArrayList<Double>();
+    ArrayList<Double> zraw = new ArrayList<Double>();
+    ArrayList<Double> sraw = new ArrayList<Double>();
+    ArrayList<Double> sxraw = new ArrayList<Double>();
+    ArrayList<Double> syraw = new ArrayList<Double>();
+    ArrayList<Double> szraw = new ArrayList<Double>();
 	
 	//Open the file.
 	//URL url = getClass().getResource(filename);
@@ -70,7 +70,7 @@ public class ParseWireFile{
 	while((s=br.readLine()) != null){
 	    tokens = s.split("\\s+");
 	    nvalues = tokens.length;
-	    firstName = (String)tokens[0];
+	    firstName = tokens[0];
 	    //if(((String)tokens[0]).length()==0){  //Skip blank lines
 	    if((tokens[0]).length()==0 & firstName.length()>1){ //liyong modify
 		readraw = false;
@@ -114,21 +114,21 @@ public class ParseWireFile{
 		syraw.clear();
 		szraw.clear();
 	    }
-	    if(firstName.startsWith("Area")) ;
-	    if(firstName.startsWith("Ampl")) ;
-	    if(firstName.startsWith("Mean")) ;
+	    //if(firstName.startsWith("Area")) ;//unused
+	   // if(firstName.startsWith("Ampl")) ;
+	   // if(firstName.startsWith("Mean")) ;
 	    if(firstName.startsWith("Sigma")){
 		fitparams.add(new Double(Double.parseDouble(tokens[3]))); //zfit
 		fitparams.add(new Double(Double.parseDouble(tokens[1]))); //yfit
 		fitparams.add(new Double(Double.parseDouble(tokens[5]))); //xfit
 	    }
-	    if(firstName.startsWith("Offset")) ;
-	    if(firstName.startsWith("Slope")) ;
-	    if((firstName.equals("Position")) && (((String)tokens[2]).equals("Raw")) ){
+	 //   if(firstName.startsWith("Offset")) ;
+	 //   if(firstName.startsWith("Slope")) ;
+	    if((firstName.equals("Position")) && ((tokens[2]).equals("Raw")) ){
 		readraw = true;
 		continue;
 	    }
-	    if((firstName.equals("Position")) && (((String)tokens[2]).equals("Fit")) ){
+	    if((firstName.equals("Position")) && ((tokens[2]).equals("Fit")) ){
 		readfit = true;
 	    	continue;
 	    }		
@@ -185,7 +185,7 @@ public class ParseWireFile{
 	    if(firstName.startsWith("---")) continue ;
 	    
 	    if(harpdata==true){
-		if(((String)tokens[0]).length()!=0){  //Skip blank lines
+		if((tokens[0]).length()!=0){  //Skip blank lines
 		    if(firstName.startsWith("PVLogger")){
 			try{
 			    PVLoggerID = new Integer(Integer.parseInt(tokens[2]));
@@ -208,13 +208,13 @@ public class ParseWireFile{
 	    
 	    if(elsdata==true){
 		    if(elsx == true){
-			    if(((String)tokens[0]).length()!=0){  //Skip blank lines
+			    if((tokens[0]).length()!=0){  //Skip blank lines
 				    sxraw.add(new Double(Double.parseDouble(tokens[0])));
 				    xraw.add(new Double(Double.parseDouble(tokens[1])));
 			    }
 		    }
 		    if(elsy == true){
-			    if(((String)tokens[0]).length()!=0){  //Skip blank lines
+			    if((tokens[0]).length()!=0){  //Skip blank lines
 				    syraw.add(new Double(Double.parseDouble(tokens[0])));
 				    yraw.add(new Double(Double.parseDouble(tokens[1])));
 					szraw.add(new Double(0.0));
@@ -258,38 +258,39 @@ public class ParseWireFile{
 	}
 	dumpData(name, fitparams, sraw, sxraw, syraw, szraw, yraw, zraw, xraw);
 	//writeData();
-	wiredata.add((Integer)PVLoggerID);
+	wiredata.add(PVLoggerID);
 	return wiredata;
  }
 
- private void dumpData(String label, ArrayList fitparams, ArrayList sraw, ArrayList sxraw, ArrayList syraw, ArrayList szraw, ArrayList yraw, ArrayList zraw, ArrayList xraw){
-    
-	 HashMap data = new HashMap();
-
+ private void dumpData(String label, ArrayList<Double> fitparams, ArrayList<Double> sraw, ArrayList<Double> sxraw, ArrayList<Double> syraw, ArrayList<Double> szraw, ArrayList<Double> yraw, ArrayList<Double> zraw, ArrayList<Double> xraw){   
+	
+	 HashMap<String,Object>  data = new HashMap<String, Object>();
+	 
      data.put("name", label);
-     data.put("fitparams", new ArrayList(fitparams));
-     data.put("sdata", new ArrayList(sraw));
-     data.put("sxdata", new ArrayList(sxraw));
-     data.put("sydata", new ArrayList(syraw));
-     data.put("szdata", new ArrayList(szraw));
-     data.put("xdata", new ArrayList(xraw));
-     data.put("ydata", new ArrayList(yraw));
-     data.put("zdata", new ArrayList(zraw));
+     data.put("fitparams", new ArrayList<Double>(fitparams));
+     data.put("sdata", new ArrayList<Double>(sraw));
+     data.put("sxdata", new ArrayList<Double>(sxraw));
+     data.put("sydata", new ArrayList<Double>(syraw));
+     data.put("szdata", new ArrayList<Double>(szraw));
+     data.put("xdata", new ArrayList<Double>(xraw));
+     data.put("ydata", new ArrayList<Double>(yraw));
+     data.put("zdata", new ArrayList<Double>(zraw));
 	      
      wiredata.add((HashMap)data);
      
    }
-     
+ 
+ @SuppressWarnings ("unchecked") //Had to suppress because wiredata holds multiple types.    
  private void writeData(){
      //This is just a routine to write out the current data set.
-     Iterator itr = wiredata.iterator();
+	 Iterator<Object> itr = wiredata.iterator();
      	while(itr.hasNext()){
-	    HashMap map = (HashMap)itr.next();
-	    ArrayList fitlist = (ArrayList)map.get("fitparams");
-	    ArrayList slist = (ArrayList)map.get("sdata");
-	    ArrayList ylist = (ArrayList)map.get("ydata");
-	    ArrayList zlist = (ArrayList)map.get("zdata");
-	    ArrayList xlist = (ArrayList)map.get("xdata");
+     	HashMap<String, ArrayList<Double>> map = (HashMap<String, ArrayList<Double>>)itr.next();
+	    ArrayList<Double>  fitlist = map.get("fitparams");
+	    ArrayList<Double>  slist = map.get("sdata");
+	    ArrayList<Double>  ylist = map.get("ydata");
+	    ArrayList<Double>  zlist = map.get("zdata");
+	    ArrayList<Double>  xlist = map.get("xdata");
 	    int ssize = slist.size();
 	    int xsize = xlist.size();
 	    int ysize = ylist.size();

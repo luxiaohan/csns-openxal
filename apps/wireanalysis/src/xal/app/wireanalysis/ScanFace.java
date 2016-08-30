@@ -32,6 +32,9 @@ import xal.smf.impl.WireScanner;
 import xal.tools.apputils.EdgeLayout;
 
 public class ScanFace extends JPanel {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
 	public JPanel mainPanel;
 	public JTable wiretable;
@@ -48,7 +51,7 @@ public class ScanFace extends JPanel {
 	JButton scanbutton;
 	JButton abortbutton;
 	JButton homebutton;
-	ArrayList openwires;
+	ArrayList<AcceleratorNode> openwires;
 
 	// Member function Constructor
 	public ScanFace(GenDocument aDocument) {
@@ -90,19 +93,19 @@ public class ScanFace extends JPanel {
 
 		makeWireTable();
 
-		openwires = new ArrayList();
+		openwires = new ArrayList<AcceleratorNode>();
 	}
 
 	public void setAction() {
 		sequencebutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList tabledata = new ArrayList();
+				ArrayList<Object> tabledata = new ArrayList<Object>();
 				TransLineSeqSelector selector = new TransLineSeqSelector();
 				selector.selectSequence();
-				ArrayList seqlistnames = selector.getSeqList();
-				Iterator itr = seqlistnames.iterator();
+				ArrayList<Object> seqlistnames = selector.getSeqList();
+                Iterator<Object> itr = seqlistnames.iterator();
 				while (itr.hasNext()) {
-					AcceleratorSeq seq = accl.getSequence((String) itr.next());
+					AcceleratorSeq seq = accl.getSequence(itr.next().toString());
 					ArrayList<AcceleratorNode> wirelist = (ArrayList<AcceleratorNode>) seq
 							.getNodesOfType("WS");
 					for (AcceleratorNode node : wirelist) {
@@ -112,14 +115,13 @@ public class ScanFace extends JPanel {
 					}
 				}
 				wiretablemodel.clearAllData();
-				itr = openwires.iterator();
-				while (itr.hasNext()) {
+				for ( final AcceleratorNode wireNode : openwires ) {
 					tabledata.clear();
 					WireScanner wire = (WireScanner) itr.next();
 					tabledata.add(new String(wire.getId()));
 					tabledata.add(new Boolean(true));
 					tabledata.add(new String("null"));
-					wiretablemodel.addTableData(new ArrayList(tabledata));
+					wiretablemodel.addTableData(new ArrayList<Object>(tabledata));
 				}
 				wiretablemodel.fireTableDataChanged();
 			}
@@ -127,7 +129,7 @@ public class ScanFace extends JPanel {
 
 		scanbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList scanwirelist = new ArrayList();
+				ArrayList<WireScanner> scanwirelist = new ArrayList<WireScanner>();
 				for (int i = 0; i < wiretablemodel.getRowCount(); i++) {
 					if ((Boolean) wiretablemodel.getValueAt(i, 1)) {
 						scanwirelist.add(new WireScanner(
@@ -143,7 +145,7 @@ public class ScanFace extends JPanel {
 
 		abortbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList abortwirelist = new ArrayList();
+				ArrayList<WireScanner> abortwirelist = new ArrayList<WireScanner>();
 				for (int i = 0; i < wiretablemodel.getRowCount(); i++) {
 					if ((Boolean) wiretablemodel.getValueAt(i, 1)) {
 						abortwirelist.add(new WireScanner(
@@ -164,10 +166,10 @@ public class ScanFace extends JPanel {
 
 	}
 
-	private void startScans(ArrayList scanwires) {
-		Iterator itr = scanwires.iterator();
+	private void startScans(ArrayList<WireScanner> scanwires) {
+		Iterator<WireScanner> itr = scanwires.iterator();
 		while (itr.hasNext()) {
-			WireScanner ws = (WireScanner) itr.next();
+			WireScanner ws = itr.next();
 			try {
 				// ws.runCommand(ws.SCAN_COMMAND);
 				ws.runCommand(WireScanner.CMD.XPRT_SCAN);
@@ -189,10 +191,10 @@ public class ScanFace extends JPanel {
 		}
 	}
 
-	private void abortScans(ArrayList scanwires) {
-		Iterator itr = scanwires.iterator();
+	private void abortScans(ArrayList<WireScanner> scanwires) {
+		Iterator<WireScanner> itr = scanwires.iterator();
 		while (itr.hasNext()) {
-			WireScanner ws = (WireScanner) itr.next();
+			WireScanner ws = itr.next();
 			try {
 				// ws.runCommand(ws.ABORT_COMMAND);
 				ws.runCommand(WireScanner.CMD.ABORT);

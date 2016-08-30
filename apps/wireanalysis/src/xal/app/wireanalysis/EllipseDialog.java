@@ -10,6 +10,9 @@ import xal.extension.widgets.plot.*;
 
 
 public class EllipseDialog extends JDialog {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 	protected GenWindow mywindow;
 	protected FunctionGraphsJPanel GP_begin,GP_slit;
 	protected JCheckBox jcbx,jcby;
