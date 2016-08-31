@@ -46,6 +46,8 @@ import xal.smf.impl.qualify.TypeQualifier;
 
 public class MTVWindow extends AcceleratorWindow {
 	
+	private static final long serialVersionUID = 1L;
+	
 	/** table of knob elements */
 	protected AcceleratorSeq _sequence;
 	protected Accelerator _acc;
@@ -74,9 +76,8 @@ public class MTVWindow extends AcceleratorWindow {
 		if (sequence == null) return;
 		_sequence = sequence;
 		pvrecordlist.clear();
-		TypeQualifier typeQualifier = QualifierFactory.qualifierWithStatusAndTypes( true, Electromagnet.s_strType );
-        final List magnetNodes = _sequence.getAllNodesWithQualifier( typeQualifier );
-		List<Electromagnet> mags = new ArrayList<Electromagnet>( magnetNodes );
+		TypeQualifier typeQualifier = QualifierFactory.qualifierWithStatusAndTypes( true, Electromagnet.s_strType );       
+		List<Electromagnet> mags = _sequence.getAllNodesWithQualifier( typeQualifier );
 		List<String> spchannelnames=new ArrayList<String>(mags.size());
 		List<String> rbchannelnames=new ArrayList<String>(mags.size());
 		for(int i=0;i<mags.size();i++){

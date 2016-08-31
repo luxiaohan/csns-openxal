@@ -19,6 +19,7 @@ import javax.swing.table.TableColumnModel;
 
 class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
 		TableCellEditor, ActionListener {
+	private static final long serialVersionUID = 1L;
 	protected JTable table;
 	protected MTVWindow mywindow;
 	protected JRadioButton renderButton;
@@ -28,7 +29,7 @@ class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
 	protected TableColumnModel columnModel;
 	protected int selectedrow;
 
-	public ButtonColumn(MTVWindow window, JTable table, int column) {
+	public ButtonColumn(MTVWindow window, JTable table, int column) {		
 		super();
 		this.table = table;
 		mywindow = window;
