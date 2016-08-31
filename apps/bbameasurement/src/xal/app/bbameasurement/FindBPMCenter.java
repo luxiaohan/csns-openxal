@@ -196,13 +196,13 @@ public class FindBPMCenter{
 	}
 	
 	public Quadrupole getnearestquad() {
-		List avilabalequads = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(MagnetType.QUADRUPOLE).and(QualifierFactory.getStatusQualifier( true )));
-		final Iterator quadIter = avilabalequads.iterator();
+		List<Quadrupole> avilabalequads = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(MagnetType.QUADRUPOLE).and(QualifierFactory.getStatusQualifier( true )));
+		final Iterator<Quadrupole> quadIter = avilabalequads.iterator();
 		double bpmPosition = _sequence.getPosition(_bpmmeasuring);
 		double gap = _sequence.getLength();
 		Quadrupole nearestquad = null;
 		while (quadIter.hasNext()) {
-			Quadrupole quad = (Quadrupole) quadIter.next();
+			Quadrupole quad = quadIter.next();
 			double quadPosition = _sequence.getPosition(quad);
 			double quadbpmgap = Math.abs(quadPosition - bpmPosition);
 			if ( quadbpmgap < gap) {

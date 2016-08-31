@@ -21,6 +21,7 @@ import xal.smf.impl.*;
 import xal.smf.impl.qualify.*;
 
 public class BBAWindow extends AcceleratorWindow implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	private JLabel jlBPMSelected, jlBPMDownstreamSelected;
 	private JLabel jlUpstreamCorrSelected;
 	
@@ -84,8 +85,8 @@ public class BBAWindow extends AcceleratorWindow implements ActionListener {
 		//final List allCorrectors = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and( MagnetType.DIPOLE ).and( QualifierFactory.getStatusQualifier( true ) ));
 		
 		// 只选择校正子，排除偏转磁铁
-		List allHCorrectors = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(HDipoleCorr.s_strType).and( QualifierFactory.getStatusQualifier( true ) ));
-		List allVCorrectors = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(VDipoleCorr.s_strType).and( QualifierFactory.getStatusQualifier( true ) ));
+		List<HDipoleCorr> allHCorrectors = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(HDipoleCorr.s_strType).and( QualifierFactory.getStatusQualifier( true ) ));
+		List<VDipoleCorr> allVCorrectors = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(VDipoleCorr.s_strType).and( QualifierFactory.getStatusQualifier( true ) ));
 
 		AVAILABLE_Correctors.clear();
 		AVAILABLE_Correctors.addAll(allHCorrectors);
@@ -105,7 +106,7 @@ public class BBAWindow extends AcceleratorWindow implements ActionListener {
 	public void loadBPMs() {
 		if(_sequence == null) AVAILABLE_BPMs.clear();
 		else{
-			List bpms = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(BPM.s_strType).and(QualifierFactory.getStatusQualifier(true)));
+			List<BPM> bpms = _sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(BPM.s_strType).and(QualifierFactory.getStatusQualifier(true)));
 			
 			AVAILABLE_BPMs.clear();
 			AVAILABLE_BPMs.addAll(bpms);

@@ -41,7 +41,7 @@ import gov.sns.xal.smf.proxy.ElectromagnetPropertyAccessor;*/
 public class MatrixCal {
 	AcceleratorSeq _sequence;
 	int _step;
-	Trajectory traj;
+	Trajectory<?> traj;
 	EnvelopeProbe probe;
 	Scenario scenario = null;
 	List<AcceleratorNode> bpms;
@@ -91,7 +91,7 @@ public class MatrixCal {
 		}
 	}
 
-	public PhaseMatrix getTransferMatrix(Trajectory traj,final String strFromElement, final String strToElement) {
+	public PhaseMatrix getTransferMatrix(Trajectory<?> traj,final String strFromElement, final String strToElement) {
 
 		final EnvelopeProbeState stateFrom = (EnvelopeProbeState) traj
 				.stateForElement(strFromElement);
@@ -101,10 +101,10 @@ public class MatrixCal {
 		
 	//	System.out.print(" ,"+stateTo.phaseMean().getx()*1000);
 		
-		final PhaseMatrix matFrom = ((EnvelopeProbeState) stateFrom)
+		final PhaseMatrix matFrom = stateFrom
 				.getResponseMatrix();
 
-		final PhaseMatrix matTo = ((EnvelopeProbeState) stateTo)
+		final PhaseMatrix matTo = stateTo
 				.getResponseMatrix();
 		// System.out.println("matFrom:" + matFrom);
 		// System.out.println("matTo:" + matTo);

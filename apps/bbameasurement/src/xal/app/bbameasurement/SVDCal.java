@@ -75,27 +75,27 @@ public class SVDCal {
 		return matSVDRighty;
 	}
 
-	public static double[] getQuadoffsetx() {
+	public  double[] getQuadoffsetx() {
 		return quadoffsetx;
 	}
 
-	public static double[] getBpmoffsetx() {
+	public  double[] getBpmoffsetx() {
 		return bpmoffsetx;
 	}
 
-	public static double[] getInitialx() {
+	public double[] getInitialx() {
 		return initialx;
 	}
 	
-	public static double[] getQuadoffsety() {
+	public  double[] getQuadoffsety() {
 		return quadoffsety;
 	}
 
-	public static double[] getBpmoffsety() {
+	public  double[] getBpmoffsety() {
 		return bpmoffsety;
 	}
 
-	public static double[] getInitialy() {
+	public  double[] getInitialy() {
 		return initialy;
 	}
 
@@ -165,7 +165,7 @@ public class SVDCal {
 		//matSVDRight.print(9, 6);
     }
 	
-	public static void getsvd(Matrix Ax,Matrix Mx,Matrix Ay,Matrix My) {
+	public void getsvd(Matrix Ax,Matrix Mx,Matrix Ay,Matrix My) {
         SingularValueDecomposition sx = Ax.svd();
         SingularValueDecomposition sy = Ay.svd();
         Matrix Ux = sx.getU();

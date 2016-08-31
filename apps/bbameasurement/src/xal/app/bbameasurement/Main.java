@@ -103,7 +103,7 @@ public class Main extends ApplicationAdaptor {
         }
         
         catch(Exception exception) {
-			Logger.global.log( Level.SEVERE, "Failed application launch.", exception );
+        	Logger.getLogger("global").log( Level.SEVERE, "Failed application launch.", exception );
 			System.err.println( exception.getMessage() );
 			exception.printStackTrace();
 			Application.displayApplicationError("Launch Exception", "Launch Exception", exception);
