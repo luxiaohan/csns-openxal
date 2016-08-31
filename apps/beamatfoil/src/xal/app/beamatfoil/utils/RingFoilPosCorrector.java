@@ -114,7 +114,7 @@ public class RingFoilPosCorrector {
 	private AcceleratorSeq accSeq = null;
 
 	//current format
-	private FortranNumberFormat frmt = new FortranNumberFormat("G10.3");
+	private ScientificNumberFormat frmt = new ScientificNumberFormat( 4, 10, false );
 
 	//message text field. It is actually message text field from Window
 	private JTextField messageTextLocal = new JTextField();
@@ -204,15 +204,15 @@ public class RingFoilPosCorrector {
 		ftDownPanel.add(ftDown0Panel);
 		ftDownPanel.add(ftDown1Panel);
 		
-		posResTextField.setDecimalFormat(frmt);
-		angleResTextField.setDecimalFormat(frmt);
+		posResTextField.setNumberFormat(frmt);
+		angleResTextField.setNumberFormat(frmt);
 		posResTextField.setHorizontalAlignment(JTextField.CENTER);
 		angleResTextField.setHorizontalAlignment(JTextField.CENTER); 
 		
-		r4bpm01PosTextField.setDecimalFormat(frmt);
-		r1bpm01PosTextField.setDecimalFormat(frmt);
-		xFoilPosTextField.setDecimalFormat(frmt);
-		xpFoilPosTextField.setDecimalFormat(frmt);
+		r4bpm01PosTextField.setNumberFormat(frmt);
+		r1bpm01PosTextField.setNumberFormat(frmt);
+		xFoilPosTextField.setNumberFormat(frmt);
+		xpFoilPosTextField.setNumberFormat(frmt);
 		
 		r4bpm01PosTextField.setHorizontalAlignment(JTextField.CENTER);
 		r1bpm01PosTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -812,7 +812,9 @@ public class RingFoilPosCorrector {
 		//horizontal correctors table model
 		corrTableModel =
 			new AbstractTableModel() {
-				public Class getColumnClass(int columnIndex) {
+            /** ID for serializable version */
+            private static final long serialVersionUID = 1L;
+				public Class<?> getColumnClass(int columnIndex) {
 					return String.class;
 				}
 

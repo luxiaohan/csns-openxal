@@ -21,6 +21,9 @@ import java.awt.*;
  */
 
 public class BeamAtFoilWindow extends XalWindow {
+	
+    /** ID for serializable version */
+  private static final long serialVersionUID = 1L;
 
   private JPanel mainPanel = new JPanel(new BorderLayout());
 
