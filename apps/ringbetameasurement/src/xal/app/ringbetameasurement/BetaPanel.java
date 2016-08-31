@@ -129,7 +129,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 
 	int len = 1024;                                                   //weiyy
 
-	protected JComboBox fftConf;
+	protected JComboBox<String> fftConf;
 	
 	JProgressBar progBar;
 
@@ -244,7 +244,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 					// do nothing
 				} else {
 					int selectedRow = lsm.getMinSelectionIndex();
-					setSelectedBPM(((BPM) allBPMs.get(selectedRow)).getId());
+					setSelectedBPM(( allBPMs.get(selectedRow)).getId());
 					if (!badBPMs.contains(new Integer(selectedRow))) {
 	//					plotBPMData(selectedRow);
 					}
@@ -344,7 +344,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 		fftPane.setLayout(new GridLayout(1, 2));
 		JLabel label8 = new JLabel("FFT array size: ");
 		String[] fftChoice = { "32", "64", "128", "256","1024" };
-		fftConf = new JComboBox(fftChoice);
+		fftConf = new JComboBox<String>(fftChoice);
 		fftConf.setSelectedIndex(4);
 		fftConf.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,7 +433,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 		add(plotDisplayPane);
 
 		for (int i = 0; i < allBPMs.size(); i++) {
-			bpmTableModel.addRowName(((BPM) allBPMs.get(i)).getId(), i);
+			bpmTableModel.addRowName((allBPMs.get(i)).getId(), i);
 			bpmTableModel.setValueAt("0", i, 1);
 			bpmTableModel.setValueAt("0", i, 2);
 			bpmTableModel.setValueAt("0", i, 3);
@@ -496,7 +496,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 
 			//TransferMapTrajectory traj = (TransferMapTrajectory) scenario
 			//		.getTrajectory();
-			Trajectory traj = scenario.getTrajectory();
+			Trajectory<?> traj = scenario.getTrajectory();
 
 	
 			
@@ -684,7 +684,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 			
 					for (int i = 0; i < allBPMs.size(); i++) {
 						
-						BPM theBPM = (BPM) allBPMs.get(i);	
+						BPM theBPM =  allBPMs.get(i);	
 						
 						data[0]=datax[i];
 						data[1]=datay[i];
@@ -713,7 +713,7 @@ public class BetaPanel extends JPanel implements ConnectionListener,
 					// BPM theBPM = (BPM) (myDoc.getSelectedSequence()
 					// .getNodeWithId(selectedBPM));
 
-			    BPM theBPM = (BPM) allBPMs.get(i);
+			    BPM theBPM =  allBPMs.get(i);
 				BPMData[0][i]=bpmMap.get(theBPM.getId())[0];
 			    BPMData[1][i]=bpmMap.get(theBPM.getId())[1];
 				}
