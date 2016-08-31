@@ -48,7 +48,7 @@ public class Magnet implements Cloneable{
 		copy._id = _id;
 		copy._sort = _sort;
 		copy._date = (Date) _date.clone();
-		copy._info = (MagnetInformation) _info.clone();
+		copy._info = _info.clone();
 		
 		copy._magnetizationcurves  = new HashMap<Integer, MagnetizationCurve>();
 		for(int i : _magnetizationcurves.keySet()) copy.addMagnetizationCurve(_magnetizationcurves.get(i).clone());

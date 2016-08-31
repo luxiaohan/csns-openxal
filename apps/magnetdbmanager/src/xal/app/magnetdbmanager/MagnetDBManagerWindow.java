@@ -72,6 +72,7 @@ import xal.tools.xml.XmlDataAdaptor.ResourceNotFoundException;
  * @author  Liu Weibin
  */
 public class MagnetDBManagerWindow extends XalWindow{
+	private static final long serialVersionUID = 1L;
 //public class MyWindow extends XalWindow implements MagnetSelectedListener{
     private TableView<MagnetTableData> _magnetTableView = null;
     
