@@ -43,6 +43,9 @@ import gov.sns.xal.model.scenario.Scenario;*/
  * @author jdg
  */
 public class PastaWindow extends AcceleratorWindow {
+	
+	private static final long serialVersionUID = 1L;
+	
     protected JTabbedPane mainTabbedPane;
     private PastaDocument theDoc;
     /** main panels */
@@ -54,7 +57,7 @@ public class PastaWindow extends AcceleratorWindow {
     private JScrollPane BPM1SelectScrollPane, BPM2SelectScrollPane,
             cavitySelectScrollPane, BCMSelectScrollPane;
     private JLabel BPM1ListLabel, BPM2ListLabel, cavityListLabel, BCMListLabel;
-    protected JComboBox algorithmChooser;
+    protected JComboBox<String> algorithmChooser;
     protected JTextArea pvListTextArea, pvListTextArea1D;
     private JFileChooser jfc;
     /** label to display design amp + phase */
@@ -168,7 +171,7 @@ public class PastaWindow extends AcceleratorWindow {
         // remove point buttons actions
         removeCavOnPointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Vector gdV = theDoc.scanStuff.graphScan.getAllGraphData();
+                Vector<BasicGraphData> gdV = theDoc.scanStuff.graphScan.getAllGraphData();
                 double minX = theDoc.scanStuff.graphScan.getCurrentMinX();
                 double maxX = theDoc.scanStuff.graphScan.getCurrentMaxX();
                 double minY = theDoc.scanStuff.graphScan.getCurrentMinY();
@@ -185,7 +188,7 @@ public class PastaWindow extends AcceleratorWindow {
                 if (gd != null && IndP != null) {
                     int ind = IndP.intValue();
                     for (int i = 0; i < gdV.size(); i++) {
-                        BasicGraphData gd0 = (BasicGraphData) gdV.get(i);
+                        BasicGraphData gd0 =  gdV.get(i);
                         gd0.removePoint(ind);
                     }
                     theDoc.scanStuff.graphScan.clearZoomStack();
@@ -203,7 +206,7 @@ public class PastaWindow extends AcceleratorWindow {
 
         removeCavOffPointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Vector gdV = theDoc.scanStuff.graphScan1D.getAllGraphData();
+                Vector<BasicGraphData>  gdV = theDoc.scanStuff.graphScan1D.getAllGraphData();
                 double minX = theDoc.scanStuff.graphScan1D.getCurrentMinX();
                 double maxX = theDoc.scanStuff.graphScan1D.getCurrentMaxX();
                 double minY = theDoc.scanStuff.graphScan1D.getCurrentMinY();
@@ -220,7 +223,7 @@ public class PastaWindow extends AcceleratorWindow {
                 if (gd != null && IndP != null) {
                     int ind = IndP.intValue();
                     for (int i = 0; i < gdV.size(); i++) {
-                        BasicGraphData gd0 = (BasicGraphData) gdV.get(i);
+                        BasicGraphData gd0 =  gdV.get(i);
                         gd0.removePoint(ind);
                     }
                     theDoc.scanStuff.graphScan1D.clearZoomStack();
@@ -720,7 +723,7 @@ public class PastaWindow extends AcceleratorWindow {
         gbc.gridx = 1;
         gbc.gridy = sumy++;
         nModelStepsField = new DoubleInputTextField((new Integer(theDoc.analysisStuff.nCalcPoints)).toString());
-        nModelStepsField.setDecimalFormat(new DecimalFormat("###"));
+        nModelStepsField.setNumberFormat(new DecimalFormat("###"));
         nModelStepsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 theDoc.analysisStuff.nCalcPoints = (int) nModelStepsField.getValue();
@@ -1151,14 +1154,14 @@ public class PastaWindow extends AcceleratorWindow {
         BasicGraphData curveDataMeasured;
 
         for (int i = 0; i < theDoc.analysisStuff.phasesCavMeasured.size(); i++) {
-            phaseCavMeasuredV = (Vector<Double>) theDoc.analysisStuff.phasesCavMeasured.get(new Integer(i));
+            phaseCavMeasuredV = theDoc.analysisStuff.phasesCavMeasured.get(new Integer(i));
             if (theDoc.analysisStuff.phaseDiffsBPMMeasured.size() < i + 1) {
                 String errText = "Oh no!, The cavity and FCT phase containers are different sizes\n - I can't plot this";
                 theDoc.myWindow().errorText.setText(errText);
                 System.err.println(errText);
                 return;
             }
-            phaseDiffBPMMeasuredV = (Vector<Double>) theDoc.analysisStuff.phaseDiffsBPMMeasured.get(new Integer(i));
+            phaseDiffBPMMeasuredV = theDoc.analysisStuff.phaseDiffsBPMMeasured.get(new Integer(i));
             double[] pCavM = theDoc.analysisStuff.toDouble(phaseCavMeasuredV);
             double[] pBPMM = theDoc.analysisStuff.toDouble(phaseDiffBPMMeasuredV);
             curveDataMeasured = new BasicGraphData();
@@ -1179,13 +1182,13 @@ public class PastaWindow extends AcceleratorWindow {
 
     protected void plotModelData() {
 
-        Vector phaseCavModelV, phaseDiffBPMModelV, WOutV;
+        Vector<Double> phaseCavModelV, phaseDiffBPMModelV, WOutV;
         BasicGraphData curveDataModel, WOutModel;
         theDoc.analysisStuff.WOutModelMap.clear();
 
         for (int i = 0; i < theDoc.useScanInMatch.size(); i++) {
-            if (((Boolean) theDoc.useScanInMatch.get(i)).booleanValue()) {
-                phaseCavModelV = (Vector) theDoc.analysisStuff.phasesCavModelScaledV
+            if ((theDoc.useScanInMatch.get(i)).booleanValue()) {
+                phaseCavModelV = theDoc.analysisStuff.phasesCavModelScaledV
                         .get(new Integer(i));
                 if (theDoc.analysisStuff.phaseDiffsBPMModelV.get(new Integer(i)) == null) {
                     String errText = "Oh no!, The model cavity and FCT phase containers are different sizes\n - I can't plot this";
@@ -1199,7 +1202,7 @@ public class PastaWindow extends AcceleratorWindow {
                     System.err.println(errText);
                     return;
                 }
-                phaseDiffBPMModelV = (Vector) theDoc.analysisStuff.phaseDiffsBPMModelV.get(new Integer(i));
+                phaseDiffBPMModelV = theDoc.analysisStuff.phaseDiffsBPMModelV.get(new Integer(i));
                 double[] pCavM = theDoc.analysisStuff.toDouble(phaseCavModelV);
                 double[] pBPMM = theDoc.analysisStuff.toDouble(phaseDiffBPMModelV);
                 curveDataModel = new BasicGraphData();
@@ -1212,7 +1215,7 @@ public class PastaWindow extends AcceleratorWindow {
                 curveDataModel.setGraphColor(IncrementalColors.getColor(i));
                 graphAnalysis.addGraphData(curveDataModel);
 
-                WOutV = (Vector) theDoc.analysisStuff.WOutsV.get(new Integer(i));
+                WOutV = theDoc.analysisStuff.WOutsV.get(new Integer(i));
                 double[] WOut = theDoc.analysisStuff.toDouble(WOutV);
                 WOutModel = new BasicGraphData();
                 WOutModel.addPoint(pCavM, WOut);

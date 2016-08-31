@@ -72,7 +72,7 @@ public class AnalysisStuff {
     
     /** containers for the model predicted arrays */
     protected HashMap<Integer, Vector<Double>> phasesCavModelScaledV, phaseDiffsBPMModelV, WOutsV;
-    protected HashMap WOutModelMap = new HashMap();
+    protected HashMap<Integer, BasicGraphData> WOutModelMap = new HashMap<Integer, BasicGraphData>();
     
     /** containers for measured data */
     protected HashMap<Integer, Vector<Double>> phasesCavMeasured, phaseDiffsBPMMeasured;
@@ -166,7 +166,7 @@ public class AnalysisStuff {
     
     // model stuff
     /** the probe to use for the model */
-    private Probe theProbe;
+    protected Probe<?> theProbe;
     /** the default file for the probe file */
     protected File probeFile;
    /** the default filename for the probe file */
@@ -222,8 +222,8 @@ public class AnalysisStuff {
     	phasesCavModelScaledV = new HashMap<Integer, Vector<Double>>();   
     	phaseDiffsBPMModelV = new HashMap<Integer, Vector<Double>>();
     	WOutsV = new HashMap<Integer, Vector<Double>>();
-    	phaseDiffsBPMMeasured = new HashMap();
-    	phasesCavMeasured = new HashMap();
+        phaseDiffsBPMMeasured = new HashMap<Integer, Vector<Double>>();
+        phasesCavMeasured = new HashMap<Integer, Vector<Double>>();
     	   
     	makeCalcPoints();
    }
@@ -279,7 +279,7 @@ public class AnalysisStuff {
 			    //System.out.println("i = " + i + " field1 = " + field1 + " nomfield = " + nominalField);
 			    if (ratio == 0.) {
 				    // backward compatibility case, before measured E-field were taken:
-				    ratio = ((Double) paramMeasuredVals.get(i)).doubleValue()/ ((Double)paramMeasuredVals.get(amplitudeVariableIndex)).doubleValue();				 
+				    ratio = ( paramMeasuredVals.get(i)).doubleValue()/ (paramMeasuredVals.get(amplitudeVariableIndex)).doubleValue();				 
 			    }						
 			    double val2 = ratio * cavityVoltage;
 			    ampValueV.add(new Double(val2));
@@ -435,9 +435,9 @@ public class AnalysisStuff {
 		     
 		     if(theDoc.myWindow().useWrappingButton.isSelected() && (BPMPhaseDiffV.size() > 0)) {
 			     // unwrap data option here:
-			     double previousVal = ((Double) BPMPhaseDiffV.get(0)).doubleValue();
+			     double previousVal = ( BPMPhaseDiffV.get(0)).doubleValue();
 			     for (int k = 1; k < BPMPhaseDiffV.size(); k++) {
-				     double oldVal = ((Double) BPMPhaseDiffV.get(k)).doubleValue();
+				     double oldVal = ( BPMPhaseDiffV.get(k)).doubleValue();
 				     double newVal = TrigStuff.unwrap(oldVal, previousVal);
 				     BPMPhaseDiffV.setElementAt(new Double(newVal), k);
 				     previousVal = newVal;
@@ -492,7 +492,7 @@ public class AnalysisStuff {
     }
     
     /** this method returns the phase of a node in a trajectory, relative to the first point in the model run for this state. */
-    private double getPhase( ProbeState state, FCT bpm) {
+    private double getPhase( ProbeState<? extends ProbeState<?>> state, FCT bpm) {
 	    double freq = bpm.getFCTBucket().getFrequency() * 1.e6;
 	    
 	    // correction time for electrode being offset from the BPM center:
@@ -518,7 +518,7 @@ public class AnalysisStuff {
 	    return phase;
     }
     
-    private double getTime(ProbeState state, FCT bpm) {
+    private double getTime(ProbeState<?> state, FCT bpm) {
 	    // correction time for electrode being offset from the BPM center:
 	    double gamma = 1. + state.getKineticEnergy()/state.getSpeciesRestEnergy();
 	    double beta = Math.sqrt(1. - 1./(gamma*gamma));
@@ -560,8 +560,8 @@ public class AnalysisStuff {
 		    theModel.run();
 		    traj = theModel.getProbe().getTrajectory();
 				    
-		    ArrayList al = new ArrayList(theCavity.getGaps());
-		    RfGap gap0 = (RfGap) al.get(0);
+		    ArrayList<RfGap> al = new ArrayList<RfGap>(theDoc.theCavity.getGaps());
+		    RfGap gap0 =  al.get(0);
 		    states = traj.statesForElement(gap0.getId());
 		    //state0 = (EnvelopeProbeState) states[0];
 		    //state0 = (ProbeState) states[0];
@@ -629,8 +629,8 @@ public class AnalysisStuff {
 	    // range of phases that have BPM amplitude readings above minimum for parsing:
 	    double cavPhaseScaledMin, cavPhaseScaledMax;
 	    Vector<Double> phaseCavMeasured = phasesCavMeasured.get(new Integer(i));
-	    cavPhaseScaledMin = ((Double) phaseCavMeasured.get(0)).doubleValue();
-	    cavPhaseScaledMax = ((Double) phaseCavMeasured.get(phaseCavMeasured.size()-1)).doubleValue();
+	    cavPhaseScaledMin = ( phaseCavMeasured.get(0)).doubleValue();
+	    cavPhaseScaledMax = ( phaseCavMeasured.get(phaseCavMeasured.size()-1)).doubleValue();
 
 	    // some model stuff
 	   // Trajectory traj;
@@ -646,9 +646,9 @@ public class AnalysisStuff {
 	    
 	    
 	    
-	    double ampModel = ((Double) ampValueV.get(i)).doubleValue();
-	    CubicSpline splineFitBPMAmp = (CubicSpline) splineFitsBPMAmp.get(new Integer(i));
-	    CubicSpline splineFitPhaseDiff = (CubicSpline) splineFitsBPMDiff.get(new Integer(i));
+	    double ampModel = (ampValueV.get(i)).doubleValue();
+	    CubicSpline splineFitBPMAmp = splineFitsBPMAmp.get(new Integer(i));
+	    CubicSpline splineFitPhaseDiff =  splineFitsBPMDiff.get(new Integer(i));
 	    
 	    theDoc.getCavity().updateDesignAmp(ampModel);
 	    
@@ -680,7 +680,7 @@ public class AnalysisStuff {
 				    traj = theModel.getProbe().getTrajectory();
 				    
 				    ArrayList<RfGap> al = new ArrayList<RfGap>(theDoc.getCavity().getGaps());
-				    RfGap gap0 = (RfGap) (al).get(0);
+				    RfGap gap0 = (al).get(0);
 				    states = traj.statesForElement(gap0.getId());
 				    //state0 = (EnvelopeProbeState) states[0];
 				    //state0 = (ProbeState) states[0];
@@ -810,18 +810,18 @@ public class AnalysisStuff {
 	    if(useCavOffData) cavOffCalc();
 	    
 	    for (int i=0; i< ampValueV.size(); i++) {
-		    if( ((Boolean) theDoc.useScanInMatch.get(i)).booleanValue() ) {
+		    if( (theDoc.useScanInMatch.get(i)).booleanValue() ) {
 			    singlePass(i);	// do the scan at this amplitude
 			    // stash results:
 			    Vector<Double> phaseDiffBPMModelV = phaseDiffsBPMModelV.get(new Integer(i));
 			    Vector<Double> phaseCavModelScaledV = phasesCavModelScaledV.get(new Integer(i));		
-			    CubicSpline splineFit = (CubicSpline) splineFitsBPMDiff.get(new Integer(i));
+			    CubicSpline splineFit = splineFitsBPMDiff.get(new Integer(i));
 			    double error = 0.;
 			    
 			    //calculate error for this amplitude factor
 			    for( int j=0; j< phaseCavModelScaledV.size(); j++) {
-			        double phase = ((Double) phaseCavModelScaledV.get(j)).doubleValue();
-			        double diff = ((Double) phaseDiffBPMModelV.get(j)).doubleValue() - splineFit.evaluateAt(phase);
+			        double phase = ( phaseCavModelScaledV.get(j)).doubleValue();
+			        double diff = (phaseDiffBPMModelV.get(j)).doubleValue() - splineFit.evaluateAt(phase);
 			        error += Math.pow(diff, 2.);
 			    }
 			    error /= (double) phaseCavModelScaledV.size();
@@ -919,7 +919,7 @@ public class AnalysisStuff {
 	    // turn off all downstream cavities in the model
 		if ((theDoc.theSequence.getClass()).equals(AcceleratorSeqCombo.class)){
 			OrTypeQualifier kq = (new OrTypeQualifier()).or("rfcavity").or(SCLCavity.s_strType);
-			cavs2 = ((AcceleratorSeq) theDoc.theSequence).getAllInclusiveNodesWithQualifier(kq);
+			cavs2 = (theDoc.theSequence).getAllInclusiveNodesWithQualifier(kq);
 			Iterator<AcceleratorNode> itr = cavs2.iterator();
 			while (itr.hasNext()) {
 				AcceleratorSeq seq = (AcceleratorSeq) itr.next();
@@ -1108,7 +1108,7 @@ public class AnalysisStuff {
 	    if(svs.length < 2) {
 		    // only one parametric point - no interpolation
 		    cavAmpSetpoint = pvs[0] * theDoc.getCavityDesignAmp()/svs[0];
-		    BasicGraphData WOutModel = (BasicGraphData) WOutModelMap.get(new Integer(0));
+		    BasicGraphData WOutModel =  WOutModelMap.get(new Integer(0));
 		    WOutCalc = WOutModel.getValueY(cavPhaseSetpoint);
 		    return;
 	    }
@@ -1183,9 +1183,9 @@ public class AnalysisStuff {
     * return the index of this object
     * if none are > that the inpuit, return 0
     */
-    private int findInsertPoint(Vector vec, double value) {
+    private int findInsertPoint(Vector<Double> vec, double value) {
 	    for (int i= 0; i< vec.size(); i++) {
-		    double valTest = ((Double)vec.get(i)).doubleValue();
+		    double valTest = (vec.get(i)).doubleValue();
 		    if(valTest > value) return i;
 	    }
 	    return -1;
@@ -1212,9 +1212,9 @@ public class AnalysisStuff {
             return;
         }
         
-        Vector<Double> phaseCavMeasured = (Vector<Double>) phasesCavMeasured.get(new Integer(0));
-        minPhase = ((Double) phaseCavMeasured.get(0)).doubleValue();
-        maxPhase = ((Double) phaseCavMeasured.get(phaseCavMeasured.size()-1)).doubleValue();
+        Vector<Double> phaseCavMeasured = phasesCavMeasured.get(new Integer(0));
+        minPhase = (phaseCavMeasured.get(0)).doubleValue();
+        maxPhase = (phaseCavMeasured.get(phaseCavMeasured.size()-1)).doubleValue();
         //minPhase = someMeasuredData.getX(0);
         //int np = someMeasuredData.getNumbOfPoints();
         //maxPhase = someMeasuredData.getX(np-1);

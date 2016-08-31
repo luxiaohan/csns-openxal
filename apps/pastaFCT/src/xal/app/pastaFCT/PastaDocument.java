@@ -50,7 +50,7 @@ public class PastaDocument extends AcceleratorDocument {
     /** the second BPM to use in gathering beam info */
     private FCT BPM2;	
     /** The RF cavity to analyze */
-    private RfCavity theCavity;
+    protected RfCavity theCavity;
     /**
      * return the cavity design amplitude (MV/m)
      * Note - since we iterate the design values during the matching proceedure,
@@ -75,7 +75,8 @@ public class PastaDocument extends AcceleratorDocument {
     /** the scan variable (cavity phase) */ 
     private ScanVariable scanVariable = null;
     /** container for the measured variables (BPM phases + amplitudes) */ 
-    private Vector measuredValuesV;
+    //UNUSED
+    // private Vector measuredValuesV;
     /** the measured quantities for the Scan */
     private MeasuredValue BPM1PhaseMV, BPM1AmpMV, BPM2PhaseMV, BPM2AmpMV;
     
