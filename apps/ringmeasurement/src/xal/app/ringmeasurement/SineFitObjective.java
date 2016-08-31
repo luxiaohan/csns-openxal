@@ -38,9 +38,9 @@ public class SineFitObjective extends Objective {
         return Math.exp( -Math.abs(_target - value));
     }
     
-    public double score(Map inputs) {
+    public double score(Map<String, Double> inputs) {
         double score = 0.;
-        Iterator keyIter = inputs.keySet().iterator();
+        Iterator<String>  keyIter = inputs.keySet().iterator();
         
         double A = 0.;
         double w = 0.;
@@ -49,19 +49,19 @@ public class SineFitObjective extends Objective {
         double c = 0.;
         
         while ( keyIter.hasNext() ) {
-            final String key = (String)keyIter.next();
-            final double value = ( (Double)inputs.get( key ) ).doubleValue();
+            final String key = keyIter.next();
+            final double value = ( inputs.get( key ) ).doubleValue();
             
             if (key.equals("A"))
-                A = ( (Double)inputs.get( key ) ).doubleValue();
+                A = ( inputs.get( key ) ).doubleValue();
             else if (key.equals("b"))
-                b = ( (Double)inputs.get( key ) ).doubleValue();
+                b = ( inputs.get( key ) ).doubleValue();
             else if (key.equals("w"))
-                w = ( (Double)inputs.get( key ) ).doubleValue();
+                w = ( inputs.get( key ) ).doubleValue();
             else if (key.equals("c"))
-                c = ( (Double)inputs.get( key ) ).doubleValue();
+                c = ( inputs.get( key ) ).doubleValue();
           else if (key.equals("d"))
-          d = ( (Double)inputs.get( key ) ).doubleValue();
+          d = ( inputs.get( key ) ).doubleValue();
         }
         score = 0.;
         for (int i=0; i<dataLength; i++)

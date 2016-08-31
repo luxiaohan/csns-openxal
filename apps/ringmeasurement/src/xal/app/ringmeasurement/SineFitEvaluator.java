@@ -9,6 +9,7 @@ package xal.app.ringmeasurement;
 import java.util.*;
 
 import xal.extension.solver.Evaluator;
+import xal.extension.solver.Objective;
 import xal.extension.solver.Trial;
 import xal.extension.solver.Variable;
 
@@ -25,16 +26,16 @@ public class SineFitEvaluator implements Evaluator {
     }
     
     public void evaluate(Trial trial) {
-        final Map inputs = new HashMap( trial.getProblem().getVariables().size() );
+        final Map<String, Double> inputs = new HashMap<String, Double>( trial.getProblem().getVariables().size() );
 
-        final Iterator variableIter = trial.getProblem().getVariables().iterator();
+        final Iterator<Variable> variableIter = trial.getProblem().getVariables().iterator();
         while ( variableIter.hasNext() ) {
-                final Variable variable = (Variable)variableIter.next();
+                final Variable variable = variableIter.next();
                 final double value = trial.getTrialPoint().getValue( variable );
                 inputs.put( variable.getName(), new Double( value ) );
         }
 
-        final Iterator objectiveIter = trial.getProblem().getObjectives().iterator();
+        final Iterator<Objective> objectiveIter = trial.getProblem().getObjectives().iterator();
         while ( objectiveIter.hasNext() ) {
                 SineFitObjective objective = (SineFitObjective)objectiveIter.next();
                 double score = objective.score( inputs );

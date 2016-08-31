@@ -78,13 +78,13 @@ public class RingWindow extends AcceleratorWindow {
 		tunePane.removeAll();
 		List<AcceleratorNode> bpms = seq.getAllNodesOfType("BPM");
 		bpms = AcceleratorSeq.filterNodesByStatus(bpms, true);
-		Iterator bpmIt = bpms.iterator();
+		Iterator<AcceleratorNode> bpmIt = bpms.iterator();
 		ArrayList<BPM> bpmLst = new ArrayList<BPM>();
 		while(bpmIt.hasNext()) {
 			bpmLst.add((BPM)bpmIt.next());
 		}
 		
-		List quads = seq.getAllNodesOfType("Q");
+		List<AcceleratorNode>  quads = seq.getAllNodesOfType("Q");
 		
 		tunePanel = new TunePanel(myDocument);
 		tunePane.add(tunePanel);
@@ -92,7 +92,7 @@ public class RingWindow extends AcceleratorWindow {
 		ArrayList<MagnetMainSupply> qPSs = new ArrayList<MagnetMainSupply>();
 		HashMap<MagnetMainSupply, Double> designMap = new HashMap<MagnetMainSupply, Double>();
 		
-		Iterator it = quads.iterator();
+		Iterator<AcceleratorNode>  it = quads.iterator();
 		while (it.hasNext()) {
 			Quadrupole quad = (Quadrupole) it.next();
 			MagnetMainSupply mps = quad.getMainSupply();
@@ -111,7 +111,7 @@ public class RingWindow extends AcceleratorWindow {
 
 	protected void setDispPanel(AcceleratorSeq seq) {
 		dispPane.removeAll();
-		List bpms = seq.getAllNodesOfType("BPM");
+		List<BPM> bpms = seq.getAllNodesOfType("BPM");
 		dispPanel = new DispersionPane(bpms, myDocument);
 		dispPane.add(dispPanel);
 	}

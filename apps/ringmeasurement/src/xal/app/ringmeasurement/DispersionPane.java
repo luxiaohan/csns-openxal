@@ -43,6 +43,9 @@ import gov.sns.ca.*;*/
  *
  */
 public class DispersionPane extends JPanel implements ActionListener {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
 	private JButton jButton = null;
 	private JPanel jPanel = null;
@@ -56,19 +59,19 @@ public class DispersionPane extends JPanel implements ActionListener {
     private BasicGraphData bpmYData = new BasicGraphData();                            //weiyy
     
 	static RingDocument myDoc;
-	static List allBPMs; 
+	static List<BPM> allBPMs; 
 	BPM[] bpms;
 
 	/**
 	 * This method initializes 
 	 * 
 	 */
-	public DispersionPane(List theBpms, RingDocument doc) {
+	public DispersionPane(List<BPM> theBpms, RingDocument doc) {
 		super();
 		allBPMs = theBpms;
     	bpms = new BPM[allBPMs.size()];
     	for (int i=0; i<bpms.length; i++) {
-    		bpms[i] = (BPM) allBPMs.get(i);
+    		bpms[i] = allBPMs.get(i);
     	}
     	
 		myDoc = doc;
@@ -343,12 +346,16 @@ public class DispersionPane extends JPanel implements ActionListener {
 	}
 
 	class BpmTableModel extends AbstractTableModel {
+		
+        /** ID for serializable version */
+        private static final long serialVersionUID = 1L;
+        
 		final String[] columnNames = { "BPM", "D(m)" };
 
 		final Object[][] data = new Object[allBPMs.size()][columnNames.length];
 
 		/** Container for row labels */
-		private ArrayList rowNames = new ArrayList(allBPMs.size());
+		private ArrayList<String> rowNames = new ArrayList<String>(allBPMs.size());
 
 		public int getColumnCount() {
 			return columnNames.length;
@@ -363,7 +370,7 @@ public class DispersionPane extends JPanel implements ActionListener {
 		}
 
 		public String getRowName(int row) {
-			return (String) rowNames.get(row);
+			return rowNames.get(row);
 		}
 
 		public boolean isCellEditable(int row, int col) {
@@ -377,7 +384,7 @@ public class DispersionPane extends JPanel implements ActionListener {
 
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			if (columnIndex == 0) {
-				return (String) rowNames.get(rowIndex);
+				return rowNames.get(rowIndex);
 			} else {
 				return data[rowIndex][columnIndex];
 			}
@@ -385,7 +392,7 @@ public class DispersionPane extends JPanel implements ActionListener {
 
 		public void setValueAt(Object value, int row, int col) {
 			if (col > 0) {
-				data[row][col] = (Object) value;
+				data[row][col] =  value;
 				
 				fireTableCellUpdated(row, col);
 				return;

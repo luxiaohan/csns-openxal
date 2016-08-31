@@ -11,6 +11,7 @@ package xal.app.ringmeasurement;
 import java.util.*;
 
 import xal.extension.fit.lsm.Polynomial;
+import xal.smf.impl.BPM;
 
 /**
  * For dispersion measurement at a BPM location.  This class takes an array of 
@@ -20,13 +21,13 @@ import xal.extension.fit.lsm.Polynomial;
  */
 public class DispMeasurement {
 	
-	List myBPMs;
+	List<BPM> myBPMs;
 	double[] disp;                       //weiyy double disp[];
 	double[][] data;
 	double[][] eng;
 	final int no_pts = 5;
 	
-	public DispMeasurement(List bpms) {
+	public DispMeasurement(List<BPM> bpms) {
 		myBPMs = bpms;
 	}
 	
