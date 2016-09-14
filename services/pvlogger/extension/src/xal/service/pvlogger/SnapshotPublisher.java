@@ -58,6 +58,7 @@ class SnapshotPublisher {
 	/** set the connection dictionary */
 	protected void setConnectionDictionary( final ConnectionDictionary dictionary ) {
 		_connectionDictionary = dictionary;
+		PERSISTENT_STORE.setConnectionDictionary( _connectionDictionary );
 	}
 	
 	
@@ -124,7 +125,7 @@ class SnapshotPublisher {
 				
 				try {
 					connection.setAutoCommit( false );				
-					publishSnapshots( connection, connectionDictionary.getDatabaseAdaptor(), machineSnapshots );
+					publishSnapshots( connection, machineSnapshots );
 				}
 				finally {
 					connection.close();
@@ -138,8 +139,8 @@ class SnapshotPublisher {
 	
 	
 	/** publish machine snapshots to the persistent storage */
-	protected void publishSnapshots( final Connection connection, final DatabaseAdaptor databaseAdaptor, final List<MachineSnapshot> machineSnapshots ) throws SQLException {
-		final List<MachineSnapshot> publishedSnapshots = PERSISTENT_STORE.publish( connection, databaseAdaptor, machineSnapshots );
+	protected void publishSnapshots( final Connection connection, final List<MachineSnapshot> machineSnapshots ) throws SQLException {
+		final List<MachineSnapshot> publishedSnapshots = PERSISTENT_STORE.publish( connection, machineSnapshots );
 		removeFromBuffer( publishedSnapshots );
 	}
 	

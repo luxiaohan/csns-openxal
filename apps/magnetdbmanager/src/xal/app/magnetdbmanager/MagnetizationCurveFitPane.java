@@ -86,6 +86,7 @@ public class MagnetizationCurveFitPane extends Pane {
     private DecimalFormat _dataformat4 = new DecimalFormat("0.000000E000");
     
     
+	@SuppressWarnings("unchecked")
 	public MagnetizationCurveFitPane(MagnetizationCurve curve, String sort, boolean savable){
 		_curve = curve;
 		_sort = sort;

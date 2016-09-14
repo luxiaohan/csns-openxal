@@ -94,7 +94,7 @@ public class LRBTOrbitCorrector {
 	private AcceleratorSeq accSeq = null;
 
 	//current format
-	private FortranNumberFormat frmt = new FortranNumberFormat("G10.3");
+	private ScientificNumberFormat frmt = new ScientificNumberFormat( 4, 10, false );
 
 	//message text field. It is actually message text field from Window
 	private JTextField messageTextLocal = new JTextField();
@@ -114,9 +114,9 @@ public class LRBTOrbitCorrector {
 		angleWeightTextField.setValue(1.0);
 		
 		
-		fieldWeightTextField.setDecimalFormat(frmt);
-		posWeightTextField.setDecimalFormat(frmt);
-		angleWeightTextField.setDecimalFormat(frmt);
+		fieldWeightTextField.setNumberFormat(frmt);
+		posWeightTextField.setNumberFormat(frmt);
+		angleWeightTextField.setNumberFormat(frmt);
 
 		fieldWeightTextField.setHorizontalAlignment(JTextField.CENTER);
 		posWeightTextField.setHorizontalAlignment(JTextField.CENTER); 
@@ -202,8 +202,8 @@ public class LRBTOrbitCorrector {
 		ftDownPanel.add(ftDown0Panel);
 		ftDownPanel.add(ftDown1Panel);
 		
-		posResTextField.setDecimalFormat(frmt);
-		angleResTextField.setDecimalFormat(frmt);
+		posResTextField.setNumberFormat(frmt);
+		angleResTextField.setNumberFormat(frmt);
 		posResTextField.setHorizontalAlignment(JTextField.CENTER);
 		angleResTextField.setHorizontalAlignment(JTextField.CENTER); 
 		
@@ -334,7 +334,7 @@ public class LRBTOrbitCorrector {
 	public void setAccelSeq(AcceleratorSeq accSeq,int dir) {
 		this.accSeq = accSeq;
 		corrV.clear();
-		java.util.List corrs = null;
+		java.util.List<AcceleratorNode> corrs = null;
 		if(dir == 0) {corrs = accSeq.getAllNodesOfType(HDipoleCorr.s_strType);}
 		if(dir == 1) {corrs = accSeq.getAllNodesOfType(VDipoleCorr.s_strType);}
 		for(int i = corrs.size() - 6, n = corrs.size(); i < n; i++) {
@@ -346,7 +346,7 @@ public class LRBTOrbitCorrector {
 			}
 		}
 		for(int i = 0, n = corrV.size(); i < n; i++){
-			Corr_Element corrElm = (Corr_Element) corrV.get(i);
+			Corr_Element corrElm = corrV.get(i);
 			if(i < n-2){
 				corrElm.setActive(false);
 			}
@@ -553,9 +553,9 @@ public class LRBTOrbitCorrector {
 		 AcceleratorNode foil = accSeq.getNodeWithId("Ring_Inj:Foil");
 		 
 		 for(int i = 0, n = corrV.size(); i < n; i++) {
-			 Corr_Element corrElm = (Corr_Element) corrV.get(i);
+			 Corr_Element corrElm =  corrV.get(i);
 			 Electromagnet corr_mag = corrElm.getMagnet();
-			 ProbeState probeState = trajectory.statesForElement(corr_mag.getId()).get(0);
+			 EnvelopeProbeState probeState = trajectory.statesForElement(corr_mag.getId()).get(0);
 			 double W0 = probeState.getSpeciesRestEnergy();
 			 double gamma = probeState.getGamma();
 			 double beta = Math.sqrt(1.0 - 1.0 / (gamma * gamma));
@@ -737,7 +737,9 @@ public class LRBTOrbitCorrector {
 		//horizontal correctors table model
 		corrTableModel =
 			new AbstractTableModel() {
-				public Class getColumnClass(int columnIndex) {
+			 /** ID for serializable version */
+             private static final long serialVersionUID = 1L;
+				public Class<?> getColumnClass(int columnIndex) {
 					if(columnIndex == 0 || columnIndex == 1 || columnIndex == 2) {
 						return String.class;
 					}

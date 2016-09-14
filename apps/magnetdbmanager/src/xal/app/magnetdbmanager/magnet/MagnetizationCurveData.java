@@ -54,7 +54,7 @@ public class MagnetizationCurveData implements Comparable<MagnetizationCurveData
 	public int compareTo(MagnetizationCurveData o) {
 		if(o == null) throw new ClassCastException("Can't compare.");
 		
-		return this.getOrder() - ((MagnetizationCurveData) o).getOrder();
+		return this.getOrder() - o.getOrder();
 	}
 
 	public String toString(){

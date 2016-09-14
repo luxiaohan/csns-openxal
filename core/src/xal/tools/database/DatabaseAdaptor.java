@@ -12,6 +12,7 @@ package xal.tools.database;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.logging.*;
 
@@ -32,6 +33,15 @@ public abstract class DatabaseAdaptor {
 		return new ConcreteBlob();
 	}
 	
+	/**
+	 * set an SQL Array to the database
+	 * @param type An SQL array type identifying the type of array
+	 * @param connection An SQL connection
+	 * @param array The primitive Java array
+	 * @param insertStatement The statement prepared to insert an Array to database
+	 * @param pramIndex The parameter index of this Array in the insertStatement
+	 */
+	abstract public void setArray( final PreparedStatement insertStatement, final int pramIndex, final String type, final Connection connection, final Object array ) throws SQLException;
 	
 	/**
 	 * Get an SQL Array given an SQL array type, connection and a primitive array
@@ -42,6 +52,8 @@ public abstract class DatabaseAdaptor {
 	 * @throws xal.tools.database.DatabaseException if a database exception is thrown
 	 */
 	abstract public Array getArray( final String type, final Connection connection, final Object array ) throws DatabaseException;
+	
+	abstract public Object getArrayValues ( final ResultSet record, final String valueType ) throws SQLException;
 	
 	
 	/**
@@ -151,6 +163,17 @@ public abstract class DatabaseAdaptor {
 	public ResultSet getColumnsResultSet( final DatabaseMetaData metaData, final String schema, final String table ) throws SQLException {
 		return metaData.getColumns( null, schema, table, null );
 	}
+	
+	/**
+	 * insert the given items to the database
+	 * @param connection The database connection
+	 * @param tableName The table's name of the database
+	 * @param items The items which will insert to database
+	 * @param queryForNextPrimKey The query string for the next primary key
+	 * @return the next primary key
+	 * @throws SQLException Description of the Exception
+	 */
+	abstract public long insert( final Connection connection, final String tableName, final Map<String,Object> items, final String queryForNextPrimKey ) throws SQLException;
 
 
 	/**

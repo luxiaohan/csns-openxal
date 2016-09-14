@@ -48,6 +48,9 @@ import gov.sns.tools.solver.hint.*;
 import gov.sns.tools.solver.algorithm.*;*/
 
 public class ModelFace extends JPanel {
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
 
 	public JPanel mainPanel;
 	public JTable datatable;
@@ -83,19 +86,19 @@ public class ModelFace extends JPanel {
 	private JTextField ychisquarefield;
 	private JButton selectSequence;
 	private JButton singlepassbutton;
-	private JComboBox elementList;
+	private JComboBox<String>  elementList;
 	private NumberFormat numfor;
 
 	private String[] initstate = { "No PV Logger Files" };
-	private JComboBox machinestatechooser = new JComboBox(initstate);
+	private JComboBox<String>  machinestatechooser = new JComboBox<String> (initstate);
 	private String[] rms = { "Use EDM rms values", "Use user rms values" };
-	private JComboBox rmschooser = new JComboBox(rms);
+	private JComboBox<String>  rmschooser = new JComboBox<String> (rms);
 	private String[] graphs = { "Plot x and y Graphs", "Plot x Graphs",
 			"Plot y Graphs", "Plot Alphax vs. Betax", "Plot Alphay vs. Betay",
 			"Plot Alpha vs. Beta" };
-	private JComboBox graphChooser = new JComboBox(graphs);
-	private ArrayList filesloaded;
-	ArrayList seqlistnames = new ArrayList();
+	private JComboBox<String>  graphChooser = new JComboBox<String> (graphs);
+	private ArrayList<String>  filesloaded;
+	ArrayList<Object> seqlistnames = new ArrayList<Object>();
 
 	private String lastusedelement;
 	private JLabel machinestatelabel;
@@ -126,27 +129,27 @@ public class ModelFace extends JPanel {
 	private JButton plotellipsebutton;//liyong add on 2016-3-16
 	private JFileChooser fc;
 
-	ArrayList fullWirenamelist = new ArrayList();
-	ArrayList fullFilenamelist = new ArrayList();
-	ArrayList xUserfulldatalist = new ArrayList();
-	ArrayList yUserfulldatalist = new ArrayList();
-	ArrayList xEdmfulldatalist = new ArrayList();
-	ArrayList yEdmfulldatalist = new ArrayList();
-	ArrayList Wirenamelist = new ArrayList();
-	ArrayList Filenamelist = new ArrayList();
-	ArrayList xUserdatalist = new ArrayList();
-	ArrayList yUserdatalist = new ArrayList();
-	ArrayList xEdmdatalist = new ArrayList();
-	ArrayList yEdmdatalist = new ArrayList();
-	ArrayList masternamelist = new ArrayList();
-	ArrayList xGraphdata = new ArrayList();
-	ArrayList yGraphdata = new ArrayList();
-	ArrayList hGraphdata = new ArrayList();
-	ArrayList vGraphdata = new ArrayList();
+	ArrayList<String> fullWirenamelist = new ArrayList<String>();
 	BasicGraphData xGraph = new BasicGraphData();
 	BasicGraphData yGraph = new BasicGraphData();
 	BasicGraphData hGraph = new BasicGraphData();
 	BasicGraphData vGraph = new BasicGraphData();
+    ArrayList<String> fullFilenamelist = new ArrayList<String>();
+    ArrayList<Double> xUserfulldatalist = new ArrayList<Double>();
+    ArrayList<Double> yUserfulldatalist = new ArrayList<Double>();
+    ArrayList<Double> xEdmfulldatalist = new ArrayList<Double>();
+    ArrayList<Double> yEdmfulldatalist = new ArrayList<Double>();
+    ArrayList<String> Wirenamelist = new ArrayList<String>();
+    ArrayList<String> Filenamelist = new ArrayList<String>();
+    ArrayList<Double> xUserdatalist = new ArrayList<Double>();
+    ArrayList<Double> yUserdatalist = new ArrayList<Double>();
+    ArrayList<Double> xEdmdatalist = new ArrayList<Double>();
+    ArrayList<Double> yEdmdatalist = new ArrayList<Double>();
+    //ArrayList<Object> masternamelist = new ArrayList<Object>();
+    ArrayList<BasicGraphData> xGraphdata = new ArrayList<BasicGraphData>();
+    ArrayList<BasicGraphData> yGraphdata = new ArrayList<BasicGraphData>();
+    ArrayList<BasicGraphData> hGraphdata = new ArrayList<BasicGraphData>();
+    ArrayList<BasicGraphData> vGraphdata = new ArrayList<BasicGraphData>();
 	ResultsTableModel twisstablemodel;
 	public JTable resultsTable;
 	private JPanel resultsPanel;
@@ -315,9 +318,9 @@ public class ModelFace extends JPanel {
 		ychisquarefield = new JTextField();
 		ychisquarefield.setPreferredSize(new Dimension(100, 30));
 		// .setPreferredSize(new Dimension(200,30));
-		filesloaded = new ArrayList();
+		filesloaded = new ArrayList<String>();
 		selectSequence = new JButton("Select sequence");
-		elementList = new JComboBox();
+		elementList = new JComboBox<String>();
 		elementList.addItem("Select Element");
 		timelabel = new JLabel("Solver Time:");
 		timefield = new JTextField(4);
@@ -339,8 +342,8 @@ public class ModelFace extends JPanel {
 			public void actionPerformed(ActionEvent ae) {
 				TransLineSeqSelector selector = new TransLineSeqSelector();
 				selector.selectSequence();
-				seqlistnames = (ArrayList) selector.getSeqList();
-				Iterator itr = seqlistnames.iterator();
+				seqlistnames = selector.getSeqList();
+				Iterator<Object> itr = seqlistnames.iterator();
 				seqlist.clear();
 				nodes.clear();
 
@@ -349,7 +352,7 @@ public class ModelFace extends JPanel {
 					String seqname = (String) seqlistnames.get(i);
 					AcceleratorSeq sequence = accl.getSequence(seqname);
 					System.out.println("sequecne:" + sequence.getId());
-					seqlist.add((AcceleratorSeq) sequence);
+					seqlist.add(sequence);
 					nodes.addAll(sequence.getAllNodes(true));
 				}
 
@@ -364,7 +367,7 @@ public class ModelFace extends JPanel {
 				 */
 
 				solveforseq = new AcceleratorSeqCombo("choosen", seqlist);
-				ArrayList<AcceleratorSeq> sequences = (ArrayList) accl
+				ArrayList<AcceleratorSeq> sequences = (ArrayList<AcceleratorSeq>) accl
 						.getSequences();
 				int p = sequences.indexOf(accl
 						.getSequence((String) seqlistnames.iterator().next()));
@@ -594,7 +597,7 @@ public class ModelFace extends JPanel {
 		exportbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int returnValue = fc.showSaveDialog(ModelFace.this);
-				if (returnValue == fc.APPROVE_OPTION) {
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					File file = fc.getSelectedFile();
 					try {
 						exportPlotData(file);
@@ -758,7 +761,7 @@ public class ModelFace extends JPanel {
 	public void buildseq() {
 		if (((String) elementList.getSelectedItem()).equals("Select Element")) {
 			elementList.setEditable(true);
-			elementList.setSelectedItem((String) Wirenamelist.get(0));
+			elementList.setSelectedItem(Wirenamelist.get(0));
 			elementList.setEditable(false);
 			errorlabel
 					.setText("No Element was selected. Twiss was found at first wire.");
@@ -780,7 +783,7 @@ public class ModelFace extends JPanel {
 	}
 
 	public void updateStored() {
-		ArrayList storeddata = new ArrayList();
+		ArrayList<Object> storeddata = new ArrayList<Object>();
 		if (((String) machinestatechooser.getSelectedItem())
 				.equals("User Defined")) {
 			storeddata.add((String) datatablemodel.getValueAt(0, 0));
@@ -798,7 +801,7 @@ public class ModelFace extends JPanel {
 		storeddata.add(new Double((Double) twisstable.getValueAt(2, 1)));
 		storeddata.add(new Double((Double) twisstable.getValueAt(2, 2)));
 		storeddata.add(new Boolean(false));
-		storedmodel.addTableData(new ArrayList(storeddata));
+		storedmodel.addTableData(new ArrayList<Object>(storeddata));
 		storedmodel.fireTableDataChanged();
 
 	}
@@ -830,13 +833,13 @@ public class ModelFace extends JPanel {
 				}
 				if (graphChooser.getSelectedIndex() == 0
 						|| graphChooser.getSelectedIndex() == 1) {
-					plotGraph((BasicGraphData) xGraphdata.get(i));
-					plotGraph((BasicGraphData) hGraphdata.get(i));
+					plotGraph(xGraphdata.get(i));
+					plotGraph(hGraphdata.get(i));
 				}
 				if (graphChooser.getSelectedIndex() == 0
 						|| graphChooser.getSelectedIndex() == 2) {
-					plotGraph((BasicGraphData) yGraphdata.get(i));
-					plotGraph((BasicGraphData) vGraphdata.get(i));
+					plotGraph( yGraphdata.get(i));
+					plotGraph(vGraphdata.get(i));
 				}
 
 			}
@@ -846,7 +849,7 @@ public class ModelFace extends JPanel {
 	public int findSeqp(ArrayList<AcceleratorSeq> searchedseq, String tofind) {
 		for (int i = 0; i < searchedseq.size(); i++) {
 			AcceleratorSeq sequence = searchedseq.get(i);
-			LinkedList<AcceleratorNode> nodeslist = (LinkedList) sequence
+			LinkedList<AcceleratorNode> nodeslist = (LinkedList<AcceleratorNode>) sequence
 					.getAllNodes();
 			for (int j = 0; j < nodeslist.size(); j++) {
 				if (nodeslist.get(j).getId().equalsIgnoreCase(tofind))
@@ -857,7 +860,7 @@ public class ModelFace extends JPanel {
 	}
 
 	public int findNodep(AcceleratorSeq searchedseq, String tofind) {
-		LinkedList<AcceleratorNode> nodeslist = (LinkedList) searchedseq
+		LinkedList<AcceleratorNode> nodeslist = (LinkedList<AcceleratorNode>) searchedseq
 				.getAllNodes();
 		for (int j = 0; j < nodeslist.size(); j++) {
 			if (nodeslist.get(j).getId().equalsIgnoreCase(tofind))
@@ -908,28 +911,29 @@ public class ModelFace extends JPanel {
 		}
 	}
 
+	@SuppressWarnings ("unchecked") //Had to suppress warning because valueforkey returns object and would not allow for specific casting
 	public void refreshTable() {
 		datatablemodel.clearAllData();
-		ArrayList tabledata = new ArrayList();
+		ArrayList<Object> tabledata = new ArrayList<Object>();
 
 		if (edmresultsdatatable.records().size() == 0) {
 			System.out.println("No data available to load!");
 		} else {
-			Collection records = edmresultsdatatable.records();
-			Iterator itr = records.iterator();
+            Collection<GenericRecord> records = edmresultsdatatable.records();
+            Iterator<GenericRecord> itr = records.iterator();
 			while (itr.hasNext()) {
 				tabledata.clear();
-				GenericRecord record = (GenericRecord) itr.next();
+				GenericRecord record = itr.next();
 				String filename = (String) record.valueForKey("file");
 				String wire = (String) record.valueForKey("wire");
-				ArrayList params = (ArrayList) record.valueForKey("rms");
+				 ArrayList<Double> params = (ArrayList<Double>)record.valueForKey("rms");
 
 				tabledata.add(new String(filename));
 				tabledata.add(new String(wire));
 				if (!params.isEmpty()) {
-					tabledata.add(new Double(((Double) params.get(2))
+					tabledata.add(new Double(( params.get(2))
 							.doubleValue()));
-					tabledata.add(new Double(((Double) params.get(1))
+					tabledata.add(new Double(( params.get(1))
 							.doubleValue()));
 				} else {
 					tabledata.add(new Double(0.0));
@@ -939,13 +943,13 @@ public class ModelFace extends JPanel {
 					tabledata.add(new Double(0.0));
 					tabledata.add(new Double(0.0));
 				} else {
-					Map hbindings = new HashMap();
+					Map<String, String> hbindings = new HashMap<String, String>();
 					String hdirection = new String("H");
 					String vdirection = new String("V");
 					hbindings.put("file", filename);
 					hbindings.put("wire", wire);
 					hbindings.put("direction", hdirection);
-					Map vbindings = new HashMap();
+				    Map<String, String> vbindings = new HashMap<String, String>();
 					vbindings.put("file", filename);
 					vbindings.put("wire", wire);
 					vbindings.put("direction", vdirection);
@@ -954,9 +958,9 @@ public class ModelFace extends JPanel {
 					if (hfitrecord == null) {
 						tabledata.add(new Double(0.0));
 					} else {
-						ArrayList data = (ArrayList) hfitrecord
+						ArrayList <double[]> data = (ArrayList<double[]>) hfitrecord
 								.valueForKey("data");
-						double[] rms = (double[]) data.get(0);
+						double[] rms =  data.get(0);
 						tabledata.add(new Double(rms[0]));
 					}
 					GenericRecord vfitrecord = fitresultsdatatable
@@ -964,14 +968,14 @@ public class ModelFace extends JPanel {
 					if (vfitrecord == null) {
 						tabledata.add(new Double(0.0));
 					} else {
-						ArrayList data = (ArrayList) vfitrecord
+						ArrayList<double[]> data = (ArrayList<double[]>) vfitrecord
 								.valueForKey("data");
-						double[] rms = (double[]) data.get(0);
+						double[] rms =data.get(0);
 						tabledata.add(new Double(rms[0]));
 					}
 				}
 				tabledata.add(new Boolean(true));
-				datatablemodel.addTableData(new ArrayList(tabledata));
+				datatablemodel.addTableData(new ArrayList<Object>(tabledata));
 			}
 			datatablemodel.fireTableDataChanged();
 		}
@@ -1043,7 +1047,7 @@ public class ModelFace extends JPanel {
 		}
 
 		Trajectory<EnvelopeProbeState> traj=tempprobe.getTrajectory();
-		EnvelopeProbeState newstate = (EnvelopeProbeState) traj
+		EnvelopeProbeState newstate = traj
 				.stateForElement(init);
 		initprobe.applyState(newstate);
 		modelinitialized = true;
@@ -1127,7 +1131,7 @@ public class ModelFace extends JPanel {
 		// If a Quad is selected to be the point to get the initial twiss parameter,the result might not be correct.
 		// The point selected to calculate the initial parameter must be before the selected wire scanner.
 		try {
-			solvermodel = solvermodel.newScenarioFor(seq);
+			solvermodel = Scenario.newScenarioFor(seq);
 			solvermodel.setProbe(solverprobe);
 			solvermodel.setSynchronizationMode(Scenario.SYNC_MODE_DESIGN);
 			solvermodel.setStartNode((String) elementList.getSelectedItem());
@@ -1187,7 +1191,7 @@ public class ModelFace extends JPanel {
 				+ betaz0 + " " + emitz0);
 
 		try {
-			solvermodel = solvermodel.newScenarioFor(seq);
+			solvermodel = Scenario.newScenarioFor(seq);
 			System.out.println("seq in solver model is " + seq);
 			solvermodel.setProbe(solverprobe);
 			solvermodel.setSynchronizationMode(Scenario.SYNC_MODE_DESIGN);
@@ -1203,14 +1207,14 @@ public class ModelFace extends JPanel {
 			exception.printStackTrace();
 		}
 
-		ArrayList variables = new ArrayList();
+		ArrayList<Variable> variables =  new ArrayList<Variable>();
 		variables.add(new Variable("alphaX", alphax0, alphaXmin, alphaXmax));
 		variables.add(new Variable("betaX", betax0, betaXmin, betaXmax));
 		variables.add(new Variable("alphaY", alphay0, alphaYmin, alphaYmax));
 		variables.add(new Variable("betaY", betay0, betaYmin, betaYmax));
 		variables.add(new Variable("emitX", emitx0, emitXmin, emitXmax));
 		variables.add(new Variable("emitY", emity0, emitYmin, emitYmax));
-		ArrayList objectives = new ArrayList();
+		ArrayList<Objective> objectives = new ArrayList<Objective>();
 		objectives.add(new TargetObjective("diff", 0.0));
 
 		// zp add
@@ -1253,7 +1257,7 @@ public class ModelFace extends JPanel {
 
 	}
 	
-	private void resetEllipseTwiss(ArrayList vars, Trial trial) {//liyong add on 2016-3-16
+	private void resetEllipseTwiss(ArrayList<Variable> vars, Trial trial) {//liyong add on 2016-3-16
 		updateProbe(vars, trial);
 		try {
 			solvermodel.run();
@@ -1323,7 +1327,7 @@ public class ModelFace extends JPanel {
 		}
 
 		Trajectory<EnvelopeProbeState> traj = tempprobe.getTrajectory();
-		Iterator iterState = traj.stateIterator();
+		Iterator<?> iterState= traj.stateIterator();
 		EnvelopeProbeState state = (EnvelopeProbeState) iterState.next();
 	       
         CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
@@ -1378,7 +1382,7 @@ public class ModelFace extends JPanel {
 
 	}
 
-	public double calcError(ArrayList vars, Trial trial) {
+	public double calcError(ArrayList<Variable> vars, Trial trial) {
 		updateProbe(vars, trial);
 		try {
 			solvermodel.run();
@@ -1394,21 +1398,21 @@ public class ModelFace extends JPanel {
 
 		for (int i = 0; i < size; i++) {
 			EnvelopeProbeState state = (EnvelopeProbeState) traj
-					.statesForElement((String) Wirenamelist.get(i));
+					.statesForElement(Wirenamelist.get(i));
 			CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
             Twiss[] twiss = covarianceMatrix.computeTwiss();
 
 			rx = twiss[0].getEnvelopeRadius();
 			ry = twiss[1].getEnvelopeRadius();
 			if (rmschooser.getSelectedIndex() == 0) {
-				error += Math.pow((rx * 1000. - ((Double) xEdmdatalist.get(i))
+				error += Math.pow((rx * 1000. - (xEdmdatalist.get(i))
 						.doubleValue()), 2.);
-				error += Math.pow((ry * 1000. - ((Double) yEdmdatalist.get(i))
+				error += Math.pow((ry * 1000. - (yEdmdatalist.get(i))
 						.doubleValue()), 2.);
 			} else {
-				error += Math.pow((rx * 1000. - ((Double) xUserdatalist.get(i))
+				error += Math.pow((rx * 1000. - ( xUserdatalist.get(i))
 						.doubleValue()), 2.);
-				error += Math.pow((ry * 1000. - ((Double) yUserdatalist.get(i))
+				error += Math.pow((ry * 1000. - ( yUserdatalist.get(i))
 						.doubleValue()), 2.);
 			}
 		}
@@ -1416,7 +1420,7 @@ public class ModelFace extends JPanel {
 		return error;
 	}
 
-	public void postFinalErrors(ArrayList vars, Trial trial) {
+	public void postFinalErrors(ArrayList<Variable> vars, Trial trial) {
 		updateProbe(vars, trial);
 		try {
 			solvermodel.run();
@@ -1432,23 +1436,23 @@ public class ModelFace extends JPanel {
 
 		for (int i = 0; i < size; i++) {
 			EnvelopeProbeState state = (EnvelopeProbeState) traj
-					.statesForElement((String) Wirenamelist.get(i));
+					.statesForElement(Wirenamelist.get(i));
 			CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
 	        Twiss[] twiss = covarianceMatrix.computeTwiss();
 
 			rx = twiss[0].getEnvelopeRadius();
 			ry = twiss[1].getEnvelopeRadius();
 			if (rmschooser.getSelectedIndex() == 0) {
-				xerror += Math.pow((rx * 1000. - ((Double) xEdmdatalist.get(i))
+				xerror += Math.pow((rx * 1000. - ( xEdmdatalist.get(i))
 						.doubleValue()), 2.);
-				yerror += Math.pow((ry * 1000. - ((Double) yEdmdatalist.get(i))
+				yerror += Math.pow((ry * 1000. - ( yEdmdatalist.get(i))
 						.doubleValue()), 2.);
 			} else {
 				xerror += Math.pow(
-						(rx * 1000. - ((Double) xUserdatalist.get(i))
+						(rx * 1000. - ( xUserdatalist.get(i))
 								.doubleValue()), 2.);
 				yerror += Math.pow(
-						(ry * 1000. - ((Double) yUserdatalist.get(i))
+						(ry * 1000. - ( yUserdatalist.get(i))
 								.doubleValue()), 2.);
 			}
 		}
@@ -1469,15 +1473,15 @@ public class ModelFace extends JPanel {
 		BasicGraphData xgraphdata = new BasicGraphData();
 		BasicGraphData ygraphdata = new BasicGraphData();
 
-		ArrayList sdata = new ArrayList();
-		ArrayList hdata = new ArrayList();
-		ArrayList vdata = new ArrayList();
+		ArrayList<Double> sdata = new ArrayList<Double>();
+		ArrayList<Double> hdata = new ArrayList<Double>();
+		ArrayList<Double> vdata = new ArrayList<Double>();
 
 		Trajectory<EnvelopeProbeState> traj= solverprobe.getTrajectory();
-		Iterator iterState = traj.stateIterator();
+		Iterator<EnvelopeProbeState>  iterState = traj.stateIterator();
 
 		while (iterState.hasNext()) {
-			EnvelopeProbeState state = (EnvelopeProbeState) iterState.next();
+			EnvelopeProbeState state = iterState.next();
 			sdata.add(state.getPosition());
             CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
             Twiss[] twiss = covarianceMatrix.computeTwiss();
@@ -1494,9 +1498,9 @@ public class ModelFace extends JPanel {
 		double[] y = new double[size];
 
 		for (int i = 0; i < size; i++) {
-			s[i] = ((Double) sdata.get(i)).doubleValue();
-			x[i] = ((Double) hdata.get(i)).doubleValue();
-			y[i] = ((Double) vdata.get(i)).doubleValue();
+			s[i] = ( sdata.get(i)).doubleValue();
+			x[i] = ( hdata.get(i)).doubleValue();
+			y[i] = ( vdata.get(i)).doubleValue();
 		}
 
 		hgraphdata.addPoint(s, x);
@@ -1528,14 +1532,14 @@ public class ModelFace extends JPanel {
 
 		for (int i = 0; i < datasize; i++) {
 			newstate = (EnvelopeProbeState) traj
-					.statesForElement((String) Wirenamelist.get(i));
+					.statesForElement( Wirenamelist.get(i));
 			srdata[i] = newstate.getPosition();
 			if (rmschooser.getSelectedIndex() == 0) {
-				xrdata[i] = ((Double) xEdmdatalist.get(i)).doubleValue();
-				yrdata[i] = ((Double) yEdmdatalist.get(i)).doubleValue();
+				xrdata[i] = ( xEdmdatalist.get(i)).doubleValue();
+				yrdata[i] = ( yEdmdatalist.get(i)).doubleValue();
 			} else {
-				xrdata[i] = ((Double) xUserdatalist.get(i)).doubleValue();
-				yrdata[i] = ((Double) yUserdatalist.get(i)).doubleValue();
+				xrdata[i] = ( xUserdatalist.get(i)).doubleValue();
+				yrdata[i] = ( yUserdatalist.get(i)).doubleValue();
 			}
 		}
 		xgraphdata.addPoint(srdata, xrdata);
@@ -1566,21 +1570,21 @@ public class ModelFace extends JPanel {
 
 		for (int i = 0; i < datasize; i++) {
 			newstate = (EnvelopeProbeState) traj
-					.statesForElement((String) Wirenamelist.get(i));
+					.statesForElement( Wirenamelist.get(i));
 			srdata[i] = newstate.getPosition();
 			if (rmschooser.getSelectedIndex() == 0) {
-				xrdata[i] = ((Double) xEdmdatalist.get(i)).doubleValue();
-				yrdata[i] = ((Double) yEdmdatalist.get(i)).doubleValue();
+				xrdata[i] = ( xEdmdatalist.get(i)).doubleValue();
+				yrdata[i] = (yEdmdatalist.get(i)).doubleValue();
 			} else {
-				xrdata[i] = ((Double) xUserdatalist.get(i)).doubleValue();
-				yrdata[i] = ((Double) yUserdatalist.get(i)).doubleValue();
+				xrdata[i] = (xUserdatalist.get(i)).doubleValue();
+				yrdata[i] = ( yUserdatalist.get(i)).doubleValue();
 			}
 		}
 
 		OutputStream fout = new FileOutputStream(file);
 		String line = "# Wire RMS: position (m), x(mm), y(mm) +\n";
 		for (int i = 0; i < datasize; i++) {
-			line = line + (String) Wirenamelist.get(i) + "\t" + srdata[i]
+			line = line +  Wirenamelist.get(i) + "\t" + srdata[i]
 					+ "\t" + xrdata[i] + "\t" + yrdata[i] + "\n";
 		}
 		line = line + "#\n# Model fit: Element, position (m), x(mm), y(mm)\n";
@@ -1605,15 +1609,15 @@ public class ModelFace extends JPanel {
 			exception.printStackTrace();
 		}
 		Trajectory<EnvelopeProbeState> traj= solverprobe.getTrajectory();
-		Iterator iterState = traj.stateIterator();
+		Iterator<EnvelopeProbeState> iterState = traj.stateIterator();
 
 		while (iterState.hasNext()) {
-			EnvelopeProbeState state = (EnvelopeProbeState) iterState.next();
+			EnvelopeProbeState state = iterState.next();
             CovarianceMatrix covarianceMatrix = state.getCovarianceMatrix();
             Twiss[] twiss = covarianceMatrix.computeTwiss();
 			double rx = 1000.0 * twiss[0].getEnvelopeRadius();
 			double ry = 1000.0 * twiss[1].getEnvelopeRadius();
-			if (!((String) state.getElementId()).equals("")) {
+			if (!( state.getElementId()).equals("")) {
 				line = line + state.getElementId() + "    "
 						+ state.getPosition() + "    " + rx + "    " + ry
 						+ "\n";
@@ -1631,8 +1635,8 @@ public class ModelFace extends JPanel {
 		modelplot.setExternalGL(limits);
 	}
 
-	public void resetTwissTable(ArrayList vars, Trial trial) {
-		Iterator itr = vars.iterator();
+	public void resetTwissTable(ArrayList<Variable> vars, Trial trial) {
+		Iterator<Variable> itr = vars.iterator();
 		traj = solverprobe.getTrajectory();
 		EnvelopeProbeState newstate = (EnvelopeProbeState) traj
 				.statesForElement((String) elementList.getSelectedItem());
@@ -1644,7 +1648,7 @@ public class ModelFace extends JPanel {
 		double gammabeta = gamma * beta;
 
 		while (itr.hasNext()) {
-			Variable variable = (Variable) itr.next();
+			Variable variable = itr.next();
 			double value = trial.getTrialPoint().getValue(variable);
 			String name = variable.getName();
 			DecimalFormat decfor = new DecimalFormat("###.000");
@@ -1693,7 +1697,7 @@ public class ModelFace extends JPanel {
 
 	}
 
-	void updateProbe(ArrayList vars, Trial trial) {
+	void updateProbe(ArrayList<Variable> vars, Trial trial) {
 		double alphax = 0.0;
 		double alphay = 0.0;
 		double betax = 0.0;
@@ -1712,10 +1716,10 @@ public class ModelFace extends JPanel {
 		//}
 		solverprobe.initialize();
 		solvermodel.setProbe(solverprobe);
-		Iterator itr = vars.iterator();
+		Iterator<Variable> itr = vars.iterator();
 
 		while (itr.hasNext()) {
-			Variable variable = (Variable) itr.next();
+			Variable variable = itr.next();
 			double value = trial.getTrialPoint().getValue(variable);
 			String name = variable.getName();
 			if (name.equalsIgnoreCase("alphaX"))
@@ -1762,7 +1766,7 @@ public class ModelFace extends JPanel {
 				JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		twissscrollpane.setColumnHeaderView(twisstable.getTableHeader());
-		twisstable.setAutoResizeMode(twisstable.AUTO_RESIZE_OFF);
+		twisstable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		twissscrollpane.setPreferredSize(new Dimension(324, 84));
 	}
 
@@ -1840,39 +1844,39 @@ public class ModelFace extends JPanel {
 		Filenamelist.clear();
 
 		for (int i = 0; i < datatable.getRowCount(); i++) {
-			xUserfulldatalist.add(datatable.getValueAt(i, 4));
-			yUserfulldatalist.add(datatable.getValueAt(i, 5));
-			xEdmfulldatalist.add(datatable.getValueAt(i, 2));
-			yEdmfulldatalist.add(datatable.getValueAt(i, 3));
-			fullWirenamelist.add(datatable.getValueAt(i, 1));
-			fullFilenamelist.add(datatable.getValueAt(i, 0));
+            xUserfulldatalist.add((Double)datatable.getValueAt(i,4));
+            yUserfulldatalist.add((Double)datatable.getValueAt(i,5));
+            xEdmfulldatalist.add((Double)datatable.getValueAt(i,2));
+            yEdmfulldatalist.add((Double)datatable.getValueAt(i,3));
+            fullWirenamelist.add((String)datatable.getValueAt(i,1));
+            fullFilenamelist.add((String)datatable.getValueAt(i,0));
 			if ((Boolean) datatable.getValueAt(i, 6)) {
-				Wirenamelist.add(datatable.getValueAt(i, 1));
+				Wirenamelist.add((String)datatable.getValueAt(i,1));
 			}
 		}
 		buildseq();
-		Iterator itr = Wirenamelist.iterator();
-		ArrayList wirenodelist = new ArrayList();
+		Iterator<String> itr = Wirenamelist.iterator();
+		ArrayList<AcceleratorNode> wirenodelist = new ArrayList<AcceleratorNode>();
 		while (itr.hasNext()) {
-			String name = (String) itr.next();
-			AcceleratorNode wirenode = (AcceleratorNode) seq
+			String name = itr.next();
+			AcceleratorNode wirenode = seq
 					.getNodeWithId(name);
 			wirenodelist.add(wirenode);
 		}
 
 		Wirenamelist.clear();
 		seq.sortNodes(wirenodelist);
-		itr = wirenodelist.iterator();
-		while (itr.hasNext()) {
-			String name = ((AcceleratorNode) itr.next()).getId();
+		Iterator<AcceleratorNode> newitr = wirenodelist.iterator();
+		while (newitr.hasNext()) {
+			String name = (newitr.next()).getId();
 			for (int i = 0; i < datatable.getRowCount(); i++) {
 				if (((String) datatable.getValueAt(i, 1)).equals(name)) {
-					xUserdatalist.add(datatable.getValueAt(i, 4));
-					yUserdatalist.add(datatable.getValueAt(i, 5));
-					xEdmdatalist.add(datatable.getValueAt(i, 2));
-					yEdmdatalist.add(datatable.getValueAt(i, 3));
-					Wirenamelist.add(datatable.getValueAt(i, 1));
-					Filenamelist.add(datatable.getValueAt(i, 0));
+					xUserdatalist.add((Double)datatable.getValueAt(i,4));
+					yUserdatalist.add((Double)datatable.getValueAt(i,5));
+					xEdmdatalist.add((Double)datatable.getValueAt(i,2));
+					yEdmdatalist.add((Double)datatable.getValueAt(i,3));
+					Wirenamelist.add((String)datatable.getValueAt(i,1));
+					Filenamelist.add((String)datatable.getValueAt(i,0));
 				}
 			}
 		}
@@ -1893,17 +1897,17 @@ public class ModelFace extends JPanel {
 	}
 
 	class Evaluator1 implements Evaluator {
-		protected ArrayList _objectives;
-		protected ArrayList _variables;
+		protected ArrayList<Objective> _objectives;
+		protected ArrayList<Variable> _variables;
 
-		public Evaluator1(final ArrayList objectives, final ArrayList variables) {
+		public Evaluator1(final ArrayList<Objective> objectives, final ArrayList<Variable> variables ) {
 			_objectives = objectives;
 			_variables = variables;
 		}
 
 		public void evaluate(final Trial trial) {
 			double error = 0.0;
-			Iterator itr = _objectives.iterator();
+			Iterator<Objective> itr = _objectives.iterator();
 			while (itr.hasNext()) {
 				TargetObjective objective = (TargetObjective) itr.next();
 				error = calcError(_variables, trial);

@@ -248,7 +248,7 @@ public class CalcQuadSettings implements Runnable {
 		traj = myProbe.getTrajectory();
 
 		// get the 1st BPM betatron phase as the reference
-		TransferMapState state0 = (TransferMapState) traj.stateForElement(bpms
+		TransferMapState state0 = traj.stateForElement(bpms
 				.get(0));
 		//double xPhase0 = state0.getBetatronPhase().getx();
 		//double yPhase0 = state0.getBetatronPhase().gety();
@@ -265,7 +265,7 @@ public class CalcQuadSettings implements Runnable {
 
 		double sum = 0.;
 		for (int i = 1; i < bpms.size(); i++) {
-			TransferMapState state = (TransferMapState) traj
+			TransferMapState state = traj
 					.stateForElement(bpms.get(i));
 			if (!tp.badBPMs.contains(new Integer(i))) {
 			    // CKA - This

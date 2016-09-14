@@ -1,17 +1,22 @@
 package xal.plugin.mysql;
 
+import xal.tools.coding.json.JSONCoder;
 import xal.tools.database.*;
 
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,7 +53,9 @@ public class MySQLDatabaseAdaptor extends DatabaseAdaptor {
 	public Connection getConnection(String urlSpec, String user, String password)
 			throws DatabaseException {
 		try {
-			return DriverManager.getConnection(urlSpec, user, password);
+			Connection connect = DriverManager.getConnection(urlSpec, user, password);
+			if ( connect != null ) connect.setAutoCommit( false );
+			return connect;
 		}
 		catch(SQLException exception) {
 			Logger.getLogger("global").log( Level.SEVERE, "Error connecting to the database at URL: \"" + urlSpec + "\" as user: " + user , exception );
@@ -96,6 +103,68 @@ public class MySQLDatabaseAdaptor extends DatabaseAdaptor {
 	/** Get the result set of primary keys for the specified meta data, schema and table. MySQL adaptor uses the catalog in place of schema. */
 	public ResultSet getPrimaryKeysResultSet( final DatabaseMetaData metaData, final String schema, final String table ) throws SQLException {
 		return metaData.getPrimaryKeys( schema, null, table );
+	}
+	
+	
+	@Override
+	public long insert( final Connection connection, final String tableName, final Map<String, Object> items, final String queryForNextPrimKey ) throws SQLException {
+		List<Object> valuesList = new ArrayList<>( items.size() );
+		StringBuilder sqlBuilder = new StringBuilder( "INSERT INTO ");
+		sqlBuilder.append( tableName );
+		sqlBuilder.append( "(" );
+		StringBuilder valuesBuilder = new StringBuilder( " VALUES " );
+		valuesBuilder.append( "(" );
+		Set<Map.Entry<String, Object>> entrySet = items.entrySet();
+		Iterator<Entry<String, Object>> iterator = entrySet.iterator();
+		for ( Map.Entry<String, Object> entry : entrySet ) {
+			iterator.next();
+			sqlBuilder.append( entry.getKey() );
+			valuesBuilder.append( "?" );
+			if ( iterator.hasNext() )  {
+				sqlBuilder.append( "," );
+				valuesBuilder.append( "," );
+			}
+			valuesList.add( entry.getValue() );
+		}
+		
+		sqlBuilder.append( ")" );
+		valuesBuilder.append( ")" );
+		sqlBuilder.append( valuesBuilder.toString() );
+		String sql = sqlBuilder.toString();
+		PreparedStatement insertStatement = connection.prepareStatement( sql );
+		int paramIndex = 1;
+		for ( Object value : valuesList ) {
+			insertStatement.setObject( paramIndex, value );
+			paramIndex ++;
+		}
+		insertStatement.executeUpdate();
+		String query = "SELECT LAST_INSERT_ID()";
+		PreparedStatement queryStatement = connection.prepareStatement( query );
+		ResultSet record = queryStatement.executeQuery();
+		record.next();
+		
+		long nextPrimKey = record.getLong( 1 );
+		
+		if ( insertStatement != null ) insertStatement.close();
+		record.close();
+		
+		return nextPrimKey;
+	}
+
+
+	@Override
+	public void setArray( final PreparedStatement insertStatement, final int pramIndex, final String type, final Connection connection,
+			final Object array ) throws SQLException {
+		String values = JSONCoder.defaultEncode( array );
+		insertStatement.setString( pramIndex, values );
+	}
+
+
+	@Override
+	public Object getArrayValues(ResultSet record, String valueType) throws SQLException {
+		String valuesString = record.getString( valueType );
+		Object theValues = JSONCoder.defaultDecode( valuesString );
+		return theValues;
 	}
 
 	

@@ -14,7 +14,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
+
+import javafx.scene.chart.PieChart.Data;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import xal.tools.database.DatabaseAdaptor;
 
@@ -39,6 +44,9 @@ class MachineSnapshotTable {
 
 	/** SQL to get the next primary key */
 	protected final String NEXT_PRIMARY_KEY_SQL;
+	
+	/**database adaptor*/
+	protected  DatabaseAdaptor databaseAdaptor; 
 
 
 	/** Constructor */
@@ -55,37 +63,23 @@ class MachineSnapshotTable {
 
 
 	/** insert the machine snapshot and update its ID upone success */
-	public void insert( final Connection connection, final DatabaseAdaptor databaseAdaptor,  final ChannelSnapshotTable channelSnapshotTable, final MachineSnapshot machineSnapshot ) throws SQLException {
-		final long primaryKey = fetchNextPrimaryKey( connection );
+	public void insert( final Connection connection, final ChannelSnapshotTable channelSnapshotTable, final MachineSnapshot machineSnapshot ) throws SQLException {
+		
+		final Map<String, Object> items = new HashMap<>();
+		
 		final String type = machineSnapshot.getType();
+		items.put( TYPE_COLUMN, type );
 		final Timestamp timeStamp = new Timestamp( machineSnapshot.getTimestamp().getTime() );
-
-		final PreparedStatement insertStatement = getInsertStatement( connection );
-		insertStatement.setLong( 1, primaryKey );
-		insertStatement.setTimestamp( 2, timeStamp );
-		insertStatement.setString( 3, type );
-		insertStatement.setString( 4, machineSnapshot.getComment() );
-		insertStatement.executeUpdate();
-
+		items.put( TIMESTAMP_COLUMN, timeStamp );
+		items.put( COMMENT_COLUMN,  machineSnapshot.getComment() );
+		
+		long primaryKey = databaseAdaptor.insert( connection, TABLE_NAME, items, NEXT_PRIMARY_KEY_SQL );
+		
 		final ChannelSnapshot[] channelSnapshots = machineSnapshot.getChannelSnapshots();
 		channelSnapshotTable.insert( connection, databaseAdaptor, channelSnapshots, primaryKey );
 
 		connection.commit();
 		machineSnapshot.setId( primaryKey );
-	}
-
-
-	/** fetch the next primary key */
-	public long fetchNextPrimaryKey( final Connection connection ) throws SQLException {
-		final PreparedStatement queryStatement = getNextPrimaryKeyStatement( connection );
-		final ResultSet record = queryStatement.executeQuery();
-		record.next();
-		long l = record.getLong( 1 );
-		if(queryStatement != null) {
-			queryStatement.close();
-		}
-		record.close();
-		return l;
 	}
 
 
@@ -127,11 +121,15 @@ class MachineSnapshotTable {
 	 * @return the machineSnapshot which is the same as the parameter returned for convenience
 	 */
 	public MachineSnapshot loadChannelSnapshotsInto( final Connection connection, final ChannelSnapshotTable channelSnapshotTable, final MachineSnapshot machineSnapshot ) throws SQLException {
-		final ChannelSnapshot[] snapshots = channelSnapshotTable.fetchChannelSnapshotsForMachineSnapshotID( connection, machineSnapshot.getId() );
+		final ChannelSnapshot[] snapshots = channelSnapshotTable.fetchChannelSnapshotsForMachineSnapshotID( connection, databaseAdaptor,  machineSnapshot.getId() );
 		machineSnapshot.setChannelSnapshots( snapshots );
 		return machineSnapshot;
 	}
-
+	
+	/**set the database adaptor*/
+	public void setDatabaseAdaptor( final DatabaseAdaptor databaseAdaptor ) {
+		this.databaseAdaptor = databaseAdaptor;
+	}
 
 	/**
 	 * Fetch the machine snapshots within the specified time range. If the type is not null, then restrict the machine snapshots to those of the specified type.
@@ -198,26 +196,6 @@ class MachineSnapshotTable {
 		}
 		snapshotResult.close();
 		return snapshots.toArray( new MachineSnapshot[snapshots.size()] );
-	}
-
-
-	/**
-	 * Create the prepared statement to fetch the next primary key.
-	 * @return the prepared statement for making a new machine snapshot primary key and fetching it
-	 * @throws java.sql.SQLException  if an exception occurs during a SQL evaluation
-	 */
-	protected PreparedStatement getNextPrimaryKeyStatement( final Connection connection ) throws SQLException {
-		return connection.prepareStatement( NEXT_PRIMARY_KEY_SQL );
-	}
-
-
-	/**
-	 * Create the prepared statement to insert a new machine snapshot.
-	 * @return the prepared statement for inserting a new machine snapshot
-	 * @throws java.sql.SQLException  if an exception occurs during a SQL evaluation
-	 */
-	protected PreparedStatement getInsertStatement( final Connection connection ) throws SQLException {
-		return connection.prepareStatement( "INSERT INTO " + TABLE_NAME + "(" + PRIMARY_KEY + ", " + TIMESTAMP_COLUMN + ", " + TYPE_COLUMN + ", " + COMMENT_COLUMN + ")" + " VALUES (?, ?, ?, ?)" );
 	}
 
 

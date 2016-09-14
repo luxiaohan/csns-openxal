@@ -4,9 +4,11 @@ import java.util.*;
 
 import javax.swing.table.AbstractTableModel;
 
+import xal.smf.impl.BPM;
+
 public class BpmTableModel extends AbstractTableModel {
 	static final long serialVersionUID = 0;
-	List allBPMs;
+	List<BPM> allBPMs;
 	BetaPanel betaPanel;
 	int rowSize = 0;
 	
@@ -15,9 +17,9 @@ public class BpmTableModel extends AbstractTableModel {
 	private Object[][] data;
 
 	/** Container for row labels */
-	private ArrayList rowNames = new ArrayList(rowSize);
+	private ArrayList<String> rowNames = new ArrayList<String>(rowSize);
 
-	public BpmTableModel(List bpms, String[] colNames, BetaPanel panel) {
+	public BpmTableModel(List<BPM> bpms, String[] colNames, BetaPanel panel) {
 		allBPMs = bpms;
 		rowSize = allBPMs.size();
 		columnNames = colNames;
@@ -42,7 +44,7 @@ public class BpmTableModel extends AbstractTableModel {
 	}
 
 	public String getRowName(int row) {
-		return (String) rowNames.get(row);
+		return rowNames.get(row);
 	}
 
 	public boolean isCellEditable(int row, int col) {
@@ -62,7 +64,7 @@ public class BpmTableModel extends AbstractTableModel {
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return (String) rowNames.get(rowIndex);
+			return rowNames.get(rowIndex);
 		} else {
 			return data[rowIndex][columnIndex];
 		}
@@ -70,7 +72,7 @@ public class BpmTableModel extends AbstractTableModel {
 
 	public void setValueAt(Object value, int row, int col) {
 		if (col > 4) {
-			data[row][col] = (Object) value;
+			data[row][col] = value;
 			if (betaPanel.bpmTable != null ) {
 				// exclude the checked BPM
 				if (((Boolean) value).booleanValue()) {

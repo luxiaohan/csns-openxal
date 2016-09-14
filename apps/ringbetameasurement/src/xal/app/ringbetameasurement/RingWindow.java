@@ -62,7 +62,7 @@ public class RingWindow extends AcceleratorWindow {
 		betaPane.removeAll();
 		List<AcceleratorNode> bpms = seq.getAllNodesOfType("BPM");
 		bpms = AcceleratorSeq.filterNodesByStatus(bpms, true);
-		Iterator bpmIt = bpms.iterator();
+		Iterator <AcceleratorNode> bpmIt = bpms.iterator();
 		ArrayList<BPM> bpmLst = new ArrayList<BPM>();
 		while(bpmIt.hasNext()) {
 			bpmLst.add((BPM)bpmIt.next());

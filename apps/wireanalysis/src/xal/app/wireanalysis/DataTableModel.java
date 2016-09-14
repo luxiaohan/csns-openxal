@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.util.*;
 
 public class DataTableModel extends AbstractTableModel{
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
+    
     /**  the PV handle names */
     private String[] columnNames;
 
@@ -18,16 +22,16 @@ public class DataTableModel extends AbstractTableModel{
 
     /** The data holders */
     //private Object[][] dataMatrix;
-    private ArrayList dataArray;
+    private ArrayList<ArrayList<Object>> dataArray;
 
     /** Container for the JButtons */
-    private ArrayList jButtons;
+    private ArrayList<JButton> jButtons;
 
     /** Container for row labels */
-    private ArrayList rowNames;
+    private ArrayList<String> rowNames;
     
     /** Container for BPM agents **/
-    private ArrayList agents;
+   // private ArrayList agents;
 
     /** constructor */
     public DataTableModel(String[] colNames, int numRows){
@@ -35,10 +39,10 @@ public class DataTableModel extends AbstractTableModel{
 	nRows = numRows;
 	nColumns = colNames.length;
 	
-	dataArray = new ArrayList();
-	rowNames = new ArrayList(nRows);
-	jButtons = new ArrayList(nRows);
-	agents = new ArrayList(nRows);
+	dataArray = new ArrayList<ArrayList<Object>>();
+    rowNames = new ArrayList<String>(nRows);
+    jButtons = new ArrayList<JButton>(nRows);
+	//agents = new ArrayList(nRows);
     }
 
     
@@ -84,17 +88,17 @@ public class DataTableModel extends AbstractTableModel{
     
     public void setValueAt(Object value, int row, int col)
     {
-	ArrayList data = (ArrayList)dataArray.get(row);
+	 ArrayList<Object> data = dataArray.get(row);
 	data.set(col, value);
     }
     
-    public void setTableData(int rows, ArrayList data, ArrayList agentlist){
+    public void setTableData(int rows, ArrayList<ArrayList<Object>> data){
 	nRows = rows;
 	dataArray=data;
 	fireTableDataChanged();
     }	
     
-    public void addTableData(ArrayList data){
+    public void addTableData(ArrayList<Object> data){
 	dataArray.add(data);
     }
     
@@ -102,7 +106,7 @@ public class DataTableModel extends AbstractTableModel{
 	fireTableCellUpdated(row, col);
     }
     
-    public Class getColumnClass(int c) {
+    public Class<?> getColumnClass(int c) {
 	return getValueAt(0, c).getClass();
     }
     

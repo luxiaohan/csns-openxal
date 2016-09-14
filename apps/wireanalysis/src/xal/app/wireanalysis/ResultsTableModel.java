@@ -5,6 +5,10 @@ import javax.swing.*;
 import java.util.*;
 
 public class ResultsTableModel extends AbstractTableModel{
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
+    
     /**  the PV handle names */
     private String[] columnNames;
 
@@ -18,10 +22,10 @@ public class ResultsTableModel extends AbstractTableModel{
     private Object[][] dataMatrix;
 
     /** Container for the JButtons */
-    private ArrayList jButtons;
+    private ArrayList<JButton> jButtons;
 
     /** Container for row labels */
-    private ArrayList rowNames;
+    private ArrayList<String> rowNames;
     
 
     /** constructor */
@@ -30,8 +34,8 @@ public class ResultsTableModel extends AbstractTableModel{
 	nRows = numRows;
 	nColumns = colNames.length;
 	dataMatrix = new Object[numRows][nColumns];
-	rowNames = new ArrayList(nRows);
-	jButtons = new ArrayList(nRows);
+    rowNames = new ArrayList<String>(nRows);
+    jButtons = new ArrayList<JButton>(nRows);
     }
     
     //** method to store the JButtons */

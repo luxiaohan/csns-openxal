@@ -28,7 +28,7 @@ public class MatrixQuad {
 	List<AcceleratorNode> quads;
 	EnvelopeProbe probe;
 	Scenario scenario = null;
-	Trajectory traj;
+	Trajectory<?> traj;
 	TreeMap<Double, TreeMap<Double, List<Double>>> listmapquadbpmx,listmapquadbpmy;
 
 	public MatrixQuad(AcceleratorSeq sequence) {
@@ -63,7 +63,7 @@ public class MatrixQuad {
 	}
 
 	// compute the transformatix of the quad.
-	public Matrix getQuadmatrix(Trajectory traj, Quadrupole quad) {
+	public Matrix getQuadmatrix(Trajectory<?> traj, Quadrupole quad) {
 		int[] indices = traj.indicesForElement(quad.getId());
 		int startindex = indices[0] - 1;
 		int stopindex = indices[indices.length - 1];
@@ -89,7 +89,7 @@ public class MatrixQuad {
 	 * compute the transfer matrix from quad to bpm
 	 */
 
-	public Matrix getQtoBMatrix(Trajectory traj, Quadrupole quad,
+	public Matrix getQtoBMatrix(Trajectory<?> traj, Quadrupole quad,
 			BPM bpm) {
 		int[] indices = traj.indicesForElement(quad.getId());
 		int stopindex = indices[indices.length - 1];

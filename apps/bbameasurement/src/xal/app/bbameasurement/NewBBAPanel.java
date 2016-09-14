@@ -23,6 +23,8 @@ import Jama.Matrix;
 
 public class NewBBAPanel extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
+	
 	protected AcceleratorSeq _sequence;
 	protected JProgressBar progressBar;
 	final static int MAX_PROGRESS = 100;
@@ -408,12 +410,12 @@ public class NewBBAPanel extends JPanel{
 	public void setSequence(AcceleratorSeq sequence) {
 		_sequence=sequence;	
 		if(_sequence!=null){
-		    List bpms = sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(BPM.s_strType).and(
+		    List<BPM> bpms = sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(BPM.s_strType).and(
 							QualifierFactory.getStatusQualifier(true)));
 		    _AVAILABLE_BPMs.clear();
 		    _AVAILABLE_BPMs.addAll(bpms);
 		
-		    List quads = sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(Quadrupole.s_strType).and(
+		    List<Quadrupole> quads = sequence.getAllNodesWithQualifier(new AndTypeQualifier().and(Quadrupole.s_strType).and(
 							QualifierFactory.getStatusQualifier(true)));
 		    _AVAILABLE_Quads.clear();
 		    _AVAILABLE_Quads.addAll(quads);
@@ -427,13 +429,14 @@ public class NewBBAPanel extends JPanel{
 	}
 	
 	protected class QuadOffsetTableModel extends AbstractTableModel {
+		private static final long serialVersionUID = 1L;
 
 		final String[] columnNames = { "QuadName", "qx(mm)" ,"qy(mm)"};
 		 Object[][] data ;
 
 		/** Container for row labels */
 		
-	    private ArrayList rowNames = new ArrayList(_AVAILABLE_Quads.size());
+	    private ArrayList<String> rowNames = new ArrayList<String>(_AVAILABLE_Quads.size());
 	    
 		public QuadOffsetTableModel(Object[][] data1) {
 			setMode(data1);
@@ -456,7 +459,7 @@ public class NewBBAPanel extends JPanel{
 		}
 
 		public String getRowName(int row) {
-			return (String) rowNames.get(row);
+			return  rowNames.get(row);
 		}
 
 		public boolean isCellEditable(int row, int col) {
@@ -470,14 +473,14 @@ public class NewBBAPanel extends JPanel{
 
 		public Object getValueAt(int rowIndex, int columnIndex) {			
 			if (columnIndex == 0) {
-				return (String) rowNames.get(rowIndex);
+				return  rowNames.get(rowIndex);
 			} else 
 				return data[rowIndex][columnIndex];
 		}
 
 		public void setValueAt(Object value, int row, int col) {
 			if (col > 0) {				
-				data[row][col] = (Object) value;
+				data[row][col] =  value;
 				fireTableCellUpdated(row, col);
 				return;
 			}
@@ -485,13 +488,14 @@ public class NewBBAPanel extends JPanel{
 	  }
 	
 	protected class BPMOffsetTableModel extends AbstractTableModel {
+		private static final long serialVersionUID = 1L;
 
 		final String[] columnNames = { "BPMName", "bx(mm)" ,"by(mm)"};
 		 Object[][] data ;
 
 		/** Container for row labels */
 		
-	    private ArrayList rowNames = new ArrayList(_AVAILABLE_BPMs.size());
+	    private ArrayList<String> rowNames = new ArrayList<String>(_AVAILABLE_BPMs.size());
 	    
 		public BPMOffsetTableModel(Object[][] data1) {
 			setMode(data1);
@@ -514,7 +518,7 @@ public class NewBBAPanel extends JPanel{
 		}
 
 		public String getRowName(int row) {
-			return (String) rowNames.get(row);
+			return  rowNames.get(row);
 		}
 
 		public boolean isCellEditable(int row, int col) {
@@ -528,7 +532,7 @@ public class NewBBAPanel extends JPanel{
 
 		public Object getValueAt(int rowIndex, int columnIndex) {			
 			if (columnIndex == 0) {
-				return (String) rowNames.get(rowIndex);
+				return rowNames.get(rowIndex);
 			} else 
 				return data[rowIndex][columnIndex];
 
@@ -536,7 +540,7 @@ public class NewBBAPanel extends JPanel{
 
 		public void setValueAt(Object value, int row, int col) {
 			if (col > 0) {				
-				data[row][col] = (Object) value;
+				data[row][col] = value;
 				fireTableCellUpdated(row, col);
 				return;
 			}

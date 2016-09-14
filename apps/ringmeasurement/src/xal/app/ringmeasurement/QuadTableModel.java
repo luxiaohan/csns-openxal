@@ -4,10 +4,12 @@ import java.util.*;
 
 import javax.swing.table.AbstractTableModel;
 
+import xal.smf.impl.MagnetMainSupply;
+
 public class QuadTableModel extends AbstractTableModel {
 	static final long serialVersionUID = 0;
 
-	ArrayList allQuads;
+	ArrayList<MagnetMainSupply> allQuads;
 
 	int rowSize = 0;
 
@@ -20,7 +22,7 @@ public class QuadTableModel extends AbstractTableModel {
 	
 	private boolean isOnline = true;
 
-	public QuadTableModel(ArrayList quads, String[] colNames) {
+	public QuadTableModel(ArrayList<MagnetMainSupply> quads, String[] colNames) {
 		allQuads = quads;
 		rowSize = allQuads.size();
 		columnNames = colNames;
@@ -59,7 +61,7 @@ public class QuadTableModel extends AbstractTableModel {
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex == 0) {
-			return (String) rowNames.get(rowIndex);
+			return rowNames.get(rowIndex);
 		} else if (columnIndex == 2 || columnIndex == 1) {
 			if (isOnline)
 				

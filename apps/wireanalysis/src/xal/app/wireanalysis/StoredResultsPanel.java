@@ -25,6 +25,9 @@ import gov.sns.tools.data.*;*/
 
 
 public class StoredResultsPanel extends JPanel{
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
     
     
     public JPanel mainPanel;
@@ -42,13 +45,13 @@ public class StoredResultsPanel extends JPanel{
     private JButton refreshbutton;
     private JButton plotbutton;
     private JButton exportbutton;
-    
-    private ArrayList attributes;
+
+    private ArrayList<DataAttribute> attributes;
     
     private String[] plottypes = {"Plot Linear Values", "Plot Linear, Fixed Scale", "Plot Log Values",  "Plot Log, Fixed Scale"}; 
     private String[] plotdatatypes = {"Plot Raw and Fit Data", "Plot Raw With Points", "Plot Raw With Lines", "Plot Fit Only"}; 
-    private JComboBox scalechooser = new JComboBox(plottypes);
-    private JComboBox plotchooser = new JComboBox(plotdatatypes);
+    private JComboBox<String> scalechooser = new JComboBox<String>(plottypes);
+    private JComboBox<String> plotchooser = new JComboBox<String>(plotdatatypes);
     
     private JFileChooser fc;
     
@@ -95,11 +98,11 @@ public class StoredResultsPanel extends JPanel{
 		datapanel.setPreferredSize(new Dimension(400, 210));
 		datapanel.setGraphBackGroundColor(Color.WHITE);
 	
-		attributes = new ArrayList();
+		attributes = new ArrayList<DataAttribute>();
 		attributes.add(new DataAttribute("file", new String("").getClass(), true) );
 		attributes.add(new DataAttribute("wire", new String("").getClass(), true) );
 		attributes.add(new DataAttribute("direction", new String("").getClass(), true) );
-		attributes.add(new DataAttribute("data", new ArrayList().getClass(), false) );
+		attributes.add(new DataAttribute("data", new ArrayList<DataAttribute>().getClass(), false) );
 		resultsdatatable = new DataTable("DataTable", attributes);
 	
 		refreshbutton = new JButton("Refresh Table");
@@ -171,7 +174,7 @@ public class StoredResultsPanel extends JPanel{
 	plotbutton.addActionListener(new ActionListener(){
 	    public void actionPerformed(ActionEvent e) {
 		int nrows = datatablemodel.getRowCount();
-		ArrayList wires = new ArrayList();
+		ArrayList<Integer> wires = new ArrayList<Integer>();
 		for(int i=0; i<nrows; i++){
 		    if(((Boolean)datatable.getValueAt(i, 5)).booleanValue() == true){         
 			wires.add(new Integer(i));
@@ -184,7 +187,7 @@ public class StoredResultsPanel extends JPanel{
 	exportbutton.addActionListener(new ActionListener(){
 	    public void actionPerformed(ActionEvent e) {
 			int returnValue = fc.showSaveDialog(StoredResultsPanel.this);
-			if(returnValue == fc.APPROVE_OPTION){
+			if(returnValue == JFileChooser.APPROVE_OPTION){
 				File file = fc.getSelectedFile();
 				try{
 					writeMatLabFile(file);
@@ -199,37 +202,38 @@ public class StoredResultsPanel extends JPanel{
 		});
     }
 
-    public void plotData(ArrayList wires){
+    @SuppressWarnings ("unchecked") //Had to suppress warning because valueforkey returns object and would not allow for specific casting
+    public void plotData(ArrayList<Integer> wires){
 	
 		int colorindex = 1;
 
 		datapanel.removeAllGraphData();
 		boolean plotdata = false;
 		
-		ArrayList grapharray = new ArrayList();
+		ArrayList<BasicGraphData> grapharray = new ArrayList<BasicGraphData>();
 	
-		Iterator itr = wires.iterator();	
+		Iterator<Integer> itr = wires.iterator();
 
 		while(itr.hasNext()){
 	  
-			ArrayList wiredata = new ArrayList();
+			ArrayList<double[]> wiredata = new ArrayList<double[]>();
 	    
-			int rownumber = ((Integer)itr.next()).intValue();
+			int rownumber = (itr.next()).intValue();
 			String filename = (String)datatable.getValueAt(rownumber, 0);
 			String name = (String)datatable.getValueAt(rownumber, 1);
 			String direction = (String)datatable.getValueAt(rownumber, 2);
 	    
-			Map bindings = new HashMap();
+			Map<String, String> bindings = new HashMap<String, String>();
 			bindings.put("file", filename);
 			bindings.put("wire", name);
 			bindings.put("direction", direction);
 			GenericRecord record =  resultsdatatable.record(bindings);
-			wiredata=(ArrayList)record.valueForKey("data");
+			wiredata=(ArrayList<double[]>)record.valueForKey("data");
 	    
 			if(plotrawdata){
 				BasicGraphData graphdata = new BasicGraphData();
-				double[] sdata = (double[])wiredata.get(2);
-				double[] data = (double[])wiredata.get(3);
+				double[] sdata = wiredata.get(2);
+				double[] data = wiredata.get(3);
 				if(!linearplot){
 					double temp;
 					double[] logdata = new double[data.length];
@@ -260,8 +264,8 @@ public class StoredResultsPanel extends JPanel{
 	    
 			if(plotfitdata){
 				
-				double[] twogauss = (double[])wiredata.get(4);
-				double[] supergauss = (double[])wiredata.get(5);
+				double[] twogauss = wiredata.get(4);
+				double[] supergauss = wiredata.get(5);
 				BasicGraphData fitgraphdata = new BasicGraphData();
 				fitgraphdata.removeAllPoints();
 				int i = 0;  
@@ -269,7 +273,7 @@ public class StoredResultsPanel extends JPanel{
 				int npoints = (new Double(points)).intValue();
 				double[] sfit = new double[npoints];
 				double[] yfit = new double[npoints];
-				double[] a = (double[])wiredata.get(0);
+				double[] a = wiredata.get(0);
 				
 				if(twogauss[0] == 0.0 && supergauss[0] == 0.0){ //Single Gauss
 					double xmin = a[2] - 5*a[0];
@@ -335,15 +339,15 @@ public class StoredResultsPanel extends JPanel{
 				fitgraphdata.setDrawLinesOn(true);
 				fitgraphdata.setGraphProperty("Legend", new String(filename+":"+name+":"+direction+":fit"));
 				fitgraphdata.setGraphColor(IncrementalColors.getColor(colorindex));
-				grapharray.add((BasicGraphData)fitgraphdata);   
+				grapharray.add(fitgraphdata);   
 			}
 			colorindex++;
 		}
 	 
-		Iterator yitr = grapharray.iterator();
+		Iterator<BasicGraphData> yitr = grapharray.iterator();
 	
 		while(yitr.hasNext()){
-			datapanel.addGraphData((BasicGraphData)yitr.next());
+			datapanel.addGraphData(yitr.next());
 		}
 	
 		datapanel.setLegendButtonVisible(true);
@@ -367,28 +371,28 @@ public class StoredResultsPanel extends JPanel{
 		}
 	}
 		
-    
+    @SuppressWarnings ("unchecked") //Had to suppress warning because valueforkey returns object and would not allow for specific casting
     private void refreshTable(){
 
 		datatablemodel.clearAllData();
 	
-		ArrayList tabledata = new ArrayList();
+		ArrayList<Object> tabledata = new ArrayList<Object>();
 	
 		if(resultsdatatable.records().size() == 0){
 			System.out.println("No data available to load!");
 		}
 		else{
-			Collection records = resultsdatatable.records();
-			Iterator itr = records.iterator();	
+			Collection<GenericRecord> records = resultsdatatable.records();	
+			Iterator<GenericRecord> itr = records.iterator();
 			while(itr.hasNext()){
 				tabledata.clear();
-				GenericRecord record = (GenericRecord)itr.next();
+				GenericRecord record =itr.next();				
 				String filename = (String)record.valueForKey("file");
 				String wire = (String)record.valueForKey("wire");
 				String direction = (String)record.valueForKey("direction");
-				ArrayList results = (ArrayList)record.valueForKey("data");
-				double[] fitparams = (double[])results.get(0);
-				double[] fitparams_err = (double[])results.get(1);
+				ArrayList<double[]> results = (ArrayList<double[]>)record.valueForKey("data");
+				double[] fitparams = results.get(0);
+				double[] fitparams_err = results.get(1);
 	    
 				tabledata.add(new String(filename));
 				tabledata.add(new String(wire));
@@ -396,7 +400,7 @@ public class StoredResultsPanel extends JPanel{
 				tabledata.add(new Double(fitparams[0]));
 				tabledata.add(new Double(fitparams_err[0]));
 				tabledata.add(new Boolean(false));
-				datatablemodel.addTableData(new ArrayList(tabledata));
+				datatablemodel.addTableData(new ArrayList<Object>(tabledata));
 			}
 			datatablemodel.fireTableDataChanged();
 		}
@@ -425,7 +429,7 @@ public class StoredResultsPanel extends JPanel{
 		datatable.setColumnSelectionAllowed(false);
 		datatable.setCellSelectionEnabled(false);
 
-		datatable.setAutoResizeMode(datatable.AUTO_RESIZE_OFF);
+		datatable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		datascrollpane = new JScrollPane(datatable);
 		datascrollpane.setColumnHeaderView(datatable.getTableHeader());
 
@@ -433,26 +437,26 @@ public class StoredResultsPanel extends JPanel{
 
     }
     
-    
+    @SuppressWarnings ("unchecked") //Had to suppress warning because valueforkey returns object and would not allow for specific casting
     public void writeMatLabFile(File file) throws IOException{
 		if(resultsdatatable.records().size() == 0){
 			System.out.println("No data available to write!");
 		}
 		else{
 			OutputStream fout = new FileOutputStream(file);
-			Collection records = resultsdatatable.records();
-			Iterator itr = records.iterator();	
+			Collection<GenericRecord> records = resultsdatatable.records();
+			Iterator<GenericRecord> itr = records.iterator();
 			while(itr.hasNext()){
-				GenericRecord record = (GenericRecord)itr.next();
+				GenericRecord record = itr.next();
 				String filename = (String)record.valueForKey("file");
 				String wire = (String)record.valueForKey("wire");
 				String direction = (String)record.valueForKey("direction");
-				ArrayList results = (ArrayList)record.valueForKey("data");
-				double[] fitparams = (double[])results.get(0);
-				double[] fitparams_err = (double[])results.get(1);
+				ArrayList<double[]> results = (ArrayList<double[]>)record.valueForKey("data");
+				double[] fitparams = results.get(0);
+				double[] fitparams_err = results.get(1);
 				String line = "%  " + filename + ":" + wire + ":" + direction + "\n";
-				double[] sdata = (double[])results.get(2);
-				double[] data = (double[])results.get(3);
+				double[] sdata = results.get(2);
+				double[] data = results.get(3);
 		
 				line = line + sdata.length + "\t" + data.length + "\n";
 				for(int i=0; i<sdata.length; i++){

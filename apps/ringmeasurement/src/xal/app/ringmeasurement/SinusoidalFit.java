@@ -49,7 +49,7 @@ public class SinusoidalFit {
         /* Setup the variable 
          * the function will look like A*sin(w*x) + c
          */
-        List variables = new ArrayList();
+        List<Variable> variables = new ArrayList<Variable>();
         Variable b = new Variable( "b", phi, -0.5, 0.5 );
         variables.add( b );
         Variable A = new Variable( "A", amp, 12., 22. );
@@ -69,7 +69,7 @@ public class SinusoidalFit {
 
         SineFitObjective objective = new SineFitObjective("Exponentially Decayed Sine Wave", y, 0.);
         objective.setDataLength(len);
-        List objectives = new ArrayList();
+        List<Objective> objectives = new ArrayList<Objective>();
         objectives.add(objective);
         
         SineFitEvaluator evaluator = new SineFitEvaluator();

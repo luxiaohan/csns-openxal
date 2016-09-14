@@ -60,7 +60,7 @@ public class QuadResponse {
 		   resetQuadSupply( _quadsupply, initialField );
 		   Thread.sleep( 2000 );
 	   }catch( Exception exception ) {
-			Logger.global.log( Level.SEVERE, "Exception updating the response matrix.", exception );
+		   Logger.getLogger("global").log( Level.SEVERE, "Exception updating the response matrix.", exception );
 			exception.printStackTrace();
 			throw new RuntimeException( "Online Model calibration exception.", exception );
 	  	}

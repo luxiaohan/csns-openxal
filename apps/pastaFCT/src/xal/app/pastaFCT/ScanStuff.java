@@ -109,15 +109,15 @@ public class ScanStuff implements ConnectionListener{
 	
     	Iterator<MeasuredValue> itr = measuredValuesV.iterator();
     	while( itr.hasNext() ) {
-    		scanController.addMeasuredValue((MeasuredValue) itr.next());
+    		scanController.addMeasuredValue( itr.next());
     	}
 	
     	itr = measuredValuesOffV.iterator();
     	while( itr.hasNext() ) {
-    		scanController1D.addMeasuredValue((MeasuredValue) itr.next());
+    		scanController1D.addMeasuredValue(itr.next());
     	}	
 	    
-    	connectionMap = Collections.synchronizedMap(new HashMap());
+    	connectionMap = Collections.synchronizedMap(new HashMap<String, Boolean>());
 	
     	initScanController2D();
 	
@@ -369,7 +369,7 @@ public class ScanStuff implements ConnectionListener{
 	    int nDisconnects = 6;
 	    while (nDisconnects > 0 && i < 5) {
     		try {
-    			Thread.currentThread().sleep(200);
+    			Thread.sleep(200);
     		} catch (InterruptedException e) {
     			System.out.println("Sleep interrupted during connection check");
     			System.err.println( e.getMessage() );
@@ -393,11 +393,11 @@ public class ScanStuff implements ConnectionListener{
     private void setPVText() {
 	    String scanpv1 = "RF phase scan PV: " + scanVariable.getChannelName() + "  " + connectionMap.get(cavAmpPVName) + "\n";
 	    String scanpv2 = "RF amplitude scan PV: " + scanVariableParameter.getChannelName() + "  " + connectionMap.get(cavPhasePVName) + "\n";
-	    Iterator itr = measuredValuesV.iterator();
+	    Iterator<MeasuredValue> itr = measuredValuesV.iterator();
 	    int i = 1;
 	    String mvpvs = "\n";
 	    while (itr.hasNext()){
-		String name = ((MeasuredValue) itr.next()).getChannelName();
+		String name = (itr.next()).getChannelName();
 		mvpvs += "FCT monitor PV " + (new Integer(i)).toString() + " : " + name +  "  " + connectionMap.get(name) + "\n";
 		     i++;
 	    }
@@ -416,7 +416,7 @@ public class ScanStuff implements ConnectionListener{
     	int nCurves = 4;
     	if(measuredValuesV.size() < 4) nCurves=measuredValuesV.size();
     	for(int i = 0, n=nCurves; i < n; i++){
-    		MeasuredValue mv_tmp = (MeasuredValue) measuredValuesV.get(i);
+    		MeasuredValue mv_tmp = measuredValuesV.get(i);
     		graphScan.addGraphData(mv_tmp.getDataContainers());
     	}
     	graphScan.refreshGraphJPanel();
@@ -434,7 +434,7 @@ public class ScanStuff implements ConnectionListener{
     	int nCurves = 2;
     	if(measuredValuesOffV.size() < 2) nCurves=measuredValuesOffV.size();
     	for(int i = 0, n=nCurves; i < n; i++){
-    		MeasuredValue mv_tmp = (MeasuredValue) measuredValuesOffV.get(i);
+    		MeasuredValue mv_tmp = measuredValuesOffV.get(i);
     		graphScan1D.addGraphData(mv_tmp.getDataContainers());
     	}
     	graphScan1D.refreshGraphJPanel();
@@ -444,7 +444,7 @@ public class ScanStuff implements ConnectionListener{
      /** Set colors of raw data scans */
     protected void setColors(int deleteIndex){
     	for(int i = 0, n = measuredValuesV.size(); i < n; i++){
-    		MeasuredValue mv_tmp = (MeasuredValue) measuredValuesV.get(i);		
+    		MeasuredValue mv_tmp = measuredValuesV.get(i);		
     		mv_tmp.setColor(IncrementalColor.getColor(i));
     	}
     	graphScan.refreshGraphJPanel();
@@ -452,7 +452,7 @@ public class ScanStuff implements ConnectionListener{
  
     protected void setColors1D(int deleteIndex){
     	for(int i = 0, n = measuredValuesOffV.size(); i < n; i++){
-    		MeasuredValue mv_tmp = (MeasuredValue) measuredValuesOffV.get(i);		
+    		MeasuredValue mv_tmp =  measuredValuesOffV.get(i);		
     		mv_tmp.setColor(IncrementalColor.getColor(i));
     	}
     	graphScan1D.refreshGraphJPanel();
@@ -462,7 +462,7 @@ public class ScanStuff implements ConnectionListener{
     private void initScan() {
         graphScan.removeAllGraphData();
         for(int i = 0, n = measuredValuesV.size(); i < n; i++){
-            MeasuredValue mv_tmp = (MeasuredValue) measuredValuesV.get(i);		
+            MeasuredValue mv_tmp = measuredValuesV.get(i);		
             mv_tmp.removeAllDataContainers();
     	}
     	setColors(1);
@@ -472,7 +472,7 @@ public class ScanStuff implements ConnectionListener{
     private void initScan1D() {
         graphScan1D.removeAllGraphData();
         for(int i = 0, n = measuredValuesOffV.size(); i < n; i++){
-            MeasuredValue mv_tmp = (MeasuredValue) measuredValuesOffV.get(i);		
+            MeasuredValue mv_tmp =  measuredValuesOffV.get(i);		
             mv_tmp.removeAllDataContainers();
         }
         setColors1D(1);
@@ -506,7 +506,7 @@ public class ScanStuff implements ConnectionListener{
 	    }
 
 	    for(int i = 0, n = measuredValuesV.size(); i < n; i++){
-		    MeasuredValue mv_tmp = (MeasuredValue) measuredValuesV.get(i);
+		    MeasuredValue mv_tmp =  measuredValuesV.get(i);
 		    BasicGraphData gd = mv_tmp.getDataContainer();
 		    if(mv_tmp.getChannel() != null){
 			measurePV_string = mv_tmp.getChannel().getId();
@@ -543,7 +543,7 @@ public class ScanStuff implements ConnectionListener{
 	    }
 
 	    for(int i = 0, n = measuredValuesOffV.size(); i < n; i++){
-		    MeasuredValue mv_tmp = (MeasuredValue) measuredValuesOffV.get(i);
+		    MeasuredValue mv_tmp = measuredValuesOffV.get(i);
 		    BasicGraphData gd = mv_tmp.getDataContainer();
 		    if(mv_tmp.getChannel() != null){
 		        measurePV_string = mv_tmp.getChannel().getId();

@@ -102,7 +102,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 
 	// private JTextField selectedBPMName = new JTextField(20);
 
-	private JComboBox selectBPM;
+	private JComboBox<String>  selectBPM;
 
 	private JDialog configDialog = new JDialog();
 
@@ -141,7 +141,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 
 	int len = 1024;                                                   //weiyy
 
-	protected JComboBox fftConf;
+	protected JComboBox<String>  fftConf;
 
 	boolean hasTune = false;
 
@@ -280,7 +280,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 					// do nothing
 				} else {
 					int selectedRow = lsm.getMinSelectionIndex();
-					setSelectedBPM(((BPM) allBPMs.get(selectedRow)).getId());
+					setSelectedBPM((allBPMs.get(selectedRow)).getId());
 					if (!badBPMs.contains(new Integer(selectedRow))) {
 						plotBPMData(selectedRow);
 					}
@@ -302,7 +302,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 		selection.setPreferredSize(new Dimension(330, 60));
 		// selection.add(selectedBPMName);
 		String[] options = { "Get tune (fit)", "Get tune (FFT)" };
-		selectBPM = new JComboBox(options);
+		selectBPM = new JComboBox<String>(options);
 		selectBPM.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				System.out.println("App mode is " + isOnline);
@@ -434,7 +434,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 		fftPane.setLayout(new GridLayout(1, 2));
 		JLabel label8 = new JLabel("FFT array size: ");
 		String[] fftChoice = { "32", "64", "128", "256","1024" };
-		fftConf = new JComboBox(fftChoice);
+		fftConf = new JComboBox<String>(fftChoice);
 		fftConf.setSelectedIndex(4);
 		fftConf.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -553,7 +553,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 		add(plotDisplayPane);
 
 		for (int i = 0; i < allBPMs.size(); i++) {
-			bpmTableModel.addRowName(((BPM) allBPMs.get(i)).getId(), i);
+			bpmTableModel.addRowName((allBPMs.get(i)).getId(), i);
 			bpmTableModel.setValueAt("0", i, 1);
 			bpmTableModel.setValueAt("0", i, 2);
 			bpmTableModel.setValueAt("0", i, 3);
@@ -571,7 +571,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 		rbPVCell = new InputPVTableCell[qPSs.size()];
 
 		for (int i = 0; i < qPSs.size(); i++) {
-			MagnetMainSupply mps = (MagnetMainSupply) qPSs.get(i);
+			MagnetMainSupply mps = qPSs.get(i);
 			setPVChs[i] = mps.getChannel(MagnetMainSupply.FIELD_SET_HANDLE);
 			rbPVChs[i] = mps.getChannel(MagnetMainSupply.FIELD_RB_HANDLE);
 			quadTableModel.addRowName(mps.getId(), i);
@@ -668,7 +668,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 		
 			for (int i = 0; i < allBPMs.size(); i++) {
 				
-				BPM theBPM = (BPM) allBPMs.get(i);	
+				BPM theBPM = allBPMs.get(i);	
 				
 				data[0]=datax[i];
 				data[1]=datay[i];
@@ -724,7 +724,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 				// BPM theBPM = (BPM) (myDoc.getSelectedSequence()
 				// .getNodeWithId(selectedBPM));
 
-				BPM theBPM = (BPM) allBPMs.get(i);
+				BPM theBPM = allBPMs.get(i);
 				posArray[i] = myDoc.getSelectedSequence().getPosition(theBPM);
 				// calculate the tune
 				tuneMeasurement[i] = new TuneMeasurement();
@@ -867,7 +867,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 					yPhaseDiff[i] = yPhaseDiff[i] + 2. * Math.PI;
 				
 				// get model BPM phase difference
-				TransferMapState state = (TransferMapState) traj
+				TransferMapState state =  traj
 				.stateForElement(goodBPMs.get(i));
 			/*	xModelPhase[i] = state.getBetatronPhase().getx()
 				- xModelPhase0;
@@ -1033,7 +1033,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 			
 				for (int i = 0; i < allBPMs.size(); i++) {
 					
-					BPM theBPM = (BPM) allBPMs.get(i);	
+					BPM theBPM = allBPMs.get(i);	
 					
 					data[0]=datax[i];
 					data[1]=datay[i];
@@ -1070,7 +1070,7 @@ public class TunePanel extends JPanel implements ConnectionListener,
 			// BPM theBPM = (BPM) (myDoc.getSelectedSequence()
 			// .getNodeWithId(selectedBPM));
 
-			BPM theBPM = (BPM) allBPMs.get(i);
+			BPM theBPM = allBPMs.get(i);
 			posArray[i] = myDoc.getSelectedSequence().getPosition(theBPM);
 		
 			// calculate the tune
@@ -1293,11 +1293,11 @@ public class TunePanel extends JPanel implements ConnectionListener,
 					// numberFormat.setMaximumFractionDigits(6);
 
 					for (int i = 0; i < xTune.length; i++) {
-						fileWriter.write(((BPM) allBPMs.get(i)).getId()
+						fileWriter.write(( allBPMs.get(i)).getId()
 								+ "\t"
 								+ numberFormat.format(myDoc
 										.getSelectedSequence().getPosition(
-												(BPM) allBPMs.get(i))) + "\t"
+												 allBPMs.get(i))) + "\t"
 								+ numberFormat.format(xTune[i]) + "\t"
 								+ numberFormat.format(xPhase[i]) + "\t"
 								+ numberFormat.format(yTune[i]) + "\t"
@@ -1353,12 +1353,12 @@ public class TunePanel extends JPanel implements ConnectionListener,
 
 	/** internal method to connect the monitors */
 	private void connectMons(Channel p_chan) {
-		Vector chanVec;
+		Vector<InputPVTableCell> chanVec;
 
 		try {
 			chanVec = getChannelVec(p_chan);
 			for (int i = 0; i < chanVec.size(); i++) {
-				mons.add(p_chan.addMonitorValue((InputPVTableCell) chanVec
+				mons.add(p_chan.addMonitorValue( chanVec
 						.elementAt(i), Monitor.VALUE));
 			}
 			chanVec.removeAllElements();

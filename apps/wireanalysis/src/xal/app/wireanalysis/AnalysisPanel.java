@@ -35,6 +35,9 @@ import java.text.NumberFormat;
 
 
 public class AnalysisPanel extends JPanel{
+	
+    /** ID for serializable version */
+    private static final long serialVersionUID = 1L;
     
     public JPanel mainPanel;
     public JTable datatable;
@@ -84,10 +87,10 @@ public class AnalysisPanel extends JPanel{
     private String[] plottypes = {"Plot Linear Values", "Plot Log Values"}; 
     private String[] flooroptions = {"Freeze Offset at 0.0", "Fit Data Offset"}; 
     private String[] calcmodes = {"Single Gauss Fit", "Two Gauss Fit", "Super Gauss Fit", "Two Super Gauss Fit", "Statistical RMS"}; 
- 
-    private JComboBox scalechooser = new JComboBox(plottypes);
-    private JComboBox floorchooser = new JComboBox(flooroptions);
-    private JComboBox calcmodechooser = new JComboBox(calcmodes);
+    
+    private JComboBox<String> scalechooser = new JComboBox<String>(plottypes);
+    private JComboBox<String> floorchooser = new JComboBox<String>(flooroptions);
+    private JComboBox<String> calcmodechooser = new JComboBox<String>(calcmodes);
   
     NumberFormat numFor = NumberFormat.getNumberInstance();
     
@@ -101,7 +104,7 @@ public class AnalysisPanel extends JPanel{
     DecimalField fitthreshold;
 
     String currentdataname;
-    ArrayList currentdata;
+    ArrayList<ArrayList<Double>> currentdata;
     
     double sdata[];
     double data[];
@@ -113,7 +116,7 @@ public class AnalysisPanel extends JPanel{
     DataTableModel datatablemodel;
     EdgeLayout layout = new EdgeLayout();
     FunctionGraphsJPanel datapanel; 
-    ArrayList attributes;
+    ArrayList<DataAttribute> attributes;
     //The following variables are for the two- and super-Gaussian fits.
     double[] stempdata;
     double[] tempdata;
@@ -177,14 +180,14 @@ public class AnalysisPanel extends JPanel{
 		datapanel = new FunctionGraphsJPanel();
 		datapanel.setPreferredSize(new Dimension(400, 210));
 		datapanel.setGraphBackGroundColor(Color.WHITE);
-	
-		currentdata = new ArrayList();
-	
-		attributes = new ArrayList();
+		
+		currentdata = new ArrayList<ArrayList<Double>>();
+
+		attributes = new ArrayList<DataAttribute>();
 		attributes.add(new DataAttribute("file", new String("").getClass(), true) );
 		attributes.add(new DataAttribute("wire", new String("").getClass(), true) );
 		attributes.add(new DataAttribute("direction", new String("").getClass(), true) );
-		attributes.add(new DataAttribute("data", new ArrayList().getClass(), false) );
+		attributes.add(new DataAttribute("data", new ArrayList<DataAttribute>().getClass(), false) );
 		resultsdatatable = new DataTable("DataTable", attributes);	
 		
 		removebutton = new JButton("Remove Point");
@@ -751,7 +754,7 @@ public class AnalysisPanel extends JPanel{
 		offset = 0.0;
 	
 		//Do the fit.
-		ArrayList variables =  new ArrayList();
+		ArrayList<Variable> variables =  new ArrayList<Variable>();
 		variables.add(new Variable("amp1",amp1, 0, 50.0)); 
 		variables.add(new Variable("amp2",amp2, 0, 50.0));
 		variables.add(new Variable("sigma1",sigma1, 1, 50));
@@ -761,7 +764,7 @@ public class AnalysisPanel extends JPanel{
 			variables.add(new Variable("offset",offset, -0.1, 0.1));
 		}
 		
-		ArrayList objectives = new ArrayList();
+		ArrayList<Objective> objectives = new ArrayList<Objective>();
 		objectives.add(new TargetObjective( "diff", 0.0 ) );
 
 		Evaluator1 evaluator = new Evaluator1( objectives, variables );
@@ -779,9 +782,9 @@ public class AnalysisPanel extends JPanel{
 	
 		// rerun with solution to populate results table
 		calcError(variables, best);
-		Iterator itr = variables.iterator();
+		Iterator<Variable> itr = variables.iterator();
 			while(itr.hasNext()){
-				Variable variable = (Variable)itr.next();
+				Variable variable = itr.next();
 				double value = best.getTrialPoint().getValue(variable);
 				String name = variable.getName();
 				if(name.equalsIgnoreCase("amp1")) amp1= value;
@@ -920,7 +923,7 @@ public class AnalysisPanel extends JPanel{
 		exp1 = 5; exp2 = 5;
 		
 		//Do the fit.
-		ArrayList variables =  new ArrayList();
+		ArrayList<Variable> variables =  new ArrayList<Variable>();
 		variables.add(new Variable("amp1",amp1, 0, 50.0)); 
 		variables.add(new Variable("sigma1",sigma1, 1, 50));
 		variables.add(new Variable("N1",exp1, 1, 10));
@@ -941,7 +944,7 @@ public class AnalysisPanel extends JPanel{
 			variables.add(new Variable("offset",offset, -0.1, 0.1));
 		}
 		
-		ArrayList objectives = new ArrayList();
+		ArrayList<Objective> objectives = new ArrayList<Objective>();
 		objectives.add(new TargetObjective( "diff", 0.0 ) );
 		
 		Evaluator1 evaluator = new Evaluator1( objectives, variables );
@@ -959,9 +962,9 @@ public class AnalysisPanel extends JPanel{
 		
 		// rerun with solution to populate results table
 		calcError(variables, best);
-		Iterator itr = variables.iterator();
+		Iterator<Variable> itr = variables.iterator();
         while(itr.hasNext()){
-			Variable variable = (Variable)itr.next();
+			Variable variable = itr.next();
             double value = best.getTrialPoint().getValue(variable);
             String name = variable.getName();
             if(name.equalsIgnoreCase("amp1")) amp1= value;
@@ -1034,7 +1037,7 @@ public class AnalysisPanel extends JPanel{
     }	
 	
 	
-	public double calcError(ArrayList vars, Trial trial){
+	public double calcError(ArrayList<Variable>  vars, Trial trial){
         
 		double error = 0.0;
 		double temp = 0.0;
@@ -1049,9 +1052,9 @@ public class AnalysisPanel extends JPanel{
 		int exp2=0;
 		double x;
 	
-		Iterator itr = vars.iterator();
+		Iterator<Variable> itr = vars.iterator();
 			while(itr.hasNext()){
-				Variable variable = (Variable)itr.next();
+				Variable variable = itr.next();
 				double value = trial.getTrialPoint().getValue(variable);
 				String name = variable.getName();
 				if(name.equalsIgnoreCase("amp1")) amp1= value;
@@ -1164,7 +1167,7 @@ public class AnalysisPanel extends JPanel{
     public void storeResult(){
 	
 		GenericRecord record = new GenericRecord(resultsdatatable);
-		ArrayList results = new ArrayList();
+		ArrayList<double[]> results = new ArrayList<double[]>();
 		double[] fit = new double[fitparams.length];
 		System.arraycopy(fitparams, 0, fit, 0, fitparams.length);
 		double[] errors = new double[fitparams_err.length];
@@ -1180,7 +1183,7 @@ public class AnalysisPanel extends JPanel{
 		results.add(twogauss);
 		results.add(supergauss);
 	
-		Map bindings = new HashMap();
+		Map<String, String> bindings = new HashMap<String, String>();
 		bindings.put("file", filename);
 		bindings.put("wire", wirename);
 		bindings.put("direction", direction);
@@ -1192,8 +1195,8 @@ public class AnalysisPanel extends JPanel{
 		record.setValueForKey(new String(filename), "file");
 		record.setValueForKey(new String(wirename), "wire");
 		record.setValueForKey(new String(direction), "direction");
-		record.setValueForKey(new ArrayList(results), "data");
-		record.setValueForKey(new ArrayList(results), "twogauss");
+		record.setValueForKey(new ArrayList<double[]>(results), "data");
+		record.setValueForKey(new ArrayList<double[]>(results), "twogauss");
 		
 		resultsdatatable.add(record);
 		doc.resultsdatatable = resultsdatatable;
@@ -1205,10 +1208,10 @@ public class AnalysisPanel extends JPanel{
 	    System.out.println("No records to remove!");
 	}
 	else{
-	    Collection records = resultsdatatable.records();
-	    Iterator itr = records.iterator();	
+	    Collection<GenericRecord> records = resultsdatatable.records();
+	    Iterator<GenericRecord> itr = records.iterator();
 	    while(itr.hasNext()){
-	      GenericRecord record = (GenericRecord)itr.next();
+	      GenericRecord record = itr.next();
 	      resultsdatatable.remove(record);
 	    }
 	    doc.resultsdatatable = resultsdatatable;
@@ -1452,31 +1455,31 @@ public class AnalysisPanel extends JPanel{
 		}	
     }
     
-	
+    @SuppressWarnings ("unchecked") //Had to suppress because valueforkey returns object
     public void resetCurrentData(String file, String wire, String direct){
 		filename = file;
 		wirename = wire;
 		direction = direct;
 		label = (new String(filename + ":" + wirename + ":" + direction));
 	
-		ArrayList currentdat = new ArrayList();
-		ArrayList wiredata = new ArrayList();
-
+		ArrayList<ArrayList<Double>> currentdat = new ArrayList<ArrayList<Double>>();
+		ArrayList<ArrayList<Double>> wiredata = new ArrayList<ArrayList<Double>>();
 		DataTable masterdatatable = doc.masterdatatable;
 	
-		Map bindings = new HashMap();
+		Map<String, String> bindings = new HashMap<String, String>();
 		bindings.put("file", filename);
 		bindings.put("wire", wire);
 		GenericRecord record =  masterdatatable.record(bindings);
-		wiredata=(ArrayList)record.valueForKey("data");
+		wiredata=(ArrayList<ArrayList<Double>>)record.valueForKey("data");
+
 	
-		ArrayList slist = (ArrayList)wiredata.get(0);
-		ArrayList sxlist = (ArrayList)wiredata.get(1);
-		ArrayList sylist = (ArrayList)wiredata.get(2);
-		ArrayList szlist = (ArrayList)wiredata.get(3);
-		ArrayList xlist = (ArrayList)wiredata.get(4);
-		ArrayList ylist = (ArrayList)wiredata.get(5);
-		ArrayList zlist = (ArrayList)wiredata.get(6);
+		ArrayList<Double>  slist = wiredata.get(0);
+		ArrayList<Double>  sxlist = wiredata.get(1);
+		ArrayList<Double>  sylist = wiredata.get(2);
+		ArrayList<Double>  szlist = wiredata.get(3);
+		ArrayList<Double>  xlist = wiredata.get(4);
+		ArrayList<Double>  ylist = wiredata.get(5);
+		ArrayList<Double>  zlist = wiredata.get(6);
 	
 		double[] sdat = new double[sxlist.size()];
 		double[] dat = new double[sxlist.size()];
@@ -1484,32 +1487,32 @@ public class AnalysisPanel extends JPanel{
 		double xmax=0; double zmax=0;
     
 		for(int i=0; i<sxlist.size(); i++){
-			if(Math.abs(((Double)xlist.get(i)).doubleValue()) > Math.abs(xmax)) 
-				xmax = ((Double)xlist.get(i)).doubleValue();
+			if(Math.abs((xlist.get(i)).doubleValue()) > Math.abs(xmax)) 
+				xmax = (xlist.get(i)).doubleValue();
 		}
     
 		if(direction.equals("H")){
 			currentdat.add(sxlist);
 			currentdat.add(xlist);
 			for(int i=0; i<sxlist.size(); i++){
-				sdat[i]=((Double)sxlist.get(i)).doubleValue();
-				dat[i]=((Double)xlist.get(i)).doubleValue();
+				sdat[i]=(sxlist.get(i)).doubleValue();
+				dat[i]=(xlist.get(i)).doubleValue();
 			}
 		}
 		if(direction.equals("V")){
 			currentdat.add(sylist);
 			currentdat.add(ylist);
 			for(int i=0; i<sylist.size(); i++){
-				sdat[i]=((Double)sylist.get(i)).doubleValue();
-				dat[i]=((Double)ylist.get(i)).doubleValue();		
+				sdat[i]=(sylist.get(i)).doubleValue();
+				dat[i]=(ylist.get(i)).doubleValue();		
 			}
 		}
 		if(direction.equals("D")){
 			currentdat.add(szlist);
 			currentdat.add(zlist);
 			for(int i=0; i<szlist.size(); i++){
-				sdat[i]=(((Double)szlist.get(i)).doubleValue());
-				dat[i]=((Double)zlist.get(i)).doubleValue();		
+				sdat[i]=((szlist.get(i)).doubleValue());
+				dat[i]=(zlist.get(i)).doubleValue();		
 			}
 		}
 	
@@ -1530,16 +1533,16 @@ public class AnalysisPanel extends JPanel{
 //Evaluates beam properties for a trial point
 class Evaluator1 implements Evaluator{
     
-    protected ArrayList _objectives;
-    protected ArrayList _variables;
-    public Evaluator1( final ArrayList objectives, final ArrayList variables ) {
+    protected ArrayList<Objective> _objectives;
+    protected ArrayList<Variable> _variables;
+    public Evaluator1( final ArrayList<Objective>  objectives, final ArrayList<Variable> variables ) {
 	_objectives = objectives;
 	_variables = variables;
     }
     
     public void evaluate(final Trial trial){
 	double error =0.0; 
-	Iterator itr = _objectives.iterator();
+	Iterator<Objective> itr = _objectives.iterator();
 	
 	while(itr.hasNext()){
 	    TargetObjective objective = (TargetObjective)itr.next();

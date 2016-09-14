@@ -33,6 +33,8 @@ import xal.extension.widgets.swing.Wheelswitch;
 
 public class TunnerDialog extends JDialog{
 	
+	private static final long serialVersionUID = 1L;
+	
 	protected Box _objectivesContainer;	
 	protected JLabel magnetname,lastrecord, upperLabel,lowerLabel;
 	protected double lastfield;

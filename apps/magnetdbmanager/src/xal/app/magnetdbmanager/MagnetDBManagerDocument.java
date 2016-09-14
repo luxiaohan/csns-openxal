@@ -153,12 +153,18 @@ public class MagnetDBManagerDocument extends XalDocument {
      */
     public void customizeCommands( final Commander commander ) {
     	final Action setdbserverAction = new AbstractAction("connect-db-server"){
+            /** serialization ID */
+            private static final long serialVersionUID = 1L;
+            
     		public void actionPerformed(final ActionEvent event){
     			myWindow().ConnectDB();
     		}
     	};
     	
     	final Action setbakfolderAction = new AbstractAction("set-bak-folder"){
+            /** serialization ID */
+            private static final long serialVersionUID = 1L;
+            
     		public void actionPerformed(final ActionEvent event){
     			File currentpath = _bakpathFileTracker.getMostRecentFile();
     			String bakpath = ".";

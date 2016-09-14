@@ -19,6 +19,9 @@ import java.awt.event.*;
 import java.util.*;
 
 public class AnalysisFace extends JPanel{
+	
+    /** serialization ID */
+    private static final long serialVersionUID = 1L;
     
     public JPanel mainPanel;
     public JTable datatable;
@@ -30,8 +33,8 @@ public class AnalysisFace extends JPanel{
     private DataTable resultsdatatable;
     
     String currentdataname;
-    ArrayList currentdata;
-    ArrayList attributes;
+    ArrayList<ArrayList<Double>> currentdata;
+    ArrayList<DataAttribute> attributes;
     double sdata[];
     double data[];
     
@@ -88,13 +91,13 @@ public class AnalysisFace extends JPanel{
 //	analyzebutton.setEnabled(false);
 	makeDataTable();
 	
-	currentdata = new ArrayList();
+	currentdata = new ArrayList<ArrayList<Double>>();
 	
-	attributes = new ArrayList();
+    attributes = new ArrayList<DataAttribute>();
 	attributes.add(new DataAttribute("file", new String("").getClass(), true) );
 	attributes.add(new DataAttribute("wire", new String("").getClass(), true) );
 	attributes.add(new DataAttribute("direction", new String("").getClass(), true) );
-	attributes.add(new DataAttribute("data", new ArrayList().getClass(), false) );
+    attributes.add(new DataAttribute("data", new ArrayList<DataAttribute>().getClass(), false) );
 	resultsdatatable = new DataTable("DataTable", attributes);	
     }
     
@@ -109,26 +112,27 @@ public class AnalysisFace extends JPanel{
 	});
 	
 	analyzebutton.addActionListener(new ActionListener(){
+		@SuppressWarnings ("unchecked") //Had to suppress because valueforkey returns object.
 	    public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<datatable.getRowCount();i++){
 		    
 		    String filename = (String)datatablemodel.getValueAt(i,0);
 		    String wire = (String)datatablemodel.getValueAt(i,1);
-		    ArrayList wiredata = new ArrayList();
+		    ArrayList<ArrayList<Double>> wiredata = new ArrayList<ArrayList<Double>>();
 		    DataTable masterdatatable = doc.masterdatatable;
-		    Map bindings = new HashMap();
+		    Map<String, String> bindings = new HashMap<String, String>();
 		    bindings.put("file", filename);
 		    bindings.put("wire", wire);
 		    GenericRecord record =  masterdatatable.record(bindings);
-		    wiredata=(ArrayList)record.valueForKey("data");
+		    wiredata=(ArrayList<ArrayList<Double>>)record.valueForKey("data");
 		    
-		    ArrayList slist = (ArrayList)wiredata.get(0);
-		    ArrayList sxlist = (ArrayList)wiredata.get(1);
-		    ArrayList sylist = (ArrayList)wiredata.get(2);
-		    ArrayList szlist = (ArrayList)wiredata.get(3);
-		    ArrayList xlist = (ArrayList)wiredata.get(4);
-		    ArrayList ylist = (ArrayList)wiredata.get(5);
-		    ArrayList zlist = (ArrayList)wiredata.get(6);
+		    ArrayList<Double> slist = wiredata.get(0);
+		    ArrayList<Double> sxlist = wiredata.get(1);
+		    ArrayList<Double> sylist = wiredata.get(2);
+		    ArrayList<Double> szlist = wiredata.get(3);
+		    ArrayList<Double> xlist = wiredata.get(4);
+		    ArrayList<Double> ylist = wiredata.get(5);
+		    ArrayList<Double> zlist = wiredata.get(6);
 		    
 		    localtime = new Date();
 		    //Switching order of data input to make Chris program agree with my data order
@@ -226,17 +230,17 @@ public class AnalysisFace extends JPanel{
     private void refreshTable(){
 	datatablemodel.clearAllData();
 	
-	ArrayList tabledata = new ArrayList();
+	 ArrayList<Object> tabledata = new ArrayList<Object>();
 	
 	if(masterdatatable.records().size() == 0){
 	    System.out.println("No data available to load!");
 	}
 	else{
-	Collection records = masterdatatable.records();
-	Iterator itr = records.iterator();	
+		Collection<GenericRecord> records = masterdatatable.records();
+		Iterator<GenericRecord> itr = records.iterator();
 	while(itr.hasNext()){
 	  tabledata.clear();
-	  GenericRecord record = (GenericRecord)itr.next();
+	  GenericRecord record = itr.next();
 	  String filename=(String)record.valueForKey("file");
 	  String wire = (String)record.valueForKey("wire");
 	 
@@ -245,7 +249,7 @@ public class AnalysisFace extends JPanel{
 	  tabledata.add(new Boolean(false));
 	  tabledata.add(new Boolean(false));
 	  tabledata.add(new Boolean(false));
-	  datatablemodel.addTableData(new ArrayList(tabledata));
+	  datatablemodel.addTableData(new ArrayList<Object>(tabledata));
 	}
 	datatablemodel.fireTableDataChanged();
 	}
@@ -294,7 +298,9 @@ public class AnalysisFace extends JPanel{
     
     //Renderer for doing the last column of the results table
     class ButtonRenderer extends AbstractCellEditor implements TableCellRenderer, TableCellEditor,ActionListener{
-	public JButton theButton;
+    /** serialization ID */
+    private static final long serialVersionUID = 1L;
+    public JButton theButton;
 	protected static final String EDIT = "edit";
 	
 	public ButtonRenderer(){
@@ -353,7 +359,7 @@ public class AnalysisFace extends JPanel{
     public void storeResult(String filename, String wirename, String direction, double mean, double rms, double[] sdata, double[] data){
 	
 	GenericRecord record = new GenericRecord(resultsdatatable);
-	ArrayList results = new ArrayList();
+	ArrayList<double[]> results = new ArrayList<double[]>();
 	double[] fit = new double[4];
 	double[] errors = new double[4];
 	fit[0] = rms;
@@ -370,7 +376,7 @@ public class AnalysisFace extends JPanel{
 	results.add(sdata);
 	results.add(data);
 	
-	Map bindings = new HashMap();
+	Map<String, String> bindings = new HashMap<String, String>();
 	bindings.put("file", filename);
 	bindings.put("wire", wirename);
 	bindings.put("direction", direction);
@@ -382,7 +388,7 @@ public class AnalysisFace extends JPanel{
 	record.setValueForKey(new String(filename), "file");
 	record.setValueForKey(new String(wirename), "wire");
 	record.setValueForKey(new String(direction), "direction");
-	record.setValueForKey(new ArrayList(results), "data");
+	record.setValueForKey(new ArrayList<double[]>(results), "data");
 
 	
 	System.out.println("Added " + filename + "  " + wirename+ "  " + data);

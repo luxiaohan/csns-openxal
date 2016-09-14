@@ -14,6 +14,8 @@ import java.text.*;
 /** class to handle the display analysis control variable info table */
 public class AnalysisTableModel  extends AbstractTableModel {
 	
+	   private static final long serialVersionUID = 1L;
+	
 	    DecimalFormat fieldFormat = new DecimalFormat("####.#####"); 
 	    
             private String cavPhaseOffsetLabel, WInLabel;
@@ -55,7 +57,7 @@ public class AnalysisTableModel  extends AbstractTableModel {
 	    }
 	    
 	    /** get the column class */
-	    public Class getColumnClass(int c) {
+	    public Class<?> getColumnClass(int c) {
 	        return getValueAt(0, c).getClass();
 	    }
 
