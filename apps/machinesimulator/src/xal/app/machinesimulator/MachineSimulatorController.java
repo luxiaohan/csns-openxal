@@ -1017,12 +1017,14 @@ public class MachineSimulatorController implements MachineModelListener {
 			PARAM_HISTORY_TABLE_MODEL.setKeyPaths( historyDataKeyPaths );
 			PARAM_HISTORY_TABLE_MODEL.setRecords( nodePropertyHistoryRecords );
 			
-			DIAG_RECORD_TABLE_MODEL.setKeyPaths( keyPathsForDiagRecord );
+			
 		}
 		else {
 			PARAM_HISTORY_TABLE_MODEL.setRecords( null );
 		}
-
+		
+		DIAG_RECORD_TABLE_MODEL.setKeyPaths( keyPathsForDiagRecord );
+		
 		_sequence = seq;
 		
 		diagData = dRecords;

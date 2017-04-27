@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<BricksDocument date="Mon Apr 11 11:58:10 EDT 2016" version="1.0.0">
+<BricksDocument date="Fri Apr 07 11:55:21 CST 2017" version="1.0.0">
     <RootBrick>
-        <ViewNode customBeanClass="xal.extension.application.smf.DefaultAcceleratorWindow" height="900" tag="MainWindow" width="1600">
+        <ViewNode customBeanClass="xal.extension.application.smf.DefaultAcceleratorWindow" height="901" tag="MainWindow" width="1442">
             <ViewProxy type="javax.swing.JFrame"/>
             <BeanProperty name="title" value="Machine Simulator"/>
             <ViewNode tag="MainView">
@@ -366,14 +366,20 @@
                                         <ViewNode tag="Split Pane">
                                             <ViewProxy type="javax.swing.JSplitPane"/>
                                             <BeanProperty name="oneTouchExpandable" value="true"/>
+                                            <BeanProperty height="2147483647" name="maximumSize" width="2000"/>
                                             <ViewNode tag="Diag Live Table Pane">
                                                 <ViewProxy type="javax.swing.JScrollPane"/>
+                                                <BeanProperty height="26" name="minimumSize" width="400"/>
+                                                <BeanProperty height="422" name="preferredSize" width="500"/>
+                                                <BeanProperty height="32767" name="maximumSize" width="32767"/>
                                                 <ViewNode tag="Diag Live Table">
                                                     <ViewProxy type="javax.swing.JTable"/>
                                                 </ViewNode>
                                             </ViewNode>
                                             <ViewNode tag="Diag Record Table Pane">
                                                 <ViewProxy type="javax.swing.JScrollPane"/>
+                                                <BeanProperty height="26" name="minimumSize" width="200"/>
+                                                <BeanProperty height="422" name="preferredSize" width="500"/>
                                                 <ViewNode tag="Diag Record Table">
                                                     <ViewProxy type="javax.swing.JTable"/>
                                                 </ViewNode>
