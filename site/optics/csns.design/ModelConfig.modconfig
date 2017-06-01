@@ -23,7 +23,7 @@
 		<map smf="rfgap" model="xal.model.elem.IdealRfGap"/>
                 
 		<map smf="bcm" model="xal.model.elem.Marker"/>
-        <map smf="fct" model="xal.model.elem.Marker"/>
+            <map smf="fct" model="xal.model.elem.Marker"/>
 		<map smf="dch" model="xal.model.elem.IdealMagSteeringDipole"/>
 		<map smf="dcv" model="xal.model.elem.IdealMagSteeringDipole"/>
 		<map smf="EKick" model="xal.model.elem.IdealMagSteeringDipole"/>

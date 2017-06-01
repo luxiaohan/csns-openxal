@@ -4590,7 +4590,8 @@
         </node>
         <node id="RCS_Mag:INBC3" len="0.35" pid="INBC3" pos="0.475" status="true" type="XBEND">
             <attributes>
-                <magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" />
+                <!--magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.35" pathLength="0.35" polarity="+1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -4601,7 +4602,8 @@
         </node>
         <node id="RCS_Mag:INBC4" len="0.35" pid="INBC4" pos="1.425" status="true" type="XBEND">
             <attributes>
-                <magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <!--magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.35" pathLength="0.35" polarity="-1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -4623,7 +4625,8 @@
         </node>
         <node id="RCS_Mag:INBV3" len="0.3" pid="INBV3" pos="2.75" status="true" type="YBEND">
             <attributes>
-                <magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" />
+                <!--magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -4669,7 +4672,8 @@
         </node>
         <node id="RCS_Mag:INBV4" len="0.3" pid="INBV4" pos="4.95" status="true" type="YBEND">
             <attributes>
-                <magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" />
+                <!--magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="-1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -6463,7 +6467,8 @@
         <node id="Begin_Of_RCS_Inj2" len="0" pos="0" type="MARKER" />
         <node id="RCS_Mag:INBV1" len="0.3" pid="INBV1" pos="0.55" status="true" type="YBEND">
             <attributes>
-                <magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" />
+                <!--magnet bendAngle="-1.042783" dfltMagFld="-0.080061" dipoleEntrRotAngle="-0.521392" dipoleExitRotAngle="-0.521392" len="0.3" pathLength="0.3" polarity="-1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="-1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -6509,7 +6514,8 @@
         </node>
         <node id="RCS_Mag:INBV2" len="0.3" pid="INBV2" pos="2.75" status="true" type="YBEND">
             <attributes>
-                <magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" />
+                <!--magnet bendAngle="1.042783" dfltMagFld="0.080061" dipoleEntrRotAngle="0.521392" dipoleExitRotAngle="0.521392" len="0.3" pathLength="0.3" polarity="+1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.3" pathLength="0.3" polarity="+1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -6531,7 +6537,8 @@
         </node>
         <node id="RCS_Mag:INBC1" len="0.35" pid="INBC1" pos="4.075" status="true" type="XBEND">
             <attributes>
-                <magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" />
+                <!--magnet bendAngle="-3.618801" dfltMagFld="-0.238146" dipoleEntrRotAngle="-1.809401" dipoleExitRotAngle="-1.809401" len="0.35" pathLength="0.35" polarity="-1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.35" pathLength="0.35" polarity="-1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>
@@ -6542,7 +6549,8 @@
         </node>
         <node id="RCS_Mag:INBC2" len="0.35" pid="INBC2" pos="5.025" status="true" type="XBEND">
             <attributes>
-                <magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" />
+                <!--magnet bendAngle="3.618801" dfltMagFld="0.238146" dipoleEntrRotAngle="1.809401" dipoleExitRotAngle="1.809401" len="0.35" pathLength="0.35" polarity="+1" /-->
+                <magnet bendAngle="0" dfltMagFld="0" dipoleEntrRotAngle="0" dipoleExitRotAngle="0" len="0.35" pathLength="0.35" polarity="+1" />
                 <aperture shape="0" x="0" y="0" />
                 <align pitch="0" roll="0" x="0" y="0" yaw="0" z="0" />
             </attributes>

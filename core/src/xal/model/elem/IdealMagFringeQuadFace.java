@@ -1,7 +1,7 @@
 /*
- *  IdealMagDipoleFace
+ *  IdealMagFringeQuadFace
  * 
- * Created on May 17, 2004
+ * Created on June 13, 2016
  *
  */
 package xal.model.elem;
@@ -13,85 +13,87 @@ import xal.model.IProbe;
 import xal.model.ModelException;
 
 /**
- * Represents the action of a rotated dipole face as a thin lens effect.  Note
- * that there is always an associated dipole magnet for any 
- * <code>IdealMagDipoleFace</code>.  The two objects should provide the same 
- * values for the <code>IElectromagnet</code> interface.  Note that a dipole
- * face rotation has the same effect both on beam entering the dipole or
- * exiting the dipole.  
- * The model for the pole face effect is taken from D.C. Carey's book.
+ * <p>
+ * Represents the action of a quadrupole fringe field as a thin lens effect.  The focusing/
+ * defocusing action of the leakage fields are applied instantaneously with a magnitude
+ * given by the integral of the phase advance <i>k</i>(<i>z</i>) outside the quadrupole.
+ * Specifically, let the quadrupole have entrance position <i>z</i> = 0 and 
+ * assume an hard-edge field representation within the magnet with (constant) gradient 
+ * <i>B</i><sub>0</sub>. The wave number <i>k</i><sub>0</sub> within the quadrupole is given by
+ * <br/>
+ * <br/>
+ * &nbsp; &nbsp; <i>k</i><sub>0</sub> = [<i>qB</i><sub>0</sub> / &beta;&gamma;<i>mc</i><sup>2</sup> ]<sup>1/2</sup>
+ * <br/>
+ * <br/>
+ * Outside the quadrupole in the region <i>z</i> < 0 the wave number is variable with some
+ * profile <i>k</i>(<i>z</i>).  Assuming this profile is known, we compute it for the case
+ * <i>B</i><sub>0</sub> = 1, producing the normalized wave number <i>k</i><sub><i>n</i></sub>(<i>z</i>).
+ * Denote by <i>K</i><sub>0</sub><sup>-</sup> the integral of 
+ * normalized <i>k</i><sub><i>n</i></sub>(<i>z</i>)
+ * in the region <i>z</i> &in; (-&infin;,0) we have
+ * <br/>
+ * <br/>
+ * &nbsp; &nbsp; <i>K</i><sub>0</sub><sup>-</sup> &trie; <sub><sub>-&infin;</sub></sub> &int;<sup><sup>0</sup></sup>
+ *                                    <i>k</i><sub><i>n</i></sub>(<i>z</i>) <i>dz</i> .
+ * <br/>
+ * <br/>
+ * Therefore, the total phase advance of the fringe field &Delta;&theta;<sup>-</sup> 
+ * is found by scaling
+ * The integral <i>K</i><sub>0</sub><sup>-</sup> by the quadrupole magnitude <i>B</i><sub>0</sub> giving
+ * <br/>
+ * <br/>
+ * &nbsp; &nbsp; &Delta;&theta; = <i>B</i><sub>0</sub><i>K</i><sub>0</sub><sup>-</sup> .
+ * <br/>
+ * <br/>
+ * There are analogous definitions for the exit integral <i>K</i><sub>0</sub><sup>+</sup> and
+ * for higher order moments <i>K</i><sub><i>n</i></sub><sup>&pm;</sup>.
+ * </p>
+ * <p>
+ * <h4>NOTES - CKA</h4>
+ * <ul>
+ *   <li>I deleted <em>a lot</em> of code.  It either had no relevance to a fringe field
+ *   or it was never used.
+ *   <li>Lets start with the first integrals <i>K</i><sub>0</sub><sup>&pm;</sup> and go
+ *   from there.
+ * </ul>
+ * </p>
+ * 
+ *  
  *   
  * @author Christopher K. Allen
+ * @author X.H.Lu
+ * @version June 13,2016
  *
- *  @see    "D.C. Carey, The Optics of Charged Particle Beams (Harwood, 1987)"
  */
 public class IdealMagFringeQuadFace extends ThinElectromagnet {
 
     /*
-     *  Global Attributes
+     *  Global Constants
      */
     
-    /** the string type identifier for all IdealMagSteeringDipole's */
+    /** the string type identifier for all IdealMagFringeQuadFace */
     public static final String      s_strType = "IdealMagFringeQuadFace";
-    
-    /** Parameters for XAL MODEL LATTICE dtd */
-    public static final String      s_strParamLenEff = "EffLength";
-    public static final String      s_strParamOrient = "Orientation";
-    public static final String      s_strParamField  = "MagField";
     
     
     /*
      *  Local Attributes
      */
-    
-  
-   
-    /** bending plane of dipole */
-    private boolean                 entrFlag = true;
-    
-    public void setEntrFlag(boolean entr) {
-    	entrFlag  =  entr;
-    }
-    
-    /** BRho Scaling factor (only valid when fieldpathflag=1 */
-    private double bRhoScaling = 1;
-    public double getBRhoScaling() {
-    	return bRhoScaling;
-    }
-    
-   public void setBRhoScaling(double d) {
-    	// TODO Auto-generated method stub
-    	bRhoScaling = d;
-    }
-    
  
-    /** 1st moment of fringe field defined a al H. Matsuda */
+    /** 1st moment of fringe field */
     private double              dblFringeInt1 = 0.0;
-    /** 2nd moment of fringe field defined a al H. Matsuda */
+    
+    /** 2nd moment of fringe field */
     private double              dblFringeInt2 = 0.0;
 
-    /** flag to use design field from bending angle and path instead of bfield */
-    private double fieldPathFlag = 0.0;
-    /** K1 (T/m) length excluded */
-    private double  K1 = 0.0;
     
-    private double nominalKineEnergy = 0.0;
- 
-    public void setNominalKineEnergy(double ba) {
-    	nominalKineEnergy = ba;
-    }
- 
-    public double getNominalKineEnergy() {
-	return nominalKineEnergy;
-    }
     
     /*
      * Initialization
      */
     
     /**
-     * Default constructor - creates a new unitialized instance of 
-     * IdealMagSectorDipole.      
+     * Default constructor - creates a new uninitialized instance of 
+     * IdealMagFringeQuadFace.      
      * This is the constructor called in automatic lattice generation.
      * Thus, all element properties are set following construction.
      */
@@ -99,22 +101,6 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
         super(s_strType);
     }
 
-    
-    /**
-     * K1 (T/m)
-     * @return K1
-     */
-    public double getK1() {
-    	return K1;
-    }
-    
-    /**
-     * K1 (T/m)
-     */
-    public void setK1(double dbl) {
-    	K1 = dbl;
-    }
-    
     /**
      * Constructor providing the instance identifier for the element.
      * 
@@ -123,49 +109,23 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
     public IdealMagFringeQuadFace(String strId) {
         super(s_strType, strId);
     }
-    
  
     /**
-     * Set the first-order moment integral of the dipole fringe field
-     * as described by H. Matsuda.  The integral determines the amount of 
-     * defocusing caused by the fringe field.  Denoting the integral <i>f1</i>
-     * has the definition
-      * 
-     *      f1 := sign(a)sqrt(a)
-     *      a  = -24 [I1sad-I0sad^2/2]
-     *      where I(n)sad := Integral{[z - z0] k(z)/k0}dz
-      *     
-     * where <i>k0</i> is normal k0*Len. The integral 
-     * taken from -infinity to <i>z</i> = infinity.
-      * 
+     * Set the first-order moment integral of the quadrupole fringe field
+     * 
      * @param   dblFringeInt  field moment f1 (<b>dimensionless</b>)
      */
     public void setFringeIntegral1(double dblFringeInt) {
         this.dblFringeInt1 = dblFringeInt;
     }
+    
     /**
-     * Set the first-order moment integral of the dipole fringe field
-     * as described by H. Matsuda.  The integral determines the amount of 
-     * defocusing caused by the fringe field.  Denoting the integral <i>f1</i>
-     * has the definition
-      * 
-     *      f2 := [I2sad-I0sad^2/3]
-     *      where I(n)sad := Integral{[z - z0] k(z)/k0}dz
-      *     
-     * where <i>k0</i> is normal k0*Len. The integral 
-     * taken from -infinity to <i>z</i> = infinity.
+     * Set the first-order moment integral of the quadrupole fringe field
       * 
      * @param   dblFringeInt  field moment f1 (<b>dimensionless</b>)
      */
     public void setFringeIntegral2(double dblFringeInt) {
         this.dblFringeInt2 = dblFringeInt;
-    }
-    /**
-     * sako to set field path flag
-     * @param ba
-     */
-    public void setFieldPathFlag(double ba) {
-        fieldPathFlag = ba;
     }
  
  
@@ -174,9 +134,7 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
      */
 
     /**
-     * Set the second-order moment integral of the dipole fringe field
-     * as described by H. Matsuda.  The integral determines the amount of 
-     * defocusing caused by the fringe field.  
+     * Set the second-order moment integral of the quadrupole fringe field
      * 
      * @return   second-order integral of fringe field (<b>dimensionless</b>)
      * 
@@ -194,32 +152,7 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
     /*
      *  IElectromagnet Interface
      */
-
    
-    public boolean getEntr() {
-        return this.entrFlag;
-    };
-
-
-    
-    /**
-     * Return the field path flag.
-     * 
-     *  @return     field path flag = 1 (use design field) or 0 (use bField parameter)
-     */
-    public double getFieldPathFlag() {
-        return fieldPathFlag;
-    }
-  
-    
-    
-
-
-    /*
-     * IElement Interface
-     */
-     
-     
     /**
      * Returns the time taken for the probe to propagate through element.
      * 
@@ -247,8 +180,12 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
 
 
     /**
-     * Compute and return the transfer map for this dipole magnet
+     * Compute and return the transfer map for this quadrupole magnet
      * pole face element.
+     * 
+     * The normalized fringe field integral is given by 
+     *  &nbsp; &nbsp; <i>f</i><sub>0</sub> = <sub><sub>-&infin;</sub></sub> &int;<sup><sup>0</sup></sup>
+     *                   <i>B</i><sub><i>n</i></sub>(<i>z</i>) /<i>B</i><sub>0</sub><i>dz</i> .
      * @param probe
      * @return
      * @throws ModelException
@@ -258,64 +195,41 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
     @Override
     protected PhaseMap transferMap(IProbe probe) throws ModelException {
 
+        // Xiaohan, which quantity did you integrate for the fringe integral f1?
+        //  was it the wave number k(z), or the field B(z)?  Looks like its the
+        //  field.
+        //
+        //  - The integral needs to be done for a normalized k(z) or B(z), e.g.,
+        //  B0 = 1 for the hard edge case.
+        //  
+        //  - Then we scale by the magnitude of the lens #getMagField() (in base class)
+        //
+        
         double Er = probe.getSpeciesRestEnergy();
         double w = probe.getKineticEnergy();
         double p = Math.sqrt(w*(w+2*Er));
-       
-        double bPathFlag = getFieldPathFlag();
-        if (bPathFlag == 1) {//if bpathflag =1, then use nominal k0 from nominal kine energy
-        	double w0 = getNominalKineEnergy();
-        	if (w0==0.) {
-        		w0 = probe.getKineticEnergy();
-        		setNominalKineEnergy(w0);
-        	}
-        	double p0 = Math.sqrt(w0*(w0+2*Er));
-		
-			setBRhoScaling(p/p0);//save brho scaling. when nominalKineEnergy = 0, set 1.
-		}
-	    
-        // Get  parameters
+        double q = probe.getSpeciesCharge();
+        
+        //normalized fringeIntergral with B0 = 1
         double f1 = this.getFringeIntegral1();
         double f2 = this.getFringeIntegral2();
-        double I1 = Math.signum(f1)*f1*f1;
-        double I2 = -0.5*f2;
+        double f2e = Math.exp(f2);
         
-		 double q = probe.getSpeciesCharge();
-     
-        double k = 0;
+        //scaled fringeIntergral 
+ //       double fs = f1;
         
-        if (bPathFlag == 0) {
-     	   k = (q * LightSpeed * getMagField() ) / p;
-        } else if (bPathFlag == 1) {//brhoscaling
-     	   k =  (q * LightSpeed * getMagField() *getBRhoScaling())/p;
-        } else {
-     	   k = getK1();
-        }
-     
-
+        //focus length 1/(L*sqrt(k))
+//        double focus = (q*fs*LightSpeed)/p;
+        
         PhaseMatrix matPhi = PhaseMatrix.identity();
-    
-        if (entrFlag) {
-        	matPhi.setElem(0,0, 1-k*I1);
-        	matPhi.setElem(0,1, -2*k*I2);
-        	//matPhi.setElem(1,0, -k*k*I3);
-        	matPhi.setElem(1,1, 1+k*I1);
-        	
-          matPhi.setElem(2,2, 1+k*I1);
-        	matPhi.setElem(2,3, 2*k*I2);
-        	//matPhi.setElem(3,2, -k*k*I3);
-        	matPhi.setElem(3,3, 1-k*I1);
-        } else {
-           matPhi.setElem(0,0, 1+k*I1);
-        	matPhi.setElem(0,1, -2*k*I2);
-        	//matPhi.setElem(1,0, -k*k*I3);
-        	matPhi.setElem(1,1, 1-k*I1);
-        	
-          matPhi.setElem(2,2, 1-k*I1);
-        	matPhi.setElem(2,3, 2*k*I2);
-        	//matPhi.setElem(3,2, -k*k*I3);
-        	matPhi.setElem(3,3, 1+k*I1);
-        }
+        
+        matPhi.setElem(0, 0, f2e);
+        matPhi.setElem(1, 1, 1/f2e);
+        matPhi.setElem( 1, 0, f1);//X plane
+        
+        matPhi.setElem(2, 2, 1/f2e);
+        matPhi.setElem(3, 3, f2e);
+        matPhi.setElem(3, 2, f1);// Y plane
         
 
  	   	PhaseMatrix Phidx = applyAlignError(matPhi);	
