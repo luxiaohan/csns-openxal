@@ -1,13 +1,13 @@
 /*
- * IdealMagWedgeDipole
+ * IdealMagFringeQuad
  * 
- * Created on May 20, 2004
+ * Created on June 13, 2016
  *
  */
 package xal.model.elem;
 
 import xal.sim.scenario.LatticeElement;
-import xal.smf.impl.Bend;
+import xal.smf.impl.Quadrupole;
 import xal.tools.math.r3.R3;
 
 /**
@@ -19,6 +19,8 @@ import xal.tools.math.r3.R3;
  * Structure is simular to that of IdealMagWedgeDipole2
  * 
  * @author Hiroyuki Sako
+ * @author X.H.Lu
+ * @version June 13,2016
  * 
  * @see xal.model.elem#IdealMagQuad
  * @see xal.model.elem#IdealMagFringeQuadFace
@@ -60,15 +62,15 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      */
 
     /**
-     * Default constructor - creates a new unitialized instance of 
-     * <code>IdealMagWedgeDipole</code>.
+     * Default constructor - creates a new uninitialized instance of 
+     * <code>IdealMagFringeQuad</code>.
      */
     public IdealMagFringeQuad() {
         this(null);
     }
 
     /**
-     * Create new <code>IdealMagWedgeDipole</code> object and specify its
+     * Create new <code>IdealMagFringeQuad</code> object and specify its
      * instance identifier string.
      * 
      * @param strId     instance identifier string
@@ -87,7 +89,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * <code>ElementSeq</code> objects so we can set the identifier
      * strings of each composite element.
      * 
-     * @param   strId       identifier string of this compsite.
+     * @param   strId       identifier string of this composite.
      * @see xal.model.elem.ElementSeq#setId(java.lang.String)
      */
     @Override
@@ -145,7 +147,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     
  
     /**
-     * Set the entrance fringe integral (a la H. Matsuda) which accounts  
+     * Set the entrance fringe integral which accounts  
      * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
@@ -157,7 +159,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
         this.getFaceEntr().setFringeIntegral1(dblFldInt);
     }
     /**
-     * Set the entrance fringe integral (a la H. Matsuda) which accounts  
+     * Set the entrance fringe integral which accounts  
      * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
@@ -170,8 +172,8 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
 
     /**
-     * Set the exit fringe integral (a la H. Matsuda) which accounts  
-     * for the first-order effects of the fringing field outside the dipole
+     * Set the exit fringe integral which accounts  
+     * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
      * @param   dblFldInt   fringe field integral (<b>unitless</b>)
@@ -182,8 +184,8 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
         this.getFaceExit().setFringeIntegral1(dblFldInt);
     }
     /**
-     * Set the exit fringe integral (a la H. Matsuda) which accounts  
-     * for the first-order effects of the fringing field outside the dipole
+     * Set the exit fringe integral which accounts  
+     * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
      * @param   dblFldInt   fringe field integral (<b>unitless</b>)
@@ -197,7 +199,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     
     
     /**
-     * Set the physical length of the bending dipole.  The design path length
+     * Set the physical length of the quadrupole.  The design path length
      * is generally larger than this value because of the curvature.
      *  
      * @param dblLen    physical length through bend in <b>meters</b>
@@ -206,39 +208,44 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
         this.getMagBody().setLength( dblLen );
     }
     
-    /**
-     * Set the reference (design) orbit path-length through
-     * the magnet.
-     * 
-     * @param   dblPathLen      path length of design trajectory (meters)
-     * 
-     */
-    public void setK1(double dblPathLen)  {
-    	this.getFaceEntr().setK1( dblPathLen );
-        this.getMagBody().setK1( dblPathLen );
-        this.getFaceExit().setK1( dblPathLen );
-    }
     
-    /**
-     * Set the bending angle of the reference (design) orbit.
-     * 
-     * @param   dblBendAng      design trajectory bending angle (radians) 
-     */
-    public void setNominalKineEnergy(double dblBendAng)   {
-    	this.getFaceEntr().setNominalKineEnergy( dblBendAng );
-        this.getMagBody().setNominalKineEnergy( dblBendAng );
-        this.getFaceExit().setNominalKineEnergy( dblBendAng );
-    }
-
-
-    /**
-     * sako use design field if fieldPathFlag = 1, and use bfield if 0
-     */
-    public void setFieldPathFlag(double dblFlag) {
-    	this.getFaceEntr().setFieldPathFlag(dblFlag);
-    	this.getMagBody().setFieldPathFlag(dblFlag);
-    	this.getFaceExit().setFieldPathFlag(dblFlag);
-    }
+    //
+    // CKA - None of this will work correctly for synchronization
+    //  They are not part of IElectromagnet
+    //
+    
+//    /**
+//     * Set the K value of quadrupole
+//     * 
+//     * @param   K1     the K value of quadrupole
+//     * 
+//     */
+//    public void setK1(double k1)  {
+//    	this.getFaceEntr().setK1( k1 );
+//        this.getMagBody().setK1( k1 );
+//        this.getFaceExit().setK1( k1 );
+//    }
+//    
+//    /**
+//     * Set the Nominal Kinetic Energy.
+//     * 
+//     * @param   nomKinEn     Nominal Kinetic Energy
+//     */
+//    public void setNominalKineEnergy(double nomKinEn)   {
+//    	this.getFaceEntr().setNominalKineEnergy( nomKinEn );
+//        this.getMagBody().setNominalKineEnergy( nomKinEn );
+//        this.getFaceExit().setNominalKineEnergy( nomKinEn );
+//    }
+//
+//
+//    /**
+//     * sako use design field if fieldPathFlag = 1, and use bfield if 0
+//     */
+//    public void setFieldPathFlag(double dblFlag) {
+//    	this.getFaceEntr().setFieldPathFlag(dblFlag);
+//    	this.getMagBody().setFieldPathFlag(dblFlag);
+//    	this.getFaceExit().setFieldPathFlag(dblFlag);
+//    }
 
     /**
      * set align x
@@ -275,7 +282,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      
    
     /**
-     * Get the entrance fringe integral (a la H. Matsuda) which accounts  
+     * Get the entrance fringe integral  which accounts  
      * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
@@ -288,7 +295,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
 
     /**
-     * Get the exit fringe integral (a la H. Matsuda) which accounts  
+     * Get the exit fringe integral which accounts  
      * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
@@ -301,7 +308,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
 
     /**
-     * Get the entrance fringe integral (a la H. Matsuda) which accounts  
+     * Get the entrance fringe integral which accounts  
      * for the first-order effects of the fringing field outside the quadrupole
      * magnet.
      * 
@@ -314,7 +321,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
 
     /**
-     * Get the exit fringe integral (a la D.C. Carey) which accounts  
+     * Get the exit fringe integral which accounts  
      * for the first-order effects of the fringing field outside the dipole
      * magnet.
      * 
@@ -336,7 +343,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * where R0 is the radius of the design orbit, B0 is the field at the
      * design orbit (@see IdealMagSectorDipole#getField), and dB/dR is the
      * derivative of the field with respect to the path deflection - evaluated
-     * at the design radius R0.
+     * at the design radius R0.  ??
      * 
      * @return  field index of the magnet at the design orbit (unitless)     
      */
@@ -345,7 +352,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
 
     /**
-     * Return the physical length of the bending dipole.  The design path length
+     * Return the physical length of the quadrupole.  The design path length
      * is generally larger than this value because of the curvature.
      *  
      * @return  physical length through bend in <b>meters</b>
@@ -360,10 +367,14 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      */
 
     /**
-     *  Return the orientation enumeration code specifying the bending plane.
+     *  Return the orientation enumeration code.
+     * Return the orientation enumeration code for the bending plane of the 
+     * associated dipole magnet / focusing plane of quadrupole.
      *
-     *  @return     ORIENT_HOR  - dipole has steering action in x (horizontal) plane
-     *              ORIENT_VER  - dipole has steering action in y (vertical) plane
+     *  @return     ORIENT_HOR  - quadrupole focuses in x (horizontal) plane
+     *  						  dipole has steering action in x (horizontal) plane
+     *              ORIENT_VER  - quadrupole focuses in y ( vertical ) plane
+     *                            dipole has steering action in y (vertical) plane
      *              ORIENT_NONE - error
      */
     public int getOrientation() {
@@ -371,7 +382,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     };
 
     /**  
-     *  Get the magnetic field strength of the dipole electromagnet
+     *  Get the magnetic field strength of the quadrupole electromagnet
      *
      *  @return     magnetic field (in <b>Tesla</b>).
      */
@@ -382,7 +393,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
 
 
     /**
-     *  Set the dipole magnet bending orientation
+     *  Set the quadrupole magnet bending orientation
      *  
      *  @param  enmOrient   magnet orientation enumeration code
      *
@@ -395,7 +406,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     };
 
     /**  
-     *  Set the magnetic field strength of the dipole electromagnet.
+     *  Set the magnetic field strength of the quadrupole electromagnet.
      *
      *  @param  dblField    magnetic field (in <b>Tesla</b>).
      */
@@ -413,7 +424,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      */
      
     /**
-     * Return the entrance dipole face object of the wedge dipole.
+     * Return the entrance quadrupole face object of the quaddrupole.
      * 
      * @return     entrance pole face
      */
@@ -422,7 +433,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
      
     /**
-     * Return the exit dipole face object of this wedge dipole magnet.
+     * Return the exit quadrupole face object of this quadrupole magnet.
      * 
      * @return     exit pole face
      */
@@ -431,8 +442,8 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
     }
      
     /**
-     * Return the dipole magnet body object of this wedge dipole magnet.  Note
-     * that the body is of type <code>IdealMagSectorDipole</code> which has
+     * Return the quadruple magnet body object of this quadrupole magnet.  Note
+     * that the body is of type <code>IdealMagQuad</code> which has
      * no end effects.
      * 
      * @return     magnet body
@@ -450,41 +461,21 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
 	public void initializeFrom(LatticeElement element) {
 		super.initializeFrom(element);
 		
-		Bend magnet = (Bend) element.getHardwareNode();
+		Quadrupole magnet = (Quadrupole) element.getHardwareNode();
 		setPosition(element.getCenterPosition(), element.getLength());
-
-		// xal.model.elem.ThickDipole xalDipole =
-		// new xal.model.elem.ThickDipole();
-		// xalDipole.setId(element.getNode().getId());
-		// xalDipole.setLength(element.getLength());
-		// xalDipole.setMagField(magnet.getDesignField());
-		// xalDipole.setKQuad(magnet.getQuadComponent());
-		// double angle = magnet.getDfltBendAngle()*Math.PI/180. * element.getLength() / magnet.getDfltPathLength();
-		// xalDipole.setReferenceBendAngle(angle);
-
-		// Replace ThickDipole object with an IdealMagWedgeDipole2
-		// First retrieve all the physical parameters for a bending dipole				
-		double len_sect = element.getLength();		
-		double len_path0 = magnet.getDfltPathLength();
-		double ang_bend0 = magnet.getDfltBendAngle() * Math.PI / 180.0;
-		double k_quad0 = magnet.getQuadComponent();
-
-		// Now compute the dependent parameters
-		double R_bend0 = len_path0 / ang_bend0;
-		double fld_ind0 = -k_quad0 * R_bend0 * R_bend0;
-
-		double ang_bend = ang_bend0 * (len_sect / len_path0);
-		double len_path = R_bend0 * ang_bend;
+			
+		double len_sect = element.getLength();
+		double frng_intg1 = magnet.getFringeFieldIntegralK0();
+		double frng_intg2 = magnet.getFringeFieldIntegralK1();
+		
+        if (element.isFirstSlice()) // first piece
+            setEntrFringeIntegral1( frng_intg1 );
+            setEntrFringeIntegral2(frng_intg2);
+        if (element.isLastSlice()) // last piece
+            setExitFringeIntegral1( frng_intg1);
+            setExitFringeIntegral2(-frng_intg2);
 
 		// Set the parameters for the new model element				
 		setPhysicalLength(len_sect);
-	/*	setDesignPathLength(len_path);		
-		setFieldIndex(fld_ind0);
-		setDesignBendAngle(ang_bend);*/
-						
-		/*if (element.getPartNr() == 0) // first piece
-			setEntrPoleAngle(magnet.getEntrRotAngle() * Math.PI / 180.);
-		if (element.getParts()-1 == element.getPartNr()) // last piece					
-			setExitPoleAngle(magnet.getExitRotAngle() * Math.PI / 180.);*/
 	}
 }
