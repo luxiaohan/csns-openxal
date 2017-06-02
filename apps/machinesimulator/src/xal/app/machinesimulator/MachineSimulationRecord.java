@@ -31,6 +31,9 @@ public class MachineSimulationRecord  {
 	
 	/**phase vector*/
 	private final PhaseVector PHASE_VECTOR;
+	
+	/**dispertion vector*/
+	private final PhaseVector DISP_VECTOR;
 
 
 	/** Constructor */
@@ -39,6 +42,8 @@ public class MachineSimulationRecord  {
 		TWISS_PARAMETERS = resultsAdaptor.computeTwissParameters( probeState );
 		BETATRON_PHASE = resultsAdaptor.computeBetatronPhase( probeState );
 		PHASE_VECTOR = resultsAdaptor.computeFixedOrbit( probeState );
+		DISP_VECTOR = resultsAdaptor.computeChromDispersion( probeState );
+		
     }
 
 	/** get the wrapped probe state */
@@ -61,6 +66,11 @@ public class MachineSimulationRecord  {
 	/**Get the position coordinates*/
 	public R3 getPosCoordinates() {
 		return PHASE_VECTOR.getPosition();
+	}
+	
+	/**Get the dispersion function */
+	public R3 getDispersion() {
+		return DISP_VECTOR.getPosition();
 	}
 
 

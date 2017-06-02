@@ -48,6 +48,11 @@ public class MachineSimulationHistoryRecord {
 	public R3 getPosCoordinates() {
 		return NEW_RECORD.getPosCoordinates();
 	}
+	
+	/**Get the dispersion function*/
+	public R3 getDispersion() {
+		return NEW_RECORD.getDispersion();
+	}
 
 
 	/** get the state's twiss parameters */

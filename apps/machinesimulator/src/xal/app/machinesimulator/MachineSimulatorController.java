@@ -134,6 +134,7 @@ public class MachineSimulatorController implements MachineModelListener {
 		MODEL_VECTOR_PARAMETERS.add(new ModelVectorParameter( "Emittance","epsilon","twissParameters", "emittance" ) );
 		MODEL_VECTOR_PARAMETERS.add(new ModelVectorParameter( "EnvelopeRadius","sigma","twissParameters", "envelopeRadius" ) );
 		MODEL_VECTOR_PARAMETERS.add(new ModelVectorParameter( "BetatronPhase","phi","betatronPhase" ) );
+		MODEL_VECTOR_PARAMETERS.add(new ModelVectorParameter( "Disp", "", "dispersion" ) );
         
       configureMainWindow(windowReference);
 	}
@@ -184,6 +185,7 @@ public class MachineSimulatorController implements MachineModelListener {
         final JCheckBox emittanceCheckbox = (JCheckBox)windowReference.getView( "Emittance Checkbox" );
         final JCheckBox beamSizeCheckbox = (JCheckBox)windowReference.getView( "Beam Size Checkbox" );
         final JCheckBox betatronPhaseCheckbox = (JCheckBox)windowReference.getView( "Betatron Phase Checkbox" );
+        final JCheckBox dispCheckbox = (JCheckBox)windowReference.getView( "Disp Checkbox" );
        
         //the show difference checkbox in plot view
 		  final JCheckBox showDifference = (JCheckBox)windowReference.getView( "Show Difference" );
@@ -344,6 +346,7 @@ public class MachineSimulatorController implements MachineModelListener {
 					if ( emittanceCheckbox.isSelected() ) parameterKeyPathsList.add( MODEL_VECTOR_PARAMETERS.get(4).getKeyPathToArray().get(plane) );
 					if ( beamSizeCheckbox.isSelected() )  parameterKeyPathsList.add( MODEL_VECTOR_PARAMETERS.get(5).getKeyPathToArray().get(plane) );
 					if ( betatronPhaseCheckbox.isSelected() ) parameterKeyPathsList.add( MODEL_VECTOR_PARAMETERS.get(6).getKeyPathToArray().get(plane) );
+					if ( dispCheckbox.isSelected() ) parameterKeyPathsList.add( MODEL_VECTOR_PARAMETERS.get(7).getKeyPathToArray().get(plane) );
 				}
 				
 				//create the combination keyPaths used for comparing new and old simulation results
@@ -421,8 +424,8 @@ public class MachineSimulatorController implements MachineModelListener {
         gammaCheckbox.addActionListener( PARAMETER_HANDLER );
         emittanceCheckbox.addActionListener( PARAMETER_HANDLER );
         beamSizeCheckbox.addActionListener( PARAMETER_HANDLER );
-
         betatronPhaseCheckbox.addActionListener( PARAMETER_HANDLER );
+        dispCheckbox.addActionListener( PARAMETER_HANDLER );
 
         // perform the initial parameter display configuration
         PARAMETER_HANDLER.actionPerformed( null );
@@ -442,6 +445,7 @@ public class MachineSimulatorController implements MachineModelListener {
             emittanceCheckbox.setSelected(false);
             beamSizeCheckbox.setSelected(false);
             betatronPhaseCheckbox.setSelected(false);
+            dispCheckbox.setSelected(false);
             
             PARAMETER_HANDLER.actionPerformed( null );
             };
